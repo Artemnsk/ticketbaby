@@ -1,0 +1,28 @@
+  <?php
+
+/**
+ * Implements hook_menu().
+ */
+
+function tb_user_menu_menu(){
+  $items = array();
+
+  $items['my-tickets'] = array(
+    'title' => t('My tickets'),
+    'description' => t('My tickets.'),
+    'page callback' => 'tb_user_menu_my_tickets',
+    'page arguments' => array(),
+    'access arguments' => array('view published content'),
+  );
+  
+  return $items;
+}
+
+/*
+ * Callback
+ */
+
+function tb_user_menu_my_tickets(){
+  global $user;
+  drupal_goto('user/'. $user->uid. '/tickets');
+}

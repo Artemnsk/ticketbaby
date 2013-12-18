@@ -1,0 +1,6 @@
+name = TicketBaby user menu
+description = User menus.
+package = TicketBaby
+version = VERSION
+core = 7.x
+

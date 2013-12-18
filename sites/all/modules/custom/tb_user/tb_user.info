@@ -1,0 +1,6 @@
+name = TicketBaby user Core module
+description = All user customization of this website. Core.
+package = TicketBaby
+version = VERSION
+core = 7.x
+
