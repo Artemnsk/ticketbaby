@@ -1,0 +1,19 @@
+name = ticketbaby
+description = Please provide a description for your theme.
+base theme = omega
+screenshot = screenshot.png
+engine = phptemplate
+core = 7.x
+
+; ========================================
+; Stylesheets
+; ========================================
+stylesheets[all][] = css/ticketbaby.normalize.css
+stylesheets[all][] = css/ticketbaby.hacks.css
+stylesheets[all][] = css/ticketbaby.styles.css
+stylesheets[all][] = css/ticketbaby.no-query.css
+
+; ========================================
+; Scripts
+; ========================================
+scripts[] = js/ticketbaby.behaviors.js

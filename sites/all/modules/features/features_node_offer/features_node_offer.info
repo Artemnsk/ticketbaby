@@ -1,0 +1,16 @@
+name = Node offer
+core = 7.x
+package = Features
+dependencies[] = node
+dependencies[] = text
+features[features_api][] = api:2
+features[node][] = offer
+features_exclude[dependencies][entityreference] = entityreference
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][number] = number
+features_exclude[field_base][body] = body
+features_exclude[field_base][field_price] = field_price
+features_exclude[field_base][field_ticket] = field_ticket
+features_exclude[field_instance][node-offer-body] = node-offer-body
+features_exclude[field_instance][node-offer-field_price] = node-offer-field_price
+features_exclude[field_instance][node-offer-field_ticket] = node-offer-field_ticket
