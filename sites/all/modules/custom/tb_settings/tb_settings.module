@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function tb_settings_menu() {
+  $items = array();
+  
+  $items['admin/tb-settings'] = array(
+    'title' => 'TicketBaby settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tb_settings_admin_form'),
+    'access arguments' => array("administer site configuration"),
+  );
+
+  return $items;
+}
+
+function tb_settings_admin_form($form, &$form_state){
+  $form['default_ticket_category_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Default ticket category id'),
+    '#default_value' => variable_get("default_ticket_category_id", 12),
+    '#size' => 10,
+    '#maxlength' => 10,
+    '#description' => t('When user create ticket he should see default ticket if no variable pass.'),
+    '#required' => TRUE,
+  );
+  
+  $form['default_ticket_fields'] = array(
+    '#type' => 'textarea',
+    '#title' => t("Default ticket fields"),
+    '#default_value' => variable_get("default_ticket_fields", "field_ticket_category\nfield_date_of_ticket"),
+    '#description' => t("PLEASE DON'T CHANGE IF YOU ARE NOT SURE! Default ticket fields in creation form - doesn't matter which category user select. Use new line to separate."),
+    '#required' => TRUE,
+  );
+  return system_settings_form($form);
+}

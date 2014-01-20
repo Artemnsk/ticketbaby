@@ -69,8 +69,23 @@ function features_views_tickets_views_default_views() {
   );
 
   /* Display: User tickets page */
-  $handler = $view->new_display('page', 'User tickets page', 'page');
+  $handler = $view->new_display('page', 'User tickets page', 'my_tickets');
   $handler->display->display_options['path'] = 'user/%/tickets';
+
+  /* Display: Tickets list */
+  $handler = $view->new_display('page', 'Tickets list', 'tickets');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Tickets';
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['path'] = 'tickets';
   $export['tickets'] = $view;
 
   return $export;

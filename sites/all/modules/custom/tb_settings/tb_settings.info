@@ -1,0 +1,5 @@
+name = TicketBaby settings module
+description = All TicketBaby settings.
+package = TicketBaby
+version = VERSION
+core = 7.x

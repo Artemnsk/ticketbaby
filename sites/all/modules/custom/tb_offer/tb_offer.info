@@ -1,0 +1,5 @@
+name = TicketBaby offer module
+description = All offer customization of this website.
+package = TicketBaby
+version = VERSION
+core = 7.x

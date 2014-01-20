@@ -1,0 +1,43 @@
+<?php
+
+function tb_offer_form_alter(&$form, &$form_state, $form_id){
+  // Load standard drupal node form.
+  if($form_id == "offer_node_form" && !$form_state['rebuild'] && !user_access("administer content types")){
+    unset($form['body']);
+    
+    $form['field_ticket']['und']['#columns'][0]['target_id'] = 2;
+    //$form['field_ticket_category']['#suffix'] = '<span class = "recommendation ticket-recommendation">Respond with additional questions, comments, give quote, or decline. Please give reason for decline, for instance that there is a small chance of successful defence or that its not worth defending because this will help the customer understand their situation.</span>';
+    
+    // ...and save offer button should be named "save".
+    $form['actions']['submit']['#value'] = 'Send';
+    
+    // Ticket reference field. Receives value from url, disabled, hidden.
+    array_unshift($form['#validate'], 'tb_offer_validate_offer');
+    $form['actions']['submit']['#submit'][] = "tb_offer_create_offer";
+    
+    if(arg(3) && intval(arg(3) && $ticket = node_load(arg(3)))){
+      if($ticket->type == 'ticket'){
+        $form['field_ticket']['und']['#value'] = $ticket->title. ' ('. $ticket->nid. ')';
+      }
+    }
+    $form['field_ticket']['#type'] = 'hidden';
+    $form['field_ticket']['#disabled'] = TRUE;
+    
+    // Disable title.
+    unset($form['field_response'][LANGUAGE_NONE][0]['#title']);
+    unset($form['field_response'][LANGUAGE_NONE]['#title']);
+    dpm($form);
+  }
+  
+  return $form;
+}
+
+function tb_offer_validate_offer($form, &$form_state){
+  if(!arg(3) || !intval(arg(3)) || !node_load(arg(3))){
+    form_set_error('field_ticket', t('Something went wrong. Please try to go on ticket page and press "respond" again.'));
+  }
+}
+
+/*function tb_offer_create_offer($form, &$form_state){
+  //$form_state['values']['field_ticket'][LANGUAGE_NONE][0]['target_id'] = arg(3);
+}*/

@@ -1,0 +1,43 @@
+<?php
+
+function tb_ticket_form_alter(&$form, &$form_state, $form_id){
+  // Load standard drupal node form.
+  if($form_id == "ticket_node_form" && !$form_state['rebuild'] && !user_access("administer content types")){
+    unset($form['body']);
+    $form['field_ticket_category']['#suffix'] = '<span class = "recommendation ticket-recommendation">Fill in as much information as possible because this will help us in fighting your case.</span>';
+    
+    // Customize it depends on %tid from url.
+    $tid = arg(3) ? arg(3) : variable_get("default_ticket_category_id", 12);
+    $term = taxonomy_term_load($tid);
+    $form['field_ticket_category'][LANGUAGE_NONE]['#default_value'][0] = $tid;
+    $form['field_ticket_category'][LANGUAGE_NONE]['#title'] = $term->name;
+    $form['#attached']['js'][] = drupal_get_path('module', 'tb_ticket'). '/js/redirect.js';
+    
+    // Show only fields specified in default settings + defined in appropriate category.
+    $fields_to_show = array_map('trim', explode("\n", variable_get("default_ticket_fields", '')));
+    if($term->field_custom_fields){
+      foreach($term->field_custom_fields[LANGUAGE_NONE] as $key => $val){
+        $fields_to_show[] = $val['value'];
+      }
+    }
+    
+    // Now we should remove fields that are not in list of what we should show.
+    foreach($form as $key => $val){
+      if(substr($key, 0, 6) == 'field_' && !in_array($key, $fields_to_show)){
+        unset($form[$key]);
+      }
+    }
+    
+    // ...and save ticket button should be named "save".
+    $form['actions']['submit']['#value'] = 'Send';
+    
+    // ...and we want to be redirected.
+    $form['actions']['submit']['#submit'][] = "tb_ticket_create_ticket_redirect";
+  }
+  
+  return $form;
+}
+
+function tb_ticket_create_ticket_redirect($form, &$form_state){
+  drupal_goto("ticket-created");
+}
