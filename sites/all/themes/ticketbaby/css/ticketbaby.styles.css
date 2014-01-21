@@ -159,7 +159,7 @@ html, body {
 }
 
 /* for dev */
-
+/*
 .l-header {
   background : darkseagreen;
 }
@@ -189,7 +189,12 @@ a {
 input[type="text"],
 textarea {
   border  : 1px solid #C8C8C8;
-  padding : 5px 6px 4px 6px;
+  padding : 4px 6px;
+}
+
+select {
+  border  : 1px solid #C8C8C8;
+  padding : 3px 18px 3px 3px;
 }
 
 .resizable-textarea .grippie {
@@ -245,14 +250,35 @@ textarea {
   padding-left : 94px;
 }
 
+#ticket-node-form label {
+  font-size    : 16px;
+  font-weight  : normal;
+  padding-left : 9px;
+  background   : url(../images/list_style_black_dot.png) left center no-repeat;
+}
+
+#ticket-node-form .date-padding {
+  padding : 0;
+}
+
 /*---/ TICKET FORM*/
 
 /* FOOTER */
+
+.l-footer {
+  background: white;
+  font-weight : bold;
+}
 
 .l-footer #block-menu-menu-footer-menu-about-us,
 .l-footer #block-menu-menu-footer-menu-support,
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
   float : left;
+}
+
+.l-footer #block-menu-menu-footer-menu-about-us,
+.l-footer #block-menu-menu-footer-menu-support {
+  font-size : 15px;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us {
@@ -266,6 +292,24 @@ textarea {
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu li {
   float : left;
+}
+
+.l-footer #block-menu-menu-footer-menu-about-us ul li.expanded a,
+.l-footer #block-menu-menu-footer-menu-support ul li.expanded a {
+  display : block;
+  color   : #005493;
+}
+
+.l-footer #block-menu-menu-footer-menu-about-us ul li.expanded a,
+.l-footer #block-menu-menu-footer-menu-support ul li.expanded a,
+.l-footer #block-menu-menu-footer-menu-about-us ul li.expanded span,
+.l-footer #block-menu-menu-footer-menu-support ul li.expanded span {
+  line-height : 1.7em;
+}
+
+.l-footer #block-menu-menu-footer-menu-about-us ul li.expanded ul li a,
+.l-footer #block-menu-menu-footer-menu-support ul li.expanded ul li a {
+  color : #000000;
 }
 
 /*---/ FOOTER */
