@@ -1,8 +1,39 @@
-img, media {
+media {
   max-width : 100%;
 }
 
 /* No files to import found in partials/components/**\/* */
+
+/* CLEAR */
+
+.clearfix,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu,
+.l-footer .l-region,
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu {
+  *zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu:before,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu:after,
+.l-footer .l-region:before,
+.l-footer .l-region:after,
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:before,
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clearfix:after,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu:after,
+.l-footer .l-region:after,
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after {
+  clear: both;
+}
+
+/*---/ CLEAR */
 
 /* SKELETON */
 
@@ -17,6 +48,21 @@ img, media {
 .l-header, .l-main, .l-footer {
   width  : 984px;
   margin : 0 20px;
+}
+
+.l-header {
+  padding-top: 30px;
+}
+
+.l-header .l-branding,
+.l-main .l-content,
+.l-main .l-region--sidebar-first {
+  float: left;
+}
+
+.l-header .l-region--header,
+.l-page.has-one-sidebar .l-main .l-content {
+  float: right;
 }
 
 @media only screen and (max-width : 1200px) {
@@ -87,6 +133,151 @@ img, media {
 
 /*---/ for dev*/
 
-
-
 /*---/ SKELETON */
+
+/* COMMON ELEMENTS */
+
+body {
+  font-family: ;
+}
+
+a {
+  text-decoration: none;
+}
+
+input[type="text"],
+textarea {
+  border: 1px solid #c8c8c8;
+  padding: 5px 6px 4px 6px;
+}
+
+.resizable-textarea .grippie {
+  display: none;
+}
+
+/*---/ COMMON ELEMENTS */
+
+/* HEADER */
+
+/* logo */
+
+.l-header h1.site-name {
+  display: none;
+}
+
+.l-header .l-branding a:hover {
+  font-weight: none;
+}
+
+.l-header .l-branding a img {
+  width: 335px;
+}
+
+/*---/ logo */
+
+/* sign in */
+
+.l-header #block-menu-menu-header-menu-sign-in {
+  text-transform: uppercase;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li {
+  float: left;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li a:hover,
+.l-header #block-menu-menu-header-menu-sign-in span.nolink {
+  font-weight: bold;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in span.nolink {
+
+}
+
+/*---/ sign in */
+
+/*---/ HEADER */
+
+/* TICKET FORM */
+
+#ticket-node-form {
+  padding-left: 94px;
+}
+
+/*---/ TICKET FORM*/
+
+/* FOOTER */
+
+.l-footer #block-menu-menu-footer-menu-about-us,
+.l-footer #block-menu-menu-footer-menu-support,
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
+  float: left;
+}
+
+.l-footer #block-menu-menu-footer-menu-about-us {
+  margin-right: 62px;
+  margin-left: 32px;
+}
+
+.l-footer #block-menu-menu-footer-menu-support {
+  margin-right: 158px;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu li {
+  float: left;
+}
+
+/*---/ FOOTER */
+
+/* @MEDIA */
+
+@media only screen and (max-width : 1200px) {
+
+
+}
+
+@media only screen and (max-width : 1023px) {
+
+
+}
+
+@media only screen and (max-width : 767px) {
+
+
+}
+
+@media only screen and (max-width : 480px) {
+
+
+}
+
+/* @MEDIA */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

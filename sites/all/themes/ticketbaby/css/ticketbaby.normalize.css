@@ -192,7 +192,10 @@ ul {
 }
 
 nav ul,
-nav ol {
+nav ol,
+ul,
+.menu .leaf,
+.menu .expanded {
   list-style       : none;
   list-style-image : none;
 }
