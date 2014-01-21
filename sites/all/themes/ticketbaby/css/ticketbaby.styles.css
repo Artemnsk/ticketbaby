@@ -1,5 +1,92 @@
 img, media {
-  max-width: 100%;
+  max-width : 100%;
 }
 
 /* No files to import found in partials/components/**\/* */
+
+/* SKELETON */
+
+.l-page {
+  width        : 1024px;
+  margin       : 0 auto;
+  border-left  : 1px solid #E1E1E1;
+  border-right : 1px solid #E1E1E1;
+  box-shadow   : 0 0 8px 5px #E9E9E9;
+}
+
+.l-header, .l-main, .l-footer {
+  width  : 984px;
+  margin : 0 20px;
+}
+
+@media only screen and (max-width : 1200px) {
+
+  .l-page {
+    width : 940px;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width  : 900px;
+    margin : 0 20px;
+  }
+
+}
+
+@media only screen and (max-width : 1023px) {
+
+  .l-page {
+    width : 707px;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width  : 667px;
+    margin : 0 20px;
+  }
+
+}
+
+@media only screen and (max-width : 767px) {
+
+  .l-page {
+    width : 440px;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width  : 410px;
+    margin : 0 15px;
+  }
+
+}
+
+@media only screen and (max-width : 480px) {
+
+  .l-page {
+    width : 300px;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width  : 280px;
+    margin : 0 10px;
+  }
+
+}
+
+/* for dev */
+
+.l-header {
+  background : darkseagreen;
+}
+
+.l-main {
+  background : lavender;
+}
+
+.l-footer {
+  background : navajowhite;
+}
+
+/*---/ for dev*/
+
+
+
+/*---/ SKELETON */
