@@ -1,4 +1,4 @@
-<div<?php print $attributes; ?>>
+<div class="wrapper_header_main"<?php print $attributes; ?>>
   <header class="l-header" role="banner">
     <div class="l-branding">
       <?php if ($logo): ?>
@@ -48,7 +48,8 @@
     <?php print render($page['sidebar_second']); ?>
   </div>
 
+</div>
+
   <footer class="l-footer" role="contentinfo">
     <?php print render($page['footer']); ?>
   </footer>
-</div>
