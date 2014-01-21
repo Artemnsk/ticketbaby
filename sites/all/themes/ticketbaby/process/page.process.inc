@@ -12,6 +12,10 @@ function ticketbaby_process_page(&$variables) {
     $variables['title'] = '';
   }
   
+  if(arg(0). "/". arg(1). "/". arg(2) == "node/add/offer"){
+    $variables['title'] = 'Respond';
+  }
+  
   // Ticket node page title should be constant.
   if(isset($variables['node']->type) && $variables['node']->type == 'ticket'){
     $variables['title'] = 'Defence request';

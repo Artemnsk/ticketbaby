@@ -2,7 +2,7 @@
 
 function tb_offer_form_alter(&$form, &$form_state, $form_id){
   // Load standard drupal node form.
-  if($form_id == "offer_node_form" && !$form_state['rebuild'] && !user_access("administer content types")){
+  if($form_id == "offer_node_form" && !$form_state['rebuild'] /*&& !user_access("administer content types")*/){
     unset($form['body']);
     
     $form['field_ticket']['und']['#columns'][0]['target_id'] = 2;
@@ -12,32 +12,76 @@ function tb_offer_form_alter(&$form, &$form_state, $form_id){
     $form['actions']['submit']['#value'] = 'Send';
     
     // Ticket reference field. Receives value from url, disabled, hidden.
-    array_unshift($form['#validate'], 'tb_offer_validate_offer');
-    $form['actions']['submit']['#submit'][] = "tb_offer_create_offer";
+    if(arg(1) == 'add'){
+      array_unshift($form['#validate'], 'tb_offer_validate_offer');
+      //$form['actions']['submit']['#submit'][] = "tb_offer_create_offer";
+    }
     
-    if(arg(3) && intval(arg(3) && $ticket = node_load(arg(3)))){
+    if(arg(3) && intval(arg(3) && $ticket = node_load(arg(3))) && arg(1) && arg(1) == 'add'){
       if($ticket->type == 'ticket'){
-        $form['field_ticket']['und']['#value'] = $ticket->title. ' ('. $ticket->nid. ')';
+        $form['field_ticket'][LANGUAGE_NONE]['#value'] = $ticket->title. ' ('. $ticket->nid. ')';
       }
     }
     $form['field_ticket']['#type'] = 'hidden';
     $form['field_ticket']['#disabled'] = TRUE;
     
+    $form['description_first'] = array(
+      '#type' => 'markup',
+      '#prefix' => '<div class = "description-respond">',
+      '#markup' => t('Respond with additional questions, comments, give quotes, or decline. Please give reason for decline, for instance that there is a small chance of successful defence or that its not worth defending because this will help the customer understand their situation.'),
+      '#suffix' => '</div>',
+      '#weight' => -50,
+    );
+    array_unshift($form, array('money' => array(
+      '#type' => 'markup',
+      '#prefix' => '<div class = "description-respond">',
+      '#markup' => t('If you need no further information, respond with quote or deposit.'),
+      '#suffix' => '</div>',
+      '#weight' => 1,
+    )));
+
     // Disable title.
     unset($form['field_response'][LANGUAGE_NONE][0]['#title']);
     unset($form['field_response'][LANGUAGE_NONE]['#title']);
-    dpm($form);
+    //dpm($form);
   }
   
   return $form;
 }
 
 function tb_offer_validate_offer($form, &$form_state){
-  if(!arg(3) || !intval(arg(3)) || !node_load(arg(3))){
-    form_set_error('field_ticket', t('Something went wrong. Please try to go on ticket page and press "respond" again.'));
+  $ticket_id = arg(3);
+  if(!$ticket_id || !intval($ticket_id)){
+    $node = node_load($ticket_id);
+    if(!isset($node->$type) || $node->type == 'ticket'){
+      form_set_error('field_ticket', t('Something went wrong. Please try to go on ticket page and press "respond" again.'));
+    }
   }
 }
 
-/*function tb_offer_create_offer($form, &$form_state){
-  //$form_state['values']['field_ticket'][LANGUAGE_NONE][0]['target_id'] = arg(3);
-}*/
+function tb_offer_create_offer($form, &$form_state){
+  drupal_goto('ticket-created');
+}
+
+/*
+ * Imeplements hook_node_access().
+ * Custom access rules for offer node - user should be owner of appropriate ticket
+ * Also only owner-defenders should have access to his offer.
+ */
+
+function tb_offer_node_access($node, $op, $account){
+  $type = is_string($node) ? $node : $node->type;
+  if($type == 'offer'){
+    if($op == 'view' && in_array('customer', $account->roles)){
+      // Let ticket's owner to see this offer.
+      $ticket_id = $node->field_ticket[LANGUAGE_NONE][0]['target_id'];
+      $ticket = node_load($ticket_id);
+      if($ticket->uid == $account->uid){
+        return NODE_ACCESS_ALLOW;
+      }else{
+        return NODE_ACCESS_DENY;
+      }
+    }
+  }
+  return NODE_ACCESS_IGNORE;
+}
