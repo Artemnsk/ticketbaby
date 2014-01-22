@@ -2,31 +2,84 @@
 
 @media only screen and (max-width : 1200px) {
 
+  /* TICKET FORM */
+
+  #ticket-node-form {
+    padding-left : 70px;
+  }
+
+  /*---/ TICKET FORM */
+
 }
 
 @media only screen and (max-width : 1023px) {
+
+  /* TICKET FORM */
+
+  #ticket-node-form {
+    padding-left : 32px;
+  }
+
+  /*---/ TICKET FORM */
 
 }
 
 @media only screen and (max-width : 767px) {
 
+  /* HEADER */
+
   .l-header .l-branding {
-    text-align: center;
+    text-align : center;
   }
+
+  /*---/ HEADER */
+
+  /* TICKET FORM */
+
+  #ticket-node-form {
+    padding-left  : 10px;
+    padding-right : 10px;
+    width         : 410px;
+  }
+
+  #ticket-node-form .field-type-text input[type="text"],
+  #ticket-node-form .field-type-email input[type="text"],
+  #ticket-node-form .field-type-textarea textarea {
+    width : 100%;
+  }
+
+  /*---/ TICKET FORM */
+
 }
 
 @media only screen and (max-width : 480px) {
 
+  /* HEADER */
+
   .l-header .l-branding a {
-    display: block;
-    width: 275px;
-    height: 60px;
-    background   : url(../images/logo_mobiles.png) center center no-repeat;
-    margin: 0 auto;
+    display    : block;
+    width      : 275px;
+    height     : 60px;
+    background : url(../images/logo_mobiles.png) center center no-repeat;
+    margin     : 0 auto;
   }
+
   .l-header .l-branding a img {
-    display: none;
+    display : none;
   }
+
+  /*---/ HEADER */
+
+  /* TICKET FORM */
+
+  #ticket-node-form {
+    padding-left  : 5px;
+    padding-right : 5px;
+    width         : 280px;
+  }
+
+  /*---/ TICKET FORM */
+
 }
 
 /* @MEDIA */

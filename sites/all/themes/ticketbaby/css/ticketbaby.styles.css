@@ -55,6 +55,11 @@ select {
   padding : 2px 18px 2px 3px;
 }
 
+.l-main h2 {
+  font-size : 20px;
+  color     : #005493;
+}
+
 /*.resizable-textarea textarea {
   position: relative;
   display: block;
@@ -116,6 +121,38 @@ select {
 /*---/ sign in */
 
 /*---/ HEADER */
+
+/* HOMEPAGE */
+
+/* choose your ticket */
+
+.view-choose-your-ticket {
+  text-align : center;
+}
+
+.view-choose-your-ticket a {
+  color : black;
+}
+
+.view-choose-your-ticket a:hover {
+  font-weight : bold;
+}
+
+.view-choose-your-ticket table {
+  width : 100%;
+}
+
+.view-choose-your-ticket table tr {
+  width : 100%;
+}
+
+.view-choose-your-ticket table tr td {
+  height : 34px;
+}
+
+/*---/ choose your ticket */
+
+/*---/ HOMEPAGE */
 
 /* TICKET FORM */
 
