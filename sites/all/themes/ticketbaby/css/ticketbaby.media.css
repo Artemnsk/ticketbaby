@@ -1,0 +1,32 @@
+/* @MEDIA */
+
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 1023px) {
+
+}
+
+@media only screen and (max-width : 767px) {
+
+  .l-header .l-branding {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width : 480px) {
+
+  .l-header .l-branding a {
+    display: block;
+    width: 275px;
+    height: 60px;
+    background   : url(../images/logo_mobiles.png) center center no-repeat;
+    margin: 0 auto;
+  }
+  .l-header .l-branding a img {
+    display: none;
+  }
+}
+
+/* @MEDIA */

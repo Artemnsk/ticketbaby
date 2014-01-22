@@ -1,0 +1,154 @@
+/* SKELETON */
+
+.wrapper_header_main {
+  width        : 1024px;
+  margin       : 0 auto;
+  border-left  : 1px solid #E1E1E1;
+  border-right : 1px solid #E1E1E1;
+  box-shadow   : 0 0 8px 5px #E9E9E9;
+}
+
+.l-header, .l-main, .l-footer {
+  width  : 984px;
+  margin : 0 20px;
+}
+
+.l-footer {
+  margin : 0 auto;
+}
+
+.l-header {
+  padding-top : 30px;
+}
+
+.l-header .l-branding,
+.l-main .l-content,
+.l-main .l-region--sidebar-first {
+  float : left;
+}
+
+.l-header .l-region--header,
+.front .l-main .l-content {
+  float : right;
+}
+
+/* footer on bottom */
+
+html, body {
+  height : 100%;
+}
+
+.wrapper_header_main {
+  min-height : 100%;
+  height     : auto !important;
+  height     : 100%;
+}
+
+.l-footer {
+  position : relative;
+  top      : -100px;
+  height   : 100px;
+}
+
+.l-main {
+  padding-bottom : 100px;
+}
+
+/*---/ footer on bottom */
+
+@media only screen and (max-width : 1200px) {
+
+  .wrapper_header_main {
+    width : 940px;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width : 900px;
+  }
+
+  .l-header, .l-main {
+    margin : 0 20px;
+  }
+
+}
+
+@media only screen and (max-width : 1023px) {
+
+  .wrapper_header_main {
+    width : 707px;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width : 667px;
+  }
+
+  .l-header, .l-main {
+    margin : 0 20px;
+  }
+
+}
+
+@media only screen and (max-width : 767px) {
+
+  .wrapper_header_main {
+    width : 440px;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width : 410px;
+  }
+
+  .l-header, .l-main {
+    margin : 0 15px;
+  }
+
+  .l-header .l-branding {
+    float : none;
+  }
+
+  /* footer on bottom */
+
+  .l-footer {
+    top    : -180px;
+    height : 180px;
+  }
+
+  .l-main {
+    padding-bottom : 180px;
+  }
+
+  /*--- footer on bottom */
+
+}
+
+@media only screen and (max-width : 480px) {
+
+  .wrapper_header_main {
+    width : 300px;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width : 280px;
+  }
+
+  .l-header, .l-main {
+    margin : 0 10px;
+  }
+
+
+  /* footer on bottom */
+
+  .l-footer {
+    top    : -200px;
+    height : 200px;
+  }
+
+  .l-main {
+    padding-bottom : 200px;
+  }
+
+  /*--- footer on bottom */
+
+}
+
+/*---/ SKELETON */

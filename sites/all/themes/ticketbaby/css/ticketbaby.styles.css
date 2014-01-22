@@ -1,9 +1,3 @@
-media {
-  max-width : 100%;
-}
-
-/* No files to import found in partials/components/**\/* */
-
 /* CLEAR */
 
 .clearfix,
@@ -35,151 +29,14 @@ media {
 
 /*---/ CLEAR */
 
-/* FOOTER ON BOTTOM */
-
-html, body {
-  height : 100%;
-}
-
-.wrapper_header_main {
-  min-height : 100%;
-  height     : auto !important;
-  height     : 100%;
-
-}
-
-.l-footer {
-  position : relative;
-  top      : -100px;
-  height   : 100px;
-}
-
-.l-main {
-  padding-bottom : 100px;
-}
-
-/*---/ FOOTER ON BOTTOM */
-
-/* SKELETON */
-
-.wrapper_header_main {
-  width        : 1024px;
-  margin       : 0 auto;
-  border-left  : 1px solid #E1E1E1;
-  border-right : 1px solid #E1E1E1;
-  box-shadow   : 0 0 8px 5px #E9E9E9;
-}
-
-.l-header, .l-main, .l-footer {
-  width  : 984px;
-  margin : 0 20px;
-}
-
-.l-footer {
-  margin : 0 auto;
-}
-
-.l-header {
-  padding-top : 30px;
-}
-
-.l-header .l-branding,
-.l-main .l-content,
-.l-main .l-region--sidebar-first {
-  float : left;
-}
-
-.l-header .l-region--header,
-.front .l-main .l-content {
-  float : right;
-}
-
-@media only screen and (max-width : 1200px) {
-
-  .wrapper_header_main {
-    width : 940px;
-  }
-
-  .l-header, .l-main, .l-footer {
-    width : 900px;
-  }
-
-  .l-header, .l-main {
-    margin : 0 20px;
-  }
-
-}
-
-@media only screen and (max-width : 1023px) {
-
-  .wrapper_header_main {
-    width : 707px;
-  }
-
-  .l-header, .l-main, .l-footer {
-    width : 667px;
-  }
-
-  .l-header, .l-main {
-    margin : 0 20px;
-  }
-
-}
-
-@media only screen and (max-width : 767px) {
-
-  .wrapper_header_main {
-    width : 440px;
-  }
-
-  .l-header, .l-main, .l-footer {
-    width : 410px;
-  }
-
-  .l-header, .l-main {
-    margin : 0 15px;
-  }
-
-}
-
-@media only screen and (max-width : 480px) {
-
-  .wrapper_header_main {
-    width : 300px;
-  }
-
-  .l-header, .l-main, .l-footer {
-    width : 280px;
-  }
-
-  .l-header, .l-main {
-    margin : 0 10px;
-  }
-
-}
-
-/* for dev */
-/*
-.l-header {
-  background : darkseagreen;
-}
-
-.l-main {
-  background : lavender;
-}
-
-.l-footer {
-  background : navajowhite;
-}
-
-/*---/ for dev*/
-
-/*---/ SKELETON */
-
 /* COMMON ELEMENTS */
 
 body {
   font-family :;
+}
+
+media {
+  max-width : 100%;
 }
 
 a {
@@ -187,15 +44,31 @@ a {
 }
 
 input[type="text"],
+input[type="password"],
 textarea {
   border  : 1px solid #C8C8C8;
-  padding : 4px 6px;
+  padding : 4px 6px 3px 6px;
 }
 
 select {
   border  : 1px solid #C8C8C8;
-  padding : 3px 18px 3px 3px;
+  padding : 2px 18px 2px 3px;
 }
+
+/*.resizable-textarea textarea {
+  position: relative;
+  display: block;
+}
+
+.resizable-textarea textarea:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-image   : url(../images/textarea_triangle.png);
+  background-position: right bottom;
+  background-repeat: no-repeat;
+} */
 
 .resizable-textarea .grippie {
   display : none;
@@ -266,7 +139,7 @@ select {
 /* FOOTER */
 
 .l-footer {
-  background: white;
+  /*  background: white; */
   font-weight : bold;
 }
 
@@ -314,25 +187,21 @@ select {
 
 /*---/ FOOTER */
 
-/* @MEDIA */
+/* for dev */
 
-@media only screen and (max-width : 1200px) {
-
+.l-header {
+  background : darkseagreen;
 }
 
-@media only screen and (max-width : 1023px) {
-
+.l-main {
+  background : lavender;
 }
 
-@media only screen and (max-width : 767px) {
-
+.l-footer {
+  background : navajowhite;
 }
 
-@media only screen and (max-width : 480px) {
-
-}
-
-/* @MEDIA */
+/*---/ for dev*/
 
 
 
