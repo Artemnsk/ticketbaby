@@ -3,7 +3,8 @@
 .clearfix,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu,
 .l-footer .l-region,
-.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu {
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu,
+#ticket-node-form .form-item {
   *zoom : 1;
 }
 
@@ -14,7 +15,9 @@
 .l-footer .l-region:before,
 .l-footer .l-region:after,
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:before,
-.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after {
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after,
+#ticket-node-form .form-item:before,
+#ticket-node-form .form-item:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -23,7 +26,8 @@
 .clearfix:after,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu:after,
 .l-footer .l-region:after,
-.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after {
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after,
+#ticket-node-form .form-item:after {
   clear : both;
 }
 
@@ -31,9 +35,9 @@
 
 /* COMMON ELEMENTS */
 
-body {
-  font-family :;
-}
+/* body {
+  font-family : Calibri, Arial, sans-serif;
+} */
 
 media {
   max-width : 100%;
@@ -115,7 +119,31 @@ select {
 }
 
 .l-header #block-menu-menu-header-menu-sign-in span.nolink {
+  display    : block;
+  width      : 4px;
+  height     : 22px;
+  background : #000000;
+  margin-top : -2px;
+  font-size  : 0px;
+}
 
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first a {
+  color : #000000;
+  float : right;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.last a {
+  color : #6AA03A;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first {
+  padding-right : 14px;
+  width         : 74px;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.last {
+  padding-left : 14px;
+  width        : 74px;
 }
 
 /*---/ sign in */
@@ -126,8 +154,15 @@ select {
 
 /* choose your ticket */
 
+.front .l-main .l-region--sidebar-first {
+  margin  : 0 0 20px 0;
+  padding : 0 30px 0 30px;
+}
+
 .view-choose-your-ticket {
-  text-align : center;
+  text-align  : center;
+  padding-top : 50px;
+  background  : url(../images/arrow_homepage_green_down.png) top center no-repeat;
 }
 
 .view-choose-your-ticket a {
@@ -152,6 +187,32 @@ select {
 
 /*---/ choose your ticket */
 
+/* general block */
+
+.front .l-main article .field__item div {
+  text-align   : center;
+  margin-right : -18px;
+}
+
+.front .l-main article .field__item h2 {
+  font-size : 29px;
+  margin    : 0 0 9px 0;
+}
+
+.front .l-main article .field__item h3 {
+  font-size   : 20px;
+  font-weight : normal;
+  margin      : 9px 0 0 0;
+}
+
+.front .l-main article .field__item p {
+  width      : 740px;
+  height     : 475px;
+  background : url(../images/homepage_illustration.png) center center no-repeat;
+}
+
+/*---/ general block*/
+
 /*---/ HOMEPAGE */
 
 /* TICKET FORM */
@@ -164,11 +225,46 @@ select {
   font-size    : 16px;
   font-weight  : normal;
   padding-left : 9px;
-  background   : url(../images/list_style_black_dot.png) left center no-repeat;
+  background   : url(../images/list_style_black_dot.png) left 6px no-repeat;
 }
 
 #ticket-node-form .date-padding {
   padding : 0;
+}
+
+/* select ticket */
+
+#ticket-node-form .field-name-field-ticket-category .form-type-select {
+  padding-left : 290px;
+}
+
+#ticket-node-form .field-name-field-ticket-category .form-type-select label {
+  float : left;
+}
+
+#ticket-node-form .field-name-field-ticket-category .orm-type-select select {
+  float : left;
+}
+
+/*---/ select ticket*/
+
+#ticket-node-form .form-type-textfield label,
+#ticket-node-form .form-type-textfield input,
+#ticket-node-form .form-type-date-combo label,
+#ticket-node-form .form-type-date-combo .date-no-float {
+  float : left;
+}
+
+#ticket-node-form .form-type-date-combo .date-no-float {
+  width : auto;
+  clear : none;
+}
+
+#ticket-node-form .ticket-recommendation {
+  display   : block;
+  margin    : 25px 0 15px 0;
+  font-size : 16px;
+  color     : #D13707;
 }
 
 /*---/ TICKET FORM*/
@@ -176,7 +272,7 @@ select {
 /* FOOTER */
 
 .l-footer {
-  /*  background: white; */
+  background  : white;
   font-weight : bold;
 }
 
@@ -189,6 +285,11 @@ select {
 .l-footer #block-menu-menu-footer-menu-about-us,
 .l-footer #block-menu-menu-footer-menu-support {
   font-size : 15px;
+}
+
+.l-footer #block-menu-menu-footer-menu-about-us a:hover,
+.l-footer #block-menu-menu-footer-menu-support a:hover {
+  text-decoration : underline;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us {
@@ -222,10 +323,62 @@ select {
   color : #000000;
 }
 
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.first a {
+  font-weight    : bold;
+  text-transform : none;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li:nth-child(2) {
+  width         : 75px;
+  padding-right : 12px;
+  text-align    : right;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li:nth-child(2) a {
+  display : block;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.last {
+  width        : 75px;
+  padding-left : 12px;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li span.nolink {
+  display    : block;
+  background : #000000;
+  width      : 2px;
+  height     : 18px;
+  font-size  : 0;
+  margin-top : -1px;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.first span.nolink {
+  display    : block;
+  background : none;
+  width      : auto;
+  height     : auto;
+  font-size  : 16px;
+  margin-top : 0;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li a {
+  color          : #000000;
+  font-weight    : normal;
+  text-transform : uppercase;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.last a {
+  color : #6AA03A;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li a:hover {
+  font-weight : bold;
+}
+
 /*---/ FOOTER */
 
 /* for dev */
-
+/*
 .l-header {
   background : darkseagreen;
 }

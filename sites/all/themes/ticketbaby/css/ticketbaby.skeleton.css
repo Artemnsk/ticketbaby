@@ -8,9 +8,14 @@
   box-shadow   : 0 0 8px 5px #E9E9E9;
 }
 
-.l-header, .l-main, .l-footer {
+.l-header, .l-footer {
   width  : 984px;
   margin : 0 20px;
+}
+
+.l-main {
+  width  : 984px;
+  margin : 50px 20px 0 20px;
 }
 
 .l-footer {
@@ -32,6 +37,10 @@
   float : right;
 }
 
+.not-front .l-main .l-content {
+  width : 100%;
+}
+
 /* footer on bottom */
 
 html, body {
@@ -51,7 +60,7 @@ html, body {
 }
 
 .l-main {
-  padding-bottom : 100px;
+  padding-bottom : 160px;
 }
 
 /*---/ footer on bottom */
@@ -66,8 +75,12 @@ html, body {
     width : 900px;
   }
 
-  .l-header, .l-main {
+  .l-header {
     margin : 0 20px;
+  }
+
+  .l-main {
+    margin : 50px 20px 0 20px;
   }
 
 }
@@ -82,7 +95,7 @@ html, body {
     width : 667px;
   }
 
-  .l-header, .l-main {
+  .l-header {
     margin : 0 20px;
   }
 
@@ -98,8 +111,12 @@ html, body {
     width : 410px;
   }
 
-  .l-header, .l-main {
+  .l-header {
     margin : 0 15px;
+  }
+
+  .l-main {
+    margin : 35px 15px 0 15px;
   }
 
   .l-header .l-branding {
@@ -114,7 +131,7 @@ html, body {
   }
 
   .l-main {
-    padding-bottom : 180px;
+    padding-bottom : 220px;
   }
 
   /*--- footer on bottom */
@@ -131,8 +148,12 @@ html, body {
     width : 280px;
   }
 
-  .l-header, .l-main {
+  .l-header {
     margin : 0 10px;
+  }
+
+  .l-main {
+    margin : 25px 10px 0 10px;
   }
 
   /* footer on bottom */
@@ -143,10 +164,30 @@ html, body {
   }
 
   .l-main {
-    padding-bottom : 200px;
+    padding-bottom : 220px;
   }
 
   /*--- footer on bottom */
+
+}
+
+@media only screen and (max-width : 319px) {
+
+  .wrapper_header_main {
+    width : 95%;
+  }
+
+  .l-header, .l-main, .l-footer {
+    width : 96%;
+  }
+
+  .l-header {
+    margin : 0 2%;
+  }
+
+  .l-main {
+    margin : 25px 2% 0 2%;
+  }
 
 }
 
