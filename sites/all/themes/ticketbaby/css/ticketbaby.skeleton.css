@@ -187,7 +187,8 @@ html, body {
 @media only screen and (max-width : 319px) {
 
   .wrapper_header_main {
-    width : 95%;
+    width      : 96%;
+    box-shadow : none;
   }
 
   .l-header, .l-main, .l-footer {

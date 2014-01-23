@@ -4,7 +4,9 @@
 .l-header #block-menu-menu-header-menu-sign-in ul.menu,
 .l-footer .l-region,
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu,
-#ticket-node-form .form-item {
+#ticket-node-form .form-item,
+#ticket-node-form .field-name-field-ticket-category,
+#ticket-node-form .field-name-field-ticket-category .form-type-select, {
   *zoom : 1;
 }
 
@@ -17,7 +19,11 @@
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:before,
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after,
 #ticket-node-form .form-item:before,
-#ticket-node-form .form-item:after {
+#ticket-node-form .form-item:after,
+#ticket-node-form .field-name-field-ticket-category:before,
+#ticket-node-form .field-name-field-ticket-category:after,
+#ticket-node-form .field-name-field-ticket-category .form-type-select:before,
+#ticket-node-form .field-name-field-ticket-category .form-type-select:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -27,7 +33,9 @@
 .l-header #block-menu-menu-header-menu-sign-in ul.menu:after,
 .l-footer .l-region:after,
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after,
-#ticket-node-form .form-item:after {
+#ticket-node-form .form-item:after,
+#ticket-node-form .field-name-field-ticket-category:after,
+#ticket-node-form .field-name-field-ticket-category .form-type-select:after {
   clear : both;
 }
 
@@ -279,10 +287,12 @@ select {
 }
 
 #ticket-node-form label {
-  font-size    : 16px;
-  font-weight  : normal;
-  padding-left : 9px;
-  background   : url(../images/list_style_black_dot.png) left 6px no-repeat;
+  font-size     : 16px;
+  font-weight   : normal;
+  padding-left  : 10px;
+  padding-right : 12px;
+  margin        : 3px 0 5px 0;
+  background    : url(../images/list_style_black_dot.png) left 6px no-repeat;
 }
 
 #ticket-node-form .date-padding {
@@ -312,15 +322,32 @@ select {
   float : left;
 }
 
+#ticket-node-form .form-type-textarea textarea {
+  width : 600px;
+}
+
+#ticket-node-form .form-type-textfield input {
+  width : 220px;
+}
+
+#ticket-node-form .field-name-field-full-name .form-type-textfield input {
+  width : 360px;
+}
+
 #ticket-node-form .form-type-date-combo .date-no-float {
   width : auto;
   clear : none;
 }
 
+#ticket-node-form .form-type-date-combo .date-no-float .form-type-textfield input {
+  width       : 110px;
+  font-family : Calibri, arial, sans-serif;
+}
+
 #ticket-node-form .ticket-recommendation {
   display   : block;
   margin    : 25px 0 15px 0;
-  font-size : 16px;
+  font-size : 17px;
   color     : #D13707;
 }
 
@@ -524,6 +551,15 @@ select {
 }
 
 /*---/ FOOTER */
+
+/* USER PROFILE */
+
+.user-profile-item__label {
+  font-family : 'corbelbold';
+  font-weight : normal;
+}
+
+/*---/ USER PROFILE */
 
 /* for dev */
 /*

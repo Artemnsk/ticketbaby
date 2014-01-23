@@ -80,13 +80,16 @@
   #ticket-node-form {
     padding-left  : 10px;
     padding-right : 10px;
-    width         : 76%;
+    width         : 100%;
   }
 
-  #ticket-node-form .field-type-text input[type="text"],
-  #ticket-node-form .field-type-email input[type="text"],
-  #ticket-node-form .field-type-textarea textarea {
+  #ticket-node-form .form-textarea-wrapper textarea {
     width : 100%;
+  }
+
+  #ticket-node-form .field-name-field-ticket-category .form-type-select {
+    padding-left : 0;
+    float        : right;
   }
 
   /*---/ TICKET FORM */
@@ -95,6 +98,13 @@
     margin-left : 20px;
   }
 
+}
+
+@media only screen and (max-width : 650px) {
+
+  #ticket-node-form .field-name-field-full-name .form-type-textfield input {
+    width : 270px;
+  }
 }
 
 @media only screen and (max-width : 560px) {
@@ -121,6 +131,10 @@
 
   .l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
     margin-left : 0;
+  }
+
+  #ticket-node-form .field-name-field-full-name .form-type-textfield input {
+    width : 220px;
   }
 }
 
@@ -159,6 +173,11 @@
     padding-left  : 5px;
     padding-right : 5px;
     width         : 280px;
+  }
+
+  #ticket-node-form .form-type-textfield input,
+  #ticket-node-form .field-name-field-full-name .form-type-textfield input {
+    width : 100%;
   }
 
   /*---/ TICKET FORM */
@@ -205,8 +224,12 @@
   }
 
   #ticket-node-form label {
-    font-size  : 14px;
+    font-size  : 15px;
     background : url(../images/list_style_black_dot.png) left 4px no-repeat;
+  }
+
+  #ticket-node-form .ticket-recommendation {
+    font-size : 15px;
   }
 
 }
