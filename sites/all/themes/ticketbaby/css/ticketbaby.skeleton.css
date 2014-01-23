@@ -111,8 +111,12 @@ html, body {
     width : 80%;
   }
 
-  .l-header, .l-main, .l-footer {
+  .l-header, .l-main {
     width : 92%;
+  }
+
+  .l-footer {
+    width : 76%;
   }
 
   .l-header {

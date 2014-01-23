@@ -91,6 +91,37 @@
 
   /*---/ TICKET FORM */
 
+  .l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
+    margin-left : 20px;
+  }
+
+}
+
+@media only screen and (max-width : 560px) {
+
+  .l-footer .l-region {
+    width  : inherit;
+    margin : 0 auto;
+  }
+
+  .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu li.first {
+    float         : none;
+    margin-bottom : 12px;
+  }
+
+  .l-footer #block-menu-menu-footer-menu-about-us {
+    margin-right : 10px;
+    margin-left  : 0;
+  }
+
+  .l-footer #block-menu-menu-footer-menu-support {
+    margin-right : 0;
+    float        : right;
+  }
+
+  .l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
+    margin-left : 0;
+  }
 }
 
 @media only screen and (max-width : 480px) {
@@ -115,8 +146,6 @@
 
   /*---/ HEADER */
 
-
-
   .front .l-main .l-region--sidebar-first {
     width      : 280px;
     text-align : center;
@@ -133,6 +162,18 @@
   }
 
   /*---/ TICKET FORM */
+
+  .l-footer #block-menu-menu-footer-menu-about-us {
+    margin-left : 15px;
+  }
+
+  .l-footer #block-menu-menu-footer-menu-support {
+    margin-right : 15px;
+  }
+
+  .l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
+    margin-left : 15px;
+  }
 
 }
 

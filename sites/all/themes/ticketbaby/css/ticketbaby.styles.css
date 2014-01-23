@@ -33,11 +33,63 @@
 
 /*---/ CLEAR */
 
+/* FONTS */
+
+/* corbel regular */
+
+@font-face {
+  font-family : 'corbelregular';
+  src         : url('../fonts/corbel-webfont.eot');
+  src         : url('../fonts/corbel-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/corbel-webfont.woff') format('woff'), url('../fonts/corbel-webfont.ttf') format('truetype'), url('../fonts/corbel-webfont.svg#corbelregular') format('svg');
+  font-weight : normal;
+  font-style  : normal;
+}
+
+/*---/ corbel regular */
+
+/* corbel bold */
+
+@font-face {
+  font-family : 'corbelbold';
+  src         : url('../fonts/corbelb-webfont.eot');
+  src         : url('../fonts/corbelb-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/corbelb-webfont.woff') format('woff'), url('../fonts/corbelb-webfont.ttf') format('truetype'), url('../fonts/corbelb-webfont.svg#corbelbold') format('svg');
+  font-weight : normal;
+  font-style  : normal;
+}
+
+/*---/ corbel bold */
+
+/* corbel italic */
+
+@font-face {
+  font-family : 'corbelitalic';
+  src         : url('../fonts/corbeli-webfont.eot');
+  src         : url('../fonts/corbeli-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/corbeli-webfont.woff') format('woff'), url('../fonts/corbeli-webfont.ttf') format('truetype'), url('../fonts/corbeli-webfont.svg#corbelitalic') format('svg');
+  font-weight : normal;
+  font-style  : normal;
+}
+
+/*---/ corbel italic */
+
+/* corbel bold italic */
+
+@font-face {
+  font-family : 'corbelbold_italic';
+  src         : url('../fonts/corbelz-webfont.eot');
+  src         : url('../fonts/corbelz-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/corbelz-webfont.woff') format('woff'), url('../fonts/corbelz-webfont.ttf') format('truetype'), url('../fonts/corbelz-webfont.svg#corbelbold_italic') format('svg');
+  font-weight : normal;
+  font-style  : normal;
+}
+
+/*---/ corbel bold italic */
+
+/*---/ FONTS */
+
 /* COMMON ELEMENTS */
 
-/* body {
-  font-family : Calibri, Arial, sans-serif;
-} */
+body {
+  font-family : 'corbelregular', Calibri, Arial, sans-serif;
+}
 
 media {
   max-width : 100%;
@@ -45,6 +97,10 @@ media {
 
 a {
   text-decoration : none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family : 'corbelbold';
 }
 
 input[type="text"],
@@ -115,7 +171,7 @@ select {
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li a:hover,
 .l-header #block-menu-menu-header-menu-sign-in span.nolink {
-  font-weight : bold;
+  font-family : 'corbelbold';
 }
 
 .l-header #block-menu-menu-header-menu-sign-in span.nolink {
@@ -170,7 +226,7 @@ select {
 }
 
 .view-choose-your-ticket a:hover {
-  font-weight : bold;
+  font-family : 'corbelbold';
 }
 
 .view-choose-your-ticket table {
@@ -195,13 +251,14 @@ select {
 }
 
 .front .l-main article .field__item h2 {
-  font-size : 29px;
-  margin    : 0 0 9px 0;
+  font-family : 'corbelbold';
+  font-size   : 32px;
+  margin      : 0 0 9px 0;
 }
 
 .front .l-main article .field__item h3 {
-  font-size   : 20px;
-  font-weight : normal;
+  font-family : 'corbelregular';
+  font-size   : 22px;
   margin      : 9px 0 0 0;
 }
 
@@ -267,13 +324,89 @@ select {
   color     : #D13707;
 }
 
+/* datepicker */
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button, #ui-datepicker-div {
+  font-family : calibri, arial, sans-serif;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background : #C4E8F5;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+  border : 1px solid #B0E3F5;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight {
+  background : #C2ECA1;
+}
+
+.ui-state-default:hover, .ui-widget-content:hover .ui-state-default:hover {
+  background : #005493;
+  color      : white;
+  border     : 1px solid #005493;
+}
+
+#ui-datepicker-div {
+  border     : 1px solid #C8C8C8;
+  background : white;
+  width      : 274px;
+}
+
+#ui-datepicker-div .ui-corner-all {
+  -moz-border-radius    : 0px;
+  -webkit-border-radius : 0px;
+  border-radius         : 0px;
+}
+
+#ui-datepicker-div th {
+  background : #005493;
+  padding    : 0.7em 0;
+  width      : 38px;
+}
+
+#ui-datepicker-div th span {
+  color : white;
+}
+
+#ui-datepicker-div .ui-widget-header {
+  background : #83AE61;
+  width      : 266px;
+}
+
+.ui-datepicker td a {
+  padding    : 2px 0;
+  text-align : center;
+}
+
+.ui-datepicker table {
+  width : 266px;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+  top    : 3px;
+  width  : 32px;
+  height : 30px;
+}
+
+.ui-datepicker .ui-datepicker-prev:hover,
+.ui-datepicker .ui-datepicker-next:hover {
+  top        : 3px;
+  border     : none;
+  background : none;
+}
+
+/*---/ datepicker */
+
 /*---/ TICKET FORM*/
 
 /* FOOTER */
 
 .l-footer {
   background  : white;
-  font-weight : bold;
+  font-family : 'corbelbold';
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us,
@@ -284,7 +417,7 @@ select {
 
 .l-footer #block-menu-menu-footer-menu-about-us,
 .l-footer #block-menu-menu-footer-menu-support {
-  font-size : 15px;
+  font-size : 16px;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us a:hover,
@@ -309,10 +442,21 @@ select {
   float : left;
 }
 
+.l-footer #block-menu-menu-footer-menu-about-us ul li,
+.l-footer #block-menu-menu-footer-menu-support ul li {
+  text-align : center;
+}
+
 .l-footer #block-menu-menu-footer-menu-about-us ul li.expanded a,
 .l-footer #block-menu-menu-footer-menu-support ul li.expanded a {
   display : block;
   color   : #005493;
+}
+
+.l-footer #block-menu-menu-footer-menu-support ul li.expanded ul li.last span.nolink {
+  font-family : calibri, arial, sans-serif;
+  font-weight : bold;
+  font-size   : 17px;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us ul li.expanded a,
@@ -328,7 +472,7 @@ select {
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.first a {
-  font-weight    : bold;
+  font-family    : 'corbelbold';
   text-transform : none;
 }
 
@@ -361,13 +505,13 @@ select {
   background : none;
   width      : auto;
   height     : auto;
-  font-size  : 16px;
+  font-size  : 18px;
   margin-top : 0;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li a {
   color          : #000000;
-  font-weight    : normal;
+  font-family    : 'corbelregular';
   text-transform : uppercase;
 }
 
@@ -376,7 +520,7 @@ select {
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li a:hover {
-  font-weight : bold;
+  font-family : 'corbelbold';
 }
 
 /*---/ FOOTER */
