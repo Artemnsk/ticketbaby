@@ -2,6 +2,12 @@
 
 @media only screen and (max-width : 1200px) {
 
+  .front .l-main article .field__item p {
+    width      : 660px;
+    height     : 424px;
+    background : url(../images/homepage_illustration_miniscreens.png) center center no-repeat;
+  }
+
   /* TICKET FORM */
 
   #ticket-node-form {
@@ -13,6 +19,29 @@
 }
 
 @media only screen and (max-width : 1023px) {
+
+  .front .l-main article .field__item div {
+    margin-right : 0px;
+  }
+
+  .front .l-main article .field__item p {
+    margin : 1em auto;
+  }
+
+  .front .l-main article .field__item p {
+    width      : 340px;
+    height     : 218px;
+    background : url(../images/homepage_illustration_tablets.png) center center no-repeat;
+  }
+
+  .l-footer #block-menu-menu-footer-menu-about-us {
+    margin-right : 40px;
+    margin-left  : 20px;
+  }
+
+  .l-footer #block-menu-menu-footer-menu-support {
+    margin-right : 45px;
+  }
 
   /* TICKET FORM */
 
@@ -26,6 +55,18 @@
 
 @media only screen and (max-width : 767px) {
 
+  .front .l-main .l-region--sidebar-first {
+    width      : 100%;
+    padding    : 0;
+    text-align : center;
+  }
+
+  .front .l-main article .field__item p {
+    width      : 340px;
+    height     : 218px;
+    background : url(../images/homepage_illustration_tablets.png) center center no-repeat;
+  }
+
   /* HEADER */
 
   .l-header .l-branding {
@@ -36,17 +77,10 @@
 
   /* TICKET FORM */
 
-  .front .l-main .l-region--sidebar-first {
-    width      : 410px;
-    text-align : center;
-    padding    : 0 30px 283px 30px;
-    background : url(../images/homepage_illustration_tablets.png) bottom center no-repeat;
-  }
-
   #ticket-node-form {
     padding-left  : 10px;
     padding-right : 10px;
-    width         : 410px;
+    width         : 76%;
   }
 
   #ticket-node-form .field-type-text input[type="text"],
@@ -60,6 +94,10 @@
 }
 
 @media only screen and (max-width : 480px) {
+
+  .front .l-main article .field__item p {
+    display : none;
+  }
 
   /* HEADER */
 

@@ -99,28 +99,33 @@ html, body {
     margin : 0 20px;
   }
 
+  .front .l-main .l-content {
+    width : 428px;
+  }
+
 }
 
 @media only screen and (max-width : 767px) {
 
   .wrapper_header_main {
-    width : 440px;
+    width : 80%;
   }
 
   .l-header, .l-main, .l-footer {
-    width : 410px;
+    width : 92%;
   }
 
   .l-header {
-    margin : 0 15px;
+    margin : 0 4%;
   }
 
   .l-main {
-    margin : 35px 15px 0 15px;
+    margin : 35px 4% 0 4%;
   }
 
-  .l-header .l-branding {
+  .front .l-main .l-content {
     float : none;
+    width : auto;
   }
 
   /* footer on bottom */
@@ -154,6 +159,10 @@ html, body {
 
   .l-main {
     margin : 25px 10px 0 10px;
+  }
+
+  .l-header .l-branding {
+    float : none;
   }
 
   /* footer on bottom */
