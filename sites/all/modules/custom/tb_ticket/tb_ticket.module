@@ -2,7 +2,17 @@
 
 function tb_ticket_form_alter(&$form, &$form_state, $form_id){
   // Load standard drupal node form.
-  if($form_id == "ticket_node_form" && !$form_state['rebuild'] && !user_access("administer content types")){
+  if($form_id == "ticket_node_form" && !$form_state['rebuild'] /*&& !user_access("administer content types")*/){
+    // Add custom select library.
+    $form['#attached']['js'] = array(
+      drupal_get_path('theme', 'ticketbaby'). '/js/jquery.easydropdown.min.js',
+      drupal_get_path('module', 'tb_ticket'). '/js/selects.js',
+    );
+    $form['#attached']['css'] = array(
+      drupal_get_path('module', 'tb_ticket'). '/css/easydropdown.css',
+    );
+    
+    
     unset($form['body']);
     $form['field_ticket_category']['#suffix'] = '<span class = "recommendation ticket-recommendation">Fill in as much information as possible because this will help us in fighting your case.</span>';
     
