@@ -7,7 +7,7 @@ function ticketbaby_process_page(&$variables) {
   if($variables['is_front']){
     $variables['title'] = '';
   }
-  
+
   if(arg(0). "/". arg(1). "/". arg(2) == "node/add/ticket"){
     $variables['title'] = '';
   }

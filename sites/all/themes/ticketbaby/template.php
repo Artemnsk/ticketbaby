@@ -27,3 +27,29 @@ function ticketbaby_date_popup_process_alter(&$element, &$form_state, $context){
   $element['date']['#description'] = '';
   $element['date']['#title_display'] = 'invisible';
 }
+
+function ticketbaby_menu_link__menu_header_menu_sign_in(array $variables) {
+  $output = '';
+  $element = $variables['element'];
+  
+  
+  global $user;
+  if($element['#original_link']['link_path'] == "user"){
+    $element['#title'] = user_is_logged_in() ? $user->name : t("Log in");
+    $element['#below'] = user_is_logged_in() ? $element['#below'] : array();
+  }
+  
+  
+  $sub_menu = '';
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  if($element['#original_link']['link_path'] == "user" && user_is_logged_in()){
+    $output = "<span>". $element['#title']. "</span>";
+  }else{
+    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  }
+  $output = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";  
+
+  return $output;
+}

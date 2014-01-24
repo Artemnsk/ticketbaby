@@ -26,3 +26,8 @@ function tb_user_menu_my_tickets(){
   global $user;
   drupal_goto('user/'. $user->uid. '/tickets');
 }
+
+function tb_user_menu_init(){
+  drupal_add_js(drupal_get_path('module', 'tb_user_menu'). '/js/header-menu.js');
+  drupal_add_css(drupal_get_path('module', 'tb_user_menu'). '/css/header-menu.css');
+}
