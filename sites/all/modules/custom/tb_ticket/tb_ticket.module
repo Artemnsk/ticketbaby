@@ -7,9 +7,11 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     $form['#attached']['js'] = array(
       drupal_get_path('theme', 'ticketbaby'). '/js/jquery.easydropdown.min.js',
       drupal_get_path('module', 'tb_ticket'). '/js/selects.js',
+      drupal_get_path('module', 'tb_ticket'). '/js/choosefilebutton.js',
     );
     $form['#attached']['css'] = array(
       drupal_get_path('module', 'tb_ticket'). '/css/easydropdown.css',
+      drupal_get_path('module', 'tb_ticket'). '/css/choosefilebutton.css',
     );
     
     
