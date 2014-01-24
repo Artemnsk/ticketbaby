@@ -246,12 +246,19 @@ select {
 }
 
 .view-choose-your-ticket a {
-  color : black;
+  display     : block;
+  height      : 34px;
+  padding-top : 7px;
+  color       : black;
 }
 
 .view-choose-your-ticket a:hover {
-  font-family : 'corbelbold';
+  color : #005493;
 }
+
+/*.view-choose-your-ticket a:hover {
+  font-family : 'corbelbold';
+}*/
 
 .view-choose-your-ticket table {
   width : 100%;
@@ -263,6 +270,10 @@ select {
 
 .view-choose-your-ticket table tr td {
   height : 34px;
+}
+
+.view-choose-your-ticket table tr td:hover {
+  background : #F1F1F1;
 }
 
 /*---/ choose your ticket */
@@ -460,6 +471,14 @@ select {
 
 #ticket-node-form .field-type-file {
   margin-top : 50px;
+}
+
+#ticket-node-form .form-managed-file span.file a {
+  color : #005493;
+}
+
+#ticket-node-form .form-managed-file span.file a:hover {
+  text-decoration : underline;
 }
 
 /*---/ TICKET FORM */
