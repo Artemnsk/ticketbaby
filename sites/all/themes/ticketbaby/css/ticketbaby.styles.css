@@ -306,7 +306,8 @@ select {
 }
 
 #ticket-node-form .field-name-field-ticket-category .form-type-select label {
-  float : left;
+  float   : left;
+  display : none;
 }
 
 #ticket-node-form .field-name-field-ticket-category .orm-type-select select {
@@ -576,10 +577,6 @@ select {
 }
 
 /*---/ for dev */
-
-
-
-
 
 
 
