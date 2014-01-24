@@ -55,7 +55,7 @@ html, body {
 
 .l-footer {
   position : relative;
-  top      : -100px;
+  margin-top      : -100px;
   height   : 100px;
 }
 
@@ -135,7 +135,7 @@ html, body {
   /* footer on bottom */
 
   .l-footer {
-    top    : -180px;
+    margin-top    : -180px;
     height : 180px;
   }
 
@@ -172,7 +172,7 @@ html, body {
   /* footer on bottom */
 
   .l-footer {
-    top    : -200px;
+    margin-top    : -200px;
     height : 200px;
   }
 

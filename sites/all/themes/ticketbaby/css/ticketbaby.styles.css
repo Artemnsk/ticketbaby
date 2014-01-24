@@ -111,6 +111,10 @@ h1, h2, h3, h4, h5, h6 {
   font-family : 'corbelbold';
 }
 
+h1 {
+  color : #005493;
+}
+
 input[type="text"],
 input[type="password"],
 textarea {
@@ -178,7 +182,8 @@ select {
 }
 
 .l-header .l-branding a img {
-  width : 335px;
+  width       : 335px;
+  margin-left : 8px;
 }
 
 /*---/ logo */
@@ -333,12 +338,16 @@ select {
 }
 
 #ticket-node-form .field-name-field-ticket-category .form-type-select label {
-  float   : left;
-  display : none;
+  float          : left;
+  padding        : 0 24px 0 0;
+  background     : none;
+  font-size      : 22px;
+  text-transform : uppercase;
+  color          : #005493;
 }
 
-#ticket-node-form .field-name-field-ticket-category .orm-type-select select {
-  float : left;
+#ticket-node-form .field-name-field-ticket-category .form-type-select label .form-required {
+  display : none;
 }
 
 /*---/ select ticket */
@@ -529,7 +538,9 @@ select {
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us ul li.expanded a,
-.l-footer #block-menu-menu-footer-menu-support ul li.expanded a {
+.l-footer #block-menu-menu-footer-menu-support ul li.expanded a,
+.l-footer #block-menu-menu-footer-menu-about-us ul li.collapsed a,
+.l-footer #block-menu-menu-footer-menu-support ul li.collapsed a {
   display : block;
   color   : #005493;
 }

@@ -24,14 +24,13 @@
 
 .tickets-dropdown {
   position            : relative;
+  float               : left;
   width               : 225px;
   height              : 34px;
   border              : 1px solid #C8C8C8;
   cursor              : pointer;
   background          : #FFFFFF;
-
   border-radius       : 0px;
-
   -webkit-user-select : none;
   -moz-user-select    : none;
   user-select         : none;
@@ -108,13 +107,13 @@
 .tickets-dropdown li {
   display     : block;
   line-height : 1;
-  padding: 6px 12px;
+  padding     : 6px 12px;
   overflow    : hidden;
   white-space : nowrap;
 }
 
 .tickets-dropdown li {
-  font-size : 18px;
+  font-size : 16px;
   color     : #000000;
 }
 
