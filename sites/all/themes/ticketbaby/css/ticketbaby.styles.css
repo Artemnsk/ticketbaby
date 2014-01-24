@@ -1,6 +1,7 @@
 /* CLEAR */
 
 .clearfix,
+.menu,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu,
 .l-footer .l-region,
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu,
@@ -12,6 +13,8 @@
 
 .clearfix:before,
 .clearfix:after,
+.menu:before,
+.menu:after,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu:before,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu:after,
 .l-footer .l-region:before,
@@ -30,6 +33,7 @@
 }
 
 .clearfix:after,
+.menu:after,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu:after,
 .l-footer .l-region:after,
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after,
@@ -212,24 +216,106 @@ select {
   font-size  : 0px;
 }
 
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first a {
-  color : #000000;
-  float : right;
-}
-
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.last a {
-  color : #6AA03A;
-}
-
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first {
-  padding-right : 14px;
-  width         : 74px;
+  position       : relative;
+  padding-right  : 14px;
+  padding-bottom : 40px;
+  /* width         : 74px; */
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first:hover {
+  font-family : 'corbelbold';
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.last {
   padding-left : 14px;
   width        : 74px;
 }
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.last a {
+  color : #000000;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first span {
+  color          : #6AA03A;
+  float          : right;
+  padding-right  : 22px;
+  background     : url(../images/arrow_user_black_down.png) right center no-repeat;
+  text-transform : none;
+}
+
+/*---/ dropdown menu */
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu {
+  position : absolute;
+  top      : 30px;
+  right    : 14px;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li {
+  display     : block;
+  float       : none;
+  width       : 195px;
+  padding     : 8px 0;
+  background  : white;
+  border      : 1px solid #C8C8C8;
+  font-family : 'corbelregular', calibri, arial, sans-serif;
+  text-align  : center;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li:hover {
+  background : #AEAEAE;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first:hover a,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last:hover a,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li:hover a {
+  color : white;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first a,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last a,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
+  font-family : 'corbelregular', calibri, arial, sans-serif;
+  color       : #000000;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first a:hover,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last a:hover,
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a:hover {
+  padding-right : 0;
+  font-family   : 'corbelregular', calibri, arial, sans-serif;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu {
+  display : block;
+  margin  : 10px 0 0 0;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
+  float : none;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first {
+  position            : relative;
+  border-bottom-width : 0;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first:after {
+  position   : absolute;
+  top        : -14px;
+  right      : 20px;
+  content    : '';
+  width      : 27px;
+  height     : 13px;
+  background : url(../images/user_dropdown_triangle.png) bottom center no-repeat;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last {
+  border-top-width : 0;
+}
+
+/*---/ dropdown menu */
 
 /*---/ sign in */
 
@@ -258,7 +344,7 @@ select {
 }
 
 .view-choose-your-ticket a:hover {
-  color : #005493;
+  color : white;
 }
 
 /*.view-choose-your-ticket a:hover {
@@ -278,7 +364,7 @@ select {
 }
 
 .view-choose-your-ticket table tr td:hover {
-  background : #F1F1F1;
+  background : #AEAEAE;
 }
 
 /*---/ choose your ticket */
@@ -351,42 +437,6 @@ select {
 }
 
 /*---/ select ticket */
-
-#ticket-node-form .form-type-textfield label,
-#ticket-node-form .form-type-textfield input,
-#ticket-node-form .form-type-date-combo label,
-#ticket-node-form .form-type-date-combo .date-no-float {
-  float : left;
-}
-
-#ticket-node-form .form-type-textarea textarea {
-  width : 600px;
-}
-
-#ticket-node-form .form-type-textfield input {
-  width : 220px;
-}
-
-#ticket-node-form .field-name-field-full-name .form-type-textfield input {
-  width : 360px;
-}
-
-#ticket-node-form .form-type-date-combo .date-no-float {
-  width : auto;
-  clear : none;
-}
-
-#ticket-node-form .form-type-date-combo .date-no-float .form-type-textfield input {
-  width       : 110px;
-  font-family : Calibri, arial, sans-serif;
-}
-
-#ticket-node-form .ticket-recommendation {
-  display   : block;
-  margin    : 25px 0 15px 0;
-  font-size : 17px;
-  color     : #D13707;
-}
 
 /* datepicker */
 
@@ -463,6 +513,42 @@ select {
 }
 
 /*---/ datepicker */
+
+#ticket-node-form .form-type-textfield label,
+#ticket-node-form .form-type-textfield input,
+#ticket-node-form .form-type-date-combo label,
+#ticket-node-form .form-type-date-combo .date-no-float {
+  float : left;
+}
+
+#ticket-node-form .form-type-textarea textarea {
+  width : 600px;
+}
+
+#ticket-node-form .form-type-textfield input {
+  width : 220px;
+}
+
+#ticket-node-form .field-name-field-full-name .form-type-textfield input {
+  width : 360px;
+}
+
+#ticket-node-form .form-type-date-combo .date-no-float {
+  width : auto;
+  clear : none;
+}
+
+#ticket-node-form .form-type-date-combo .date-no-float .form-type-textfield input {
+  width       : 110px;
+  font-family : Calibri, arial, sans-serif;
+}
+
+#ticket-node-form .ticket-recommendation {
+  display   : block;
+  margin    : 25px 0 15px 0;
+  font-size : 17px;
+  color     : #D13707;
+}
 
 #ticket-node-form #edit-actions input[type="submit"] {
   background : #6EC038;
