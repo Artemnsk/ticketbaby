@@ -347,10 +347,6 @@ select {
   color : white;
 }
 
-/*.view-choose-your-ticket a:hover {
-  font-family : 'corbelbold';
-}*/
-
 .view-choose-your-ticket table {
   width : 100%;
 }
@@ -393,6 +389,14 @@ select {
   height     : 475px;
   background : url(../images/homepage_illustration.png) center center no-repeat;
 }
+
+/* warning message */
+
+.front .l-main .l-content .messages {
+  width : 722px;
+}
+
+/*---/ warning message*/
 
 /*---/ general block */
 
@@ -450,7 +454,7 @@ select {
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default {
-  border : 1px solid #B0E3F5;
+  border : none;
 }
 
 .ui-state-highlight, .ui-widget-content .ui-state-highlight {
@@ -460,7 +464,7 @@ select {
 .ui-state-default:hover, .ui-widget-content:hover .ui-state-default:hover {
   background : #005493;
   color      : white;
-  border     : 1px solid #005493;
+  border     : none;
 }
 
 #ui-datepicker-div {
