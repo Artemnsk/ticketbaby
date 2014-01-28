@@ -203,6 +203,10 @@ html, body {
     margin : 25px 2% 0 2%;
   }
 
+  .not-front .l-main .l-content {
+    width : 100%;
+  }
+
 }
 
 /*---/ SKELETON */
