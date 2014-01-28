@@ -97,6 +97,14 @@
     background : url(../images/homepage_illustration_tablets.png) center center no-repeat;
   }
 
+  /* warning message */
+
+  .front .l-main .l-content .messages {
+    width : 100%;
+  }
+
+  /*---/ warning message*/
+
   /*---/ HOMEPAGE */
 
   /* HEADER */

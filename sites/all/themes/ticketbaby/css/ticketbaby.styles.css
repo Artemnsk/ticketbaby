@@ -717,6 +717,28 @@ select {
 
 /*---/ USER PROFILE */
 
+/* ADMIN */
+
+.tabs a {
+color: #000000;
+}
+
+.tabs a:hover, .tabs a:focus {
+  background: #aeaeae;
+  color: white;
+}
+
+.tabs a.active, .tabs a:focus {
+  background: #6EC038;
+  color: white;
+}
+
+.tabs a.active:hover {
+  background: #599B2D;
+}
+
+/*---/ ADMIN */
+
 /* for dev */
 /*
 .l-header {
