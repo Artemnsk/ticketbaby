@@ -446,6 +446,7 @@ select {
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
   background : #C4E8F5;
+  color      : #000000;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default {
