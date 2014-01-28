@@ -21,7 +21,7 @@ function features_node_ticket_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -106,6 +106,91 @@ function features_node_ticket_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-ticket-field_defended'
+  $field_instances['node-ticket-field_defended'] = array(
+    'bundle' => 'ticket',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_defended',
+    'label' => 'Defended?',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-ticket-field_defender'
+  $field_instances['node-ticket-field_defender'] = array(
+    'bundle' => 'ticket',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Which defender work on this ticket?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 17,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_defender',
+    'label' => 'Defender',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'node-ticket-field_email'
   $field_instances['node-ticket-field_email'] = array(
     'bundle' => 'ticket',
@@ -117,7 +202,7 @@ function features_node_ticket_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -368,7 +453,7 @@ function features_node_ticket_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 14,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -411,7 +496,7 @@ function features_node_ticket_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -447,7 +532,7 @@ function features_node_ticket_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 13,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -718,6 +803,8 @@ What fields should you use for certain category?',
   t('Body');
   t('Custom fields');
   t('Date of ticket');
+  t('Defended?');
+  t('Defender');
   t('Email');
   t('Fine due date');
   t('Full name');
@@ -731,6 +818,7 @@ What fields should you use for certain category?');
   t('Upload Scanned Ticket');
   t('Were there any special circumstances surrounding the ticket?');
   t('What is your driving history? Do you have a clean record?');
+  t('Which defender work on this ticket?');
   t('Who you were ticketed by?');
   t('Your Speed');
   t('Your alcohol level');

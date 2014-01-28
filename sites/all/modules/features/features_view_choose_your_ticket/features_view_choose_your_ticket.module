@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the features_view_choose_your_ticket feature.
  */
+
+include_once 'features_view_choose_your_ticket.features.inc';
