@@ -720,21 +720,21 @@ select {
 /* ADMIN */
 
 .tabs a {
-color: #000000;
+  color : #000000;
 }
 
 .tabs a:hover, .tabs a:focus {
-  background: #aeaeae;
-  color: white;
+  background : #AEAEAE;
+  color      : white;
 }
 
 .tabs a.active, .tabs a:focus {
-  background: #6EC038;
-  color: white;
+  background : #6EC038;
+  color      : white;
 }
 
 .tabs a.active:hover {
-  background: #599B2D;
+  background : #599B2D;
 }
 
 /*---/ ADMIN */
