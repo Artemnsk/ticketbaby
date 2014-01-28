@@ -2,11 +2,23 @@
 
 @media only screen and (max-width : 1200px) {
 
+  /* HOMEPAGE */
+
   .front .l-main article .field__item p {
     width      : 660px;
     height     : 424px;
     background : url(../images/homepage_illustration_miniscreens.png) center center no-repeat;
   }
+
+  /* warning message */
+
+  .front .l-main .l-content .messages {
+    width : 642px;
+  }
+
+  /*---/ warning message*/
+
+  /*---/ HOMEPAGE */
 
   /* TICKET FORM */
 
@@ -19,6 +31,8 @@
 }
 
 @media only screen and (max-width : 1023px) {
+
+  /* HOMEPAGE */
 
   .front .l-main article .field__item div {
     margin-right : 0px;
@@ -34,6 +48,18 @@
     background : url(../images/homepage_illustration_tablets.png) center center no-repeat;
   }
 
+  /* warning message */
+
+  .front .l-main .l-content .messages {
+    width : 428px;
+  }
+
+  /*---/ warning message*/
+
+  /*---/ HOMEPAGE */
+
+  /* FOOTER */
+
   .l-footer #block-menu-menu-footer-menu-about-us {
     margin-right : 40px;
     margin-left  : 20px;
@@ -42,6 +68,8 @@
   .l-footer #block-menu-menu-footer-menu-support {
     margin-right : 45px;
   }
+
+  /*--- FOOTER */
 
   /* TICKET FORM */
 
@@ -55,6 +83,8 @@
 
 @media only screen and (max-width : 767px) {
 
+  /* HOMEPAGE */
+
   .front .l-main .l-region--sidebar-first {
     width      : 100%;
     padding    : 0;
@@ -66,6 +96,16 @@
     height     : 218px;
     background : url(../images/homepage_illustration_tablets.png) center center no-repeat;
   }
+
+  /* warning message */
+
+  .front .l-main .l-content .messages {
+    width : 100%;
+  }
+
+  /*---/ warning message*/
+
+  /*---/ HOMEPAGE */
 
   /* HEADER */
 
@@ -94,9 +134,13 @@
 
   /*---/ TICKET FORM */
 
+  /* FOOTER */
+
   .l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
     margin-left : 20px;
   }
+
+  /*---/ FOOTER */
 
 }
 
@@ -108,6 +152,8 @@
 }
 
 @media only screen and (max-width : 560px) {
+
+  /* FOOTER */
 
   .l-footer .l-region {
     width  : inherit;
@@ -133,19 +179,27 @@
     margin-left : 0;
   }
 
+  /*---/ FOOTER */
+
+  /* TICKET FORM */
+
   #ticket-node-form .field-name-field-full-name .form-type-textfield input {
     width : 220px;
   }
+
+  /*---/ TICKET FORM */
+
 }
 
 @media only screen and (max-width : 480px) {
 
+  /* HOMEPAGE */
   .front .l-main article .field__item p {
     display : none;
   }
 
+  /*---/ HOMEPAGE */
   /* HEADER */
-
   .l-header .l-branding a {
     display    : block;
     width      : 275px;
@@ -159,7 +213,6 @@
   }
 
   /*---/ HEADER */
-
   .front .l-main .l-region--sidebar-first {
     width      : 280px;
     text-align : center;
@@ -198,6 +251,8 @@
 
 @media only screen and (max-width : 319px) {
 
+  /* HEADER */
+
   .l-header .l-branding a {
     display    : block;
     width      : 100%;
@@ -206,9 +261,9 @@
     margin     : 0 auto;
   }
 
-  .not-front .l-main .l-content {
-    width : 100%;
-  }
+  /*---/ HEADER */
+
+  /* HOMEPAGE */
 
   .front .l-main .l-region--sidebar-first {
     width      : 100%;
@@ -216,6 +271,10 @@
     padding    : 0;
     background : none;
   }
+
+  /*---/ HOMEPAGE */
+
+  /* TICKET FORM */
 
   #ticket-node-form {
     padding-left  : 0;
@@ -231,6 +290,8 @@
   #ticket-node-form .ticket-recommendation {
     font-size : 15px;
   }
+
+  /*---/ TICKET FORM */
 
 }
 
