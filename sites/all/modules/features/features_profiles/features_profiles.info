@@ -1,0 +1,13 @@
+name = Features profiles
+core = 7.x
+package = Features
+dependencies[] = entity
+dependencies[] = features
+dependencies[] = list
+dependencies[] = options
+dependencies[] = profile2
+features[features_api][] = api:2
+features[field_base][] = field_experience
+features[field_instance][] = profile2-customer_profile-field_experience
+features[profile2_type][] = customer_profile
+features[profile2_type][] = defender_profile

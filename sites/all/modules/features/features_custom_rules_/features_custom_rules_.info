@@ -1,0 +1,8 @@
+name = Features custom rules 
+core = 7.x
+package = Features
+dependencies[] = entity
+dependencies[] = rules
+features[features_api][] = api:2
+features[rules_config][] = rules_create_customer_profile_when_new_customer_created
+features[rules_config][] = rules_createdefender_profile_when_new_defender_created

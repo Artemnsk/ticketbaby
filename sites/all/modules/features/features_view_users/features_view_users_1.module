@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the features_view_users feature.
+ */
+
+include_once 'features_view_users.features.inc';

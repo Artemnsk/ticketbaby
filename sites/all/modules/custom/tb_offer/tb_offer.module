@@ -2,7 +2,7 @@
 
 function tb_offer_form_alter(&$form, &$form_state, $form_id){
   // Load standard drupal node form.
-  if($form_id == "offer_node_form" && !$form_state['rebuild'] /*&& !user_access("administer content types")*/){
+  if($form_id == "offer_node_form" && !$form_state['rebuild'] && !user_access("administer content types")){
     unset($form['body']);
     
     $form['field_ticket']['und']['#columns'][0]['target_id'] = 2;
