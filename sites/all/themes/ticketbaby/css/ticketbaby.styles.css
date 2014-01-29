@@ -346,10 +346,10 @@ select {
 }
 
 .view-choose-your-ticket a {
-  display     : block;
-  height      : 34px;
-  padding-top : 7px;
-  color       : black;
+  display : block;
+  height  : 34px;
+  padding : 7px;
+  color   : black;
 }
 
 .view-choose-your-ticket a:hover {
@@ -417,6 +417,14 @@ select {
   padding-left : 94px;
 }
 
+.not-front.logged-in.page-node-add-ticket #ticket-node-form {
+  padding-left : 0;
+}
+
+.not-front.logged-in.page-node-add-ticket  #ticket-node-form .field-name-field-ticket-category .form-type-select {
+  padding-left : 0;
+}
+
 #ticket-node-form label {
   font-size     : 16px;
   font-weight   : normal;
@@ -443,6 +451,7 @@ select {
   font-size      : 22px;
   text-transform : uppercase;
   color          : #005493;
+  font-family    : 'corbelregular', calibri, arial, sans-serif;
 }
 
 #ticket-node-form .field-name-field-ticket-category .form-type-select label .form-required {
@@ -719,19 +728,29 @@ select {
 
 /* USER PROFILE */
 
-/* login/register */
+/* login/register/edit */
 
 #user-login,
 #user-register-form,
 #user-pass {
-  margin : 20px 0 0 0;
+  margin : 20px 0 0 20px;
 }
 
 #user-register-form #edit-profile-main {
   display : none;
 }
 
-/*---/ login/register */
+#user-login .form-submit,
+#user-register-form .form-submit,
+#user-pass .form-submit {
+  margin : 25px 0 0 0;
+}
+
+.not-front.logged-in.page-user #user-profile-form {
+  border : 1px solid #C8C8C8;
+}
+
+/*---/ login/register/edit */
 
 .user-profile-item__label {
   font-family : 'corbelbold';
@@ -856,7 +875,7 @@ ul.nice-menu li ul li:focus a {
 .not-front.page-user .l-main .l-content .tabs a.active,
 .not-front.page-user .l-main .l-content .tabs a:focus {
   background : none;
-  color      : #4386BB;
+  color      : #005493;
 }
 
 .not-front.page-user .l-main .l-content .tabs a.active,
@@ -880,7 +899,7 @@ ul.nice-menu li ul li:focus a {
   background  : none;
   font-family : 'corbelbold';
   font-weight : normal;
-  color       : #4386BB;
+  color       : #005493;
   border      : 1px solid #C8C8C8;
 }
 

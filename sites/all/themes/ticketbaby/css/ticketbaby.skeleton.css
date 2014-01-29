@@ -37,11 +37,18 @@
   float : right;
 }
 
-.not-front .l-main .l-content {
+.not-front .l-main .l-content,
+.not-front.page-user.not-logged-in .l-main .l-content {
   width : 100%;
 }
 
-.not-front.page-user .l-main .l-content {
+.not-front.page-user.not-logged-in .l-main .l-content {
+  margin-right: 0;
+
+}
+
+.not-front.page-user .l-main .l-content,
+.not-front.logged-in.page-node-add-ticket .l-main .l-content {
   float        : right;
   width        : 660px;
   margin-right : 89px;
