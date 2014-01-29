@@ -152,6 +152,11 @@ select {
   color     : #005493;
 }
 
+.form-item label, .form-actions label {
+  font-weight : normal;
+  font-family : 'corbelbold';
+}
+
 /*.resizable-textarea textarea {
   position: relative;
   display: block;
@@ -714,6 +719,20 @@ select {
 
 /* USER PROFILE */
 
+/* login/register */
+
+#user-login,
+#user-register-form,
+#user-pass {
+  margin : 20px 0 0 0;
+}
+
+#user-register-form #edit-profile-main {
+  display : none;
+}
+
+/*---/ login/register */
+
 .user-profile-item__label {
   font-family : 'corbelbold';
   font-weight : normal;
@@ -738,8 +757,9 @@ ul.nice-menu {
 }
 
 ul.nice-menu li {
-  margin : 15px 10px 15px 0;
-  color  : #005493;
+  margin     : 15px 10px 15px 0;
+  color      : #005493;
+  background : none;
 }
 
 ul.nice-menu li:hover,
