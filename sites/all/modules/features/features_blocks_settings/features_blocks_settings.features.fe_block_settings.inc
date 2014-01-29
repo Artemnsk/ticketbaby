@@ -86,7 +86,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'weight' => -12,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
@@ -112,7 +112,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'weight' => -10,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
@@ -138,7 +138,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'weight' => -11,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
@@ -164,7 +164,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'weight' => -13,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
