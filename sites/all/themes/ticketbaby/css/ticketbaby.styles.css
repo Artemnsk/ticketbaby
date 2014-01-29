@@ -719,6 +719,184 @@ select {
   font-weight : normal;
 }
 
+/* left menu */
+
+ul.nice-menu-right li.menuparent, ul.nice-menu-right li li.menuparent,
+ul.nice-menu-right li.menuparent:hover, ul.nice-menu-right li li.menuparent:hover {
+  background : none;
+}
+
+ul.nice-menu,
+ul.nice-menu ul,
+ul.nice-menu li {
+  border : none;
+}
+
+ul.nice-menu {
+  width  : 150px;
+  margin : 30px 0 0 55px;
+}
+
+ul.nice-menu li {
+  margin : 15px 10px 15px 0;
+  color  : #005493;
+}
+
+ul.nice-menu li:hover,
+ul.nice-menu li:active,
+ul.nice-menu li:focus {
+  color : #000000;
+}
+
+ul.nice-menu-right ul {
+  left : 150px;
+  top  : -6px;
+}
+
+ul.nice-menu li ul {
+  border : 1px solid #C8C8C8;
+  margin : 0 0 0 0;
+}
+
+ul.nice-menu li ul:after {
+  position   : absolute;
+  top        : 7px;
+  left       : -17px;
+  content    : '';
+  width      : 16px;
+  height     : 19px;
+  background : url(../images/user_left_triangle.png) bottom center no-repeat;
+}
+
+ul.nice-menu li ul li {
+  float      : none;
+  width      : auto;
+  margin     : 0;
+  padding    : 2px 0;
+  background : white;
+  color      : #005493;
+  text-align : center;
+}
+
+ul.nice-menu li ul li:hover,
+ul.nice-menu li ul li:active,
+ul.nice-menu li ul li:focus {
+  background : #AEAEAE;
+}
+
+ul.nice-menu li ul li:hover a,
+ul.nice-menu li ul li:active a,
+ul.nice-menu li ul li:focus a {
+  color : white;
+}
+
+/*---/ left menu */
+
+/* right info */
+
+.not-front.page-user .l-main .l-content h1 {
+  margin         : 0 0 10px 0;
+  color          : black;
+  font-family    : 'corbelregular', calibri, arial, sans-serif;
+  font-size      : 22px;
+  text-align     : center;
+  text-transform : uppercase;
+}
+
+.not-front.page-user .l-main .l-content article {
+  border : 1px solid #C8C8C8;
+}
+
+.not-front.page-user .l-main .l-content article section {
+  padding : 11px 22px;
+}
+
+.not-front.page-user .l-main .l-content article section h2 {
+  margin : 4px 0;
+}
+
+/* tabs in user info */
+
+.not-front.page-user .l-main .l-content .tabs--primary {
+  border        : none;
+  margin-bottom : 0.5em;
+}
+
+.not-front.page-user .l-main .l-content .links--inline li {
+  float       : right;
+  margin-left : 1em;
+}
+
+.not-front.page-user .l-main .l-content .tabs--primary a {
+  padding   : 0;
+  font-size : 14px;
+}
+
+.not-front.page-user .l-main .l-content .tabs a,
+.not-front.page-user .l-main .l-content .tabs a.active,
+.not-front.page-user .l-main .l-content .tabs a:focus {
+  background : none;
+  color      : #4386BB;
+}
+
+.not-front.page-user .l-main .l-content .tabs a.active,
+.not-front.page-user .l-main .l-content .tabs a:focus {
+  font-family : 'corbelbold';
+}
+
+.not-front.page-user .l-main .l-content .tabs a:hover {
+  text-decoration : underline;
+}
+
+/*---/ tabs in user info */
+
+/* table in user info */
+
+.not-front.page-user .l-main .l-content table {
+  width : 100%;
+}
+
+.not-front.page-user .l-main .l-content table th {
+  background  : none;
+  font-family : 'corbelbold';
+  font-weight : normal;
+  color       : #4386BB;
+  border      : 1px solid #C8C8C8;
+}
+
+.not-front.page-user .l-main .l-content table th,
+.not-front.page-user .l-main .l-content table tr td {
+  padding : 10px 14px;
+}
+
+.not-front.page-user .l-main .l-content table tr.even {
+  background : white;
+}
+
+.not-front.page-user .l-main .l-content table tr.odd {
+  background : #F4F4F4;
+}
+
+.not-front.page-user .l-main .l-content table tr td {
+  border : 1px solid #C8C8C8;
+}
+
+.not-front.page-user .l-main .l-content table a {
+  color : #000000;
+}
+
+.not-front.page-user .l-main .l-content table a:hover {
+  text-decoration : underline;
+}
+
+.not-front.page-user .l-main .l-content table em {
+  font-style : normal;
+}
+
+/*---/ table in user info */
+
+/*---/ right info */
+
 /*---/ USER PROFILE */
 
 /* TABS */

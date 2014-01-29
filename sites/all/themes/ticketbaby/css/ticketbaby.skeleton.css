@@ -42,8 +42,10 @@
 }
 
 .not-front.page-user .l-main .l-content {
-  float : right;
-  width : 70%;
+  float        : right;
+  width        : 660px;
+  margin-right : 89px;
+  /*background: #DDDDFF;*/
 }
 
 /* footer on bottom */
