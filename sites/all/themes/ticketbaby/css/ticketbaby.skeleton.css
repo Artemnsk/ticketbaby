@@ -41,6 +41,11 @@
   width : 100%;
 }
 
+.not-front.page-user .l-main .l-content {
+  float : right;
+  width : 70%;
+}
+
 /* footer on bottom */
 
 html, body {
@@ -54,9 +59,9 @@ html, body {
 }
 
 .l-footer {
-  position : relative;
-  margin-top      : -100px;
-  height   : 100px;
+  position   : relative;
+  margin-top : -100px;
+  height     : 100px;
 }
 
 .l-main {
@@ -135,8 +140,8 @@ html, body {
   /* footer on bottom */
 
   .l-footer {
-    margin-top    : -180px;
-    height : 180px;
+    margin-top : -180px;
+    height     : 180px;
   }
 
   .l-main {
@@ -172,8 +177,8 @@ html, body {
   /* footer on bottom */
 
   .l-footer {
-    margin-top    : -200px;
-    height : 200px;
+    margin-top : -200px;
+    height     : 200px;
   }
 
   .l-main {

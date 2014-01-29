@@ -223,6 +223,10 @@ select {
   /* width         : 74px; */
 }
 
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first a {
+  color : #6AA03A;
+}
+
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first:hover {
   font-family : 'corbelbold';
 }
@@ -717,7 +721,7 @@ select {
 
 /*---/ USER PROFILE */
 
-/* ADMIN */
+/* TABS */
 
 .tabs a {
   color : #000000;
@@ -737,23 +741,8 @@ select {
   background : #599B2D;
 }
 
-/*---/ ADMIN */
+/*---/ TABS */
 
-/* for dev */
-/*
-.l-header {
-  background : darkseagreen;
-}
-
-.l-main {
-  background : lavender;
-}
-
-.l-footer {
-  background : navajowhite;
-}
-
-/*---/ for dev */
 
 
 
