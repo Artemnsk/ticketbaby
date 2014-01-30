@@ -942,6 +942,57 @@ ul.nice-menu li ul li:focus a {
 
 /*---/ USER PROFILE */
 
+/* ALL ABOUT RESPONDS */
+
+.view-offers-responds-,
+.not-front.logged-in.node-type-ticket .pane-entity-view {
+  border : 1px solid #C8C8C8;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- table tr td {
+  border  : none;
+  width   : 30%;
+  padding : 10px 14px 18px 14px;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- .views-row {
+  border-bottom : 1px solid #C8C8C8;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- .views-row:last-child {
+  border-bottom : none;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- .views-row-even {
+  background : #E7E7E7;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- .views-field-nid a {
+  display    : block;
+  margin-top : 12px;
+  color      : #005493;
+  font-size  : 13px;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- .views-field-subject-1 a {
+  float     : right;
+  color     : #005493;
+  font-size : 13px;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- table tr td:first-child {
+  font-size : 15px;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- table tr td .marker {
+  background     : none;
+  color          : #6AA03A;
+  font-size      : 13px;
+  text-transform : capitalize;
+}
+
+/*---/ ALL ABOUT RESPONDS */
+
 /* TABS */
 
 .tabs a {
