@@ -43,7 +43,7 @@
 }
 
 .not-front.page-user.not-logged-in .l-main .l-content {
-  margin-right: 0;
+  margin-right : 0;
 
 }
 
@@ -97,6 +97,11 @@ html, body {
     margin : 50px 20px 0 20px;
   }
 
+  .not-front.page-user .l-main .l-content,
+  .not-front.logged-in.page-node-add-ticket .l-main .l-content {
+    margin-right : 39px;
+  }
+
 }
 
 @media only screen and (max-width : 1023px) {
@@ -115,6 +120,12 @@ html, body {
 
   .front .l-main .l-content {
     width : 428px;
+  }
+
+  .not-front.page-user .l-main .l-content,
+  .not-front.logged-in.page-node-add-ticket .l-main .l-content {
+    width        : 510px;
+    margin-right : 0;
   }
 
 }

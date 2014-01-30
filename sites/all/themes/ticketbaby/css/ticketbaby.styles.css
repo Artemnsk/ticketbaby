@@ -599,6 +599,10 @@ select {
   text-decoration : underline;
 }
 
+.not-front.logged-in.page-user #user-profile-form {
+  padding : 10px;
+}
+
 /*---/ TICKET FORM */
 
 /* FOOTER */

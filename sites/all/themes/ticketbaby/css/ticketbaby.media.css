@@ -28,56 +28,89 @@
 
   /*---/ TICKET FORM */
 
-}
+  /* USER ACCOUNT */
 
-@media only screen and (max-width : 1023px) {
-
-  /* HOMEPAGE */
-
-  .front .l-main article .field__item div {
-    margin-right : 0px;
+  ul.nice-menu {
+    width  : 140px;
+    margin : 30px 0 0 35px;
   }
 
-  .front .l-main article .field__item p {
-    margin : 1em auto;
+  /*---/ USER ACCOUNT */
+
+  @media only screen and (max-width : 1023px) {
+
+    /* HOMEPAGE */
+
+    .front .l-main article .field__item div {
+      margin-right : 0px;
+    }
+
+    .front .l-main article .field__item p {
+      margin : 1em auto;
+    }
+
+    .front .l-main article .field__item p {
+      width      : 340px;
+      height     : 218px;
+      background : url(../images/homepage_illustration_tablets.png) center center no-repeat;
+    }
+
+    /* warning message */
+
+    .front .l-main .l-content .messages {
+      width : 428px;
+    }
+
+    /*---/ warning message*/
+
+    /*---/ HOMEPAGE */
+
+    /* FOOTER */
+
+    .l-footer #block-menu-menu-footer-menu-about-us {
+      margin-right : 40px;
+      margin-left  : 20px;
+    }
+
+    .l-footer #block-menu-menu-footer-menu-support {
+      margin-right : 45px;
+    }
+
+    /*--- FOOTER */
+
+    /* TICKET FORM */
+
+    #ticket-node-form {
+      padding-left : 32px;
+    }
+
+    #ticket-node-form .form-type-textarea textarea {
+      width : 500px;
+    }
+
+    input.customfile-filename {
+      width : 196px;
+    }
+
+    #ticket-node-form .form-managed-file input[type="submit"] {
+      margin-left : 0;
+    }
+
+    /*---/ TICKET FORM */
+
+    /* USER ACCOUNT */
+
+    ul.nice-menu {
+      width  : 135px;
+      margin : 30px 0 0 10px;
+    }
+
+    ul.nice-menu-right ul {
+      right : 135px;
+    }
   }
 
-  .front .l-main article .field__item p {
-    width      : 340px;
-    height     : 218px;
-    background : url(../images/homepage_illustration_tablets.png) center center no-repeat;
-  }
-
-  /* warning message */
-
-  .front .l-main .l-content .messages {
-    width : 428px;
-  }
-
-  /*---/ warning message*/
-
-  /*---/ HOMEPAGE */
-
-  /* FOOTER */
-
-  .l-footer #block-menu-menu-footer-menu-about-us {
-    margin-right : 40px;
-    margin-left  : 20px;
-  }
-
-  .l-footer #block-menu-menu-footer-menu-support {
-    margin-right : 45px;
-  }
-
-  /*--- FOOTER */
-
-  /* TICKET FORM */
-
-  #ticket-node-form {
-    padding-left : 32px;
-  }
-
-  /*---/ TICKET FORM */
+  /*---/ USER ACCOUNT */
 
 }
 
