@@ -51,24 +51,24 @@ function features_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-customer-menu_tickets:<nolink>',
   );
-  // Exported menu link: menu-customer-menu_all-responds:user/all-responds
-  $menu_links['menu-customer-menu_all-responds:user/all-responds'] = array(
+  // Exported menu link: menu-customer-menu_all-messages:user/all-responds
+  $menu_links['menu-customer-menu_all-messages:user/all-responds'] = array(
     'menu_name' => 'menu-customer-menu',
     'link_path' => 'user/all-responds',
     'router_path' => 'user/all-responds',
-    'link_title' => 'All responds',
+    'link_title' => 'All messages',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-customer-menu_all-responds:user/all-responds',
+      'identifier' => 'menu-customer-menu_all-messages:user/all-responds',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
     'parent_identifier' => 'menu-customer-menu_messages:<nolink>',
   );
@@ -172,7 +172,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
     'parent_identifier' => 'menu-customer-menu_messages:<nolink>',
   );
@@ -216,24 +216,24 @@ function features_menus_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: menu-defender-menu_all-responds:user/all-responds
-  $menu_links['menu-defender-menu_all-responds:user/all-responds'] = array(
+  // Exported menu link: menu-defender-menu_all-messages:user/all-responds
+  $menu_links['menu-defender-menu_all-messages:user/all-responds'] = array(
     'menu_name' => 'menu-defender-menu',
     'link_path' => 'user/all-responds',
     'router_path' => 'user/all-responds',
-    'link_title' => 'All responds',
+    'link_title' => 'All messages',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-defender-menu_all-responds:user/all-responds',
+      'identifier' => 'menu-defender-menu_all-messages:user/all-responds',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
     'parent_identifier' => 'menu-defender-menu_messages:<nolink>',
   );
@@ -336,7 +336,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
     'parent_identifier' => 'menu-defender-menu_messages:<nolink>',
   );
@@ -675,7 +675,7 @@ function features_menus_menu_default_menu_links() {
   t('About Us');
   t('Account details');
   t('Add new ticket');
-  t('All responds');
+  t('All messages');
   t('Apply');
   t('Calendar');
   t('Company');

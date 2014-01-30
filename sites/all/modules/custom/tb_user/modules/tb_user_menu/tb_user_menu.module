@@ -6,6 +6,12 @@
 
 function tb_user_menu_menu(){
   $items = array(
+    'user/settings' => array(
+      'title' => t('Settings'),
+      'page callback' => 'tb_user_router',
+      'page arguments' => array('drupal_goto', 'user/%/edit', 'user'),
+      'access arguments' => array('access content'),
+    ),
     'user/my-tickets' => array(
       'title' => t('My tickets'),
       'page callback' => 'tb_user_router',
@@ -46,8 +52,12 @@ function tb_user_router($view, $display, $var_type = ''){
       $args = $user->uid;
       break;
   }
-
-  return isset($args) ? views_embed_view($view, $display, $args) : views_embed_view($view, $display);
+  
+  if($view == 'drupal_goto'){
+    drupal_goto(preg_replace('/%/', $args, $display));
+  }else{
+    return isset($args) ? views_embed_view($view, $display, $args) : views_embed_view($view, $display);
+  }
 }
 
 function tb_user_menu_init(){

@@ -53,7 +53,13 @@ function tb_offer_validate_offer($form, &$form_state){
   $ticket_id = arg(3);
   if(!$ticket_id || !intval($ticket_id)){
     $node = node_load($ticket_id);
-    if(!isset($node->$type) || $node->type == 'ticket'){
+    if(isset($node->$type)){
+      if($node->type == 'ticket'){
+        //
+      }else{
+        form_set_error('field_ticket', t('Something went wrong. Please try to go on ticket page and press "respond" again.'));
+      }
+    }else{
       form_set_error('field_ticket', t('Something went wrong. Please try to go on ticket page and press "respond" again.'));
     }
   }
@@ -84,4 +90,16 @@ function tb_offer_node_access($node, $op, $account){
     }
   }
   return NODE_ACCESS_IGNORE;
+}
+
+/*
+ * For unformatted fields - row in Views template.
+ */
+function tb_offer_views_fields_row($field){
+  $text = '';
+  if(isset($field->wrapper_prefix)) $text .= $field->wrapper_prefix;
+  if(isset($field->label_html)) $text .= $field->label_html;
+  if(isset($field->content)) $text .= $field->content;
+  if(isset($field->wrapper_suffix)) $text .= $field->wrapper_suffix;
+  return $text;
 }
