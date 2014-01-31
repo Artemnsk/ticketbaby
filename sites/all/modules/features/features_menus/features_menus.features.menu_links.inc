@@ -627,6 +627,26 @@ function features_menus_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
+  // Exported menu link: menu-header-menu-sign-in_help:<front>
+  $menu_links['menu-header-menu-sign-in_help:<front>'] = array(
+    'menu_name' => 'menu-header-menu-sign-in',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Help',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-header-menu-sign-in_help:<front>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+  );
   // Exported menu link: menu-header-menu-sign-in_log-in:user
   $menu_links['menu-header-menu-sign-in_log-in:user'] = array(
     'menu_name' => 'menu-header-menu-sign-in',
@@ -647,6 +667,27 @@ function features_menus_menu_default_menu_links() {
     'expanded' => 1,
     'weight' => -50,
     'customized' => 1,
+  );
+  // Exported menu link: menu-header-menu-sign-in_settings:user/settings
+  $menu_links['menu-header-menu-sign-in_settings:user/settings'] = array(
+    'menu_name' => 'menu-header-menu-sign-in',
+    'link_path' => 'user/settings',
+    'router_path' => 'user/settings',
+    'link_title' => 'Settings',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-header-menu-sign-in_settings:user/settings',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+    'parent_identifier' => 'menu-header-menu-sign-in_log-in:user',
   );
   // Exported menu link: menu-header-menu-sign-in_sign-out:user/logout
   $menu_links['menu-header-menu-sign-in_sign-out:user/logout'] = array(
@@ -680,6 +721,7 @@ function features_menus_menu_default_menu_links() {
   t('Calendar');
   t('Company');
   t('Contact Us');
+  t('Help');
   t('Log in');
   t('Messages');
   t('My account');
@@ -687,6 +729,7 @@ function features_menus_menu_default_menu_links() {
   t('My tickets');
   t('New messages');
   t('Online Support');
+  t('Settings');
   t('Sign in');
   t('Sign out');
   t('Support');

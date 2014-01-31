@@ -40,5 +40,7 @@ features[menu_links][] = menu-footer-menu-support_1-877-454-0338:<nolink>
 features[menu_links][] = menu-footer-menu-support_online-support:<nolink>
 features[menu_links][] = menu-footer-menu-support_support:<front>
 features[menu_links][] = menu-header-menu-sign-in_:<nolink>
+features[menu_links][] = menu-header-menu-sign-in_help:<front>
 features[menu_links][] = menu-header-menu-sign-in_log-in:user
+features[menu_links][] = menu-header-menu-sign-in_settings:user/settings
 features[menu_links][] = menu-header-menu-sign-in_sign-out:user/logout
