@@ -1,4 +1,21 @@
 <?php
+function tb_ticket_canada_provinces(){
+  return array(
+    'AB' => t('Alberta'),
+    'BC' => t('British Columbia'),
+    'MB' => t('Manitoba'),
+    'NB' => t('New Brunswick'),
+    'NL' => t('Newfoundland and Labrador'),
+    'NT' => t('Northwest Territories'),
+    'NS' => t('Nova Scotia'),
+    'NU' => t('Nunavut'),
+    'ON' => t('Ontario'),
+    'PE' => t('Prince Edward Island'),
+    'QC' => t('Quebec'),
+    'SK' => t('Saskatchewan'),
+    'YT' => t('Yukon Territory'),
+  );
+}
 
 function tb_ticket_form_alter(&$form, &$form_state, $form_id){
   // Load standard drupal node form.
@@ -14,6 +31,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
       drupal_get_path('module', 'tb_ticket'). '/css/choosefilebutton.css',
     );
     
+    //$form['field_state'][LANGUAGE_NONE]['#type'] = 'hidden';
     
     unset($form['body']);
     $form['field_ticket_category']['#suffix'] = '<span class = "recommendation ticket-recommendation">Fill in as much information as possible because this will help us in fighting your case.</span>';
@@ -44,10 +62,56 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     $form['actions']['submit']['#value'] = 'Send';
     
     // ...and we want to be redirected.
-    $form['actions']['submit']['#submit'][] = "tb_ticket_create_ticket_redirect";
+    //$form['actions']['submit']['#submit'][] = "tb_ticket_create_ticket_redirect";
+    array_unshift($form['actions']['submit']['#submit'], "tb_ticket_create_ticket_redirect");
+  }
+  
+  // With #rebuild.
+  if($form_id == "ticket_node_form" && !user_access("administer content types")){
+    
+    //dpm($form_state);
+    $form['field_location_where_ticket_was_']['und']['#ajax'] = array(
+      'callback' => 'ajax_tb_ticket_replace',
+      'wrapper' => 'replace-div-state',
+      'method' => 'replace',
+      'effect' => 'fade',
+    );
+    $form['field_state']['#prefix'] = "<div id='replace-div-state'>";
+    $form['field_state']['#suffix'] = "</div>";
+
+    $country = isset($form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value']) ?
+        $form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value'] : 'CA';
+
+    if($country == "US"){
+      if(isset($form_state['values']['field_state'][LANGUAGE_NONE][0]['value'])){
+        foreach($form_state['values']['field_state'][LANGUAGE_NONE] as $key => $val){
+          if(in_array($val['value'], tb_ticket_canada_provinces())){
+            unset($form_state['values']['field_state'][LANGUAGE_NONE][$key]);
+          }  
+        }
+      }
+      $form['field_state'][LANGUAGE_NONE]['#options'] = array_diff($form['field_state'][LANGUAGE_NONE]['#options'], tb_ticket_canada_provinces());
+    }elseif($country == "CA"){
+      if(isset($form_state['values']['field_state'][LANGUAGE_NONE][0]['value'])){
+        foreach($form_state['values']['field_state'][LANGUAGE_NONE] as $key => $val){
+          if(!in_array($val['value'], tb_ticket_canada_provinces())){
+            unset($form_state['values']['field_state'][LANGUAGE_NONE][$key]);
+          }
+        }
+      }
+      $form['field_state'][LANGUAGE_NONE]['#options'] = tb_ticket_canada_provinces();
+    }
+
   }
   
   return $form;
+}
+
+function ajax_tb_ticket_replace($form, $form_state){
+  $country = isset($form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value']) ?
+          $form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value'] : 'CA';
+  
+  return $form['field_state'];
 }
 
 function tb_ticket_create_ticket_redirect($form, &$form_state){
