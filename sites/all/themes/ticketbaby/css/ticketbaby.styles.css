@@ -1166,7 +1166,7 @@ article.node--offer h2.comments__form-title {
   color         : black;
 }
 
-article.node--offer .links--inline li > a {
+article.node--offer .links--inline li.comment-add a {
   display : none;
 }
 
