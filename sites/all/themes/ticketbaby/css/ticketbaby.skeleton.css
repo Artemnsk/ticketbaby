@@ -122,10 +122,6 @@ html, body {
     width : 428px;
   }
 
-  /* .not-front.logged-in.page-node-add-ticket .l-main .l-content,
- .not-front.logged-in.node-type-ticket .l-main .l-content,
- .not-front.logged-in.node-type-offer .l-main .l-content,
- .not-front.logged-in.page-node-add .l-main .l-content */
   .not-front.page-user .l-main .l-content,
   .not-front.logged-in .l-main .l-content {
     width        : 510px;
