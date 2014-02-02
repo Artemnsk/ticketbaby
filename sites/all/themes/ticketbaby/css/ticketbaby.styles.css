@@ -7,7 +7,8 @@
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu,
 #ticket-node-form .form-item,
 #ticket-node-form .field-name-field-ticket-category,
-#ticket-node-form .field-name-field-ticket-category .form-type-select, {
+#ticket-node-form .field-name-field-ticket-category .form-type-select,
+article.comment {
   *zoom : 1;
 }
 
@@ -26,7 +27,9 @@
 #ticket-node-form .field-name-field-ticket-category:before,
 #ticket-node-form .field-name-field-ticket-category:after,
 #ticket-node-form .field-name-field-ticket-category .form-type-select:before,
-#ticket-node-form .field-name-field-ticket-category .form-type-select:after {
+#ticket-node-form .field-name-field-ticket-category .form-type-select:after,
+article.comment:before,
+article.comment:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -39,7 +42,8 @@
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu:after,
 #ticket-node-form .form-item:after,
 #ticket-node-form .field-name-field-ticket-category:after,
-#ticket-node-form .field-name-field-ticket-category .form-type-select:after {
+#ticket-node-form .field-name-field-ticket-category .form-type-select:after,
+article.comment:after {
   clear : both;
 }
 
@@ -1044,9 +1048,14 @@ article.node--offer h2.comments__form-title {
 
 .not-front.logged-in.node-type-ticket .pane-entity-view,
 .not-front.logged-in #offer-node-form,
-.not-front.logged-in.page-comment-reply .l-main .l-content {
+.not-front.logged-in.page-comment-reply .l-main .l-content article.comment,
+.not-front.logged-in.page-comment-reply .l-main .l-content form.comment-form {
   border  : 1px solid #C8C8C8;
   padding : 10px 14px 18px 14px;
+}
+
+.not-front.logged-in.page-comment-reply .l-main .l-content form.comment-form {
+  margin-top : 20px;
 }
 
 .view-offers-responds- {
@@ -1094,6 +1103,44 @@ article.node--offer h2.comments__form-title {
   font-size      : 13px;
   text-transform : capitalize;
 }
+
+/* comment */
+
+article.comment .comment_left_wrapper {
+  float   : left;
+  width   : 180px;
+  padding : 24px 10px 20px 14px;
+}
+
+article.comment .comment_right_wrapper {
+  float : left;
+}
+
+article.comment h3 {
+  margin : 0;
+}
+
+article.comment {
+
+}
+
+article.comment {
+
+}
+
+article.comment {
+
+}
+
+article.comment {
+
+}
+
+article.comment {
+
+}
+
+/*---/ comment */
 
 /*---/ responds */
 
