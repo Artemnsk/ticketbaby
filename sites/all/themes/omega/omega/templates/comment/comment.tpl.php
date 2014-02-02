@@ -73,6 +73,7 @@
             <p class="submitted comment__submitted"><?php print $submitted; ?></p>
             <?php print $permalink; ?>
         </footer>
+
     </div>
     <div class="comment_right_wrapper">
         <div<?php print $content_attributes; ?>>
@@ -87,7 +88,6 @@
                 </div>
             <?php endif; ?>
         </div>
-
-        <?php print render($content['links']) ?>
     </div>
+    <?php print render($content['links']) ?>
 </article>
