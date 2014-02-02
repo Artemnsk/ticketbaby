@@ -157,23 +157,30 @@ select {
   font-family : 'corbelbold';
 }
 
-/*.resizable-textarea textarea {
-  position: relative;
-  display: block;
-}
-
-.resizable-textarea textarea:after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  background-image   : url(../images/textarea_triangle.png);
-  background-position: right bottom;
-  background-repeat: no-repeat;
-} */
-
 .resizable-textarea .grippie {
   display : none;
+}
+
+html.js fieldset.collapsed .fieldset-legend {
+  background-position : left center;
+  padding-left        : 12px;
+}
+
+.description a {
+  color : #005493;
+}
+
+.description a:hover {
+  text-decoration : underline;
+}
+
+.password-strength-title {
+  text-transform : lowercase;
+  margin-bottom  : 2px;
+}
+
+.password-suggestions {
+  border : 1px solid #6AA03A;
 }
 
 /*---/ COMMON ELEMENTS */
@@ -413,15 +420,19 @@ select {
 
 /* TICKET FORM */
 
-#ticket-node-form {
+/*#ticket-node-form {
   padding-left : 94px;
+}   it's if the ticket form is for non-logged user   */
+
+#ticket-node-form {
+  padding-left : 0;
 }
 
 .not-front.logged-in.page-node-add-ticket #ticket-node-form {
   padding-left : 0;
 }
 
-.not-front.logged-in.page-node-add-ticket  #ticket-node-form .field-name-field-ticket-category .form-type-select {
+.not-front.logged-in.page-node-add-ticket #ticket-node-form .field-name-field-ticket-category .form-type-select {
   padding-left : 0;
 }
 
@@ -576,7 +587,7 @@ select {
 #ticket-node-form #edit-actions input[type="submit"] {
   background : #6EC038;
   font-size  : 20px;
-  margin     : 22px 0 10px 0;
+  margin     : 40px 32px 10px 0;
 }
 
 #ticket-node-form #edit-actions input[type="submit"]:hover {
@@ -599,8 +610,9 @@ select {
   text-decoration : underline;
 }
 
-.not-front.logged-in.page-user #user-profile-form {
-  padding : 10px;
+#edit-field-location-where-ticket-was- .tickets-dropdown .selected {
+  font-size : 16px;
+  padding   : 8px 12px;
 }
 
 /*---/ TICKET FORM */
@@ -776,7 +788,7 @@ ul.nice-menu li {
 
 ul.nice-menu {
   width  : 150px;
-  margin : 30px 0 0 55px;
+  margin : 40px 0 0 55px;
 }
 
 ul.nice-menu li {
@@ -837,7 +849,7 @@ ul.nice-menu li ul li:focus a {
 
 /* right info */
 
-.not-front.page-user .l-main .l-content h1 {
+.not-front.logged-in h1 {
   margin         : 0 0 10px 0;
   color          : black;
   font-family    : 'corbelregular', calibri, arial, sans-serif;
@@ -846,49 +858,70 @@ ul.nice-menu li ul li:focus a {
   text-transform : uppercase;
 }
 
-.not-front.page-user .l-main .l-content article {
+.not-front.page-user .l-main .l-content article,
+.not-front.page-user .l-main .l-content .view-tickets,
+.not-front.logged-in.node-type-offer .l-main .l-content article.node--offer {
   border : 1px solid #C8C8C8;
 }
 
-.not-front.page-user .l-main .l-content article section {
-  padding : 11px 22px;
+.not-front.page-user .l-main .l-content article section,
+.not-front.page-user .l-main .l-content .view-tickets {
+  padding : 10px 14px 18px 14px;
 }
 
 .not-front.page-user .l-main .l-content article section h2 {
   margin : 4px 0;
 }
 
+article.comment {
+  border-top : 1px solid #C8C8C8;
+}
+
+.indented {
+  margin-left : 0;
+  background  : #E7E7E7;
+}
+
+article.node--offer h2.comments__form-title {
+  border-top  : 1px solid #C8C8C8;
+  margin-top  : 0;
+  padding-top : 10px;
+}
+
+/*---/ right info */
+
 /* tabs in user info */
 
-.not-front.page-user .l-main .l-content .tabs--primary {
-  border        : none;
-  margin-bottom : 0.5em;
-}
-
-.not-front.page-user .l-main .l-content .links--inline li {
-  float       : right;
-  margin-left : 1em;
-}
-
-.not-front.page-user .l-main .l-content .tabs--primary a {
-  padding   : 0;
-  font-size : 14px;
-}
-
-.not-front.page-user .l-main .l-content .tabs a,
-.not-front.page-user .l-main .l-content .tabs a.active,
-.not-front.page-user .l-main .l-content .tabs a:focus {
+.tabs a {
+  padding    : 0;
+  font-size  : 14px;
   background : none;
   color      : #005493;
 }
 
-.not-front.page-user .l-main .l-content .tabs a.active,
-.not-front.page-user .l-main .l-content .tabs a:focus {
+.tabs a:hover, .tabs a:focus {
+  background : none;
+  color      : #005493;
+}
+
+.tabs a.active, .tabs a:focus {
+  background  : none;
+  color       : #005493;
   font-family : 'corbelbold';
 }
 
-.not-front.page-user .l-main .l-content .tabs a:hover {
+.tabs a:hover {
   text-decoration : underline;
+}
+
+.tabs--primary {
+  border        : none;
+  margin-bottom : 0.5em;
+}
+
+.tabs--primary.links--inline li {
+  float       : right;
+  margin-left : 1em;
 }
 
 /*---/ tabs in user info */
@@ -938,14 +971,85 @@ ul.nice-menu li ul li:focus a {
 
 /*---/ table in user info */
 
-/*---/ right info */
+/* view ticket */
 
-/*---/ USER PROFILE */
+.not-front.logged-in.node-type-ticket article.node--ticket {
+  padding : 10px 14px 18px 14px;
+}
 
-/* ALL ABOUT RESPONDS */
+.not-front.logged-in.node-type-ticket article.node--ticket .field {
+  margin-bottom : 24px;
+}
 
-.view-offers-responds-,
-.not-front.logged-in.node-type-ticket .pane-entity-view {
+.not-front.logged-in.node-type-ticket article.node--ticket .field.field--label-inline .field__label,
+.not-front.logged-in.node-type-ticket article.node--ticket .field.field--label-inline .field__items {
+  float : none;
+}
+
+/*--- view ticket */
+
+/* edit profile */
+
+.not-front.logged-in.page-user #user-profile-form,
+.not-front.logged-in.page-user #user-pass {
+  padding : 10px 14px 18px 14px;
+}
+
+.not-front.logged-in.page-user #user-pass {
+  border : 1px solid #C8C8C8;
+}
+
+#user-profile-form .form-item {
+  margin-bottom : 24px;
+}
+
+#user-profile-form fieldset {
+  border  : none;
+  padding : 0;
+}
+
+#user-profile-form fieldset#edit-picture legend span {
+  font-family : 'corbelbold';
+}
+
+#user-profile-form fieldset#edit-picture .fieldset-wrapper label {
+  /*font-family    : 'corbelregular', calibri, arial, sans-serif;*/
+  display : none;
+}
+
+#user-profile-form #edit-timezone .form-item {
+  margin-bottom : 0;
+}
+
+#user-profile-form #edit-timezone a {
+  font-family : 'corbelbold';
+  color       : black;
+}
+
+#user-profile-form #edit-timezone label {
+  font-family : 'corbelregular', calibri, arial, sans-serif;
+}
+
+#user-profile-form #edit-timezone a:hover {
+  text-decoration : underline;
+}
+
+#user-profile-form #edit-actions {
+  margin-top : 60px;
+}
+
+/*---/ edit profile */
+
+/* responds */
+
+.not-front.logged-in.node-type-ticket .pane-entity-view,
+.not-front.logged-in #offer-node-form,
+.not-front.logged-in.page-comment-reply .l-main .l-content {
+  border  : 1px solid #C8C8C8;
+  padding : 10px 14px 18px 14px;
+}
+
+.view-offers-responds- {
   border : 1px solid #C8C8C8;
 }
 
@@ -991,29 +1095,12 @@ ul.nice-menu li ul li:focus a {
   text-transform : capitalize;
 }
 
-/*---/ ALL ABOUT RESPONDS */
+/*---/ responds */
 
-/* TABS */
+/*---/ USER PROFILE */
 
-.tabs a {
-  color : #000000;
-}
 
-.tabs a:hover, .tabs a:focus {
-  background : #AEAEAE;
-  color      : white;
-}
 
-.tabs a.active, .tabs a:focus {
-  background : #6EC038;
-  color      : white;
-}
-
-.tabs a.active:hover {
-  background : #599B2D;
-}
-
-/*---/ TABS */
 
 
 
