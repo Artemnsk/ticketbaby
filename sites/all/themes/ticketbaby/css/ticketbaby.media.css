@@ -70,7 +70,7 @@
     }
 
     #ticket-node-form .form-type-textarea textarea {
-      width : 500px;
+      width : 100%;
     }
 
     input.customfile-filename {
