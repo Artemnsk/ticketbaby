@@ -454,8 +454,12 @@ a#edit-cancel:hover {
   padding-left : 0;
 }
 
-.not-front.logged-in.page-node-add-ticket #ticket-node-form .field-name-field-ticket-category .form-type-select {
+.not-front.logged-in.page-node-add-ticket #ticket-node-form .field-name-field-ticket-category .form-type-select,
+#ticket-node-form .field-name-field-ticket-category .form-type-select {
   padding-left : 0;
+  margin       : 12px 0;
+  float        : right;
+  padding      : 0;
 }
 
 #ticket-node-form label {
@@ -478,13 +482,14 @@ a#edit-cancel:hover {
 }
 
 #ticket-node-form .field-name-field-ticket-category .form-type-select label {
-  float          : left;
+  display        : inline-block;
   padding        : 0 24px 0 0;
   background     : none;
   font-size      : 22px;
   text-transform : uppercase;
   color          : #005493;
   font-family    : 'corbelregular', calibri, arial, sans-serif;
+  vertical-align : middle;
 }
 
 #ticket-node-form .field-name-field-ticket-category .form-type-select label .form-required {
@@ -634,6 +639,12 @@ a#edit-cancel:hover {
 #edit-field-location-where-ticket-was- .tickets-dropdown .selected {
   font-size : 16px;
   padding   : 8px 12px;
+}
+
+.tickets-dropdown {
+  float          : none;
+  display        : inline-block;
+  vertical-align : middle;
 }
 
 /*---/ TICKET FORM */
@@ -891,6 +902,10 @@ ul.nice-menu li ul li:focus a {
 .not-front.page-user .l-main .l-content .view-tickets,
 .not-front.logged-in #ticket-node-form {
   padding : 10px 14px 18px 14px;
+}
+
+.not-front.logged-in #ticket-node-form {
+  position : relative;
 }
 
 .not-front.page-user .l-main .l-content article section h2 {
@@ -1185,11 +1200,13 @@ article.node--offer .links--inline li.comment-add a {
   margin : 40px 32px 10px 0;
 }
 
-#comment-form input[type='submit']#edit-submit {
+#comment-form input[type='submit']#edit-submit,
+#offer-node-form input[type='submit']#edit-submit {
   background : #6EC038;
 }
 
-#comment-form input[type='submit']#edit-submit:hover {
+#comment-form input[type='submit']#edit-submit:hover,
+#offer-node-form input[type='submit']#edit-submit:hover {
   background : #599B2D;
 }
 

@@ -100,7 +100,9 @@
       width : 12em;
     }
 
-    #user-profile-form input[type='text'] {
+    #user-profile-form input[type='text'],
+    #offer-node-form input[type='text'],
+    #comment-form input[type='text'] {
       width : 100%;
     }
   }
