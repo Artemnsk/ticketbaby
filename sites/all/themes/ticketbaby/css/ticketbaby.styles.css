@@ -120,7 +120,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  color : #005493;
+  color       : #005493;
+  margin-left : 20px;
+  font-size   : 28px;
 }
 
 input[type="text"],
@@ -293,6 +295,8 @@ a#edit-cancel:hover {
   position : absolute;
   top      : 30px;
   right    : 14px;
+  display  : none;
+  margin   : 10px 0 0 0;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li {
@@ -328,11 +332,6 @@ a#edit-cancel:hover {
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a:hover {
   padding-right : 0;
   font-family   : 'corbelregular', calibri, arial, sans-serif;
-}
-
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu {
-  display : block;
-  margin  : 10px 0 0 0;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
@@ -1007,6 +1006,18 @@ ul.nice-menu li ul li:focus a {
 }
 
 /*--- view ticket */
+
+/* ticket search */
+
+#views-exposed-form-tickets-search-ticket .views-exposed-widgets {
+  margin-bottom : 36px;
+}
+
+#views-exposed-form-tickets-search-ticket .views-exposed-form .views-exposed-widget .form-submit {
+  margin : 19px 0 0 0;
+}
+
+/*---/ ticket search */
 
 /* edit profile */
 
