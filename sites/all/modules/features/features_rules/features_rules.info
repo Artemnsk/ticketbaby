@@ -1,0 +1,10 @@
+name = Features Rules
+core = 7.x
+package = Features
+dependencies[] = commerce
+dependencies[] = commerce_checkout
+dependencies[] = entity
+dependencies[] = rules
+features[features_api][] = api:2
+features[rules_config][] = rules_attach_ticket_to_user_by_email_if_user_exists
+features[rules_config][] = rules_create_user_on_ticket_creation_and_attach_node_to_email

@@ -340,6 +340,27 @@ function features_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-defender-menu_messages:<nolink>',
   );
+  // Exported menu link: menu-defender-menu_search-ticket:user/search-ticket
+  $menu_links['menu-defender-menu_search-ticket:user/search-ticket'] = array(
+    'menu_name' => 'menu-defender-menu',
+    'link_path' => 'user/search-ticket',
+    'router_path' => 'user/search-ticket',
+    'link_title' => 'Search ticket',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-defender-menu_search-ticket:user/search-ticket',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => 0,
+    'customized' => 1,
+    'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
+  );
   // Exported menu link: menu-defender-menu_tickets-defended:user/tickets-defended
   $menu_links['menu-defender-menu_tickets-defended:user/tickets-defended'] = array(
     'menu_name' => 'menu-defender-menu',
@@ -729,6 +750,7 @@ function features_menus_menu_default_menu_links() {
   t('My tickets');
   t('New messages');
   t('Online Support');
+  t('Search ticket');
   t('Settings');
   t('Sign in');
   t('Sign out');

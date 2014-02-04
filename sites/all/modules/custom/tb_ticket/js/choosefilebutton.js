@@ -1,6 +1,6 @@
 (function($){
     $(document).ready(function(){
-        setInterval(function(){
+        /*setInterval(function(){*/
             // Browser supports HTML5 multiple file?
             var multipleSupport = typeof $('<input/>')[0].multiple !== 'undefined',
               isIE = /msie/i.test( navigator.userAgent );
@@ -123,6 +123,6 @@
               });
             }
             $('input[type=file]').customFile();
-        }, 1000);
+        /*}, 1000)*/;
   });
 })(jQuery);

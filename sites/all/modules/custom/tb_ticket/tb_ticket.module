@@ -18,6 +18,14 @@ function tb_ticket_canada_provinces(){
 }
 
 function tb_ticket_form_alter(&$form, &$form_state, $form_id){
+  // Exposed form in Views.
+  if($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-tickets-search-ticket'){
+    drupal_add_js(drupal_get_path('module', 'tb_ticket'). '/js/ticket-filters.js');
+  }
+
+  
+  
+  
   // Load standard drupal node form.
   if($form_id == "ticket_node_form" && !$form_state['rebuild'] && !user_access("administer content types")){
     // Add custom select library.
@@ -31,7 +39,8 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
       drupal_get_path('module', 'tb_ticket'). '/css/choosefilebutton.css',
     );
     
-    //$form['field_state'][LANGUAGE_NONE]['#type'] = 'hidden';
+    //global $user;
+    //$form['field_email'][LANGUAGE_NONE]['#default_value'] = isset($user->email) ? $user->email : '';
     
     unset($form['body']);
     $form['field_ticket_category']['#suffix'] = '<span class = "recommendation ticket-recommendation">Fill in as much information as possible because this will help us in fighting your case.</span>';
@@ -62,7 +71,6 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     $form['actions']['submit']['#value'] = 'Send';
     
     // ...and we want to be redirected.
-    //$form['actions']['submit']['#submit'][] = "tb_ticket_create_ticket_redirect";
     array_unshift($form['actions']['submit']['#submit'], "tb_ticket_create_ticket_redirect");
   }
   
@@ -71,7 +79,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     
     //dpm($form_state);
     $form['field_location_where_ticket_was_']['und']['#ajax'] = array(
-      'callback' => 'ajax_tb_ticket_replace',
+      'callback' => 'ajax_tb_ticket_ticket_replace',
       'wrapper' => 'replace-div-state',
       'method' => 'replace',
       'effect' => 'fade',
@@ -107,7 +115,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
   return $form;
 }
 
-function ajax_tb_ticket_replace($form, $form_state){
+function ajax_tb_ticket_ticket_replace($form, $form_state){
   $country = isset($form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value']) ?
           $form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value'] : 'CA';
   
@@ -115,5 +123,5 @@ function ajax_tb_ticket_replace($form, $form_state){
 }
 
 function tb_ticket_create_ticket_redirect($form, &$form_state){
-  drupal_goto("ticket-created");
+  //drupal_goto("ticket-created");
 }

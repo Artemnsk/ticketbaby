@@ -39,7 +39,11 @@
     <td>
       <?php print tb_offer_views_fields_row($fields['subject']);?>
       <?php print tb_offer_views_fields_row($fields['comment_body']);?>
-      <?php print tb_offer_views_fields_row($fields['subject_1']);?>
+      <?php if(isset($fields['subject_1'])):?>
+        <?php print tb_offer_views_fields_row($fields['subject_1']);?>
+      <?php elseif(isset($fields['nid_1'])):?>
+        <?php print tb_offer_views_fields_row($fields['nid_1']);?>
+      <?php endif;?>
     </td>
   </tr>
 </table>

@@ -168,15 +168,28 @@ function features_view_responds_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['text'] = 'Ticket info';
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
-  /* Field: Comment: Title */
+  /* Field: Reply text */
   $handler->display->display_options['fields']['subject_1']['id'] = 'subject_1';
   $handler->display->display_options['fields']['subject_1']['table'] = 'comment';
   $handler->display->display_options['fields']['subject_1']['field'] = 'subject';
   $handler->display->display_options['fields']['subject_1']['relationship'] = 'cid';
+  $handler->display->display_options['fields']['subject_1']['ui_name'] = 'Reply text';
   $handler->display->display_options['fields']['subject_1']['label'] = '';
   $handler->display->display_options['fields']['subject_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['subject_1']['alter']['text'] = 'Reply';
   $handler->display->display_options['fields']['subject_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['subject_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['subject_1']['link_to_node'] = TRUE;
+  /* Field: Reply for offer without comments */
+  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
+  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid_1']['ui_name'] = 'Reply for offer without comments';
+  $handler->display->display_options['fields']['nid_1']['label'] = '';
+  $handler->display->display_options['fields']['nid_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['nid_1']['alter']['text'] = 'This respond has no comments yet. Read it.';
+  $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid_1']['link_to_node'] = TRUE;
   $handler->display->display_options['path'] = 'user/new-messages';
 
   /* Display: All responds */
@@ -277,6 +290,18 @@ function features_view_responds_views_default_views() {
   $handler->display->display_options['fields']['subject_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['subject_1']['alter']['text'] = 'Reply';
   $handler->display->display_options['fields']['subject_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['subject_1']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['subject_1']['link_to_node'] = TRUE;
+  /* Field: Reply for offer without comments */
+  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
+  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid_1']['ui_name'] = 'Reply for offer without comments';
+  $handler->display->display_options['fields']['nid_1']['label'] = '';
+  $handler->display->display_options['fields']['nid_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['nid_1']['alter']['text'] = 'This respond has no comments yet. Read it.';
+  $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid_1']['link_to_node'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

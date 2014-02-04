@@ -26,6 +26,7 @@ features[menu_links][] = menu-defender-menu_messages:<nolink>
 features[menu_links][] = menu-defender-menu_my-account:user
 features[menu_links][] = menu-defender-menu_my-profile:profile-defender_profile
 features[menu_links][] = menu-defender-menu_new-messages:user/new-messages
+features[menu_links][] = menu-defender-menu_search-ticket:user/search-ticket
 features[menu_links][] = menu-defender-menu_tickets-defended:user/tickets-defended
 features[menu_links][] = menu-defender-menu_tickets-in-progress:user/tickets-in-progress
 features[menu_links][] = menu-defender-menu_tickets-responded-to:user/tickets-responded-to
