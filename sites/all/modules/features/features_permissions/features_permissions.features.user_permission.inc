@@ -91,6 +91,7 @@ function features_permissions_user_default_permissions() {
     'name' => 'create ticket content',
     'roles' => array(
       'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
       'customer' => 'customer',
     ),
     'module' => 'node',

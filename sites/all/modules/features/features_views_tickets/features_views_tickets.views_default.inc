@@ -250,11 +250,6 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['id'] = 'field_location_where_ticket_was__value';
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['table'] = 'field_data_field_location_where_ticket_was_';
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['field'] = 'field_location_where_ticket_was__value';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['value'] = array(
-    'all' => 'all',
-    'CA' => 'CA',
-    'US' => 'US',
-  );
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['group'] = 1;
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['expose']['operator_id'] = 'field_location_where_ticket_was__value_op';
