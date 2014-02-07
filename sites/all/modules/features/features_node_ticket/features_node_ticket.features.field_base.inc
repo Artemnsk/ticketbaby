@@ -248,33 +248,6 @@ function features_node_ticket_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_location_where_ticket_was_'
-  $field_bases['field_location_where_ticket_was_'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_location_where_ticket_was_',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'CA' => 'Canada',
-        'US' => 'USA',
-      ),
-      'allowed_values_function' => '',
-      'profile2_private' => FALSE,
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_other_information'
   $field_bases['field_other_information'] = array(
     'active' => 1,

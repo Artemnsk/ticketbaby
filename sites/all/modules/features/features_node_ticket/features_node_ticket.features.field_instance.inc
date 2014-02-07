@@ -49,7 +49,7 @@ function features_node_ticket_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 18,
+      'weight' => 16,
     ),
   );
 
@@ -144,7 +144,7 @@ function features_node_ticket_field_default_field_instances() {
         'display_label' => 0,
       ),
       'type' => 'options_onoff',
-      'weight' => 19,
+      'weight' => 17,
     ),
   );
 
@@ -187,7 +187,7 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 20,
+      'weight' => 18,
     ),
   );
 
@@ -225,7 +225,7 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 
@@ -318,48 +318,7 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
-    ),
-  );
-
-  // Exported field_instance: 'node-ticket-field_location_where_ticket_was_'
-  $field_instances['node-ticket-field_location_where_ticket_was_'] = array(
-    'bundle' => 'ticket',
-    'default_value' => array(
-      0 => array(
-        'value' => 'CA',
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 18,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_location_where_ticket_was_',
-    'label' => 'Location where ticket was given',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 12,
     ),
   );
 
@@ -399,7 +358,7 @@ function features_node_ticket_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 10,
     ),
   );
 
@@ -439,14 +398,18 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 5,
     ),
   );
 
   // Exported field_instance: 'node-ticket-field_state'
   $field_instances['node-ticket-field_state'] = array(
     'bundle' => 'ticket',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'AB',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -466,7 +429,7 @@ function features_node_ticket_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_state',
-    'label' => 'State',
+    'label' => 'State/Province',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -476,7 +439,7 @@ function features_node_ticket_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 4,
     ),
   );
 
@@ -515,7 +478,7 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -597,7 +560,7 @@ function features_node_ticket_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 16,
+      'weight' => 11,
     ),
   );
 
@@ -637,7 +600,7 @@ function features_node_ticket_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 8,
     ),
   );
 
@@ -677,7 +640,7 @@ function features_node_ticket_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 9,
     ),
   );
 
@@ -717,7 +680,7 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 7,
     ),
   );
 
@@ -797,7 +760,7 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 6,
     ),
   );
 
@@ -846,10 +809,9 @@ What fields should you use for certain category?',
   t('Email');
   t('Fine due date');
   t('Full name');
-  t('Location where ticket was given');
   t('Other information');
   t('Speed Limit');
-  t('State');
+  t('State/Province');
   t('Telephone');
   t('This field is for smart use only!
 What fields should you use for certain category?');

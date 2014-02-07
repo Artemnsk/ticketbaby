@@ -1,33 +1,15 @@
 <?php
-function tb_ticket_canada_provinces(){
-  return array(
-    'AB' => t('Alberta'),
-    'BC' => t('British Columbia'),
-    'MB' => t('Manitoba'),
-    'NB' => t('New Brunswick'),
-    'NL' => t('Newfoundland and Labrador'),
-    'NT' => t('Northwest Territories'),
-    'NS' => t('Nova Scotia'),
-    'NU' => t('Nunavut'),
-    'ON' => t('Ontario'),
-    'PE' => t('Prince Edward Island'),
-    'QC' => t('Quebec'),
-    'SK' => t('Saskatchewan'),
-    'YT' => t('Yukon Territory'),
-  );
-}
 
 function tb_ticket_form_alter(&$form, &$form_state, $form_id){
   // Exposed form in Views.
   if($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-tickets-search-ticket'){
     drupal_add_js(drupal_get_path('module', 'tb_ticket'). '/js/ticket-filters.js');
   }
-
-  
   
   
   // Load standard drupal node form.
-  if($form_id == "ticket_node_form" && !$form_state['rebuild'] && !user_access("administer content types")){
+  if($form_id == "ticket_node_form" && /*!$form_state['rebuild'] &&*/ !user_access("administer content types")){
+    
     // Add custom select library.
     $form['#attached']['js'] = array(
       drupal_get_path('theme', 'ticketbaby'). '/js/jquery.easydropdown.min.js',
@@ -72,56 +54,47 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     
     // ...and we want to be redirected.
     array_unshift($form['actions']['submit']['#submit'], "tb_ticket_create_ticket_redirect");
-  }
-  
-  // With #rebuild.
-  if($form_id == "ticket_node_form" && !user_access("administer content types")){
     
-    //dpm($form_state);
-    $form['field_location_where_ticket_was_']['und']['#ajax'] = array(
-      'callback' => 'ajax_tb_ticket_ticket_replace',
-      'wrapper' => 'replace-div-state',
-      'method' => 'replace',
-      'effect' => 'fade',
-    );
-    $form['field_state']['#prefix'] = "<div id='replace-div-state'>";
-    $form['field_state']['#suffix'] = "</div>";
-
-    $country = isset($form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value']) ?
-        $form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value'] : 'CA';
-
-    if($country == "US"){
-      if(isset($form_state['values']['field_state'][LANGUAGE_NONE][0]['value'])){
-        foreach($form_state['values']['field_state'][LANGUAGE_NONE] as $key => $val){
-          if(in_array($val['value'], tb_ticket_canada_provinces())){
-            unset($form_state['values']['field_state'][LANGUAGE_NONE][$key]);
-          }  
-        }
-      }
-      $form['field_state'][LANGUAGE_NONE]['#options'] = array_diff($form['field_state'][LANGUAGE_NONE]['#options'], tb_ticket_canada_provinces());
-    }elseif($country == "CA"){
-      if(isset($form_state['values']['field_state'][LANGUAGE_NONE][0]['value'])){
-        foreach($form_state['values']['field_state'][LANGUAGE_NONE] as $key => $val){
-          if(!in_array($val['value'], tb_ticket_canada_provinces())){
-            unset($form_state['values']['field_state'][LANGUAGE_NONE][$key]);
-          }
-        }
-      }
-      $form['field_state'][LANGUAGE_NONE]['#options'] = tb_ticket_canada_provinces();
+    // Geolocation.
+    include 'tb_ticket_geolocation.inc';
+    $location = tb_ticket_geolocation_parse_info();
+    $country = $location['country'];
+    $state = $location['state'];
+    switch($country){
+      case "CA":
+        $options = array_merge(tb_ticket_geolocation_canada_provinces(), tb_ticket_geolocation_usa_states());
+        break;
+      case "US":
+        $options = array_merge(tb_ticket_geolocation_usa_states(), tb_ticket_geolocation_canada_provinces());
+        break;
     }
-
-  }
+    $form['field_state'][LANGUAGE_NONE]['#options'] = $options;
+    // Make detected state first in list.
+    unset($form['field_state'][LANGUAGE_NONE]['#options'][$state]);
+    $form['field_state'][LANGUAGE_NONE]['#options'] = array($state => $options[$state]) + $form['field_state'][LANGUAGE_NONE]['#options'];
+    $form['field_state'][LANGUAGE_NONE]['#default_value'] = array($state);
+    
+    // Add registration.
+    /*$register_form = drupal_get_form("user_register_form");
+    $form['registration'] = array(
+      '#title' => 'Registration form',
+      LANGUAGE_NONE => $register_form,
+      '#type' => 'container',
+      '#weight' => 50,
+      '#tree' => TRUE,
+      '#language' => LANGUAGE_NONE,
+      '#access' => TRUE,
+    );
+    array_push($form['actions']['submit']['#submit'], $form['registration'][LANGUAGE_NONE]['#submit'][0]);
+    unset($form['registration'][LANGUAGE_NONE]['#submit']);
+    unset($form['registration'][LANGUAGE_NONE]['actions']);
+    dpm($form);*/
+    
+  } 
   
   return $form;
 }
 
-function ajax_tb_ticket_ticket_replace($form, $form_state){
-  $country = isset($form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value']) ?
-          $form_state['values']['field_location_where_ticket_was_'][LANGUAGE_NONE][0]['value'] : 'CA';
-  
-  return $form['field_state'];
-}
-
 function tb_ticket_create_ticket_redirect($form, &$form_state){
-  //drupal_goto("ticket-created");
+  drupal_goto("ticket-created");
 }

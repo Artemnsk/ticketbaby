@@ -23,27 +23,41 @@
  *
  * @ingroup views_templates
  */
+
+  $class_new = '';
+  if(isset($fields['new_comments']) || !empty($fields['timestamp']->content)){
+    $class_new = 'new-or-updated';
+  }
+  
 ?>
 <?php //dpm($fields);?>
-<table class="respond-item-table">
+<a href="<?php print drupal_get_path_alias('/node/'. $fields['nid_1']->content); ?>">
+<table class="respond-item-table <?php print $class_new;?>">
   <tr>
+    
     <td>
-      <?php print tb_offer_views_fields_row($fields['last_comment_name']);?>
-      <?php print tb_offer_views_fields_row($fields['last_updated']);?>
-      <?php print tb_offer_views_fields_row($fields['nid']);?>
+      <?php print tb_offer_views_fields_row($fields['name']);?>
+      <?php if(isset($fields['comment_count'])):?>
+        <?php print tb_offer_views_fields_row($fields['comment_count']);?>
+      <?php endif;?>
+      <?php //print tb_offer_views_fields_row($fields['nid']);?>
     </td>
     <td>
       <?php print tb_offer_views_fields_row($fields['timestamp']);?>
-      <?php print tb_offer_views_fields_row($fields['new_comments']);?>
     </td>
     <td>
-      <?php print tb_offer_views_fields_row($fields['subject']);?>
-      <?php print tb_offer_views_fields_row($fields['comment_body']);?>
-      <?php if(isset($fields['subject_1'])):?>
-        <?php print tb_offer_views_fields_row($fields['subject_1']);?>
-      <?php elseif(isset($fields['nid_1'])):?>
-        <?php print tb_offer_views_fields_row($fields['nid_1']);?>
+      <?php if(isset($fields['comment_body'])):?>
+        <?php print tb_offer_views_fields_row($fields['subject']);?>
+        <?php print tb_offer_views_fields_row($fields['comment_body']);?>
+      <?php else:?>
+        <?php print tb_offer_views_fields_row($fields['field_response']);?>
       <?php endif;?>
+      
+    </td>
+    <td>
+      
+      <?php print tb_offer_views_fields_row($fields['last_updated']);?>
     </td>
   </tr>
 </table>
+</a>

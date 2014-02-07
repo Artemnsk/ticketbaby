@@ -246,10 +246,12 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_defender_target_id']['field'] = 'field_defender_target_id';
   $handler->display->display_options['filters']['field_defender_target_id']['operator'] = 'empty';
   $handler->display->display_options['filters']['field_defender_target_id']['group'] = 1;
-  /* Filter criterion: Content: Location where ticket was given (field_location_where_ticket_was_) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['id'] = 'field_location_where_ticket_was__value';
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['table'] = 'field_data_field_location_where_ticket_was_';
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['field'] = 'field_location_where_ticket_was__value';
+  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['operator'] = 'or';
+  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['value'] = array();
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['group'] = 1;
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_location_where_ticket_was__value']['expose']['operator_id'] = 'field_location_where_ticket_was__value_op';

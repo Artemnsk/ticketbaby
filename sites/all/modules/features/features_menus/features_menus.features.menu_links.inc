@@ -51,38 +51,17 @@ function features_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-customer-menu_tickets:<nolink>',
   );
-  // Exported menu link: menu-customer-menu_all-messages:user/all-responds
-  $menu_links['menu-customer-menu_all-messages:user/all-responds'] = array(
+  // Exported menu link: menu-customer-menu_messages:user/messages
+  $menu_links['menu-customer-menu_messages:user/messages'] = array(
     'menu_name' => 'menu-customer-menu',
-    'link_path' => 'user/all-responds',
-    'router_path' => 'user/all-responds',
-    'link_title' => 'All messages',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-customer-menu_all-messages:user/all-responds',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-    'parent_identifier' => 'menu-customer-menu_messages:<nolink>',
-  );
-  // Exported menu link: menu-customer-menu_messages:<nolink>
-  $menu_links['menu-customer-menu_messages:<nolink>'] = array(
-    'menu_name' => 'menu-customer-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
+    'link_path' => 'user/messages',
+    'router_path' => 'user/messages',
     'link_title' => 'Messages',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-customer-menu_messages:<nolink>',
+      'identifier' => 'menu-customer-menu_messages:user/messages',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -155,27 +134,6 @@ function features_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-customer-menu_tickets:<nolink>',
   );
-  // Exported menu link: menu-customer-menu_new-messages:user/new-messages
-  $menu_links['menu-customer-menu_new-messages:user/new-messages'] = array(
-    'menu_name' => 'menu-customer-menu',
-    'link_path' => 'user/new-messages',
-    'router_path' => 'user/new-messages',
-    'link_title' => 'New messages',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-customer-menu_new-messages:user/new-messages',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-    'parent_identifier' => 'menu-customer-menu_messages:<nolink>',
-  );
   // Exported menu link: menu-customer-menu_tickets:<nolink>
   $menu_links['menu-customer-menu_tickets:<nolink>'] = array(
     'menu_name' => 'menu-customer-menu',
@@ -216,27 +174,6 @@ function features_menus_menu_default_menu_links() {
     'weight' => -47,
     'customized' => 1,
   );
-  // Exported menu link: menu-defender-menu_all-messages:user/all-responds
-  $menu_links['menu-defender-menu_all-messages:user/all-responds'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => 'user/all-responds',
-    'router_path' => 'user/all-responds',
-    'link_title' => 'All messages',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_all-messages:user/all-responds',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-    'parent_identifier' => 'menu-defender-menu_messages:<nolink>',
-  );
   // Exported menu link: menu-defender-menu_calendar:<nolink>
   $menu_links['menu-defender-menu_calendar:<nolink>'] = array(
     'menu_name' => 'menu-defender-menu',
@@ -257,17 +194,17 @@ function features_menus_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: menu-defender-menu_messages:<nolink>
-  $menu_links['menu-defender-menu_messages:<nolink>'] = array(
+  // Exported menu link: menu-defender-menu_messages:user/messages
+  $menu_links['menu-defender-menu_messages:user/messages'] = array(
     'menu_name' => 'menu-defender-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
+    'link_path' => 'user/messages',
+    'router_path' => 'user/messages',
     'link_title' => 'Messages',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-defender-menu_messages:<nolink>',
+      'identifier' => 'menu-defender-menu_messages:user/messages',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -318,27 +255,6 @@ function features_menus_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
     'parent_identifier' => 'menu-defender-menu_account-details:<nolink>',
-  );
-  // Exported menu link: menu-defender-menu_new-messages:user/new-messages
-  $menu_links['menu-defender-menu_new-messages:user/new-messages'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => 'user/new-messages',
-    'router_path' => 'user/new-messages',
-    'link_title' => 'New messages',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_new-messages:user/new-messages',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-    'parent_identifier' => 'menu-defender-menu_messages:<nolink>',
   );
   // Exported menu link: menu-defender-menu_search-ticket:user/search-ticket
   $menu_links['menu-defender-menu_search-ticket:user/search-ticket'] = array(
@@ -524,26 +440,6 @@ function features_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -48,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-footer-menu-are-you-a-ticke_apply:<front>
-  $menu_links['menu-footer-menu-are-you-a-ticke_apply:<front>'] = array(
-    'menu_name' => 'menu-footer-menu-are-you-a-ticke',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Apply',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-footer-menu-are-you-a-ticke_apply:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
     'customized' => 1,
   );
   // Exported menu link: menu-footer-menu-are-you-a-ticke_sign-in:user
@@ -737,8 +633,6 @@ function features_menus_menu_default_menu_links() {
   t('About Us');
   t('Account details');
   t('Add new ticket');
-  t('All messages');
-  t('Apply');
   t('Calendar');
   t('Company');
   t('Contact Us');
@@ -748,7 +642,6 @@ function features_menus_menu_default_menu_links() {
   t('My account');
   t('My profile');
   t('My tickets');
-  t('New messages');
   t('Online Support');
   t('Search ticket');
   t('Settings');
