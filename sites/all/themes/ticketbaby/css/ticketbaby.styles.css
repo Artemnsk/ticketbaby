@@ -153,6 +153,14 @@ select {
   padding : 2px 18px 2px 3px;
 }
 
+input[type="text"],
+input[type="password"],
+input[type="submit"],
+textarea,
+select {
+  outline : none;
+}
+
 .l-main h2 {
   font-size : 20px;
   color     : #005493;
@@ -445,10 +453,6 @@ a#edit-cancel:hover {
 /*---/ HOMEPAGE */
 
 /* TICKET FORM */
-
-/*#ticket-node-form {
-  padding-left : 94px;
-}   it's if the ticket form is for non-logged user   */
 
 #ticket-node-form {
   padding-left : 0;
@@ -830,9 +834,16 @@ ul.nice-menu li {
   background : none;
 }
 
+ul.nice-menu li a {
+  margin  : 0;
+  padding : 0;
+  color   : #005493;
+}
+
 ul.nice-menu li:hover,
 ul.nice-menu li:active,
-ul.nice-menu li:focus {
+ul.nice-menu li:focus,
+ul.nice-menu li a:hover {
   color : #000000;
 }
 
@@ -864,6 +875,10 @@ ul.nice-menu li ul li {
   background : white;
   color      : #005493;
   text-align : center;
+}
+
+ul.nice-menu li ul li a {
+  padding : 0.3em 5px;
 }
 
 ul.nice-menu li ul li:hover,
@@ -1002,10 +1017,6 @@ ul.nice-menu li ul li:focus a {
 
 /* view ticket */
 
-.not-front.logged-in.node-type-ticket article.node--ticket {
-  padding : 10px 14px 18px 14px;
-}
-
 .not-front.logged-in.node-type-ticket article.node--ticket .field,
 .not-front.logged-in.node-type-offer article.node--offer .field {
   margin-bottom : 24px;
@@ -1016,8 +1027,10 @@ ul.nice-menu li ul li:focus a {
   float : none;
 }
 
-.not-front.logged-in.node-type-offer article.node--offer .node__content {
-  padding : 10px 14px 18px 14px;
+.not-front.logged-in.node-type-offer article.node--offer .node__content,
+.not-front.logged-in.node-type-ticket .pane-entity-view {
+  padding    : 10px 14px 18px 14px;
+  background : #F2F2F2;
 }
 
 /*--- view ticket */
@@ -1026,6 +1039,20 @@ ul.nice-menu li ul li:focus a {
 
 #views-exposed-form-tickets-search-ticket .views-exposed-widgets {
   margin-bottom : 36px;
+}
+
+#views-exposed-form-tickets-search-ticket .views-exposed-form .views-exposed-widget {
+  float   : none;
+  padding : 0 0 15px 0;
+}
+
+#views-exposed-form-tickets-search-ticket .views-exposed-form .views-exposed-widget label {
+  line-height : 28px;
+}
+
+#views-exposed-form-tickets-search-ticket select {
+  width   : 420px;
+  padding : 0;
 }
 
 #views-exposed-form-tickets-search-ticket .views-exposed-form .views-exposed-widget .form-submit {
@@ -1113,24 +1140,40 @@ ul.nice-menu li ul li:focus a {
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table tr td {
   border         : none;
-  padding        : 10px 14px 18px 14px;
-  vertical-align : top;
+  padding        : 14px;
+  vertical-align : middle;
+  color          : black;
 }
 
-.not-front.page-user .l-main .l-content .view-offers-responds- table tr td:first-child {
-  width : 30%;
+.not-front.page-user .l-main .l-content .view-offers-responds- table tr td.td_username {
+  width     : 150px;
+  font-size : 14px;
 }
 
-.not-front.page-user .l-main .l-content .view-offers-responds- table tr td {
-  width : 20%;
+.not-front.page-user .l-main .l-content .view-offers-responds- table tr td.td_username span {
+  color : #005493;
 }
 
-.not-front.page-user .l-main .l-content .view-offers-responds- table tr td:last-child {
-  width : 50%;
+.not-front.page-user .l-main .l-content .view-offers-responds- table tr td.td_new {
+  width : 60px;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- table tr td.td_comment_name {
+  width : 230px;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- table tr td.td_comment_date {
+  font-size  : 14px;
+  color      : #6AA03A;
+  text-align : right;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- .views-row {
   border-bottom : 1px solid #C8C8C8;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- .views-row:hover {
+  background : #EEFCE0;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- .views-row:last-child {
@@ -1154,10 +1197,6 @@ ul.nice-menu li ul li:focus a {
   font-size : 13px;
 }
 
-.not-front.page-user .l-main .l-content .view-offers-responds- table tr td:first-child {
-  font-size : 14px;
-}
-
 .not-front.page-user .l-main .l-content .view-offers-responds- table tr td .marker {
   background     : none;
   color          : #6AA03A;
@@ -1173,7 +1212,6 @@ article.comment {
 
 .indented {
   margin-left : 0;
-  background  : #E7E7E7;
 }
 
 article.node--offer h2.comments__title {
@@ -1226,6 +1264,16 @@ article.node--offer header h2 a:hover {
 
 article.comment-preview {
   margin-bottom : 20px;
+}
+
+#comment-form #edit-comment-body-und-0-format {
+  display : none;
+}
+
+#comment-form a.ckeditor_links {
+  text-transform : lowercase;
+  font-size      : 14px;
+  line-height    : 28px;
 }
 
 /* one comment */

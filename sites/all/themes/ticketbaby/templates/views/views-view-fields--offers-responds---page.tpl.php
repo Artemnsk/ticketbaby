@@ -35,17 +35,19 @@
 <table class="respond-item-table <?php print $class_new;?>">
   <tr>
     
-    <td>
+    <td class="td_username">
       <?php print tb_offer_views_fields_row($fields['name']);?>
+      <span>
       <?php if(isset($fields['comment_count'])):?>
         <?php print tb_offer_views_fields_row($fields['comment_count']);?>
       <?php endif;?>
+      </span>
       <?php //print tb_offer_views_fields_row($fields['nid']);?>
     </td>
-    <td>
+    <td class="td_new">
       <?php print tb_offer_views_fields_row($fields['timestamp']);?>
     </td>
-    <td>
+    <td class="td_comment_name">
       <?php if(isset($fields['comment_body'])):?>
         <?php print tb_offer_views_fields_row($fields['subject']);?>
         <?php print tb_offer_views_fields_row($fields['comment_body']);?>
@@ -54,8 +56,7 @@
       <?php endif;?>
       
     </td>
-    <td>
-      
+    <td class="td_comment_date">
       <?php print tb_offer_views_fields_row($fields['last_updated']);?>
     </td>
   </tr>
