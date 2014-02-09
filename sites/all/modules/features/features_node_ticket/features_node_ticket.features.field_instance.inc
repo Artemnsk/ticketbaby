@@ -225,7 +225,7 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -478,7 +478,7 @@ function features_node_ticket_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 13,
     ),
   );
 

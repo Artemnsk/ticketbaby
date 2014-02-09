@@ -21,9 +21,6 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
       drupal_get_path('module', 'tb_ticket'). '/css/choosefilebutton.css',
     );
     
-    //global $user;
-    //$form['field_email'][LANGUAGE_NONE]['#default_value'] = isset($user->email) ? $user->email : '';
-    
     unset($form['body']);
     $form['field_ticket_category']['#suffix'] = '<span class = "recommendation ticket-recommendation">Fill in as much information as possible because this will help us in fighting your case.</span>';
     
@@ -53,7 +50,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     $form['actions']['submit']['#value'] = 'Send';
     
     // ...and we want to be redirected.
-    array_unshift($form['actions']['submit']['#submit'], "tb_ticket_create_ticket_redirect");
+    array_push($form['actions']['submit']['#submit'], "tb_ticket_create_ticket_redirect");
     
     // Geolocation.
     include 'tb_ticket_geolocation.inc';
@@ -75,24 +72,92 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     $form['field_state'][LANGUAGE_NONE]['#default_value'] = array($state);
     
     // Add registration.
-    /*$register_form = drupal_get_form("user_register_form");
-    $form['registration'] = array(
-      '#title' => 'Registration form',
-      LANGUAGE_NONE => $register_form,
-      '#type' => 'container',
-      '#weight' => 50,
-      '#tree' => TRUE,
-      '#language' => LANGUAGE_NONE,
-      '#access' => TRUE,
-    );
-    array_push($form['actions']['submit']['#submit'], $form['registration'][LANGUAGE_NONE]['#submit'][0]);
-    unset($form['registration'][LANGUAGE_NONE]['#submit']);
-    unset($form['registration'][LANGUAGE_NONE]['actions']);
-    dpm($form);*/
-    
+    array_unshift($form['#validate'], 'tb_ticket_validate_user');
+    array_unshift($form['actions']['submit']['#submit'], 'tb_ticket_submit_user');
+    if(!user_is_logged_in()){
+      $form['registration'] = array(
+        '#type' => 'markup',
+        '#weight' => 30,
+        '#markup' => '<h2>Register your account</h2>',
+      );
+      $form['pass'] = array(
+        '#weight' => 33,
+        '#type' => 'password',
+        '#title' => 'Password',
+        '#required' => TRUE,
+      );
+      $form['field_full_name']['#weight'] = 31;
+      $form['field_email']['#weight'] = 32;
+    }else{
+      $form['field_full_name']['#access'] = FALSE;
+      $form['field_email']['#access'] = FALSE;
+    }
   } 
   
   return $form;
+}
+
+function tb_ticket_submit_user($form, &$form_state){
+  if(!user_is_logged_in()){
+    $username = $form_state['values']['field_email'][LANGUAGE_NONE][0]['email'];
+    $pass = $form_state['values']['pass'];
+    $email = $form_state['values']['field_email'][LANGUAGE_NONE][0]['email'];
+    $new_user = array(
+      'name' => $username,
+      'pass' => $pass,
+      'mail' => $email,
+      'status' => 1,
+      'init' => $email,
+      'field_fullname' => array(
+        LANGUAGE_NONE => array(
+          '0' => array(
+            'value' => $form_state['values']['field_full_name'][LANGUAGE_NONE][0]['value'],
+          ),
+        ),
+      ),
+      'roles' => array(
+        DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+        5 => 'customer',
+      ),
+    );
+    user_save('', $new_user);
+    
+    // Log in this user.
+    $uid = user_authenticate($username, $pass);
+    global $user;
+    $user = user_load($uid);
+    $login_array = array ('name' => $username);
+    user_login_finalize($login_array);
+  }
+}
+
+function tb_ticket_validate_user($form, &$form_state){
+  if(!user_is_logged_in()){
+    $email = isset($form_state['values']['field_email'][LANGUAGE_NONE][0]['email']) ? $form_state['values']['field_email'][LANGUAGE_NONE][0]['email'] : '';
+    $password = isset($form_state['values']['pass']) ? $form_state['values']['pass'] : '';
+    $fullname = isset($form_state['values']['field_full_name'][LANGUAGE_NONE][0]['value']) ? $form_state['values']['field_full_name'][LANGUAGE_NONE][0]['value'] : '';
+    if(empty($email)){
+      form_set_error('field_email', 'Please enter email.');
+    }
+    /*if(empty($password)){
+      form_set_error('pass', 'Please enter password.');
+    }*/
+    if(empty($fullname)){
+      form_set_error('field_full_name', 'Please enter your fullname.');
+    }
+  }else{
+    global $user;
+    $form_state['values']['field_email'][LANGUAGE_NONE][0]['email'] = $user->mail;
+  }
+}
+
+function tb_ticket_entity_presave($entity, $type){
+
+  if($type == 'comment'){
+    $node = node_load($entity->nid);
+    rules_invoke_event('node_commented', $node, $entity);
+    rules_invoke_event('node_commented--'. $node->type, $node, $entity);
+  }
 }
 
 function tb_ticket_create_ticket_redirect($form, &$form_state){
