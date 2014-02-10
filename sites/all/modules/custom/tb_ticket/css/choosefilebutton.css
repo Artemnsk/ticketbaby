@@ -54,7 +54,7 @@ input.customfile-filename {
   padding     : 5px 40px;
   border      : none;
   color       : white;
-  box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35);
+  /*  box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35); */
   cursor      : pointer;
 }
 

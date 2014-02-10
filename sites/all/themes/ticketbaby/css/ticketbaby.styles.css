@@ -177,7 +177,7 @@ input[type="submit"] {
   font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   font-size   : 16px;
   color       : white;
-  box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35);
+  /*  box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35); */
   cursor      : pointer;
 }
 
@@ -187,7 +187,7 @@ input[type="submit"]:hover {
 
 select {
   border  : 1px solid #C8C8C8;
-  padding : 2px 18px 2px 3px;
+  padding : 0;
 }
 
 input[type="text"],
@@ -206,10 +206,16 @@ select {
 .form-item label, .form-actions label {
   font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   font-weight : normal;
+  color       : #005493;
 }
 
 .field__label {
-  font-weight: normal;
+  font-weight : normal;
+}
+
+.views-exposed-form label {
+  font-weight : normal;
+  color       : #005493;
 }
 
 .resizable-textarea .grippie {
@@ -261,6 +267,14 @@ a#edit-cancel:hover {
   padding : 10px 14px 18px 10px;
 }
 
+h3.view-filters-expanded {
+  font-size : 16px;
+}
+
+h3.view-filters-expanded:hover {
+  text-decoration : underline;
+}
+
 /*---/ COMMON ELEMENTS */
 
 /* HEADER */
@@ -292,10 +306,14 @@ a#edit-cancel:hover {
   float : left;
 }
 
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li a:hover,
 .l-header #block-menu-menu-header-menu-sign-in span.nolink {
   font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   font-weight : normal;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li a:hover {
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight : bold;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in span.nolink {
@@ -320,7 +338,7 @@ a#edit-cancel:hover {
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first:hover {
   font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
-  font-weight : normal;
+  font-weight : bold;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.last {
@@ -359,10 +377,12 @@ a#edit-cancel:hover {
   border      : 1px solid #C8C8C8;
   font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   text-align  : center;
+  font-weight : normal;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li:hover {
-  background : #AEAEAE;
+  background  : #AEAEAE;
+  font-weight : normal;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first:hover a,
@@ -383,6 +403,7 @@ a#edit-cancel:hover {
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a:hover {
   padding-right : 0;
   font-family   : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight   : normal;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
@@ -516,7 +537,7 @@ a#edit-cancel:hover {
   padding-left  : 10px;
   padding-right : 12px;
   margin        : 3px 0 5px 0;
-  background    : url(../images/list_style_black_dot.png) left 6px no-repeat;
+  background    : url(../images/list_style_black_dot.png) left 8px no-repeat;
 }
 
 #ticket-node-form .date-padding {
@@ -738,6 +759,10 @@ a#edit-cancel:hover {
   float : left;
 }
 
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu li.first {
+  line-height : 20px;
+}
+
 .l-footer #block-menu-menu-footer-menu-about-us ul li,
 .l-footer #block-menu-menu-footer-menu-support ul li {
   text-align : center;
@@ -795,7 +820,7 @@ a#edit-cancel:hover {
   width      : 2px;
   height     : 18px;
   font-size  : 0;
-  margin-top : -1px;
+  margin-top : 2px;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.first span.nolink {
@@ -819,7 +844,7 @@ a#edit-cancel:hover {
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li a:hover {
   font-family : 'sofia_pro_lightregular';
-  font-weight : normal;
+  font-weight : bold;
 }
 
 /*---/ FOOTER */
@@ -860,6 +885,10 @@ a#edit-cancel:hover {
 ul.nice-menu-right li.menuparent, ul.nice-menu-right li li.menuparent,
 ul.nice-menu-right li.menuparent:hover, ul.nice-menu-right li li.menuparent:hover {
   background : none;
+}
+
+ul.nice-menu-right li {
+  width : inherit;
 }
 
 ul.nice-menu,
@@ -1027,8 +1056,12 @@ ul.nice-menu li ul li:focus a {
   background  : none;
   font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   font-weight : normal;
-  color       : #005493;
   border      : 1px solid #C8C8C8;
+  color       : #6AA03A;
+}
+
+.not-front.page-user .l-main .l-content table th a {
+  color : #6AA03A;
 }
 
 .not-front.page-user .l-main .l-content table th,
@@ -1065,7 +1098,8 @@ ul.nice-menu li ul li:focus a {
 /* view ticket */
 
 .not-front.logged-in.node-type-ticket article.node--ticket .field,
-.not-front.logged-in.node-type-offer article.node--offer .field {
+.not-front.logged-in.node-type-offer article.node--offer .field,
+.not-front.logged-in.node-type-offer article.node--ticket .field {
   margin-bottom : 24px;
 }
 
@@ -1074,8 +1108,51 @@ ul.nice-menu li ul li:focus a {
   float : none;
 }
 
-.not-front.logged-in.node-type-offer article.node--offer .node__content {
+.not-front.logged-in.node-type-ticket article.node--ticket .field__label {
+  color : #005493;
+}
+
+.not-front.logged-in.node-type-offer article.node--offer .node__content,
+.not-front.logged-in.node-type-offer article.node--ticket .node__content {
   padding : 10px 14px 18px 14px;
+}
+
+.not-front.logged-in.node-type-offer article.node--ticket .node__content .field--label-inline .field__label,
+.not-front.logged-in.node-type-offer .field--label-inline .field__label,
+.not-front.logged-in.node-type-offer article.node--ticket .field__label,
+.not-front.logged-in.node-type-offer article.node--offer .field__label {
+  float : none;
+  color : #005493;
+}
+
+.not-front.logged-in.node-type-offer .expanded-item h2 {
+  border-top   : 1px solid #C8C8C8;
+  border-right : 1px solid #C8C8C8;
+  border-left  : 1px solid #C8C8C8;
+  margin       : 0;
+  padding      : 8px 0;
+  background   : #E7E7E7;
+  font-size    : 18px;
+  text-align   : center;
+  color        : black;
+}
+
+.not-front.logged-in.node-type-offer article.node--ticket {
+  border              : 1px solid #C8C8C8;
+  border-bottom-width : 0;
+}
+
+.not-front.logged-in.node-type-offer article.node--ticket,
+.not-front.logged-in.node-type-offer article.node--offer {
+  background : #F8F8F8;
+}
+
+.not-front.logged-in.node-type-offer article header {
+  display : none;
+}
+
+article.comment {
+  background : white;
 }
 
 /*--- view ticket */
@@ -1170,7 +1247,8 @@ ul.nice-menu li ul li:focus a {
 }
 
 .not-front.logged-in.node-type-offer .l-main .l-content form.comment-form {
-  padding : 10px 14px 18px 14px;
+  padding    : 10px 14px 18px 14px;
+  background : white;
 }
 
 .not-front.logged-in.page-comment-reply .l-main .l-content article.comment {
