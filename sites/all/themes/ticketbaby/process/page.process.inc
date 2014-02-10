@@ -23,7 +23,7 @@ function ticketbaby_process_page(&$variables) {
   
   // Offer node page title should be constant.
   if(isset($variables['node']->type) && $variables['node']->type == 'offer'){
-    $variables['title'] = 'Respond';
+    $variables['title'] = 'Messages';
   }
   
   // We don't use breadcrumb.

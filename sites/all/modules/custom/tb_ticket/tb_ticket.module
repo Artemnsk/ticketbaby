@@ -1,12 +1,21 @@
 <?php
 
+function tb_ticket_views_pre_build(&$view){
+  if($view->current_display == 'search_ticket'){
+    global $user;
+    $profile = profile2_load_by_user($user, 'defender_profile');
+    if(!empty($profile)){
+      $view->display['search_ticket']->handler->handlers['filter']['field_state_value']->value = $profile->field_working_state[LANGUAGE_NONE][0]['value'];
+    }
+  }
+}
+
 function tb_ticket_form_alter(&$form, &$form_state, $form_id){
   // Exposed form in Views.
   if($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-tickets-search-ticket'){
     drupal_add_js(drupal_get_path('module', 'tb_ticket'). '/js/ticket-filters.js');
   }
-  
-  
+
   // Load standard drupal node form.
   if($form_id == "ticket_node_form" && /*!$form_state['rebuild'] &&*/ !user_access("administer content types")){
     
@@ -15,6 +24,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
       drupal_get_path('theme', 'ticketbaby'). '/js/jquery.easydropdown.min.js',
       drupal_get_path('module', 'tb_ticket'). '/js/selects.js',
       drupal_get_path('module', 'tb_ticket'). '/js/choosefilebutton.js',
+      drupal_get_path('module', 'tb_ticket'). '/js/onsubmit.js',
     );
     $form['#attached']['css'] = array(
       drupal_get_path('module', 'tb_ticket'). '/css/easydropdown.css',
@@ -48,6 +58,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     
     // ...and save ticket button should be named "save".
     $form['actions']['submit']['#value'] = 'Send';
+    $form['actions']['submit']['#attributes']['onclick'] = 'if(!confirm("Are you sure all fields right? Once you sumitted your ticket you couldn\'t edit it")){return false;}';
     
     // ...and we want to be redirected.
     array_push($form['actions']['submit']['#submit'], "tb_ticket_create_ticket_redirect");
@@ -121,7 +132,7 @@ function tb_ticket_submit_user($form, &$form_state){
       ),
     );
     user_save('', $new_user);
-    
+
     // Log in this user.
     $uid = user_authenticate($username, $pass);
     global $user;
@@ -144,6 +155,9 @@ function tb_ticket_validate_user($form, &$form_state){
     }*/
     if(empty($fullname)){
       form_set_error('field_full_name', 'Please enter your fullname.');
+    }
+    if(user_load_by_mail($email) !== FALSE){
+      form_set_error('field_email', 'User with this email is already exists. Please choose other email or login.');
     }
   }else{
     global $user;

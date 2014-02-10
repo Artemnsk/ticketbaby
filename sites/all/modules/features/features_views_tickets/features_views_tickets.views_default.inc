@@ -153,10 +153,10 @@ function features_views_tickets_views_default_views() {
   );
   $handler->display->display_options['path'] = 'user/%/tickets-in-progress';
 
-  /* Display: Search ticket */
-  $handler = $view->new_display('page', 'Search ticket', 'search_ticket');
+  /* Display: Tickets posted */
+  $handler = $view->new_display('page', 'Tickets posted', 'search_ticket');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Search ticket';
+  $handler->display->display_options['title'] = 'Tickets posted';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
@@ -246,51 +246,16 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_defender_target_id']['field'] = 'field_defender_target_id';
   $handler->display->display_options['filters']['field_defender_target_id']['operator'] = 'empty';
   $handler->display->display_options['filters']['field_defender_target_id']['group'] = 1;
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['id'] = 'field_location_where_ticket_was__value';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['table'] = 'field_data_field_location_where_ticket_was_';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['field'] = 'field_location_where_ticket_was__value';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['operator'] = 'or';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['value'] = array();
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['group'] = 1;
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['expose']['operator_id'] = 'field_location_where_ticket_was__value_op';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['expose']['label'] = 'Country';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['expose']['operator'] = 'field_location_where_ticket_was__value_op';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['expose']['identifier'] = 'field_location_where_ticket_was__value';
-  $handler->display->display_options['filters']['field_location_where_ticket_was__value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-  );
-  /* Filter criterion: Canada state */
+  /* Filter criterion: state */
   $handler->display->display_options['filters']['field_state_value']['id'] = 'field_state_value';
   $handler->display->display_options['filters']['field_state_value']['table'] = 'field_data_field_state';
   $handler->display->display_options['filters']['field_state_value']['field'] = 'field_state_value';
-  $handler->display->display_options['filters']['field_state_value']['ui_name'] = 'Canada state';
-  $handler->display->display_options['filters']['field_state_value']['value'] = array(
-    'AB' => 'AB',
-    'BC' => 'BC',
-    'MB' => 'MB',
-    'NB' => 'NB',
-    'NL' => 'NL',
-    'NT' => 'NT',
-    'NS' => 'NS',
-    'NU' => 'NU',
-    'ON' => 'ON',
-    'PE' => 'PE',
-    'QC' => 'QC',
-    'SK' => 'SK',
-    'YT' => 'YT',
-  );
+  $handler->display->display_options['filters']['field_state_value']['ui_name'] = 'state';
   $handler->display->display_options['filters']['field_state_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_state_value']['expose']['operator_id'] = 'field_state_value_op';
-  $handler->display->display_options['filters']['field_state_value']['expose']['label'] = 'Province';
+  $handler->display->display_options['filters']['field_state_value']['expose']['label'] = 'State/Province';
   $handler->display->display_options['filters']['field_state_value']['expose']['operator'] = 'field_state_value_op';
-  $handler->display->display_options['filters']['field_state_value']['expose']['identifier'] = 'province';
-  $handler->display->display_options['filters']['field_state_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_state_value']['expose']['identifier'] = 'state';
   $handler->display->display_options['filters']['field_state_value']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
@@ -298,90 +263,6 @@ function features_views_tickets_views_default_views() {
     4 => 0,
     5 => 0,
   );
-  $handler->display->display_options['filters']['field_state_value']['expose']['reduce'] = TRUE;
-  /* Filter criterion: USA state */
-  $handler->display->display_options['filters']['field_state_value_1']['id'] = 'field_state_value_1';
-  $handler->display->display_options['filters']['field_state_value_1']['table'] = 'field_data_field_state';
-  $handler->display->display_options['filters']['field_state_value_1']['field'] = 'field_state_value';
-  $handler->display->display_options['filters']['field_state_value_1']['ui_name'] = 'USA state';
-  $handler->display->display_options['filters']['field_state_value_1']['value'] = array(
-    'AL' => 'AL',
-    'AK' => 'AK',
-    'AZ' => 'AZ',
-    'AR' => 'AR',
-    'CA' => 'CA',
-    'CO' => 'CO',
-    'CT' => 'CT',
-    'DE' => 'DE',
-    'DC' => 'DC',
-    'FL' => 'FL',
-    'GA' => 'GA',
-    'HI' => 'HI',
-    'ID' => 'ID',
-    'IL' => 'IL',
-    'IN' => 'IN',
-    'IA' => 'IA',
-    'KS' => 'KS',
-    'KY' => 'KY',
-    'LA' => 'LA',
-    'ME' => 'ME',
-    'MD' => 'MD',
-    'MA' => 'MA',
-    'MI' => 'MI',
-    'MN' => 'MN',
-    'MS' => 'MS',
-    'MO' => 'MO',
-    'MT' => 'MT',
-    'NE' => 'NE',
-    'NV' => 'NV',
-    'NH' => 'NH',
-    'NJ' => 'NJ',
-    'NM' => 'NM',
-    'NY' => 'NY',
-    'NC' => 'NC',
-    'ND' => 'ND',
-    'OH' => 'OH',
-    'OK' => 'OK',
-    'OR' => 'OR',
-    'PA' => 'PA',
-    'RI' => 'RI',
-    'SC' => 'SC',
-    'SD' => 'SD',
-    'TN' => 'TN',
-    'TX' => 'TX',
-    'UT' => 'UT',
-    'VT' => 'VT',
-    'VA' => 'VA',
-    'WA' => 'WA',
-    'WV' => 'WV',
-    'WI' => 'WI',
-    'WY' => 'WY',
-    'AA' => 'AA',
-    'AE' => 'AE',
-    'AP' => 'AP',
-    'AS' => 'AS',
-    'FM' => 'FM',
-    'GU' => 'GU',
-    'MH' => 'MH',
-    'MP' => 'MP',
-    'PW' => 'PW',
-    'PR' => 'PR',
-    'VI' => 'VI',
-  );
-  $handler->display->display_options['filters']['field_state_value_1']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_state_value_1']['expose']['operator_id'] = 'field_state_value_1_op';
-  $handler->display->display_options['filters']['field_state_value_1']['expose']['label'] = 'USA state';
-  $handler->display->display_options['filters']['field_state_value_1']['expose']['operator'] = 'field_state_value_1_op';
-  $handler->display->display_options['filters']['field_state_value_1']['expose']['identifier'] = 'state';
-  $handler->display->display_options['filters']['field_state_value_1']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_state_value_1']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['field_state_value_1']['expose']['reduce'] = TRUE;
   $handler->display->display_options['path'] = 'user/search-ticket';
 
   /* Display: Tickets responded to */

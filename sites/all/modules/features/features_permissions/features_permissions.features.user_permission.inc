@@ -246,7 +246,6 @@ function features_permissions_user_default_permissions() {
     'name' => 'edit own ticket content',
     'roles' => array(
       'administrator' => 'administrator',
-      'customer' => 'customer',
     ),
     'module' => 'node',
   );
