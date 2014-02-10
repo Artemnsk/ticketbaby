@@ -1024,10 +1024,11 @@ ul.nice-menu li ul li:focus a {
 }
 
 .tabs a.active, .tabs a:focus {
-  background  : none;
-  color       : #005493;
-  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
-  font-weight : normal;
+  background      : none;
+  color           : #005493;
+  font-family     : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight     : normal;
+  text-decoration : underline;
 }
 
 .tabs a:hover {
