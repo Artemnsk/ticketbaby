@@ -99,12 +99,32 @@ article.comment:after {
 
 /*---/ corbel bold italic */
 
+/* sofia pro light */
+
+
+
+@font-face {
+  font-family: 'sofia_pro_lightregular';
+  src: url('../fonts/sofiaprolight-webfont.eot');
+  src: url('../fonts/sofiaprolight-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/sofiaprolight-webfont.woff') format('woff'),
+  url('../fonts/sofiaprolight-webfont.ttf') format('truetype'),
+  url('../fonts/sofiaprolight-webfont.svg#sofia_pro_lightregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+
+
+/*---/ sofia pro light */
+
 /*---/ FONTS */
 
 /* COMMON ELEMENTS */
 
 body {
-  font-family : 'corbelregular', Calibri, Arial, sans-serif;
+  font-family : 'sofia_pro_lightregular', Calibri, Arial, sans-serif;
 }
 
 media {
@@ -116,7 +136,8 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family : 'corbelbold';
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight: bolder;
 }
 
 h1 {
@@ -137,7 +158,7 @@ input[type="submit"] {
   background  : #367DA2;
   padding     : 5px 40px;
   border      : none;
-  font-family : 'corbelregular', calibri, arial, sans-serif;
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   font-size   : 16px;
   color       : white;
   box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35);
@@ -167,8 +188,8 @@ select {
 }
 
 .form-item label, .form-actions label {
-  font-weight : normal;
-  font-family : 'corbelbold';
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight: bolder;
 }
 
 .resizable-textarea .grippie {
@@ -205,7 +226,7 @@ a#edit-cancel {
   padding     : 5px 40px;
   margin-left : 32px;
   border      : none;
-  font-family : 'corbelregular', calibri, arial, sans-serif;
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   font-size   : 16px;
   color       : white;
   box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35);
@@ -253,7 +274,8 @@ a#edit-cancel:hover {
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li a:hover,
 .l-header #block-menu-menu-header-menu-sign-in span.nolink {
-  font-family : 'corbelbold';
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight: bolder;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in span.nolink {
@@ -277,7 +299,8 @@ a#edit-cancel:hover {
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first:hover {
-  font-family : 'corbelbold';
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight: bolder;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.last {
@@ -314,7 +337,7 @@ a#edit-cancel:hover {
   padding     : 8px 0;
   background  : white;
   border      : 1px solid #C8C8C8;
-  font-family : 'corbelregular', calibri, arial, sans-serif;
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   text-align  : center;
 }
 
@@ -331,7 +354,7 @@ a#edit-cancel:hover {
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first a,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last a,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
-  font-family : 'corbelregular', calibri, arial, sans-serif;
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   color       : #000000;
 }
 
@@ -339,7 +362,7 @@ a#edit-cancel:hover {
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last a:hover,
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a:hover {
   padding-right : 0;
-  font-family   : 'corbelregular', calibri, arial, sans-serif;
+  font-family   : 'sofia_pro_lightregular', calibri, arial, sans-serif;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
@@ -423,13 +446,14 @@ a#edit-cancel:hover {
 }
 
 .front .l-main article .field__item h2 {
-  font-family : 'corbelbold';
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight: bolder;
   font-size   : 32px;
   margin      : 0 0 9px 0;
 }
 
 .front .l-main article .field__item h3 {
-  font-family : 'corbelregular';
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   font-size   : 22px;
   margin      : 9px 0 0 0;
 }
@@ -492,7 +516,7 @@ a#edit-cancel:hover {
   font-size      : 22px;
   text-transform : uppercase;
   color          : #005493;
-  font-family    : 'corbelregular', calibri, arial, sans-serif;
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   vertical-align : middle;
 }
 
@@ -657,7 +681,8 @@ a#edit-cancel:hover {
 
 .l-footer {
   background  : white;
-  font-family : 'corbelbold';
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
+  font-weight: bolder;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us,
@@ -725,7 +750,7 @@ a#edit-cancel:hover {
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.first a {
-  font-family    : 'corbelbold';
+  font-family : 'sofia_pro_lightregular', calibri, arial, sans-serif;
   text-transform : none;
 }
 
@@ -1027,10 +1052,8 @@ ul.nice-menu li ul li:focus a {
   float : none;
 }
 
-.not-front.logged-in.node-type-offer article.node--offer .node__content,
-.not-front.logged-in.node-type-ticket .pane-entity-view {
+.not-front.logged-in.node-type-offer article.node--offer .node__content {
   padding    : 10px 14px 18px 14px;
-  background : #F2F2F2;
 }
 
 /*--- view ticket */
@@ -1172,16 +1195,16 @@ ul.nice-menu li ul li:focus a {
   border-bottom : 1px solid #C8C8C8;
 }
 
-.not-front.page-user .l-main .l-content .view-offers-responds- .views-row:hover {
-  background : #EEFCE0;
-}
-
 .not-front.page-user .l-main .l-content .view-offers-responds- .views-row:last-child {
   border-bottom : none;
 }
 
-.not-front.page-user .l-main .l-content .view-offers-responds- .views-row-even {
-  background : #E7E7E7;
+.not-front.page-user .l-main .l-content .view-offers-responds- table.new-or-updated {
+    background: #E7E7E7;
+  }
+
+.not-front.page-user .l-main .l-content .view-offers-responds- table:hover {
+  background: #EEFCE0;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- .views-field-nid a {
