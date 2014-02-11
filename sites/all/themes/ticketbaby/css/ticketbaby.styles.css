@@ -183,7 +183,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   color       : #005493;
   margin-left : 20px;
-  font-size   : 28px;
+  font-size   : 26px;
 }
 
 input[type="text"],
@@ -191,6 +191,7 @@ input[type="password"],
 textarea {
   border  : 1px solid #C8C8C8;
   padding : 4px 6px;
+  margin: 2px 0;
 }
 
 input[type="submit"] {
@@ -199,7 +200,7 @@ input[type="submit"] {
   padding     : 5px 40px;
   border      : none;
   font-family : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-size   : 16px;
+  font-size   : 14px;
   color       : white;
   /*  box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35); */
   cursor      : pointer;
@@ -223,23 +224,16 @@ select {
 }
 
 .l-main h2 {
-  font-size : 20px;
+  font-size : 16px;
   color     : #005493;
 }
 
-.form-item label, .form-actions label {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-weight : normal;
-  color       : #005493;
-}
-
-.field__label {
-  font-weight : normal;
-}
-
+.form-item label, .form-actions label,
+.field__label,
 .views-exposed-form label {
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
   font-weight : normal;
-  color       : #005493;
+  font-size: 15px;
 }
 
 .resizable-textarea .grippie {
@@ -277,7 +271,7 @@ a#edit-cancel {
   margin-left : 32px;
   border      : none;
   font-family : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-size   : 16px;
+  font-size   : 14px;
   color       : white;
   box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35);
   cursor      : pointer;
@@ -292,11 +286,15 @@ a#edit-cancel:hover {
 }
 
 h3.view-filters-expanded {
-  font-size : 16px;
+  font-size : 14px;
 }
 
 h3.view-filters-expanded:hover {
   text-decoration : underline;
+}
+
+.form-item .description, .form-actions .description {
+  font-size: 12px;
 }
 
 /*---/ COMMON ELEMENTS */
@@ -324,6 +322,7 @@ h3.view-filters-expanded:hover {
 
 .l-header #block-menu-menu-header-menu-sign-in {
   text-transform : uppercase;
+  font-size: 15px;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li {
@@ -353,7 +352,6 @@ h3.view-filters-expanded:hover {
   position       : relative;
   padding-right  : 14px;
   padding-bottom : 40px;
-  /* width         : 74px; */
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first a {
@@ -463,6 +461,11 @@ h3.view-filters-expanded:hover {
 
 /* choose your ticket */
 
+.l-main .l-region--sidebar-first h2.block__title {
+font-family: 'levenim_mtbold', calibri, arial, sans-serif;
+  font-size: 19px;
+}
+
 .front .l-main .l-region--sidebar-first {
   margin  : 0 0 20px 0;
   padding : 0 30px 0 30px;
@@ -513,13 +516,13 @@ h3.view-filters-expanded:hover {
 .front .l-main article .field__item h2 {
   font-family : 'levenim_mtregular', calibri, arial, sans-serif;
   font-weight : normal;
-  font-size   : 32px;
+  font-size   : 29px;
   margin      : 0 0 9px 0;
 }
 
 .front .l-main article .field__item h3 {
   font-family : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-size   : 22px;
+  font-size   : 18px;
   margin      : 9px 0 0 0;
 }
 
@@ -556,7 +559,7 @@ h3.view-filters-expanded:hover {
 }
 
 #ticket-node-form label {
-  font-size     : 16px;
+  font-size     : 14px;
   font-weight   : normal;
   padding-left  : 10px;
   padding-right : 12px;
@@ -578,7 +581,7 @@ h3.view-filters-expanded:hover {
   display        : inline-block;
   padding        : 0 24px 0 0;
   background     : none;
-  font-size      : 22px;
+  font-size      : 20px;
   text-transform : uppercase;
   color          : #005493;
   font-family    : 'levenim_mtregular', calibri, arial, sans-serif;
@@ -700,7 +703,7 @@ h3.view-filters-expanded:hover {
 #ticket-node-form .ticket-recommendation {
   display   : block;
   margin    : 25px 0 15px 0;
-  font-size : 17px;
+  font-size : 15px;
   color     : #D13707;
 }
 
@@ -730,7 +733,7 @@ h3.view-filters-expanded:hover {
 }
 
 #edit-field-location-where-ticket-was- .tickets-dropdown .selected {
-  font-size : 16px;
+  font-size : 14px;
   padding   : 8px 12px;
 }
 
@@ -758,7 +761,8 @@ h3.view-filters-expanded:hover {
 
 .l-footer #block-menu-menu-footer-menu-about-us,
 .l-footer #block-menu-menu-footer-menu-support {
-  font-size : 16px;
+  font-size : 15px;
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us a:hover,
@@ -777,6 +781,10 @@ h3.view-filters-expanded:hover {
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
   margin-top : 23px;
+}
+
+.l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu {
+  font-size: 16px;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu li {
@@ -801,9 +809,9 @@ h3.view-filters-expanded:hover {
 }
 
 .l-footer #block-menu-menu-footer-menu-support ul li.expanded ul li.last span.nolink {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
   font-weight : normal;
-  font-size   : 17px;
+  font-size   : 15px;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us ul li.expanded a,
@@ -844,7 +852,7 @@ h3.view-filters-expanded:hover {
   width      : 2px;
   height     : 18px;
   font-size  : 0;
-  margin-top : 2px;
+  margin-top : 0;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.first span.nolink {
@@ -852,7 +860,7 @@ h3.view-filters-expanded:hover {
   background : none;
   width      : auto;
   height     : auto;
-  font-size  : 18px;
+  font-size  : 16px;
   margin-top : 0;
 }
 
@@ -867,7 +875,7 @@ h3.view-filters-expanded:hover {
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li a:hover {
-  font-family : 'levenim_mtrbold';
+  font-family : 'levenim_mtbold';
   font-weight : normal;
 }
 
@@ -924,7 +932,7 @@ ul.nice-menu li {
 ul.nice-menu {
   width     : 150px;
   margin    : 40px 0 0 55px;
-  font-size : 18px;
+  font-size : 16px;
 }
 
 ul.nice-menu li {
@@ -1000,7 +1008,7 @@ ul.nice-menu li ul li:focus a {
   margin         : 0 0 10px 0;
   color          : black;
   font-family    : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-size      : 22px;
+  font-size      : 18px;
   text-align     : center;
   text-transform : uppercase;
 }
@@ -1037,7 +1045,7 @@ ul.nice-menu li ul li:focus a {
 
 .tabs a {
   padding    : 0;
-  font-size  : 14px;
+  font-size  : 12px;
   background : none;
   color      : #005493;
 }
@@ -1050,9 +1058,8 @@ ul.nice-menu li ul li:focus a {
 .tabs a.active, .tabs a:focus {
   background      : none;
   color           : #005493;
-  font-family     : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family     : 'levenim_mtbold', calibri, arial, sans-serif;
   font-weight     : normal;
-  text-decoration : underline;
 }
 
 .tabs a:hover {
@@ -1066,7 +1073,7 @@ ul.nice-menu li ul li:focus a {
 
 .tabs--primary.links--inline li {
   float       : right;
-  margin-left : 1em;
+  margin-left : 0.5em;
 }
 
 /*---/ tabs in user info */
@@ -1133,10 +1140,6 @@ ul.nice-menu li ul li:focus a {
   float : none;
 }
 
-.not-front.logged-in.node-type-ticket article.node--ticket .field__label {
-  color : #005493;
-}
-
 .not-front.logged-in.node-type-offer article.node--offer .node__content,
 .not-front.logged-in.node-type-offer article.node--ticket .node__content {
   padding : 10px 14px 18px 14px;
@@ -1147,7 +1150,6 @@ ul.nice-menu li ul li:focus a {
 .not-front.logged-in.node-type-offer article.node--ticket .field__label,
 .not-front.logged-in.node-type-offer article.node--offer .field__label {
   float : none;
-  color : #005493;
 }
 
 .not-front.logged-in.node-type-offer .expanded-item h2 {
@@ -1157,7 +1159,7 @@ ul.nice-menu li ul li:focus a {
   margin       : 0;
   padding      : 8px 0;
   background   : #E7E7E7;
-  font-size    : 18px;
+  font-size    : 16px;
   text-align   : center;
   color        : black;
 }
@@ -1249,7 +1251,7 @@ article.comment {
 }
 
 #user-profile-form #edit-timezone label {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
 }
 
 #user-profile-form #edit-timezone a:hover {
@@ -1297,7 +1299,7 @@ article.comment {
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table tr td.td_username {
   width     : 150px;
-  font-size : 14px;
+  font-size : 12px;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table tr td.td_username span {
@@ -1313,7 +1315,7 @@ article.comment {
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table tr td.td_comment_date {
-  font-size  : 14px;
+  font-size  : 12px;
   color      : #6AA03A;
   text-align : right;
 }
@@ -1327,7 +1329,7 @@ article.comment {
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table.new-or-updated {
-  background : #E7E7E7;
+  background : #f2f2f2;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table:hover {
@@ -1338,19 +1340,19 @@ article.comment {
   display    : block;
   margin-top : 12px;
   color      : #005493;
-  font-size  : 13px;
+  font-size  : 11px;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- .views-field-subject-1 a {
   float     : right;
   color     : #005493;
-  font-size : 13px;
+  font-size : 11px;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table tr td .marker {
   background     : none;
   color          : #6AA03A;
-  font-size      : 13px;
+  font-size      : 11px;
   text-transform : capitalize;
 }
 
@@ -1375,7 +1377,7 @@ article.node--offer h2.comments__form-title {
   padding       : 8px 0;
   background    : #E7E7E7;
   font-family   : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-size     : 18px;
+  font-size     : 16px;
   text-align    : center;
   color         : black;
 }
@@ -1423,7 +1425,7 @@ article.comment-preview {
 
 #comment-form a.ckeditor_links {
   text-transform : lowercase;
-  font-size      : 14px;
+  font-size      : 12px;
   line-height    : 28px;
 }
 
@@ -1449,7 +1451,7 @@ article.comment footer {
 }
 
 article.comment footer {
-  font-size : 14px;
+  font-size : 12px;
 }
 
 article.comment footer p {
@@ -1470,7 +1472,7 @@ article.comment footer a.permalink {
   display        : block;
   position       : relative;
   margin-top     : 4px;
-  font-size      : 13px;
+  font-size      : 11px;
   color          : #005493;
   text-transform : lowercase;
 }
@@ -1480,7 +1482,7 @@ article.comment ul.links--inline {
   bottom    : 0;
   right     : 0;
   margin    : 14px 10px 10px 0;
-  font-size : 14px;
+  font-size : 12px;
 }
 
 article.comment ul.links--inline li {
@@ -1497,7 +1499,7 @@ article.comment .comment_left_wrapper mark {
   top            : 5px;
   left           : 14px;
   background     : none;
-  font-size      : 13px;
+  font-size      : 11px;
   color          : #6AA03A;
   text-transform : capitalize;
 }

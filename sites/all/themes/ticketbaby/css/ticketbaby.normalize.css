@@ -34,7 +34,7 @@ audio:not([controls]) {
 
 /* normalize.css v1.1.0 | Base | MIT License | git.io/normalize */
 html {
-  font-size                : 100%;
+  font-size                : 14px;
   font-family              : sans-serif;
   -webkit-text-size-adjust : 100%;
   -ms-text-size-adjust     : 100%;
