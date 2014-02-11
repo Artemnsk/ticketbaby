@@ -191,7 +191,7 @@ input[type="password"],
 textarea {
   border  : 1px solid #C8C8C8;
   padding : 4px 6px;
-  margin: 2px 0;
+  margin  : 2px 0;
 }
 
 input[type="submit"] {
@@ -233,7 +233,7 @@ select {
 .views-exposed-form label {
   font-family : 'levenim_mtbold', calibri, arial, sans-serif;
   font-weight : normal;
-  font-size: 15px;
+  font-size   : 15px;
 }
 
 .resizable-textarea .grippie {
@@ -282,11 +282,12 @@ a#edit-cancel:hover {
 }
 
 .view-empty p {
-  padding : 10px 14px 18px 10px;
+  padding : 10px 14px 18px 0;
 }
 
 h3.view-filters-expanded {
   font-size : 14px;
+  cursor    : pointer;
 }
 
 h3.view-filters-expanded:hover {
@@ -294,7 +295,7 @@ h3.view-filters-expanded:hover {
 }
 
 .form-item .description, .form-actions .description {
-  font-size: 12px;
+  font-size : 12px;
 }
 
 /*---/ COMMON ELEMENTS */
@@ -322,7 +323,7 @@ h3.view-filters-expanded:hover {
 
 .l-header #block-menu-menu-header-menu-sign-in {
   text-transform : uppercase;
-  font-size: 15px;
+  font-size      : 15px;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li {
@@ -462,8 +463,8 @@ h3.view-filters-expanded:hover {
 /* choose your ticket */
 
 .l-main .l-region--sidebar-first h2.block__title {
-font-family: 'levenim_mtbold', calibri, arial, sans-serif;
-  font-size: 19px;
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-size   : 19px;
 }
 
 .front .l-main .l-region--sidebar-first {
@@ -761,7 +762,7 @@ font-family: 'levenim_mtbold', calibri, arial, sans-serif;
 
 .l-footer #block-menu-menu-footer-menu-about-us,
 .l-footer #block-menu-menu-footer-menu-support {
-  font-size : 15px;
+  font-size   : 15px;
   font-family : 'levenim_mtbold', calibri, arial, sans-serif;
 }
 
@@ -784,7 +785,7 @@ font-family: 'levenim_mtbold', calibri, arial, sans-serif;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu {
-  font-size: 16px;
+  font-size : 16px;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu li {
@@ -1034,7 +1035,8 @@ ul.nice-menu li ul li:focus a {
   margin : 4px 0;
 }
 
-.not-front.page-user.page-user-my-tickets .l-main .l-content .view-tickets {
+.not-front.page-user.page-user-my-tickets .l-main .l-content .view-tickets,
+.not-front.logged-in .l-main .l-content .view-tickets.view-display-id-tickets_in_progress {
   border  : none;
   padding : 0;
 }
@@ -1056,10 +1058,10 @@ ul.nice-menu li ul li:focus a {
 }
 
 .tabs a.active, .tabs a:focus {
-  background      : none;
-  color           : #005493;
-  font-family     : 'levenim_mtbold', calibri, arial, sans-serif;
-  font-weight     : normal;
+  background  : none;
+  color       : #005493;
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-weight : normal;
 }
 
 .tabs a:hover {
@@ -1133,6 +1135,10 @@ ul.nice-menu li ul li:focus a {
 .not-front.logged-in.node-type-offer article.node--offer .field,
 .not-front.logged-in.node-type-offer article.node--ticket .field {
   margin-bottom : 24px;
+}
+
+.not-front.logged-in.node-type-offer article.node--ticket a {
+  display : none;
 }
 
 .not-front.logged-in.node-type-ticket article.node--ticket .field.field--label-inline .field__label,
@@ -1329,7 +1335,7 @@ article.comment {
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table.new-or-updated {
-  background : #f2f2f2;
+  background : #F2F2F2;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table:hover {
