@@ -8,7 +8,8 @@
 #ticket-node-form .form-item,
 #ticket-node-form .field-name-field-ticket-category,
 #ticket-node-form .field-name-field-ticket-category .form-type-select,
-article.comment {
+article.comment,
+.not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket {
   *zoom : 1;
 }
 
@@ -29,7 +30,9 @@ article.comment {
 #ticket-node-form .field-name-field-ticket-category .form-type-select:before,
 #ticket-node-form .field-name-field-ticket-category .form-type-select:after,
 article.comment:before,
-article.comment:after {
+article.comment:after,
+.not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket:before,
+.not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -43,7 +46,8 @@ article.comment:after {
 #ticket-node-form .form-item:after,
 #ticket-node-form .field-name-field-ticket-category:after,
 #ticket-node-form .field-name-field-ticket-category .form-type-select:after,
-article.comment:after {
+article.comment:after,
+.not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket:after {
   clear : both;
 }
 
@@ -560,12 +564,12 @@ h3.view-filters-expanded:hover {
 }
 
 #ticket-node-form label {
-  font-size     : 14px;
+  font-size     : 15px;
   font-weight   : normal;
   padding-left  : 10px;
   padding-right : 12px;
-  margin        : 3px 0 5px 0;
-  background    : url(../images/list_style_black_dot.png) left 8px no-repeat;
+  margin        : 6px 0 5px 0;
+  background    : url(../images/list_style_black_dot.png) left 5px no-repeat;
 }
 
 #ticket-node-form .date-padding {
@@ -719,6 +723,7 @@ h3.view-filters-expanded:hover {
 
 #ticket-node-form .form-managed-file input[type="submit"] {
   margin-left : 30px;
+  margin-top  : 2px;
 }
 
 #ticket-node-form .field-type-file {
@@ -1291,6 +1296,60 @@ article.comment {
 .not-front.logged-in.page-comment-reply .l-main .l-content form.comment-form {
   margin-top : 20px;
 }
+
+.not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket a {
+  display     : block;
+  float       : right;
+  color       : #D13707;
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-size   : 16px;
+  text-align  : center;
+  padding     : 20px 0 120px 0;
+  background  : url(../images/clock.png) center bottom no-repeat;
+}
+
+/* ticket was created by customer */
+
+.view-display-id-available_defenders {
+  text-align : center;
+}
+
+.view-display-id-available_defenders h2 {
+  display    : block;
+  color      : #005493;
+  padding    : 0 0 60px 0;
+  background : url(../images/arrow_confirm_green_down.png) center bottom no-repeat;
+}
+
+.view-display-id-available_defenders h3 {
+  display    : block;
+  padding    : 10px 0 120px 0;
+  background : url(../images/clock.png) center bottom no-repeat;
+}
+
+.view-display-id-available_defenders h2,
+.view-display-id-available_defenders h3 {
+  font-size : 18px;
+}
+
+.view-display-id-available_defenders .view-content {
+  padding    : 0 0 50px 0;
+  background : url(../images/arrow_confirm_green_down.png) center bottom no-repeat;
+}
+
+.view-display-id-available_defenders .view-content ul li {
+  padding : 5px 0;
+}
+
+.view-display-id-available_defenders .view-content ul li a {
+  color : #000000;
+}
+
+.view-display-id-available_defenders .view-content ul li a:hover {
+  text-decoration : underline;
+}
+
+/*---/ ticket was created by customer */
 
 .view-offers-responds- {
   border : 1px solid #C8C8C8;
