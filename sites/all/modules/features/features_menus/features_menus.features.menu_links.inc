@@ -10,17 +10,17 @@
 function features_menus_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: menu-customer-menu_account-details:<nolink>
-  $menu_links['menu-customer-menu_account-details:<nolink>'] = array(
+  // Exported menu link: menu-customer-menu_account-details:user
+  $menu_links['menu-customer-menu_account-details:user'] = array(
     'menu_name' => 'menu-customer-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
+    'link_path' => 'user',
+    'router_path' => 'user',
     'link_title' => 'Account details',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-customer-menu_account-details:<nolink>',
+      'identifier' => 'menu-customer-menu_account-details:user',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -71,48 +71,6 @@ function features_menus_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: menu-customer-menu_my-account:user
-  $menu_links['menu-customer-menu_my-account:user'] = array(
-    'menu_name' => 'menu-customer-menu',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'My account',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-customer-menu_my-account:user',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-    'parent_identifier' => 'menu-customer-menu_account-details:<nolink>',
-  );
-  // Exported menu link: menu-customer-menu_my-profile:profile-defender_profile
-  $menu_links['menu-customer-menu_my-profile:profile-defender_profile'] = array(
-    'menu_name' => 'menu-customer-menu',
-    'link_path' => 'profile-defender_profile',
-    'router_path' => 'profile-defender_profile',
-    'link_title' => 'My profile',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-customer-menu_my-profile:profile-defender_profile',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-    'parent_identifier' => 'menu-customer-menu_account-details:<nolink>',
-  );
   // Exported menu link: menu-customer-menu_my-tickets:user/my-tickets
   $menu_links['menu-customer-menu_my-tickets:user/my-tickets'] = array(
     'menu_name' => 'menu-customer-menu',
@@ -154,17 +112,17 @@ function features_menus_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: menu-defender-menu_account-details:<nolink>
-  $menu_links['menu-defender-menu_account-details:<nolink>'] = array(
+  // Exported menu link: menu-defender-menu_account-details:user
+  $menu_links['menu-defender-menu_account-details:user'] = array(
     'menu_name' => 'menu-defender-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
+    'link_path' => 'user',
+    'router_path' => 'user',
     'link_title' => 'Account details',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-defender-menu_account-details:<nolink>',
+      'identifier' => 'menu-defender-menu_account-details:user',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -214,48 +172,6 @@ function features_menus_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: menu-defender-menu_my-account:user
-  $menu_links['menu-defender-menu_my-account:user'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => 'user',
-    'router_path' => 'user',
-    'link_title' => 'My account',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_my-account:user',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-    'parent_identifier' => 'menu-defender-menu_account-details:<nolink>',
-  );
-  // Exported menu link: menu-defender-menu_my-profile:profile-defender_profile
-  $menu_links['menu-defender-menu_my-profile:profile-defender_profile'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => 'profile-defender_profile',
-    'router_path' => 'profile-defender_profile',
-    'link_title' => 'My profile',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_my-profile:profile-defender_profile',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 1,
-    'parent_identifier' => 'menu-defender-menu_account-details:<nolink>',
-  );
   // Exported menu link: menu-defender-menu_tickets-defended:user/tickets-defended
   $menu_links['menu-defender-menu_tickets-defended:user/tickets-defended'] = array(
     'menu_name' => 'menu-defender-menu',
@@ -273,7 +189,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -47,
     'customized' => 1,
     'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
   );
@@ -294,7 +210,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
     'customized' => 1,
     'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
   );
@@ -315,7 +231,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
     'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
   );
@@ -336,7 +252,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
     'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
   );
@@ -440,26 +356,6 @@ function features_menus_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -48,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-footer-menu-are-you-a-ticke_apply:<front>
-  $menu_links['menu-footer-menu-are-you-a-ticke_apply:<front>'] = array(
-    'menu_name' => 'menu-footer-menu-are-you-a-ticke',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Apply',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-footer-menu-are-you-a-ticke_apply:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
     'customized' => 1,
   );
   // Exported menu link: menu-footer-menu-are-you-a-ticke_sign-in:user
@@ -653,15 +549,12 @@ function features_menus_menu_default_menu_links() {
   t('About Us');
   t('Account details');
   t('Add new ticket');
-  t('Apply');
   t('Calendar');
   t('Company');
   t('Contact Us');
   t('Help');
   t('Log in');
   t('Messages');
-  t('My account');
-  t('My profile');
   t('My tickets');
   t('Online Support');
   t('Settings');

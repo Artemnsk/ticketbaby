@@ -104,6 +104,12 @@ function features_view_responds_views_default_views() {
   $handler->display->display_options['relationships']['field_ticket_target_id']['field'] = 'field_ticket_target_id';
   $handler->display->display_options['relationships']['field_ticket_target_id']['label'] = 'Ticket of this respond';
   $handler->display->display_options['relationships']['field_ticket_target_id']['required'] = TRUE;
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid_1']['id'] = 'uid_1';
+  $handler->display->display_options['relationships']['uid_1']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid_1']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid_1']['relationship'] = 'field_ticket_target_id';
+  $handler->display->display_options['relationships']['uid_1']['label'] = 'author of ticket';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: New comments */
   $handler->display->display_options['fields']['new_comments']['id'] = 'new_comments';
@@ -121,14 +127,6 @@ function features_view_responds_views_default_views() {
   $handler->display->display_options['fields']['nid_1']['ui_name'] = 'Respond id';
   $handler->display->display_options['fields']['nid_1']['label'] = '';
   $handler->display->display_options['fields']['nid_1']['element_label_colon'] = FALSE;
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
   /* Field: Content: Comment count */
   $handler->display->display_options['fields']['comment_count']['id'] = 'comment_count';
   $handler->display->display_options['fields']['comment_count']['table'] = 'node_comment_statistics';
@@ -191,6 +189,24 @@ function features_view_responds_views_default_views() {
   $handler->display->display_options['fields']['last_updated']['label'] = '';
   $handler->display->display_options['fields']['last_updated']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['last_updated']['date_format'] = 'time ago';
+  /* Field: User: Fullname */
+  $handler->display->display_options['fields']['field_fullname']['id'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['table'] = 'field_data_field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['field'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_fullname']['label'] = '';
+  $handler->display->display_options['fields']['field_fullname']['alter']['max_length'] = '15';
+  $handler->display->display_options['fields']['field_fullname']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_fullname']['element_label_colon'] = FALSE;
+  /* Field: User: Fullname */
+  $handler->display->display_options['fields']['field_fullname_1']['id'] = 'field_fullname_1';
+  $handler->display->display_options['fields']['field_fullname_1']['table'] = 'field_data_field_fullname';
+  $handler->display->display_options['fields']['field_fullname_1']['field'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname_1']['relationship'] = 'uid_1';
+  $handler->display->display_options['fields']['field_fullname_1']['label'] = '';
+  $handler->display->display_options['fields']['field_fullname_1']['alter']['max_length'] = '15';
+  $handler->display->display_options['fields']['field_fullname_1']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_fullname_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'user/messages';
   $export['offers_responds_'] = $view;
 

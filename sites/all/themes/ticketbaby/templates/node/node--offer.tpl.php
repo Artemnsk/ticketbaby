@@ -78,10 +78,7 @@
  * @see template_process()
  */
 ?>
-<div class="expanded-item" for="node--ticket">
-  <h2>Ticket</h2>
-</div>
-<?php print $ticket_content ?>
+
 <div class="expanded-item" for="node--offer">
   <h2>Respond</h2>
 </div>
@@ -104,16 +101,34 @@
   <?php endif; ?>
 
   <div<?php print $content_attributes; ?>>
+    <div class="expanded-item" for="node--ticket">
+  <h2>Ticket</h2>
+</div>
+<?php print $ticket_content ?>
+ 
     <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_quote']);
+      hide($content['field_initial_payment']);
+      hide($content['field_final_payment_']);
       hide($content['comments']);
       hide($content['links']);
       print render($content);
     ?>
+    
+    <div class="expanded-item" for="node--quote">
+      <h2>Quote details</h2>
+    </div>
+    <span class="node--quote">
+      <div class="node__content">
+        <?php
+          print render($content['field_quote']);
+          print render($content['field_initial_payment']);
+          print render($content['field_final_payment_']);
+        ?>
+      </div>
+    </span>
   </div>
-  <?php if(isset($defender_respond)): ?>
-    <?php print $defender_respond; ?>
-  <?php endif; ?>
 
   <?php print render($content['links']); ?>
   <?php print render($content['comments']); ?>

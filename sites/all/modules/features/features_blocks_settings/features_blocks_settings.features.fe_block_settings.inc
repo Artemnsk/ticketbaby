@@ -97,7 +97,9 @@ function features_blocks_settings_default_fe_block_settings() {
     'module' => 'menu',
     'node_types' => array(),
     'pages' => '',
-    'roles' => array(),
+    'roles' => array(
+      'anonymous user' => 1,
+    ),
     'themes' => array(
       'omega' => array(
         'region' => '',

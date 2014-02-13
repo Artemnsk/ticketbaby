@@ -29,14 +29,20 @@
     $class_new = 'new-or-updated';
   }
   
+  global $user;
+  $defender = in_array('defender', $user->roles) ? true : false;
+  
 ?>
 <?php //dpm($fields);?>
 <a href="<?php print drupal_get_path_alias('/node/'. $fields['nid_1']->content); ?>">
 <table class="respond-item-table <?php print $class_new;?>">
-  <tr>
-    
+  <tr>   
     <td class="td_username">
-      <?php print tb_offer_views_fields_row($fields['name']);?>
+      <?php if($defender):?>
+        <?php print tb_offer_views_fields_row($fields['field_fullname_1']);?>
+      <?php else:?>
+        <?php print tb_offer_views_fields_row($fields['field_fullname']);?>
+      <?php endif;?>
       <span>
       <?php if(isset($fields['comment_count'])):?>
         <?php print tb_offer_views_fields_row($fields['comment_count']);?>

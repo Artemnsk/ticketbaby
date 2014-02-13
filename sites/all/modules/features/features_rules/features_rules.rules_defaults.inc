@@ -45,9 +45,13 @@ function features_rules_default_rules_configuration() {
       "TAGS" : [ "ticket" ],
       "REQUIRES" : [ "rules" ],
       "ON" : { "node_insert--ticket" : { "bundle" : "ticket" } },
-      "IF" : [ { "data_is" : { "data" : [ "node:author:uid" ], "value" : "0" } } ],
       "DO" : [
         { "data_set" : { "data" : [ "node:author" ], "value" : [ "site:current-user" ] } },
+        { "data_set" : {
+            "data" : [ "node:field-full-name" ],
+            "value" : [ "site:current-user:field-fullname" ]
+          }
+        },
         { "entity_save" : { "data" : [ "node" ], "immediate" : 1 } }
       ]
     }
