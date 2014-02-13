@@ -961,9 +961,13 @@ ul.nice-menu li a {
 ul.nice-menu li:hover,
 ul.nice-menu li:active,
 ul.nice-menu li:focus,
-ul.nice-menu li a:hover,
-ul.nice-menu li a.active {
+ul.nice-menu li a:hoverl {
   color : #000000;
+}
+
+ul.nice-menu li a.active,
+ul.nice-menu li.active-trail {
+  color : #62A60A;
 }
 
 ul.nice-menu-right ul {
@@ -1026,7 +1030,7 @@ ul.nice-menu li ul li:focus a {
 }
 
 .not-front.page-user .l-main .l-content article,
-.not-front.page-user .l-main .l-content .view-display-id-search_ticket
+.not-front.page-user .l-main .l-content .view-display-id-search_ticket,
 .not-front.logged-in.node-type-offer .l-main .l-content article.node--offer,
 .not-front.logged-in #ticket-node-form {
   border : 1px solid #C8C8C8;
@@ -1050,6 +1054,10 @@ ul.nice-menu li ul li:focus a {
 .not-front.logged-in .l-main .l-content .view-tickets.view-display-id-tickets_in_progress {
   border  : none;
   padding : 0;
+}
+
+.not-front.page-user .l-main .l-content .view-display-id-search_ticket .view-filters {
+  display : none;
 }
 
 /*---/ right info */
@@ -1425,7 +1433,7 @@ article.comment {
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table.new-or-updated {
-  background : #ffffff;
+  background : #FFFFFF;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table:hover {
