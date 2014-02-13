@@ -1419,8 +1419,12 @@ article.comment {
   border : none;
 }
 
-.not-front.page-user .l-main .l-content .view-offers-responds- table.new-or-updated {
+.not-front.page-user .l-main .l-content .view-offers-responds- table {
   background : #F2F2F2;
+}
+
+.not-front.page-user .l-main .l-content .view-offers-responds- table.new-or-updated {
+  background : #ffffff;
 }
 
 .not-front.page-user .l-main .l-content .view-offers-responds- table:hover {
