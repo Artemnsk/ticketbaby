@@ -1190,6 +1190,7 @@ ul.nice-menu li ul li:focus a {
 
 .not-front.logged-in.node-type-offer article.node--offer .node__content {
   padding : 14px;
+  display : none;
 }
 
 .not-front.logged-in.node-type-offer article.node--ticket .node__content {
