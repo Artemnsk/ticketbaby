@@ -1042,6 +1042,10 @@ ul.nice-menu li ul li:focus a {
   border : 1px solid #C8C8C8;
 }
 
+.not-front.logged-in.node-type-offer .l-main .l-content article.node--offer {
+  border-top-width : 0;
+}
+
 .not-front.page-user .l-main .l-content article section,
 .not-front.logged-in #ticket-node-form,
 .not-front.page-user .l-main .l-content .view-display-id-search_ticket {
@@ -1162,12 +1166,6 @@ ul.nice-menu li ul li:focus a {
   margin-bottom : 24px;
 }
 
-.not-front.logged-in.node-type-offer article.node--offer .node__content {
-  border              : 1px solid #C8C8C8;
-  border-bottom-width : 0;
-  border-top-width    : 0;
-}
-
 .not-front.logged-in.node-type-offer article.node--offer a {
   display : none;
 }
@@ -1175,11 +1173,6 @@ ul.nice-menu li ul li:focus a {
 .not-front.logged-in.node-type-offer article.node--offer .comment-form a,
 .not-front.logged-in.node-type-offer article.node--offer article.comment a {
   display : inline-block;
-}
-
-.not-front.logged-in.node-type-offer article.node--offer article.comment {
-  border-left  : 1px solid #C8C8C8;
-  border-right : 1px solid #C8C8C8;
 }
 
 .not-front.logged-in.node-type-offer article.node--ticket a {
@@ -1191,9 +1184,17 @@ ul.nice-menu li ul li:focus a {
   float : none;
 }
 
-.not-front.logged-in.node-type-offer article.node--offer .node__content,
 .not-front.logged-in.node-type-offer article.node--ticket .node__content {
   padding : 10px 14px 18px 14px;
+}
+
+.not-front.logged-in.node-type-offer article.node--offer .node__content {
+  padding : 14px;
+}
+
+.not-front.logged-in.node-type-offer article.node--ticket .node__content {
+  border           : 1px solid #C8C8C8;
+  border-top-width : 0;
 }
 
 .not-front.logged-in.node-type-offer article.node--ticket .node__content .field--label-inline .field__label,
@@ -1213,15 +1214,22 @@ ul.nice-menu li ul li:focus a {
   color      : black;
 }
 
-.not-front.logged-in.node-type-offer article.node--ticket {
-  border              : 1px solid #C8C8C8;
-  border-bottom-width : 0;
-  border-top-width    : 0;
+.not-front.logged-in.node-type-offer article.node--offer {
+  background : #F8F8F8;
 }
 
 .not-front.logged-in.node-type-offer article.node--ticket,
-.not-front.logged-in.node-type-offer article.node--offer {
-  background : #F8F8F8;
+.not-front.logged-in.node-type-offer .node--quote .node__content {
+  background : white;
+}
+
+.not-front.logged-in.node-type-offer article.node--ticket {
+  margin-bottom : 18px;
+}
+
+.not-front.logged-in.node-type-offer .node--quote .node__content {
+  border           : 1px solid #C8C8C8;
+  border-top-width : 0;
 }
 
 .not-front.logged-in.node-type-offer article header {
@@ -1230,6 +1238,11 @@ ul.nice-menu li ul li:focus a {
 
 article.comment {
   background : white;
+}
+
+span.quote_h2 {
+  padding-right : 18px;
+  background    : url(../images/arrow_expand_down.png) center right no-repeat;
 }
 
 /*--- view ticket */
@@ -1325,7 +1338,6 @@ article.comment {
 
 .not-front.logged-in.node-type-offer .l-main .l-content form.comment-form {
   padding          : 10px 14px 18px 14px;
-  border           : 1px solid #C8C8C8;
   border-top-width : 0;
   background       : white;
 }
@@ -1481,14 +1493,15 @@ article.node--offer h2.comments__title {
 }
 
 article.node--offer h2.comments__form-title {
-  border      : 1px solid #C8C8C8;
-  margin      : 0;
-  padding     : 8px 0;
-  background  : #E7E7E7;
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-size   : 16px;
-  text-align  : center;
-  color       : black;
+  border-top    : 1px solid #C8C8C8;
+  border-bottom : 1px solid #C8C8C8;
+  margin        : 0;
+  padding       : 8px 0;
+  background    : #E7E7E7;
+  font-family   : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-size     : 16px;
+  text-align    : center;
+  color         : black;
 }
 
 article.node--offer .links--inline li.comment-add a {

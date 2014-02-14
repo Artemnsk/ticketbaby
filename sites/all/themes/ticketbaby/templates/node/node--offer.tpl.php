@@ -80,7 +80,7 @@
 ?>
 
 <div class="expanded-item" for="node--offer">
-  <h2>Respond</h2>
+  <h2><span class="quote_h2">Respond</span></h2>
 </div>
 <article<?php print $attributes; ?>>
   <?php if (!empty($title_prefix) || !empty($title_suffix) || !$page): ?>
@@ -102,7 +102,7 @@
 
   <div<?php print $content_attributes; ?>>
     <div class="expanded-item" for="node--ticket">
-  <h2>Ticket</h2>
+  <h2><span class="quote_h2">Ticket</span></h2>
 </div>
 <?php print $ticket_content ?>
  
@@ -117,7 +117,7 @@
     ?>
     
     <div class="expanded-item" for="node--quote">
-      <h2>Quote details</h2>
+      <h2><span class="quote_h2">Quote details</span></h2>
     </div>
     <span class="node--quote">
       <div class="node__content">
