@@ -560,6 +560,16 @@ h3.view-filters-expanded:hover {
   padding-left : 0;
 }
 
+.not-logged-in #ticket-node-form {
+  padding-left  : 90px;
+  padding-right : 90px;
+}
+
+.not-logged-in #ticket-node-form h2 {
+  margin    : 55px 0 20px 0;
+  font-size : 15px;
+}
+
 .not-front.logged-in.page-node-add-ticket #ticket-node-form .field-name-field-ticket-category .form-type-select,
 #ticket-node-form .field-name-field-ticket-category .form-type-select {
   padding-left : 0;
@@ -582,10 +592,6 @@ h3.view-filters-expanded:hover {
 }
 
 /* select ticket */
-
-#ticket-node-form .field-name-field-ticket-category .form-type-select {
-  padding-left : 290px;
-}
 
 #ticket-node-form .field-name-field-ticket-category .form-type-select label {
   display        : inline-block;
