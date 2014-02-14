@@ -5,3 +5,4 @@ dependencies[] = features
 dependencies[] = text
 features[features_api][] = api:2
 features[field_base][] = field_fullname
+features[field_instance][] = user-user-field_fullname
