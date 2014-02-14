@@ -490,7 +490,7 @@ h3.view-filters-expanded:hover {
 .view-choose-your-ticket a {
   display : block;
   height  : 34px;
-  padding : 7px;
+  padding : 9px 7px;
   color   : black;
 }
 
@@ -758,6 +758,10 @@ h3.view-filters-expanded:hover {
   float          : none;
   display        : inline-block;
   vertical-align : middle;
+}
+
+span.customfile-upload {
+  background: red;
 }
 
 /*---/ TICKET FORM */

@@ -53,7 +53,7 @@
 .tickets-dropdown .carat {
   position   : absolute;
   right      : 9px;
-  top        : 6px;
+  top        : 5px;
   width      : 17px;
   height     : 22px;
   margin-top : 0;
@@ -198,7 +198,7 @@
 
 .tickets-dropdown li {
   list-style : none;
-  padding    : 8px 12px;
+  padding    : 9px 12px 7px 12px;
   text-align : center;
 }
 
