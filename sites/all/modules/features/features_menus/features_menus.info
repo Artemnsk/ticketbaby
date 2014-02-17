@@ -27,6 +27,7 @@ features[menu_links][] = menu-footer-menu-about-us_about-us:<front>
 features[menu_links][] = menu-footer-menu-about-us_company:<front>
 features[menu_links][] = menu-footer-menu-about-us_contact-us:<front>
 features[menu_links][] = menu-footer-menu-are-you-a-ticke_:<nolink>
+features[menu_links][] = menu-footer-menu-are-you-a-ticke_apply:user/register
 features[menu_links][] = menu-footer-menu-are-you-a-ticke_sign-in:user
 features[menu_links][] = menu-footer-menu-support_1-877-454-0338:<nolink>
 features[menu_links][] = menu-footer-menu-support_online-support:<nolink>

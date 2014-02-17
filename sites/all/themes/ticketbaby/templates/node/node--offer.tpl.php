@@ -80,18 +80,9 @@
 ?>
 
 <div class="expanded-item" for="node--offer">
-  <h2><span class="quote_h2">Respond</span></h2>
+  <h2><span class="quote_h2">Quotes</span></h2>
 </div>
 <article<?php print $attributes; ?>>
-  <?php if (!empty($title_prefix) || !empty($title_suffix) || !$page): ?>
-    <header>
-      <?php print render($title_prefix); ?>
-      <?php if (!$page): ?>
-        <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>" rel="bookmark"><?php print $title; ?></a></h2>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-    </header>
-  <?php endif; ?>
 
   <?php if ($display_submitted): ?>
     <footer class="node__submitted">
@@ -99,36 +90,44 @@
       <p class="submitted"><?php print $submitted; ?></p>
     </footer>
   <?php endif; ?>
-
-  <div<?php print $content_attributes; ?>>
-    <div class="expanded-item" for="node--ticket">
-  <h2><span class="quote_h2">Ticket</span></h2>
+  
+<div<?php print $content_attributes; ?>>
+  <table class="quote-table">
+    <tr>
+      <td>
+        <div class="expanded-item"><!-- for="node--ticket"-->
+          <h2><span class="quote_h2">Ticket</span></h2>
+        </div>
+        <?php print $ticket_content ?>
+      </td>
+      <td>
+        <div class="expanded-item"><!-- for="node--quote"-->
+          <h2><span class="quote_h2">Quote details</span></h2>
+        </div>
+        <span class="node--quote">
+          <div class="node__content">
+            <?php
+              print render($content['field_quote']);
+              print render($content['field_initial_payment']);
+              print render($content['field_final_payment_']);
+            ?>
+          </div>
+        </span>
+        <span class="quote-response">
+          <?php
+            // We hide the comments and links now so that we can render them later.
+            hide($content['field_quote']);
+            hide($content['field_initial_payment']);
+            hide($content['field_final_payment_']);
+            hide($content['comments']);
+            hide($content['links']);
+            print render($content);
+          ?>
+        </span>
+      </td>
+    </tr>
+  </table>
 </div>
-<?php print $ticket_content ?>
- 
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['field_quote']);
-      hide($content['field_initial_payment']);
-      hide($content['field_final_payment_']);
-      hide($content['comments']);
-      hide($content['links']);
-      print render($content);
-    ?>
-    
-    <div class="expanded-item" for="node--quote">
-      <h2><span class="quote_h2">Quote details</span></h2>
-    </div>
-    <span class="node--quote">
-      <div class="node__content">
-        <?php
-          print render($content['field_quote']);
-          print render($content['field_initial_payment']);
-          print render($content['field_final_payment_']);
-        ?>
-      </div>
-    </span>
-  </div>
 
   <?php print render($content['links']); ?>
   <?php print render($content['comments']); ?>

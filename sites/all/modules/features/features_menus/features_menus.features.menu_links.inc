@@ -358,6 +358,26 @@ function features_menus_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
+  // Exported menu link: menu-footer-menu-are-you-a-ticke_apply:user/register
+  $menu_links['menu-footer-menu-are-you-a-ticke_apply:user/register'] = array(
+    'menu_name' => 'menu-footer-menu-are-you-a-ticke',
+    'link_path' => 'user/register',
+    'router_path' => 'user/register',
+    'link_title' => 'Apply',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-footer-menu-are-you-a-ticke_apply:user/register',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+  );
   // Exported menu link: menu-footer-menu-are-you-a-ticke_sign-in:user
   $menu_links['menu-footer-menu-are-you-a-ticke_sign-in:user'] = array(
     'menu_name' => 'menu-footer-menu-are-you-a-ticke',
@@ -549,6 +569,7 @@ function features_menus_menu_default_menu_links() {
   t('About Us');
   t('Account details');
   t('Add new ticket');
+  t('Apply');
   t('Calendar');
   t('Company');
   t('Contact Us');
