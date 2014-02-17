@@ -1376,7 +1376,7 @@ article.comment {
   margin-top : 20px;
 }
 
-.not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket a {
+.not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket a.clock_link {
   display     : block;
   float       : right;
   color       : #D13707;
