@@ -761,7 +761,7 @@ h3.view-filters-expanded:hover {
 }
 
 span.customfile-upload {
-  background: red;
+  background : red;
 }
 
 /*---/ TICKET FORM */
@@ -1160,6 +1160,16 @@ ul.nice-menu li ul li:focus a {
   font-style : normal;
 }
 
+.not-front.page-user .l-main .l-content .view-id-tickets table tr td {
+  padding : 0;
+}
+
+.not-front.page-user .l-main .l-content .view-id-tickets table tr td a {
+  display : block;
+  width   : 100%;
+  padding : 10px 14px;
+}
+
 /*---/ table in user info */
 
 /* view ticket */
@@ -1194,7 +1204,6 @@ ul.nice-menu li ul li:focus a {
 
 .not-front.logged-in.node-type-offer article.node--offer .node__content {
   padding : 14px;
-  display : none;
 }
 
 .not-front.logged-in.node-type-offer article.node--ticket .node__content {
@@ -1245,9 +1254,21 @@ article.comment {
   background : white;
 }
 
-span.quote_h2 {
-  padding-right : 18px;
-  background    : url(../images/arrow_expand_down.png) center right no-repeat;
+.quote-table {
+  width : 100%;
+}
+
+.quote-table td {
+  width          : 50%;
+  vertical-align : top;
+}
+
+.quote-table td.ticket_td {
+  padding : 0 7px 0 0;
+}
+
+.quote-table td.quote_td {
+  padding : 0 0 0 7px;
 }
 
 /*--- view ticket */

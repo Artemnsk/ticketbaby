@@ -94,13 +94,13 @@
 <div<?php print $content_attributes; ?>>
   <table class="quote-table">
     <tr>
-      <td>
+      <td class="ticket_td">
         <div class="expanded-item"><!-- for="node--ticket"-->
           <h2><span class="quote_h2">Ticket</span></h2>
         </div>
         <?php print $ticket_content ?>
       </td>
-      <td>
+      <td class="quote_td">
         <div class="expanded-item"><!-- for="node--quote"-->
           <h2><span class="quote_h2">Quote details</span></h2>
         </div>
@@ -113,20 +113,20 @@
             ?>
           </div>
         </span>
-        <span class="quote-response">
-          <?php
-            // We hide the comments and links now so that we can render them later.
-            hide($content['field_quote']);
-            hide($content['field_initial_payment']);
-            hide($content['field_final_payment_']);
-            hide($content['comments']);
-            hide($content['links']);
-            print render($content);
-          ?>
-        </span>
       </td>
     </tr>
   </table>
+          <span class="quote-response">
+          <?php
+          // We hide the comments and links now so that we can render them later.
+          hide($content['field_quote']);
+          hide($content['field_initial_payment']);
+          hide($content['field_final_payment_']);
+          hide($content['comments']);
+          hide($content['links']);
+          print render($content);
+          ?>
+        </span>
 </div>
 
   <?php print render($content['links']); ?>
