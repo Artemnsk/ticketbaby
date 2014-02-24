@@ -36,3 +36,30 @@ function tb_settings_admin_form($form, &$form_state){
   );
   return system_settings_form($form);
 }
+
+/**
+ * Define and export date formats.
+ * Features can not do it.
+ */
+
+/**
+ * Implements hook_date_formats().
+ */
+function tb_settings_date_formats() {
+  $formats = array();
+  $formats[] = array(
+    'type' => "day_month_year",
+    'format' => "d/m/y",
+    'locales' => array(),
+  );
+  return $formats;
+}
+
+/**
+ * Implements hook_date_format_types().
+ */
+function tb_settings_date_format_types() {
+  $types = array();
+  $types['day_month_year'] = t('Day/Month/Year');
+  return $types;
+}

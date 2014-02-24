@@ -61,7 +61,7 @@ function features_node_offer_field_default_field_instances() {
     'description' => 'Enter Final Payment amount that is billed at a later date, with our without conditions.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -101,7 +101,7 @@ function features_node_offer_field_default_field_instances() {
     'description' => 'Enter initial payment if you require an initial payment to get started on the case.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -141,7 +141,7 @@ function features_node_offer_field_default_field_instances() {
     'description' => 'Enter quote amount if only one payment is required with no further payment.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -181,7 +181,7 @@ function features_node_offer_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -196,7 +196,7 @@ function features_node_offer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_response',
-    'label' => 'Response',
+    'label' => 'Response or Conditions',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -221,7 +221,7 @@ function features_node_offer_field_default_field_instances() {
     'description' => 'If there are any special conditions for final payment, for example if its conditional on whether the case is one.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -303,7 +303,7 @@ function features_node_offer_field_default_field_instances() {
   t('If there are any special conditions for final payment, for example if its conditional on whether the case is one.');
   t('Initial Payment');
   t('Quote');
-  t('Response');
+  t('Response or Conditions');
   t('Special Conditions');
   t('Ticket');
   t('Ticket which will be referenced by this offer.');

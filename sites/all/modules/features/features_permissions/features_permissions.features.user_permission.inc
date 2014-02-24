@@ -120,7 +120,6 @@ function features_permissions_user_default_permissions() {
     'name' => 'delete own offer content',
     'roles' => array(
       'administrator' => 'administrator',
-      'defender' => 'defender',
     ),
     'module' => 'node',
   );

@@ -14,6 +14,7 @@ features[menu_links][] = menu-customer-menu_account-details:user
 features[menu_links][] = menu-customer-menu_add-new-ticket:node/add/ticket
 features[menu_links][] = menu-customer-menu_messages:user/messages
 features[menu_links][] = menu-customer-menu_my-tickets:user/my-tickets
+features[menu_links][] = menu-customer-menu_quotes:user/quotes
 features[menu_links][] = menu-customer-menu_tickets:<nolink>
 features[menu_links][] = menu-defender-menu_account-details:user
 features[menu_links][] = menu-defender-menu_calendar:<nolink>

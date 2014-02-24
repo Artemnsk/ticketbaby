@@ -27,7 +27,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -47,
     'customized' => 1,
   );
   // Exported menu link: menu-customer-menu_add-new-ticket:node/add/ticket
@@ -68,7 +68,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: menu-customer-menu_my-tickets:user/my-tickets
@@ -91,6 +91,26 @@ function features_menus_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
     'parent_identifier' => 'menu-customer-menu_tickets:<nolink>',
+  );
+  // Exported menu link: menu-customer-menu_quotes:user/quotes
+  $menu_links['menu-customer-menu_quotes:user/quotes'] = array(
+    'menu_name' => 'menu-customer-menu',
+    'link_path' => 'user/quotes',
+    'router_path' => 'user/quotes',
+    'link_title' => 'Quotes',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-customer-menu_quotes:user/quotes',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
   );
   // Exported menu link: menu-customer-menu_tickets:<nolink>
   $menu_links['menu-customer-menu_tickets:<nolink>'] = array(
@@ -578,6 +598,7 @@ function features_menus_menu_default_menu_links() {
   t('Messages');
   t('My tickets');
   t('Online Support');
+  t('Quotes');
   t('Settings');
   t('Sign in');
   t('Sign out');

@@ -226,13 +226,40 @@ function features_blocks_settings_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['views-535d8d37fda1180f48c3085f8b86935a'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => '535d8d37fda1180f48c3085f8b86935a',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'ticketbaby' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'ticketbaby',
+        'weight' => -16,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['views-cc15bf442f6369d24a6618f373ec352c'] = array(
     'cache' => -1,
     'custom' => 0,
     'delta' => 'cc15bf442f6369d24a6618f373ec352c',
     'module' => 'views',
     'node_types' => array(),
-    'pages' => '<front>',
+    'pages' => '<front>
+node/add/ticket/*',
     'roles' => array(),
     'themes' => array(
       'omega' => array(

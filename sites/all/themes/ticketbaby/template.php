@@ -24,6 +24,10 @@ function theme_ticketbaby_date_combo($variables) {
 }
 
 function ticketbaby_date_popup_process_alter(&$element, &$form_state, $context){
+  if($element['#field']['field_name'] == 'field_date_of_ticket'){
+    $element['date']['#attributes']['placeholder'] = $element['#description'];
+    $element['#description'] = '';
+  }
   $element['date']['#description'] = '';
   $element['date']['#title_display'] = 'invisible';
 }

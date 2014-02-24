@@ -1,12 +1,24 @@
 <?php
 
+function tb_offer_preprocess_views_view_field(&$vars) {
+  if($vars['view']->current_display == ''){
+    
+  }
+}
+
 function tb_offer_form_alter(&$form, &$form_state, $form_id){
+  // Commentaries reply form on Quotes page.
+  if($form_id == 'comment_node_offer_form'){
+    unset($form['author']['_author']);
+    $form['comment_body'][LANGUAGE_NONE][0]['#title'] = t("Reply");
+    $form['actions']['submit']['#value'] = t("Send");
+  }  
+  
   // Load standard drupal node form.
   if($form_id == "offer_node_form" && !$form_state['rebuild'] && !user_access("administer content types")){
     unset($form['body']);
     
     $form['field_ticket']['und']['#columns'][0]['target_id'] = 2;
-    //$form['field_ticket_category']['#suffix'] = '<span class = "recommendation ticket-recommendation">Respond with additional questions, comments, give quote, or decline. Please give reason for decline, for instance that there is a small chance of successful defence or that its not worth defending because this will help the customer understand their situation.</span>';
     
     // ...and save offer button should be named "save".
     $form['actions']['submit']['#value'] = 'Send';
@@ -14,7 +26,6 @@ function tb_offer_form_alter(&$form, &$form_state, $form_id){
     // Ticket reference field. Receives value from url, disabled, hidden.
     if(arg(1) == 'add'){
       array_unshift($form['#validate'], 'tb_offer_validate_offer');
-      //$form['actions']['submit']['#submit'][] = "tb_offer_create_offer";
     }
     
     if(arg(3) && intval(arg(3) && $ticket = node_load(arg(3))) && arg(1) && arg(1) == 'add'){
@@ -43,7 +54,6 @@ function tb_offer_form_alter(&$form, &$form_state, $form_id){
     // Disable title.
     unset($form['field_response'][LANGUAGE_NONE][0]['#title']);
     unset($form['field_response'][LANGUAGE_NONE]['#title']);
-    //dpm($form);
   }
   
   return $form;

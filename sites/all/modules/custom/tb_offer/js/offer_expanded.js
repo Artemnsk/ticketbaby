@@ -1,6 +1,6 @@
 (function($) {
     $(document).ready(function(){
-        function is_visible(element){
+        /*function is_visible(element){
             return (element.css('display') !== "none");
         }
         $('.expanded-item').click(function(){
@@ -12,6 +12,6 @@
             }else{
                 $(selector).slideDown();
             }
-        });
+        });*/
     });
 }) (jQuery);

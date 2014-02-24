@@ -51,20 +51,6 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'You have not defended any ticket yet.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  /* Field: Content: Ticket category */
-  $handler->display->display_options['fields']['field_ticket_category']['id'] = 'field_ticket_category';
-  $handler->display->display_options['fields']['field_ticket_category']['table'] = 'field_data_field_ticket_category';
-  $handler->display->display_options['fields']['field_ticket_category']['field'] = 'field_ticket_category';
-  $handler->display->display_options['fields']['field_ticket_category']['label'] = 'Ticket';
-  $handler->display->display_options['fields']['field_ticket_category']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = 'Date';
-  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
-  $handler->display->display_options['fields']['created']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'time ago';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -73,6 +59,12 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
+  /* Field: Content: Ticket category */
+  $handler->display->display_options['fields']['field_ticket_category']['id'] = 'field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['table'] = 'field_data_field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['field'] = 'field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['label'] = 'Ticket';
+  $handler->display->display_options['fields']['field_ticket_category']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Full name */
   $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
   $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
@@ -83,6 +75,14 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['field_full_name']['settings'] = array(
     'trim_length' => '40',
   );
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Date';
+  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['created']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'time ago';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

@@ -29,44 +29,23 @@
     $class_new = 'new-or-updated';
   }
   
-  global $user;
-  $defender = in_array('defender', $user->roles) ? true : false;
-  
 ?>
 <?php //dpm($fields);?>
 <a href="<?php print drupal_get_path_alias('/node/'. $fields['nid_1']->content); ?>">
 <table class="respond-item-table <?php print $class_new;?>">
   <tr>   
     <td class="td_username">
-      <?php if($defender):?>
-        <?php print tb_offer_views_fields_row($fields['field_fullname_1']);?>
-      <?php else:?>
         <?php print tb_offer_views_fields_row($fields['field_fullname']);?>
-      <?php endif;?>
-      <span>
-      <?php if(isset($fields['comment_count'])):?>
-        <?php print tb_offer_views_fields_row($fields['comment_count']);?>
-      <?php endif;?>
-      </span>
-      <?php //print tb_offer_views_fields_row($fields['nid']);?>
     </td>
-    <td class="td_new">
-      <?php print tb_offer_views_fields_row($fields['timestamp']);?>
-    </td>
-    <td class="td_comment_name">
-      <?php if(isset($fields['comment_body'])):?>
-        <?php print tb_offer_views_fields_row($fields['subject']);?>
-        <?php print tb_offer_views_fields_row($fields['comment_body']);?>
-      <?php else:?>
-        <?php print tb_offer_views_fields_row($fields['field_response']);?>
-      <?php endif;?>
-      
+    <td>
+       <?php print isset($fields['field_quote']->content) ? ' with quotes '. tb_offer_views_fields_row($fields['field_quote']) :
+    ' without quotes.';?>
     </td>
     <td class="td_comment_date">
       <?php
         $posted = $fields['last_updated']->raw;
         if(time() - $posted <= 24*60*60){
-          print tb_offer_views_fields_row($fields['last_updated']);
+          print $fields['last_updated']->content;
         }else{
           print date('d/m/Y', $posted);
         }

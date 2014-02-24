@@ -91,44 +91,54 @@
     </footer>
   <?php endif; ?>
   
-<div<?php print $content_attributes; ?>>
-  <table class="quote-table">
-    <tr>
-      <td class="ticket_td">
-        <div class="expanded-item"><!-- for="node--ticket"-->
-          <h2><span class="quote_h2">Ticket</span></h2>
-        </div>
-        <?php print $ticket_content ?>
-      </td>
-      <td class="quote_td">
-        <div class="expanded-item"><!-- for="node--quote"-->
-          <h2><span class="quote_h2">Quote details</span></h2>
-        </div>
-        <span class="node--quote">
-          <div class="node__content">
-            <?php
-              print render($content['field_quote']);
-              print render($content['field_initial_payment']);
-              print render($content['field_final_payment_']);
-            ?>
-          </div>
-        </span>
-      </td>
-    </tr>
-  </table>
-          <span class="quote-response">
-          <?php
-          // We hide the comments and links now so that we can render them later.
-          hide($content['field_quote']);
-          hide($content['field_initial_payment']);
-          hide($content['field_final_payment_']);
-          hide($content['comments']);
-          hide($content['links']);
-          print render($content);
-          ?>
-        </span>
-</div>
+  <div<?php print $content_attributes; ?>>
+    <div class="quotes-ticket-block">
 
-  <?php print render($content['links']); ?>
-  <?php print render($content['comments']); ?>
+      <?php print render($ticket_content['field_ticket_category']) ?>
+
+      <div class="field--label-inline field--name-posted">
+        <div class="field__label">Posted:</div>
+        <div class="field-posted"><?php print $ticket_content['posted'] ?></div>
+      </div>
+
+      <div>
+        <?php print $ticket_content['author_fullname'] ?>
+      </div>
+
+      <div>
+        <?php print render($ticket_content['field_state']) ?>
+      </div>
+
+      <div>
+        <?php print render($ticket_content['field_were_there_any_special_cir']) ?>
+      </div>
+
+      <div>
+        <?php print render($ticket_content['field_what_is_your_driving_histo']) ?>
+      </div>
+
+      <div>
+        <?php print render($ticket_content['field_upload_scanned_ticket']) ?>
+      </div>
+
+    </div>
+
+    <div class="quotes-quote-block">
+      <h3>Your Quote</h3>
+      <?php
+        print render($content['field_quote']);
+        print render($content['field_response']);
+      ?>
+    </div>
+
+  </div>
+  
+  <div class="comments">
+    <div>
+      Messages Linked to this Ticket
+    </div>
+    <?php print render($content['comments']) ?>
+  </div>
+  
+  <?php //print render($content['links']); ?>
 </article>

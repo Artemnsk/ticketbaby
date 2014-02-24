@@ -1,7 +1,7 @@
 <?php
 
 function tb_ticket_views_pre_build(&$view){
- 
+
   // For every tickets view display.
   if($view->name == "tickets"){
     
@@ -39,11 +39,12 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     );
     
     unset($form['body']);
-    $form['field_ticket_category']['#suffix'] = '<span class = "recommendation ticket-recommendation">Fill in as much information as possible because this will help us in fighting your case.</span>';
     
     // Customize it depends on %tid from url.
-    $tid = arg(3) ? arg(3) : variable_get("default_ticket_category_id", 12);
+    $tid = arg(3) != 'und' ? arg(3) : variable_get("default_ticket_category_id", 12);
     $term = taxonomy_term_load($tid);
+    $form['field_ticket_category'][LANGUAGE_NONE]['#disabled'] = true;
+    $form['field_ticket_category'][LANGUAGE_NONE]['#type'] = 'hidden';
     $form['field_ticket_category'][LANGUAGE_NONE]['#default_value'][0] = $tid;
     $form['field_ticket_category'][LANGUAGE_NONE]['#title'] = $term->name;
     $form['#attached']['js'][] = drupal_get_path('module', 'tb_ticket'). '/js/redirect.js';
@@ -58,11 +59,36 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     
     // Now we should remove fields that are not in list of what we should show.
     foreach($form as $key => $val){
-      if(substr($key, 0, 6) == 'field_' && !in_array($key, $fields_to_show)){
-        unset($form[$key]);
+      if(substr($key, 0, 6) == 'field_'){
+        // Which field to show?
+        if(!in_array($key, $fields_to_show)){
+          unset($form[$key]);
+          continue ;
+        }else if(isset($form[$key][LANGUAGE_NONE][0]['value'])){
+          $form[$key][LANGUAGE_NONE][0]['value']['#attributes']['placeholder'] = $form[$key][LANGUAGE_NONE][0]['value']['#description'];
+        }
+        // Also we use placeholders instead of titles.
+        if(is_array($form[$key])){
+          //dpm($key);
+          if(isset($form[$key]['#title'])){
+            $form[$key]['#title_display'] = 'invisible';
+            if($key != 'field_date_of_ticket') unset($form[$key]['#description']);
+          }
+          if(isset($form[$key][LANGUAGE_NONE]['#title'])){
+            $form[$key][LANGUAGE_NONE]['#title_display'] = 'invisible';
+            if($key != 'field_date_of_ticket') unset($form[$key][LANGUAGE_NONE]['#description']);
+          }
+          if(isset($form[$key][LANGUAGE_NONE][0]['#title'])){
+            $form[$key][LANGUAGE_NONE][0]['#title_display'] = 'invisible';
+            if($key != 'field_date_of_ticket') unset($form[$key][LANGUAGE_NONE][0]['#description']);
+          }
+          if(isset($form[$key][LANGUAGE_NONE][0]['value']['#title'])){
+            $form[$key][LANGUAGE_NONE][0]['value']['#title_display'] = 'invisible';
+            if($key != 'field_date_of_ticket') unset($form[$key][LANGUAGE_NONE][0]['value']['#description']);
+          }
+        }
       }
     }
-    
     // ...and save ticket button should be named "save".
     $form['actions']['submit']['#value'] = 'Send';
     $form['actions']['submit']['#attributes']['onclick'] = 'if(!confirm("Are you sure all fields right? Once you sumitted your ticket you couldn\'t edit it")){return false;}';
@@ -98,23 +124,22 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     array_unshift($form['#validate'], 'tb_ticket_validate_user');
     array_unshift($form['actions']['submit']['#submit'], 'tb_ticket_submit_user');
     if(!user_is_logged_in()){
-      $form['registration'] = array(
-        '#type' => 'markup',
-        '#weight' => 30,
-        '#markup' => '<h2>Register your account</h2>',
-      );
       $form['pass'] = array(
         '#weight' => 33,
         '#type' => 'password',
         '#title' => 'Password',
+        '#title_display' => 'invisible',
         '#required' => TRUE,
+        '#attributes' => array('placeholder' => 'Password'),
       );
       $form['pass_confirm'] = array(
         '#weight' => 34,
         '#type' => 'password',
-        '#description' => t('Confirm yor password'),
         '#required' => TRUE,
+        '#attributes' => array('placeholder' => t('Confirm Password')),
       );
+      $form['field_email'][LANGUAGE_NONE][0]['email']['#attributes']['placeholder'] = 'Confirm Password';
+      $form['field_email'][LANGUAGE_NONE][0]['email']['#title_display'] = 'invisible';
       $form['field_full_name']['#weight'] = 31;
       $form['field_email']['#weight'] = 32;
     }else{
