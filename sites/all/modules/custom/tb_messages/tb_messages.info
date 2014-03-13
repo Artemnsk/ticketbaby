@@ -1,0 +1,5 @@
+name = TicketBaby messages module
+description = All messages/Dialog customization of this website.
+package = TicketBaby
+version = VERSION
+core = 7.x

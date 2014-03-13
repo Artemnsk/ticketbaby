@@ -1,0 +1,6 @@
+name = TicketBaby user dialog
+description = User dialogs implementation. Adds dialogs between user on ticket/offer.
+package = TicketBaby
+version = VERSION
+core = 7.x
+

@@ -101,6 +101,12 @@ function features_view_choose_your_ticket_views_default_views() {
   /* Display: Block on ticket creation form */
   $handler = $view->new_display('block', 'Block on ticket creation form', 'create_ticket_category');
   $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Field: Category image */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
@@ -131,7 +137,7 @@ function features_view_choose_your_ticket_views_default_views() {
   $handler->display->display_options['arguments']['tid']['field'] = 'tid';
   $handler->display->display_options['arguments']['tid']['default_action'] = 'default';
   $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'php';
-  $handler->display->display_options['arguments']['tid']['default_argument_options']['code'] = 'return arg(3) != \'und\' ? arg(3) : variable_get("default_ticket_category_id", 12);';
+  $handler->display->display_options['arguments']['tid']['default_argument_options']['code'] = 'return arg(3) != \'und\' && arg(3) != NULL? arg(3) : variable_get("default_ticket_category_id", 12);';
   $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';

@@ -1,0 +1,7 @@
+<?php
+
+function tb_messages_preprocess_views_view_field(&$vars) {
+  if($vars['view']->current_display == ''){
+    
+  }
+}

@@ -78,75 +78,129 @@
  * @see template_process()
  */
 ?>
-<?php switch($view_mode):?>
-<?php case "teaser":?>
+<?php if($user_role == "defender"):?>
+    <?php // Used on QUOTES page for defender. ?>
+    <?php if($view_mode == "teaser"):?>
 
-  <article<?php print $attributes; ?>>
-    <?php if (!empty($title_prefix) || !empty($title_suffix) || !$page): ?>
-      <header>
-        <?php print render($title_prefix); ?>
-        <?php if (!$page): ?>
-          <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>" rel="bookmark"><?php print $title; ?></a></h2>
-        <?php endif; ?>
-        <?php print render($title_suffix); ?>
-      </header>
-    <?php endif; ?>
+        <article<?php print $attributes; ?>>
+          <?php if (!empty($title_prefix) || !empty($title_suffix) || !$page): ?>
+            <header>
+              <?php print render($title_prefix); ?>
+              <?php if (!$page): ?>
+                <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>" rel="bookmark"><?php print $title; ?></a></h2>
+              <?php endif; ?>
+              <?php print render($title_suffix); ?>
+            </header>
+          <?php endif; ?>
 
-    <?php if ($display_submitted): ?>
-      <footer class="node__submitted">
-        <?php print $user_picture; ?>
-        <p class="submitted"><?php print $submitted; ?></p>
-      </footer>
-    <?php endif; ?>
+          <?php if ($display_submitted): ?>
+            <footer class="node__submitted">
+              <?php print $user_picture; ?>
+              <p class="submitted"><?php print $submitted; ?></p>
+            </footer>
+          <?php endif; ?>
 
-    <div<?php print $content_attributes; ?>>
-      <?php
-        // We hide the comments and links now so that we can render them later.
-        hide($content['comments']);
-        hide($content['links']);
-        print render($content);
-      ?>
-    </div>
+          <div<?php print $content_attributes; ?>>
+            <?php
+              // We hide the comments and links now so that we can render them later.
+              hide($content['comments']);
+              hide($content['links']);
+              print render($content);
+            ?>
+          </div>
 
-    <?php print render($content['comments']); ?>
-  </article>
+          <?php print render($content['comments']); ?>
+        </article>
 
-<?php break;?>
-<?php default:?>
+    <?php // Used on Ticket page for defender. ?>
+    <?php else:?>
+    
+        <article<?php print $attributes; ?>>
+          <?php if (!empty($title_prefix) || !empty($title_suffix) || !$page): ?>
+            <header>
+              <?php print render($title_prefix); ?>
+              <?php if (!$page): ?>
+                <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>" rel="bookmark"><?php print $title; ?></a></h2>
+              <?php endif; ?>
+              <?php print render($title_suffix); ?>
+            </header>
+          <?php endif; ?>
 
-  <article<?php print $attributes; ?>>
-    <?php if (!empty($title_prefix) || !empty($title_suffix) || !$page): ?>
-      <header>
-        <?php print render($title_prefix); ?>
-        <?php if (!$page): ?>
-          <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>" rel="bookmark"><?php print $title; ?></a></h2>
-        <?php endif; ?>
-        <?php print render($title_suffix); ?>
-      </header>
-    <?php endif; ?>
+          <?php if ($display_submitted): ?>
+            <footer class="node__submitted">
+              <?php print $user_picture; ?>
+              <p class="submitted"><?php print $submitted; ?></p>
+            </footer>
+          <?php endif; ?>
 
-    <?php if ($display_submitted): ?>
-      <footer class="node__submitted">
-        <?php print $user_picture; ?>
-        <p class="submitted"><?php print $submitted; ?></p>
-      </footer>
-    <?php endif; ?>
+          <div<?php print $content_attributes; ?>>
+            <?php
+              // We hide the comments and links now so that we can render them later.
+              hide($content['comments']);
+              hide($content['links']);
+              print render($content);
+            ?>
+          </div>
+          <?php if(isset($defender_respond)): ?>
+            <?php print $defender_respond; ?>
+          <?php endif; ?>
 
-    <div<?php print $content_attributes; ?>>
-      <?php
-        // We hide the comments and links now so that we can render them later.
-        hide($content['comments']);
-        hide($content['links']);
-        print render($content);
-      ?>
-    </div>
-    <?php if(isset($defender_respond)): ?>
-      <?php print $defender_respond; ?>
-    <?php endif; ?>
+          <?php print render($content['links']); ?>
+          <?php print render($content['comments']); ?>
+        </article>
 
-    <?php print render($content['links']); ?>
-    <?php print render($content['comments']); ?>
-  </article>
+    <?php endif;?>
 
-<?php break;?>
-<?php endswitch;?>
+<?php //Ticket page for customer. ?>
+<?php elseif($user_role == "customer"):?>
+
+    <article<?php print $attributes; ?>>
+      <div<?php print $content_attributes; ?>>
+        <?php // Left side. ?>
+        <div>
+          <table>
+              <tr>
+                  <td>
+                      <div class="field__label">Ticket:</div>
+                      <div class="field__items"><?php print $content['title'] ?></div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <?php print render($content['field_status']) ?>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <?php print render($content['field_state']) ?>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <?php print render($content['nid']) ?>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <div class="field__label">Date Posted:</div>
+                      <div class="field__items"><?php print $content['posted'] ?></div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <?php print render($content['field_date_of_ticket']) ?>
+                  </td>
+              </tr>
+          </table>
+        </div>
+
+        <?php // Right side. ?>
+        <div>
+            <?php print render($content['field_were_there_any_special_cir']) ?>
+            <?php //print render($content['field_defender']) ?>
+            <?php //print render($content['field_upload_scanned_ticket']) ?>
+        </div>
+      </div>
+    </article>
+
+<?php endif;?>

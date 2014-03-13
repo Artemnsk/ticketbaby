@@ -79,66 +79,81 @@
  */
 ?>
 
-<div class="expanded-item" for="node--offer">
-  <h2><span class="quote_h2">Quotes</span></h2>
-</div>
 <article<?php print $attributes; ?>>
 
-  <?php if ($display_submitted): ?>
+    <?php if ($display_submitted): ?>
     <footer class="node__submitted">
       <?php print $user_picture; ?>
       <p class="submitted"><?php print $submitted; ?></p>
     </footer>
-  <?php endif; ?>
-  
-  <div<?php print $content_attributes; ?>>
-    <div class="quotes-ticket-block">
+    <?php endif; ?>
 
-      <?php print render($ticket_content['field_ticket_category']) ?>
+    <!-- LEFT SIDE -->
+    <div>
+        <table<?php print $content_attributes; ?>>
+            <tr>
+                <td>
+                    <?php //print render($author_picture) ?>
+                    <?php print render($author_fullname) ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <?php print render($author_location) ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="field__label">Date Posted:</div>
+                    <div class="field__items"><?php print $content['posted'] ?></div>
+                </td>
+            </tr>
+            <!--
+            <tr>
+                <td rowspan="2">
+                    <?php print render($ticket_category) ?>
 
-      <div class="field--label-inline field--name-posted">
-        <div class="field__label">Posted:</div>
-        <div class="field-posted"><?php print $ticket_content['posted'] ?></div>
-      </div>
-
-      <div>
-        <?php print $ticket_content['author_fullname'] ?>
-      </div>
-
-      <div>
-        <?php print render($ticket_content['field_state']) ?>
-      </div>
-
-      <div>
-        <?php print render($ticket_content['field_were_there_any_special_cir']) ?>
-      </div>
-
-      <div>
-        <?php print render($ticket_content['field_what_is_your_driving_histo']) ?>
-      </div>
-
-      <div>
-        <?php print render($ticket_content['field_upload_scanned_ticket']) ?>
-      </div>
-
+                    Total Cost: ---
+                </td>
+            </tr>
+            -->
+            <tr>
+                <td>
+                    <div class="field__label">Quote #</div>
+                    <div class="field__items"><?php print $nid ?></div>
+                </td>
+            </tr>
+        </table>
     </div>
 
-    <div class="quotes-quote-block">
-      <h3>Your Quote</h3>
-      <?php
-        print render($content['field_quote']);
-        print render($content['field_response']);
-      ?>
+    <!--RIGHT SIDE-->
+    <div>
+        <?php print render($content['field_response']) ?>
+        <?php print render($content['field_special_conditions']) ?>
     </div>
 
-  </div>
-  
-  <div class="comments">
+    <!-- LEFT SIDE-->
+    <div>
+        <?php print render($content['field_initial_payment']) ?>
+        <?php print render($content['field_final_payment_']) ?>
+        Total Cost: ---
+    </div>
+
+    <!--RIGHT SIDE-->
+    <div>
+        <!-- Just custom static text.-->
+    </div>
+
+
+
+<!--
+    <div class="comments">
     <div>
       Messages Linked to this Ticket
     </div>
     <?php print render($content['comments']) ?>
-  </div>
-  
-  <?php //print render($content['links']); ?>
+    </div>
+
+    <?php //print render($content['links']); ?>
+    -->
 </article>

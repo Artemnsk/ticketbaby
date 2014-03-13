@@ -18,8 +18,10 @@ function features_blocks_settings_default_fe_block_settings() {
     'delta' => 'menu-customer-menu',
     'module' => 'menu',
     'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
+    'pages' => '<front>',
+    'roles' => array(
+      'customer' => 5,
+    ),
     'themes' => array(
       'omega' => array(
         'region' => '',
@@ -28,13 +30,13 @@ function features_blocks_settings_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ticketbaby' => array(
-        'region' => '',
-        'status' => 0,
+        'region' => 'header',
+        'status' => 1,
         'theme' => 'ticketbaby',
-        'weight' => 0,
+        'weight' => -19,
       ),
     ),
-    'title' => '',
+    'title' => '<none>',
     'visibility' => 0,
   );
 
@@ -57,7 +59,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'ticketbaby',
-        'weight' => 0,
+        'weight' => -17,
       ),
     ),
     'title' => '',
@@ -83,7 +85,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ticketbaby',
-        'weight' => -12,
+        'weight' => -17,
       ),
     ),
     'title' => '<none>',
@@ -111,7 +113,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ticketbaby',
-        'weight' => -10,
+        'weight' => -15,
       ),
     ),
     'title' => '<none>',
@@ -137,7 +139,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ticketbaby',
-        'weight' => -11,
+        'weight' => -16,
       ),
     ),
     'title' => '<none>',
@@ -163,7 +165,7 @@ function features_blocks_settings_default_fe_block_settings() {
         'region' => 'header',
         'status' => 1,
         'theme' => 'ticketbaby',
-        'weight' => -13,
+        'weight' => -18,
       ),
     ),
     'title' => '<none>',
@@ -188,10 +190,10 @@ function features_blocks_settings_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ticketbaby' => array(
-        'region' => 'sidebar_first',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ticketbaby',
-        'weight' => -15,
+        'weight' => -17,
       ),
     ),
     'title' => '<none>',
@@ -219,7 +221,35 @@ function features_blocks_settings_default_fe_block_settings() {
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'ticketbaby',
-        'weight' => -14,
+        'weight' => -17,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['tb_user_menu-customer_tabs'] = array(
+    'cache' => 4,
+    'custom' => 0,
+    'delta' => 'customer_tabs',
+    'module' => 'tb_user_menu',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(
+      'customer' => 5,
+    ),
+    'themes' => array(
+      'omega' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'omega',
+        'weight' => 0,
+      ),
+      'ticketbaby' => array(
+        'region' => 'content',
+        'status' => 1,
+        'theme' => 'ticketbaby',
+        'weight' => -18,
       ),
     ),
     'title' => '<none>',
@@ -232,8 +262,11 @@ function features_blocks_settings_default_fe_block_settings() {
     'delta' => '535d8d37fda1180f48c3085f8b86935a',
     'module' => 'views',
     'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
+    'pages' => 'node/add/ticket/*
+node/add/ticket',
+    'roles' => array(
+      'anonymous user' => 1,
+    ),
     'themes' => array(
       'omega' => array(
         'region' => '',
@@ -245,11 +278,11 @@ function features_blocks_settings_default_fe_block_settings() {
         'region' => 'content',
         'status' => 1,
         'theme' => 'ticketbaby',
-        'weight' => -16,
+        'weight' => -17,
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   $export['views-cc15bf442f6369d24a6618f373ec352c'] = array(
@@ -259,6 +292,7 @@ function features_blocks_settings_default_fe_block_settings() {
     'module' => 'views',
     'node_types' => array(),
     'pages' => '<front>
+node/add/ticket
 node/add/ticket/*',
     'roles' => array(),
     'themes' => array(
@@ -272,7 +306,7 @@ node/add/ticket/*',
         'region' => 'sidebar_first',
         'status' => 1,
         'theme' => 'ticketbaby',
-        'weight' => -13,
+        'weight' => -16,
       ),
     ),
     'title' => '',

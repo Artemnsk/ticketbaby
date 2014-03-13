@@ -168,7 +168,7 @@ function features_view_responds_views_default_views() {
   $handler->display->display_options['fields']['comment_body']['settings'] = array(
     'trim_length' => '50',
   );
-  /* Field: Content: Response or Conditions */
+  /* Field: Content: Overview */
   $handler->display->display_options['fields']['field_response']['id'] = 'field_response';
   $handler->display->display_options['fields']['field_response']['table'] = 'field_data_field_response';
   $handler->display->display_options['fields']['field_response']['field'] = 'field_response';
@@ -322,6 +322,165 @@ function features_view_responds_views_default_views() {
   $handler->display->display_options['fields']['field_quote']['label'] = '';
   $handler->display->display_options['fields']['field_quote']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'user/quotes';
+
+  /* Display: Quotes of ticket page */
+  $handler = $view->new_display('page', 'Quotes of ticket page', 'quotes_of_ticket_page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_response' => 'field_response',
+    'field_special_conditions' => 'field_special_conditions',
+    'field_fullname' => 'field_fullname',
+    'created' => 'created',
+    'picture' => 'picture',
+    'field_ticket_category' => 'field_ticket_category',
+    'field_date_of_ticket' => 'field_date_of_ticket',
+    'field_final_payment__1' => 'field_final_payment__1',
+    'field_initial_payment_1' => 'field_initial_payment_1',
+    'nid' => 'nid',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_response' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_special_conditions' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_fullname' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'picture' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_ticket_category' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_date_of_ticket' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_final_payment__1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_initial_payment_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'You have no quotes yet.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['label'] = 'Defender of quote';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_ticket_target_id']['id'] = 'field_ticket_target_id';
+  $handler->display->display_options['relationships']['field_ticket_target_id']['table'] = 'field_data_field_ticket';
+  $handler->display->display_options['relationships']['field_ticket_target_id']['field'] = 'field_ticket_target_id';
+  $handler->display->display_options['relationships']['field_ticket_target_id']['label'] = 'Ticket of quote';
+  $handler->display->display_options['relationships']['field_ticket_target_id']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: Fullname */
+  $handler->display->display_options['fields']['field_fullname']['id'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['table'] = 'field_data_field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['field'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_fullname']['label'] = 'Defender';
+  $handler->display->display_options['fields']['field_fullname']['alter']['text'] = '[field_fullname],';
+  $handler->display->display_options['fields']['field_fullname']['alter']['max_length'] = '20';
+  $handler->display->display_options['fields']['field_fullname']['alter']['trim'] = TRUE;
+  /* Field: Content: Overview */
+  $handler->display->display_options['fields']['field_response']['id'] = 'field_response';
+  $handler->display->display_options['fields']['field_response']['table'] = 'field_data_field_response';
+  $handler->display->display_options['fields']['field_response']['field'] = 'field_response';
+  $handler->display->display_options['fields']['field_response']['label'] = 'Content';
+  $handler->display->display_options['fields']['field_response']['alter']['max_length'] = '100';
+  $handler->display->display_options['fields']['field_response']['alter']['more_link'] = TRUE;
+  $handler->display->display_options['fields']['field_response']['alter']['more_link_text'] = 'more';
+  $handler->display->display_options['fields']['field_response']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_response']['type'] = 'text_trimmed';
+  $handler->display->display_options['fields']['field_response']['settings'] = array(
+    'trim_length' => '150',
+  );
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Date';
+  $handler->display->display_options['fields']['created']['date_format'] = 'tickets';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Ticket (field_ticket) */
+  $handler->display->display_options['arguments']['field_ticket_target_id']['id'] = 'field_ticket_target_id';
+  $handler->display->display_options['arguments']['field_ticket_target_id']['table'] = 'field_data_field_ticket';
+  $handler->display->display_options['arguments']['field_ticket_target_id']['field'] = 'field_ticket_target_id';
+  $handler->display->display_options['arguments']['field_ticket_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_ticket_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_ticket_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_ticket_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_ticket_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['path'] = 'ticket/%/quotes';
   $export['offers_responds_'] = $view;
 
   return $export;

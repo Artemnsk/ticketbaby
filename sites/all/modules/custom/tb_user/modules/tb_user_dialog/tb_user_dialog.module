@@ -1,0 +1,141 @@
+  <?php
+
+/*
+ * hook_block_info() implementation.
+ */
+  
+function tb_user_dialog_block_info(){
+  // Block dialog on ticket page.
+  $blocks['tb_user_dialog_form'] = array(
+    'info' => t('Dialog on ticket/quotes page'), 
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  return $blocks;
+}
+
+function tb_user_dialog_block_view($delta = '') {
+  $block = array();
+
+  switch ($delta) {
+    case 'tb_user_dialog_ticket':
+      $block['content'] = '';
+      
+      if(arg(0) == 'node' && is_numeric(arg(1))){
+        $node = node_load(arg(1));
+        global $user;
+        $dialogs = db_query("SELECT DISTINCT entity_id FROM field_data_field_users WHERE field_users_target_id = :author AND
+          entity_id IN(SELECT entity_id FROM field_data_field_users WHERE field_users_target_id = :defender) AND
+          entity_id IN(SELECT entity_id FROM field_data_field_attached_to WHERE field_attached_to_target_id = :node_id)", 
+          array(':author' => $node->uid, ':defender' => $user->uid, ':node_id' => $node->nid));
+        $no_dialogs = true;
+        foreach($dialogs as $dialog){
+          $no_dialogs = false;
+          // If node[ticket] author is the same as current user it means that customer looking on ticket now.
+          // We should show ALL dialogs to him.
+          $dialog_node = node_load($dialog->entity_id);
+          $block['content'] .= node_access("view", $dialog_node) ? drupal_render(comment_node_page_additions($dialog_node)) : "";
+        }
+        // If there are no dialog associated with this content and belongs to this user created
+        // AND it is not CUSTOMER watching on his ticket right now
+        // we should show message form.
+        if($no_dialogs && !in_array('customer', $user->roles)){
+          $block['content'] = drupal_get_form("tb_user_dialog_form");
+        }
+      }
+      
+      break;
+  }
+  return $block;
+}
+
+/*
+ * Dialog on ticket page form.
+ */
+
+function tb_user_dialog_form($form, &$form_state){
+  if(arg(0) == 'node' && is_numeric(arg(1))){
+    $node = node_load(arg(1));
+    if($node){
+      $form_state['node'] = $node->nid;
+      $form_state['node_author'] = $node->uid;
+    }else{
+      return '';
+    }
+  }else{
+    return '';
+  }
+  $form = array(
+    'message_text' => array(
+      '#type' => 'textarea',
+      '#default_value' => '',
+      '#title' => 'Message',
+    ),
+    'submit' => array(
+      '#type' => 'submit',
+      '#value' => t('Send'),
+      '#submit' => array('tb_user_dialog_form_submit'),
+    ),
+  );
+  
+  return $form;
+}
+
+function tb_user_dialog_form_validate($form, &$form_state){
+  if(!isset($form_state['node']) || !isset($form_state['node_author'])){
+    form_set_error('message_text', t('Something goes wrong. Please try again or contact administrator.'));
+  }
+}
+
+/*
+ * Dialog form submission.
+ */
+
+function tb_user_dialog_form_submit($form, &$form_state){
+  global $user;
+  $node = new stdClass();
+  //$node->title = "YOUR TITLE";
+  //$node->body = $form_state['values']['message_text'];
+  $node->type = "dialog";
+  node_object_prepare($node);
+  $node->language = LANGUAGE_NONE;
+  $node->body[$node->language][0]['value'] = $form_state['values']['message_text'];
+  $node->body[$node->language][0]['format'] = 'plain_text';
+  $node->uid = $user->uid;
+
+  // Entity reference fields.
+  $node->field_attached_to[$node->language][] = array(
+    'target_id' => $form_state['node'],
+    'target_type' => 'node',
+  );
+  $node->field_users[$node->language][] = array(
+    'target_id' => $user->uid,
+    'target_type' => 'user',
+  );
+  $node->field_users[$node->language][] = array(
+    'target_id' => $form_state['node_author'],
+    'target_type' => 'user',
+  );
+  $node = node_save($node);
+}
+
+/*
+ * Implements hook_node_access().
+ */
+
+function tb_user_dialog_node_access($node, $op, $account){
+  $type = is_string($node) ? $node : $node->type;
+  if($type == 'dialog'){
+    if($op == 'view'){
+      // Let ticket's owner to see this offer.
+      global $user;
+      foreach($node->field_users[LANGUAGE_NONE] as $key => $value){
+        if($value['target_id'] == $user->uid){
+          return NODE_ACCESS_ALLOW;
+        }
+      }
+      return NODE_ACCESS_DENY;
+    }
+  }
+  return NODE_ACCESS_IGNORE;
+}

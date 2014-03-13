@@ -277,7 +277,10 @@ function features_permissions_user_default_permissions() {
   // Exported permission: 'view any defender_profile profile'.
   $permissions['view any defender_profile profile'] = array(
     'name' => 'view any defender_profile profile',
-    'roles' => array(),
+    'roles' => array(
+      'customer' => 'customer',
+      'defender' => 'defender',
+    ),
     'module' => 'profile2',
   );
 

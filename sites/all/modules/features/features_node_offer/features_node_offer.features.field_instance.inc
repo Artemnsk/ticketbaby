@@ -116,7 +116,7 @@ function features_node_offer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_initial_payment',
-    'label' => 'Initial Payment',
+    'label' => 'Retainer',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -181,7 +181,7 @@ function features_node_offer_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -196,7 +196,7 @@ function features_node_offer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_response',
-    'label' => 'Response or Conditions',
+    'label' => 'Overview',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -221,7 +221,7 @@ function features_node_offer_field_default_field_instances() {
     'description' => 'If there are any special conditions for final payment, for example if its conditional on whether the case is one.',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -236,7 +236,7 @@ function features_node_offer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_special_conditions',
-    'label' => 'Special Conditions',
+    'label' => 'Additional Term and Conditions',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -295,16 +295,16 @@ function features_node_offer_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Additional Term and Conditions');
   t('Body');
   t('Enter Final Payment amount that is billed at a later date, with our without conditions.');
   t('Enter initial payment if you require an initial payment to get started on the case.');
   t('Enter quote amount if only one payment is required with no further payment.');
   t('Final Payment ');
   t('If there are any special conditions for final payment, for example if its conditional on whether the case is one.');
-  t('Initial Payment');
+  t('Overview');
   t('Quote');
-  t('Response or Conditions');
-  t('Special Conditions');
+  t('Retainer');
   t('Ticket');
   t('Ticket which will be referenced by this offer.');
 

@@ -1,9 +1,8 @@
 <?php
 
-/**
- * Implements hook_preprocess_page().
+/*
+ * Determine pages for tabs.
+ * Special tabs are Parent tabs for primary.
+ * $page_vars - $variables of page.
  */
-function ticketbaby_preprocess_page(&$variables) {
-  // You can use preprocess hooks to modify the variables before they are passed
-  // to the theme function or template file.
-}
+

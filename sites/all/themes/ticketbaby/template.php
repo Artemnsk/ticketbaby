@@ -32,8 +32,10 @@ function ticketbaby_date_popup_process_alter(&$element, &$form_state, $context){
   $element['date']['#title_display'] = 'invisible';
 }
 
-function ticketbaby_menu_link__menu_header_menu_sign_in(array $variables) {
-  $output = '';
+/*
+ * Menu in header customization.
+ */
+function ticketbaby_menu_link__menu_header_menu_sign_in(array $variables){
   $element = $variables['element'];
   
   
@@ -53,7 +55,76 @@ function ticketbaby_menu_link__menu_header_menu_sign_in(array $variables) {
   }else{
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   }
-  $output = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";  
+  $output = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 
   return $output;
+}
+
+/*
+ * Menu in header customization.
+ */
+function ticketbaby_menu_link__menu_customer_menu(array $variables){
+    $element = $variables['element'];
+    $sub_menu = '';
+    if ($element['#below']) {
+        $sub_menu = drupal_render($element['#below']);
+    }
+    if($element['#original_link']['link_path'] == "user" && user_is_logged_in()){
+        $output = "<span>". $element['#title']. "</span>";
+    }else{
+        $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+    }
+    // Defining if we are on tickets page.
+    if($element['#href'] == "user/my-tickets"){
+        if(tb_user_menu_define_ticket_id($_GET['q']) !== null){
+            $element['#attributes']['class'][] = "active-trail";
+        }
+    }
+    $output = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+
+    return $output;
+}
+
+/*
+ * Override user profile template,
+ */
+function ticketbaby_preprocess_user_profile(&$vars){
+    $viewed_user = $vars['elements']['#account'];
+    $roles = $viewed_user->roles;
+    if(in_array('defender', $roles)){
+        $vars['is_defender'] = true;
+        // If pictire is default let's add specific class to it to add CSS style.
+        if($vars['elements']['#account']->picture === NULL){
+            $vars['user_profile']['user_picture']['#prefix'] = "<span class='anonymous'>";
+            $vars['user_profile']['user_picture']['#suffix'] = "</span>";
+        }
+        // Add "Lawyer" to username.
+        $vars['user_profile']['field_fullname'][0]['#markup'] .= '<br />Lawyer';
+        // @TODO: normal counting.
+        $vars['user_profile']['tickets_defended'] = 0;
+        $vars['user_profile']['tickets_in_progress'] = 0;
+
+        // Last login.
+        $vars['user_profile']['last_online'] = date('M d, Y', $viewed_user->login);
+        // Find right profile. What if defender will have multiple arrays?
+        $profile_key = false;
+        foreach($vars['user_profile']['profile_defender_profile']['view']['profile2'] as $key => $val){
+            if($val['#bundle'] == 'defender_profile'){
+                $profile_key = $key;
+            }
+        }
+
+        if($profile_key !== false){
+            $profile = $vars['user_profile']['profile_defender_profile']['view']['profile2'][$profile_key];
+            // Working state.
+            $vars['user_profile']['location'] = $profile['field_working_state'];
+            // Overview.
+            $vars['user_profile']['overview'] = $profile['field_overview'];
+            // Feedback.
+            $vars['user_profile']['feedback'] = $profile['field_defender_feedback'];
+        }
+        //dpm($vars);
+    }else{
+        $vars['is_defender'] = false;
+    }
 }

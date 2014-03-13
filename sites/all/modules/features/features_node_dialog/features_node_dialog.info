@@ -1,0 +1,14 @@
+name = Node dialog
+core = 7.x
+package = Features
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = features_node_ticket
+dependencies[] = text
+features[features_api][] = api:2
+features[field_base][] = field_attached_to
+features[field_base][] = field_users
+features[field_instance][] = node-dialog-body
+features[field_instance][] = node-dialog-field_attached_to
+features[field_instance][] = node-dialog-field_users
+features[node][] = dialog

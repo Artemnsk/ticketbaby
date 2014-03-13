@@ -41,7 +41,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     unset($form['body']);
     
     // Customize it depends on %tid from url.
-    $tid = arg(3) != 'und' ? arg(3) : variable_get("default_ticket_category_id", 12);
+    $tid = arg(3) != 'und' && arg(3) != NULL ? arg(3) : variable_get("default_ticket_category_id", 12);
     $term = taxonomy_term_load($tid);
     $form['field_ticket_category'][LANGUAGE_NONE]['#disabled'] = true;
     $form['field_ticket_category'][LANGUAGE_NONE]['#type'] = 'hidden';
@@ -49,13 +49,9 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     $form['field_ticket_category'][LANGUAGE_NONE]['#title'] = $term->name;
     $form['#attached']['js'][] = drupal_get_path('module', 'tb_ticket'). '/js/redirect.js';
     
-    // Show only fields specified in default settings + defined in appropriate category.
+    $form['field_were_there_any_special_cir'][LANGUAGE_NONE][0]['value']['#description'] = strip_tags($term->description);
+    // Show only fields specified in default settings.
     $fields_to_show = array_map('trim', explode("\n", variable_get("default_ticket_fields", '')));
-    if($term->field_custom_fields){
-      foreach($term->field_custom_fields[LANGUAGE_NONE] as $key => $val){
-        $fields_to_show[] = $val['value'];
-      }
-    }
     
     // Now we should remove fields that are not in list of what we should show.
     foreach($form as $key => $val){
@@ -67,7 +63,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
         }else if(isset($form[$key][LANGUAGE_NONE][0]['value'])){
           $form[$key][LANGUAGE_NONE][0]['value']['#attributes']['placeholder'] = $form[$key][LANGUAGE_NONE][0]['value']['#description'];
         }
-        // Also we use placeholders instead of titles.
+        // We use placeholders instead of titles.
         if(is_array($form[$key])){
           //dpm($key);
           if(isset($form[$key]['#title'])){

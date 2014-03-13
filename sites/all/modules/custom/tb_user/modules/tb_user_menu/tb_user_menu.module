@@ -13,7 +13,7 @@ function tb_user_menu_menu(){
       'access arguments' => array('access content'),
     ),
     'user/my-tickets' => array(
-      'title' => t('My tickets'),
+      'title' => t(''),
       'page callback' => 'tb_user_router',
       'page arguments' => array('tickets', 'my_tickets', 'user'),
       'access arguments' => array('access content'),
@@ -65,6 +65,87 @@ function tb_user_menu_init(){
   drupal_add_css(drupal_get_path('module', 'tb_user_menu'). '/css/header-menu.css');
 }
 
-function tb_user_menu_alter($items){
-  //dpm($items);
+/*
+* Implements hook_block_info().
+*/
+function tb_user_menu_block_info(){
+  $blocks['customer_tabs'] = array(
+      'info' => t('Customer tabs'),
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  return $blocks;
+}
+
+function tb_user_menu_block_view($delta = ''){
+  $block = array();
+  // Define ticket id to show right tabs.
+  $vars = tb_user_menu_define_ticket_id($_GET['q']);
+  // Does ticket has a defender?
+  if($vars != null){
+      $ticket = node_load($vars['ticket_id']);
+      if(!empty($ticket->field_defender)){
+          $vars['has_defender'] = true;
+      }else{
+          $vars['has_defender'] = false;
+      }
+  }
+  switch ($delta) {
+      case 'customer_tabs':
+          $block['subject'] = t('Customer tabs');
+          $block['content'] = $vars != null ? theme('tabs_block', $vars) : '';
+          break;
+  }
+
+  return $block;
+}
+
+function tb_user_menu_theme($existing, $type, $theme, $path) {
+  return array(
+      'tabs_block' => array(
+          'template' => 'templates/customer_tabs',
+          'variables' => array(
+              'ticket_id' => null,
+              'title' => null,
+              'nid' => null,
+              'has_defender' => false,
+              // Quotes link tab is parent? For quote node.
+              'quotes_parent' => false,
+          ),
+      ),
+  );
+}
+
+/*
+ * Custom defining of a ticket id depends on page.
+ * Prepares variables for "tabs" theme function.
+*/
+function tb_user_menu_define_ticket_id($q){
+    //$q = 'node/2135';
+    // node/%nid pages.
+    if(preg_match("/node\/(\d+)/", $q)){
+        $node = node_load(preg_replace("/node\/(\d)/", "$1", $q));
+        if($node){
+            switch($node->type){
+                case "ticket":
+                    return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'quotes_parent' => array());
+                case "offer":
+                    $ticket = node_load($node->field_ticket[LANGUAGE_NONE][0]['target_id']);
+                    return array("ticket_id" => $ticket->nid, "title" => $ticket->title, "nid" => $ticket->nid, 'quotes_parent' => array('attributes' => array('class' => 'active')));
+            }
+        }
+    }
+    // ...And other pages.
+    elseif(preg_match("/ticket\/(\d+)\/defender/", $q)){
+        $node = node_load(preg_replace("/ticket\/(\d+)\/defender/", "$1", $q));
+        return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'quotes_parent' => array());
+    }elseif(preg_match("/ticket\/(\d+)\/quotes/", $q)){
+        $node = node_load(preg_replace("/ticket\/(\d+)\/quotes/", "$1", $q));
+        return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'quotes_parent' => array());
+    }elseif(preg_match("/user\/\d+\/ticket\/(\d+)\/messages/", $q)){
+        $node = node_load(preg_replace("/user\/\d+\/ticket\/(\d+)\/messages/", "$1", $q));
+        return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'quotes_parent' => array());
+    }
+    // Return null if there are no matches.
+    return null;
 }

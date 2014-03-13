@@ -2,6 +2,7 @@ name = Feature account
 core = 7.x
 package = Features
 dependencies[] = features
+dependencies[] = fivestar
 dependencies[] = text
 features[features_api][] = api:2
 features[field_base][] = field_fullname

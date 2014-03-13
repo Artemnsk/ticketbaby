@@ -10,6 +10,26 @@
 function features_menus_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: menu-customer-menu_-ticket:node/add/ticket
+  $menu_links['menu-customer-menu_-ticket:node/add/ticket'] = array(
+    'menu_name' => 'menu-customer-menu',
+    'link_path' => 'node/add/ticket',
+    'router_path' => 'node/add/ticket',
+    'link_title' => '+ Ticket',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-customer-menu_-ticket:node/add/ticket',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+  );
   // Exported menu link: menu-customer-menu_account-details:user
   $menu_links['menu-customer-menu_account-details:user'] = array(
     'menu_name' => 'menu-customer-menu',
@@ -23,11 +43,11 @@ function features_menus_menu_default_menu_links() {
       'identifier' => 'menu-customer-menu_account-details:user',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -44,
     'customized' => 1,
   );
   // Exported menu link: menu-customer-menu_add-new-ticket:node/add/ticket
@@ -43,13 +63,53 @@ function features_menus_menu_default_menu_links() {
       'identifier' => 'menu-customer-menu_add-new-ticket:node/add/ticket',
     ),
     'module' => 'menu',
+    'hidden' => 1,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+    'parent_identifier' => 'menu-customer-menu_your-tickets:user/my-tickets',
+  );
+  // Exported menu link: menu-customer-menu_billing:<nolink>
+  $menu_links['menu-customer-menu_billing:<nolink>'] = array(
+    'menu_name' => 'menu-customer-menu',
+    'link_path' => '<nolink>',
+    'router_path' => '<nolink>',
+    'link_title' => 'Billing',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-customer-menu_billing:<nolink>',
+    ),
+    'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -47,
     'customized' => 1,
-    'parent_identifier' => 'menu-customer-menu_tickets:<nolink>',
+  );
+  // Exported menu link: menu-customer-menu_defenders:<nolink>
+  $menu_links['menu-customer-menu_defenders:<nolink>'] = array(
+    'menu_name' => 'menu-customer-menu',
+    'link_path' => '<nolink>',
+    'router_path' => '<nolink>',
+    'link_title' => 'Defenders',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-customer-menu_defenders:<nolink>',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
   );
   // Exported menu link: menu-customer-menu_messages:user/messages
   $menu_links['menu-customer-menu_messages:user/messages'] = array(
@@ -68,29 +128,29 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -45,
     'customized' => 1,
   );
-  // Exported menu link: menu-customer-menu_my-tickets:user/my-tickets
-  $menu_links['menu-customer-menu_my-tickets:user/my-tickets'] = array(
+  // Exported menu link: menu-customer-menu_posted:user/my-tickets
+  $menu_links['menu-customer-menu_posted:user/my-tickets'] = array(
     'menu_name' => 'menu-customer-menu',
     'link_path' => 'user/my-tickets',
     'router_path' => 'user/my-tickets',
-    'link_title' => 'My tickets',
+    'link_title' => 'Posted',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-customer-menu_my-tickets:user/my-tickets',
+      'identifier' => 'menu-customer-menu_posted:user/my-tickets',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
-    'parent_identifier' => 'menu-customer-menu_tickets:<nolink>',
+    'parent_identifier' => 'menu-customer-menu_your-tickets:user/my-tickets',
   );
   // Exported menu link: menu-customer-menu_quotes:user/quotes
   $menu_links['menu-customer-menu_quotes:user/quotes'] = array(
@@ -105,29 +165,29 @@ function features_menus_menu_default_menu_links() {
       'identifier' => 'menu-customer-menu_quotes:user/quotes',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -49,
+    'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: menu-customer-menu_tickets:<nolink>
-  $menu_links['menu-customer-menu_tickets:<nolink>'] = array(
+  // Exported menu link: menu-customer-menu_your-tickets:user/my-tickets
+  $menu_links['menu-customer-menu_your-tickets:user/my-tickets'] = array(
     'menu_name' => 'menu-customer-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
-    'link_title' => 'Tickets',
+    'link_path' => 'user/my-tickets',
+    'router_path' => 'user/my-tickets',
+    'link_title' => 'Your Tickets',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'menu-customer-menu_tickets:<nolink>',
+      'identifier' => 'menu-customer-menu_your-tickets:user/my-tickets',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
-    'has_children' => 1,
+    'has_children' => 0,
     'expanded' => 0,
     'weight' => -50,
     'customized' => 1,
@@ -585,19 +645,22 @@ function features_menus_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('+ Ticket');
   t('1-877-454-0338');
   t('About Us');
   t('Account details');
   t('Add new ticket');
   t('Apply');
+  t('Billing');
   t('Calendar');
   t('Company');
   t('Contact Us');
+  t('Defenders');
   t('Help');
   t('Log in');
   t('Messages');
-  t('My tickets');
   t('Online Support');
+  t('Posted');
   t('Quotes');
   t('Settings');
   t('Sign in');
@@ -608,6 +671,7 @@ function features_menus_menu_default_menu_links() {
   t('Tickets in progress');
   t('Tickets posted');
   t('Tickets responded to');
+  t('Your Tickets');
   t('|');
 
 
