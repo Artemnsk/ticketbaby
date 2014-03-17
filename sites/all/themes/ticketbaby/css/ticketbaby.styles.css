@@ -13,7 +13,8 @@
 #ticket-node-form--2 .field-name-field-ticket-category .form-type-select,
 article.comment,
 .not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket,
-.customfile-wrap {
+.customfile-wrap,
+.l-region {
   *zoom : 1;
 }
 
@@ -44,7 +45,9 @@ article.comment:after,
 .not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket:before,
 .not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket:after,
 .customfile-wrap:before,
-.customfile-wrap:after {
+.customfile-wrap:after,
+.l-region:before,
+.l-region:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -63,7 +66,8 @@ article.comment:after,
 #ticket-node-form--2 .field-name-field-ticket-category .form-type-select:after,
 article.comment:after,
 .not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket:after,
-.customfile-wrap:after {
+.customfile-wrap:after,
+.l-region:after {
   clear : both;
 }
 
@@ -389,7 +393,7 @@ h3.view-filters-expanded:hover {
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li a:hover,
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first:hover{
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first.expanded:hover{
   text-decoration: underline;
 }
 
@@ -418,60 +422,37 @@ h3.view-filters-expanded:hover {
   color          : #f1d033;
   float          : right;
   padding-right  : 22px;
-  background     : url(../images/arrow_user_black_down.png) right center no-repeat;
+  background     : url(../images/arrow_user_yellow_down.png) right center no-repeat;
   text-transform : none;
 }
 
 /*---/ dropdown menu */
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu {
-  position : absolute;
-  top      : 30px;
-  right    : 14px;
-  display  : none;
-  margin   : 10px 0 0 0;
+  position       : absolute;
+  padding-top    : 20px;
+  right          : 0;
+  display        : none;
+  margin         : 0;
+  text-transform : lowercase;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li {
   display     : block;
   float       : none;
-  width       : 195px;
-  padding     : 8px 0;
+  width       : 120px;
   background  : white;
-  border      : 1px solid #C8C8C8;
+  border      : 1px solid #6E7279;
   font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-size   : 12px;
   text-align  : center;
   font-weight : normal;
+  font-style  : normal;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li:hover {
-  background  : #AEAEAE;
+  background  : #EBEBEB;
   font-weight : normal;
-}
-
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first:hover a,
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last:hover a,
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li:hover a {
-  color : white;
-}
-
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first a,
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last a,
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
-  color       : #000000;
-}
-
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first a:hover,
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last a:hover,
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a:hover {
-  padding-right : 0;
-  font-family   : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-weight   : normal;
-}
-
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
-  float : none;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first {
@@ -479,23 +460,100 @@ h3.view-filters-expanded:hover {
   border-bottom-width : 0;
 }
 
-.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first:after {
-  position   : absolute;
-  top        : -14px;
-  right      : 20px;
-  content    : '';
-  width      : 27px;
-  height     : 13px;
-  background : url(../images/user_dropdown_triangle.png) bottom center no-repeat;
-}
-
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last {
   border-top-width : 0;
+  padding          : 0;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
+  display : block;
+  width   : 120px;
+  padding : 8px 0;
+  color   : #333333;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last a {
+  font-style : normal;
+}
+
+.l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li:hover a {
+  text-decoration : none;
 }
 
 /*---/ dropdown menu */
 
 /*---/ sign in */
+
+/* header for logged user*/
+
+.logged-in .l-header .l-region--header {
+  width: 88%;
+}
+
+.logged-in .l-header .l-branding a {
+  display: block;
+  width: 45px;
+  height: 47px;
+  background : url(../images/logo_logged.png) center center no-repeat;
+  margin: 6px 0;
+}
+
+.logged-in .l-header .l-branding a img {
+  display: none;
+}
+
+#block-menu-menu-customer-menu {
+  float: left;
+}
+
+.logged-in #block-menu-menu-header-menu-sign-in {
+  float: right;
+}
+
+#block-menu-menu-customer-menu ul li {
+  display: inline-block;
+  margin-right: 10px;
+  transition         : 0.3s;
+  -webkit-transition : 0.3s;
+  -moz-transition    : 0.3s;
+  -o-transition      : 0.3s;
+}
+
+#block-menu-menu-customer-menu ul li a,
+#block-menu-menu-customer-menu ul li span {
+  display: block;
+  padding: 22px;
+}
+
+#block-menu-menu-customer-menu ul li,
+#block-menu-menu-customer-menu ul li a {
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-size: 11px;
+  color: white;
+}
+
+#block-menu-menu-customer-menu ul li:hover,
+#block-menu-menu-customer-menu ul li a:hover{
+  color: #ff2c21;
+  font-style: italic;
+}
+
+#block-menu-menu-customer-menu ul li:hover {
+  background: #ebebeb;
+}
+
+.logged-in .l-header #block-menu-menu-header-menu-sign-in {
+  margin: 24px 0 0 0;
+}
+
+.logged-in .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first span {
+ font-size: 11px;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*---/ header for logged user*/
 
 /*---/ HEADER */
 
