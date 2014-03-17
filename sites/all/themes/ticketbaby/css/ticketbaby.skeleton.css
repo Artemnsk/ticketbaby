@@ -8,22 +8,19 @@
   box-shadow   : 0 0 8px 5px #E9E9E9;
 }
 
-.l-header, .l-footer {
-  width  : 984px;
-  margin : 0 20px;
-}
-
 .l-main {
   width  : 984px;
   margin : 50px 20px 0 20px;
 }
 
 .l-footer {
+  width  : 984px;
   margin : 0 auto;
 }
 
 .l-header {
-  padding-top : 30px;
+padding: 0 20px;
+  margin: 0;
 }
 
 .l-header .l-branding,
@@ -32,9 +29,12 @@
   float : left;
 }
 
-.l-header .l-region--header,
-.front .l-main .l-content {
+.l-header .l-region--header {
   float : right;
+}
+
+.front .l-main .l-content {
+  float: left;
 }
 
 .not-front .l-main .l-content,
@@ -78,158 +78,5 @@ html, body {
 }
 
 /*---/ footer on bottom */
-
-@media only screen and (max-width : 1200px) {
-
-  .wrapper_header_main {
-    width : 940px;
-  }
-
-  .l-header, .l-main, .l-footer {
-    width : 900px;
-  }
-
-  .l-header {
-    margin : 0 20px;
-  }
-
-  .l-main {
-    margin : 50px 20px 0 20px;
-  }
-
-  .not-front.page-user .l-main .l-content,
-  .not-front.logged-in .l-main .l-content {
-    margin-right : 39px;
-  }
-
-}
-
-@media only screen and (max-width : 1023px) {
-
-  .wrapper_header_main {
-    width : 707px;
-  }
-
-  .l-header, .l-main, .l-footer {
-    width : 667px;
-  }
-
-  .l-header {
-    margin : 0 20px;
-  }
-
-  .front .l-main .l-content {
-    width : 428px;
-  }
-
-  .not-front.page-user .l-main .l-content,
-  .not-front.logged-in .l-main .l-content {
-    width        : 510px;
-    margin-right : 0;
-  }
-
-}
-
-@media only screen and (max-width : 767px) {
-
-  .wrapper_header_main {
-    width : 80%;
-  }
-
-  .l-header, .l-main {
-    width : 92%;
-  }
-
-  .l-footer {
-    width : 76%;
-  }
-
-  .l-header {
-    margin : 0 4%;
-  }
-
-  .l-main {
-    margin : 35px 4% 0 4%;
-  }
-
-  .front .l-main .l-content {
-    float : none;
-    width : auto;
-  }
-
-  /* footer on bottom */
-  .l-footer {
-    margin-top : -180px;
-    height     : 180px;
-  }
-
-  .l-main {
-    padding-bottom : 220px;
-  }
-
-  /*--- footer on bottom */
-
-}
-
-@media only screen and (max-width : 480px) {
-
-  .wrapper_header_main {
-    width : 300px;
-  }
-
-  .l-header, .l-main, .l-footer {
-    width : 280px;
-  }
-
-  .l-header {
-    margin : 0 10px;
-  }
-
-  .l-main {
-    margin : 25px 10px 0 10px;
-  }
-
-  .l-header .l-branding {
-    float : none;
-  }
-
-  /* footer on bottom */
-  .l-footer {
-    margin-top : -200px;
-    height     : 200px;
-  }
-
-  .l-main {
-    padding-bottom : 220px;
-  }
-
-  /*--- footer on bottom */
-
-}
-
-@media only screen and (max-width : 319px) {
-
-  .wrapper_header_main {
-    width      : 96%;
-    box-shadow : none;
-  }
-
-  .l-header, .l-main, .l-footer {
-    width : 96%;
-  }
-
-  .l-header {
-    margin : 0 2%;
-  }
-
-  .l-main {
-    margin : 25px 2% 0 2%;
-  }
-
-  .not-front .l-main .l-content {
-    width : 100%;
-  }
-
-}
 
 /*---/ SKELETON */
