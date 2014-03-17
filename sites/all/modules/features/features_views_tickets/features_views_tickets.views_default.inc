@@ -242,6 +242,8 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_state_value']['table'] = 'field_data_field_state';
   $handler->display->display_options['filters']['field_state_value']['field'] = 'field_state_value';
   $handler->display->display_options['filters']['field_state_value']['ui_name'] = 'state';
+  $handler->display->display_options['filters']['field_state_value']['operator'] = 'or';
+  $handler->display->display_options['filters']['field_state_value']['value'] = array();
   $handler->display->display_options['filters']['field_state_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_state_value']['expose']['operator_id'] = 'field_state_value_op';
   $handler->display->display_options['filters']['field_state_value']['expose']['label'] = 'State/Province';

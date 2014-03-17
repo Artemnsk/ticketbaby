@@ -24,32 +24,27 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
   }
 
   // Load standard drupal node form.
-  if($form_id == "ticket_node_form" && /*!$form_state['rebuild'] &&*/ !user_access("administer content types")){
-    
+  if($form_id == "ticket_node_form" && !user_access("administer content types")){
     // Add custom select library.
     $form['#attached']['js'] = array(
-      drupal_get_path('theme', 'ticketbaby'). '/js/jquery.easydropdown.min.js',
-      drupal_get_path('module', 'tb_ticket'). '/js/selects.js',
+      //drupal_get_path('theme', 'ticketbaby'). '/js/jquery.easydropdown.min.js',
       drupal_get_path('module', 'tb_ticket'). '/js/choosefilebutton.js',
-      drupal_get_path('module', 'tb_ticket'). '/js/onsubmit.js',
+      drupal_get_path('module', 'tb_ticket'). '/js/popup_fields_ticket.js',
     );
     $form['#attached']['css'] = array(
-      drupal_get_path('module', 'tb_ticket'). '/css/easydropdown.css',
+      //drupal_get_path('module', 'tb_ticket'). '/css/easydropdown.css',
       drupal_get_path('module', 'tb_ticket'). '/css/choosefilebutton.css',
     );
-    
+
+    $form['title_markup'] = array(
+        "#type" => 'markup',
+        "#markup" => "<h2>Fighting traffic tickets made simple.</h2><h3>Ticket Baby allows you to easily find, hire and pay for ticket defence.</h3>",
+        "#weight" => -50,
+    );
+
     unset($form['body']);
     
-    // Customize it depends on %tid from url.
-    $tid = arg(3) != 'und' && arg(3) != NULL ? arg(3) : variable_get("default_ticket_category_id", 12);
-    $term = taxonomy_term_load($tid);
-    $form['field_ticket_category'][LANGUAGE_NONE]['#disabled'] = true;
-    $form['field_ticket_category'][LANGUAGE_NONE]['#type'] = 'hidden';
-    $form['field_ticket_category'][LANGUAGE_NONE]['#default_value'][0] = $tid;
-    $form['field_ticket_category'][LANGUAGE_NONE]['#title'] = $term->name;
-    $form['#attached']['js'][] = drupal_get_path('module', 'tb_ticket'). '/js/redirect.js';
-    
-    $form['field_were_there_any_special_cir'][LANGUAGE_NONE][0]['value']['#description'] = strip_tags($term->description);
+    //$form['field_were_there_any_special_cir'][LANGUAGE_NONE][0]['value']['#description'] = '';
     // Show only fields specified in default settings.
     $fields_to_show = array_map('trim', explode("\n", variable_get("default_ticket_fields", '')));
     
@@ -91,8 +86,9 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     
     // ...and we want to be redirected.
     array_push($form['actions']['submit']['#submit'], "tb_ticket_create_ticket_redirect");
-    
+
     // Geolocation.
+      /*
     include 'tb_ticket_geolocation.inc';
     $location = tb_ticket_geolocation_parse_info();
     $country = $location['country'];
@@ -115,7 +111,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
       $form['field_state'][LANGUAGE_NONE]['#options'] = array($state => $options[$state]) + $form['field_state'][LANGUAGE_NONE]['#options'];
       $form['field_state'][LANGUAGE_NONE]['#default_value'] = array($state);
     }
-    
+    */
     // Add registration.
     array_unshift($form['#validate'], 'tb_ticket_validate_user');
     array_unshift($form['actions']['submit']['#submit'], 'tb_ticket_submit_user');
@@ -138,6 +134,10 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
       $form['field_email'][LANGUAGE_NONE][0]['email']['#title_display'] = 'invisible';
       $form['field_full_name']['#weight'] = 31;
       $form['field_email']['#weight'] = 32;
+        // We SHOULD show only location to user until he entered something in this field.
+        // So we add specific id to hide other fields by default.
+        $form['field_state']['#suffix'] = "<span id='other-fields-of-ticket' class='hidden'>";
+        $form['pass_confirm']['#suffix'] = "</span>";
     }else{
       $form['field_full_name']['#access'] = FALSE;
       $form['field_email']['#access'] = FALSE;
