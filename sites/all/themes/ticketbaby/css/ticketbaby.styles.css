@@ -802,6 +802,10 @@ h3.view-filters-expanded:hover {
   width : 100%;
 }
 
+#ticket-node-form textarea {
+  max-width: 100%;
+}
+
 #ticket-node-form .form-type-date-combo .date-no-float,
 #ticket-node-form--2 .form-type-date-combo .date-no-float {
   width : 100%;
