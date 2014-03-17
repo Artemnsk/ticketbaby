@@ -13,6 +13,11 @@
   margin : 50px 20px 0 20px;
 }
 
+.not-front .l-main {
+  width  : 944px;
+  margin : 80px 40px 0 40px;
+}
+
 .l-footer {
   width  : 984px;
   margin : 0 auto;
@@ -49,10 +54,8 @@ padding: 0 20px;
 
 .not-front.page-user .l-main .l-content,
 .not-front.logged-in .l-main .l-content {
-  float        : right;
-  width        : 660px;
-  margin-right : 89px;
-  /*background: #DDDDFF;*/
+  float        : left;
+  width        : 100%;
 }
 
 /* footer on bottom */

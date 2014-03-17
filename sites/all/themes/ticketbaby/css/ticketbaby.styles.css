@@ -269,17 +269,26 @@ select {
   margin-bottom: 10px;
 }
 
+.form-item .form-radios {
+  margin: 10px 0;
+}
+
+.form-item .form-radios .form-item {
+  margin-bottom: 6px;
+}
+
 .l-main h2 {
   font-size : 16px;
   color     : #005493;
 }
 
-.form-item label, .form-actions label,
+.form-item label,
+.form-actions label,
 .field__label,
 .views-exposed-form label {
-  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
   font-weight : normal;
-  font-size   : 13px;
+  font-size   : 12px;
 }
 
 .resizable-textarea .grippie {
@@ -346,7 +355,8 @@ h3.view-filters-expanded:hover {
 }
 
 .form-item .description, .form-actions .description {
-  font-size : 12px;
+  font-size : 10px;
+  margin-top: 3px;
 }
 
 /*---/ COMMON ELEMENTS */
@@ -912,7 +922,7 @@ span.customfile-upload {
 
 .l-footer #block-menu-menu-footer-menu-about-us {
   margin-right : 62px;
-  margin-left  : 32px;
+  margin-left  : 20px;
 }
 
 .l-footer #block-menu-menu-footer-menu-support {
@@ -1011,28 +1021,42 @@ span.customfile-upload {
 
 /*---/ FOOTER */
 
+/* TABS */
+
+.tabs--primary {
+  margin-bottom: 4em;
+  border-bottom: none;
+}
+
+.tabs--primary a {
+  padding: 4px 14px;
+  font-size: 12px;
+  text-transform: lowercase;
+}
+
+.tabs a {
+  background-color: #ebebeb;
+  color: #333333;
+}
+
+
+/*---/ TABS */
+
 /* USER PROFILE */
 
 /* login/register/edit */
 
-#user-login,
-#user-register-form,
-#user-pass {
-  margin : 20px 0 0 20px;
+.page-user form {
+  width: 50%;
 }
 
-#user-register-form #edit-profile-main {
-  display : none;
+.page-user form#user-profile-form {
+  width: 60%;
 }
 
-#user-login .form-submit,
-#user-register-form .form-submit,
-#user-pass .form-submit {
-  margin : 25px 0 0 0;
-}
-
-.not-front.logged-in.page-user #user-profile-form {
-  border : 1px solid #C8C8C8;
+.page-user input[type='submit'] {
+  padding: 6px 12px;
+  margin-top: 20px;
 }
 
 /*---/ login/register/edit */
@@ -1046,7 +1070,7 @@ span.customfile-upload {
 
 .not-front.logged-in.page-user #user-profile-form,
 .not-front.logged-in.page-user #user-pass {
-  padding : 10px 14px 18px 14px;
+  padding : 0;
 }
 
 .not-front.logged-in.page-user #user-pass {
@@ -1055,6 +1079,10 @@ span.customfile-upload {
 
 #user-profile-form .form-item {
   margin-bottom : 24px;
+}
+
+#user-profile-form .form-item .form-item {
+  margin-bottom : 12px;
 }
 
 #user-profile-form fieldset {
@@ -1089,15 +1117,66 @@ span.customfile-upload {
   text-decoration : underline;
 }
 
-#user-profile-form #edit-actions {
-  margin-top : 60px;
-}
-
 /*---/ edit profile */
-
 
 /*---/ USER PROFILE */
 
+/* TABLE */
+
+.not-front .l-content table {
+  width     : 100%;
+  border    : 1px solid #CCCCCC;
+  font-size : 11px;
+}
+
+.not-front .l-content table thead {
+  border-bottom : 1px solid #555455;
+}
+
+.not-front .l-content table th {
+  background  : #FEFEFE; /* Old browsers */
+  background  : -moz-linear-gradient(top, #FEFEFE 0%, #DCDEDE 100%);
+  background  : -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FEFEFE), color-stop(100%, #DCDEDE));
+  background  : -webkit-linear-gradient(top, #FEFEFE 0%, #DCDEDE 100%);
+  background  : -o-linear-gradient(top, #FEFEFE 0%, #DCDEDE 100%);
+  background  : -ms-linear-gradient(top, #FEFEFE 0%, #DCDEDE 100%);
+  background  : linear-gradient(to bottom, #FEFEFE 0%, #DCDEDE 100%);
+  filter      : progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefefe', endColorstr='#dcdede', GradientType=0);
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-weight : normal;
+  padding     : 6px 6px;
+}
+
+.not-front .l-content table tr td {
+  background : white;
+
+}
+
+.not-front .l-content table th,
+.not-front .l-content table tr td {
+  border-left : 1px solid #CCCCCC;
+}
+
+.not-front .l-content table tr td a:last-child {
+  display : block;
+  width   : 100%;
+  height  : 100%;
+  padding : 12px 6px;
+}
+
+.not-front .l-content table tr:hover td {
+  background : #F4F3F5;
+}
+
+.not-front .l-content table tr td a {
+  color : #005493;
+}
+
+.not-front .l-content table tr:hover td a {
+  color : #7EC64F;
+}
+
+/*---/ TABLE */
 
 
 
