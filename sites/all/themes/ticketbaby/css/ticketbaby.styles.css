@@ -14,7 +14,10 @@
 article.comment,
 .not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket,
 .customfile-wrap,
-.l-region {
+.l-region,
+.node__content,
+div,
+td {
   *zoom : 1;
 }
 
@@ -47,7 +50,13 @@ article.comment:after,
 .customfile-wrap:before,
 .customfile-wrap:after,
 .l-region:before,
-.l-region:after {
+.l-region:after,
+.node__content:before,
+.node__content:after,
+div:before,
+div:after,
+td:before,
+td:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -67,7 +76,10 @@ article.comment:after,
 article.comment:after,
 .not-front.logged-in.node-type-ticket .pane-entity-view article.node--ticket:after,
 .customfile-wrap:after,
-.l-region:after {
+.l-region:after,
+.node__content:after,
+div:after,
+td:after {
   clear : both;
 }
 
@@ -1123,6 +1135,10 @@ span.customfile-upload {
 
 /* TABLE */
 
+table {
+  border-spacing: 0;
+}
+
 .not-front .l-content table {
   width     : 100%;
   border    : 1px solid #CCCCCC;
@@ -1164,8 +1180,19 @@ span.customfile-upload {
   padding : 12px 6px;
 }
 
+.not-front .l-content table tr td {
+  transition         : 0.3s;
+  -webkit-transition : 0.3s;
+  -moz-transition    : 0.3s;
+  -o-transition      : 0.3s;
+}
+
 .not-front .l-content table tr:hover td {
   background : #F4F3F5;
+  transition         : 0.3s;
+  -webkit-transition : 0.3s;
+  -moz-transition    : 0.3s;
+  -o-transition      : 0.3s;
 }
 
 .not-front .l-content table tr td a {
@@ -1177,6 +1204,135 @@ span.customfile-upload {
 }
 
 /*---/ TABLE */
+
+/* TICKET */
+
+/* tabs */
+
+#block-tb-user-menu-customer-tabs {
+  margin-bottom : 16px;
+}
+
+#block-tb-user-menu-customer-tabs h2 {
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-size   : 11px;
+  color       : #000000;
+}
+
+#block-tb-user-menu-customer-tabs span.tabs {
+  display    : block;
+  background : #DAD9DB;
+  border     : 1px solid #2A2A2A;
+}
+
+#block-tb-user-menu-customer-tabs span.tabs span {
+  display : inline-block;
+}
+
+#block-tb-user-menu-customer-tabs span.tabs span a {
+  display     : block;
+  background  : none;
+  padding     : 12px 15px 10px 15px;
+  font-size   : 11px;
+  color       : #1274C3;
+  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+}
+
+#block-tb-user-menu-customer-tabs span.tabs span a:hover {
+  color : #FF2C21;
+}
+
+#block-tb-user-menu-customer-tabs span.tabs span a.active {
+  color      : #FF2C21;
+  font-style : italic;
+}
+
+/*---/ tabs */
+
+/* ticket content */
+
+.node--ticket--full .node__content {
+  border  : 1px solid #84878D;
+  padding : 10px;
+}
+
+.node--ticket--full .node__content div:first-child,
+.node--ticket--full .node__content div:last-child {
+  float : left;
+}
+
+.node--ticket--full .node__content div.field {
+  float : none;
+}
+
+.node--ticket--full .node__content div:first-child {
+  border-right : 1px dashed #84878D;
+}
+
+.node--ticket--full .node__content div:first-child div,
+.node--ticket--full .node__content div:first-child div div {
+  border-right : none;
+}
+
+.node--ticket--full .node__content table {
+  width  : 370px;
+  border : none;
+  margin : 30px 0;
+}
+
+.node--ticket--full .node__content table tr td {
+  display     : block;
+  border-left : none;
+  padding     : 0 10px 0 0;
+  font-size   : 12px;
+}
+
+.node--ticket--full .node__content table tr:hover td {
+  background : white;
+}
+
+.node--ticket--full .node__content table .field__label,
+.node--ticket--full .node__content table .field__items {
+  padding : 4px;
+}
+
+.node--ticket--full .node__content table .field__label {
+  float : left;
+}
+
+.node--ticket--full .node__content table .field__items {
+  float         : right;
+  padding-right : 40px;
+}
+
+.node--ticket--full .node__content table .field__items,
+.node--ticket--full .node__content table .field__items div {
+  text-align : right;
+}
+
+.node--ticket--full .node__content .field--type-text-long {
+  padding      : 20px 15px 30px 15px;
+  border-right : none !important;
+}
+
+.node--ticket--full .node__content .field--type-text-long .field__label,
+.node--ticket--full .node__content .field--type-text-long .field__items {
+  float : none;
+}
+
+.node--ticket--full .node__content .field--type-text-long .field__label {
+  font-family   : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-size     : 15px;
+  margin-bottom : 18px;
+}
+
+.node--ticket--full .node__content .field--type-text-long .field__items {
+  width : 510px;
+}
+
+/* ticket content */
+
+/*---/ TICKET */
 
 
 
