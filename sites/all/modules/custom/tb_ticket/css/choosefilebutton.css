@@ -4,14 +4,14 @@
   box-sizing         : border-box;
   -moz-box-sizing    : border-box;
   -webkit-box-sizing : border-box;
-  font-family        : 'corbelregular', calibri, arial, sans-serif;
+  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
   font-weight        : normal;
-  font-size          : 16px;
+  font-size          : 13px;
 }
 
 .form-managed-file {
   width   : auto;
-  padding : 10px 0 5px 0;
+  padding : 0;
 }
 
 .form-managed-file label:first-child {
@@ -26,7 +26,7 @@
   position : relative;
   float    : left;
   padding  : 0;
-  margin   : 0 30px 0 0;
+  margin   : 0 0 10px 0;
 }
 
 .customfile-filename,
@@ -37,10 +37,9 @@
 
 input.customfile-filename {
   width         : 230px;
-  padding       : 4px 8px;
-  border        : 1px solid #C8C8C8;
+  padding       : 6px;
+  border        : 1px solid #6e7279;
   border-radius : 0;
-  box-shadow    : inset 0 1px 2px rgba(0, 0, 0, .2);
 }
 
 .customfile-filename:focus {
@@ -49,17 +48,17 @@ input.customfile-filename {
 
 .customfile-upload {
   display     : inline-block;
-  background  : #367DA2;
-  margin-left : 4px;
-  padding     : 5px 40px;
-  border      : none;
+  background  : #e2b700;
+  margin-left : 8px;
+  padding     : 6px;
+  border      : 1px solid #6e7279;
   color       : white;
-  /*  box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35); */
   cursor      : pointer;
+  font-size   : 13px;
 }
 
 .customfile-upload:hover {
-  background : #2B6380;
+  background : #faca00;
 }
 
 .customfile-upload::-moz-focus-inner {
