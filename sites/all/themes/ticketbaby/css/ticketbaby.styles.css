@@ -87,121 +87,34 @@ td:after {
 
 /* FONTS */
 
-/* corbel regular */
 
 @font-face {
-  font-family : 'corbelregular';
-  src         : url('../fonts/corbel-webfont.eot');
-  src         : url('../fonts/corbel-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/corbel-webfont.woff') format('woff'), url('../fonts/corbel-webfont.ttf') format('truetype'), url('../fonts/corbel-webfont.svg#corbelregular') format('svg');
-  font-weight : normal;
-  font-style  : normal;
+  font-family: 'AvenirLTStd-Medium';
+  src: url('../fonts/AvenirLTStd-Medium.eot?') format('eot'),
+  url('../fonts/AvenirLTStd-Medium.otf')  format('opentype'),
+  url('../fonts/AvenirLTStd-Medium.woff') format('woff'),
+  url('../fonts/AvenirLTStd-Medium.ttf')  format('truetype'),
+  url('../fonts/AvenirLTStd-Medium.svg#AvenirLTStd-Medium') format('svg');
 }
-
-/*---/ corbel regular */
-
-/* corbel bold */
 
 @font-face {
-  font-family : 'corbelbold';
-  src         : url('../fonts/corbelb-webfont.eot');
-  src         : url('../fonts/corbelb-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/corbelb-webfont.woff') format('woff'), url('../fonts/corbelb-webfont.ttf') format('truetype'), url('../fonts/corbelb-webfont.svg#corbelbold') format('svg');
-  font-weight : normal;
-  font-style  : normal;
+  font-family: 'AvenirLTStd-Heavy';
+  src: url('../fonts/AvenirLTStd-Heavy.eot?') format('eot'),
+  url('../fonts/AvenirLTStd-Heavy.otf')  format('opentype'),
+  url('../fonts/AvenirLTStd-Heavy.woff') format('woff'),
+  url('../fonts/AvenirLTStd-Heavy.ttf')  format('truetype'),
+  url('../fonts/AvenirLTStd-Heavy.svg#AvenirLTStd-Heavy') format('svg');
 }
 
-/*---/ corbel bold */
-
-/* corbel italic */
-
-@font-face {
-  font-family : 'corbelitalic';
-  src         : url('../fonts/corbeli-webfont.eot');
-  src         : url('../fonts/corbeli-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/corbeli-webfont.woff') format('woff'), url('../fonts/corbeli-webfont.ttf') format('truetype'), url('../fonts/corbeli-webfont.svg#corbelitalic') format('svg');
-  font-weight : normal;
-  font-style  : normal;
-}
-
-/*---/ corbel italic */
-
-/* corbel bold italic */
-
-@font-face {
-  font-family : 'corbelbold_italic';
-  src         : url('../fonts/corbelz-webfont.eot');
-  src         : url('../fonts/corbelz-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/corbelz-webfont.woff') format('woff'), url('../fonts/corbelz-webfont.ttf') format('truetype'), url('../fonts/corbelz-webfont.svg#corbelbold_italic') format('svg');
-  font-weight : normal;
-  font-style  : normal;
-}
-
-/*---/ corbel bold italic */
-
-/* sofia pro light */
-
-@font-face {
-  font-family : 'sofia_pro_lightregular';
-  src         : url('../fonts/sofiaprolight-webfont.eot');
-  src         : url('../fonts/sofiaprolight-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/sofiaprolight-webfont.woff') format('woff'), url('../fonts/sofiaprolight-webfont.ttf') format('truetype'), url('../fonts/sofiaprolight-webfont.svg#sofia_pro_lightregular') format('svg');
-  font-weight : normal;
-  font-style  : normal;
-}
-
-/*---/ sofia pro light */
-
-/* cabin regular */
-
-@font-face {
-  font-family : 'cabinregular';
-  src         : url('../fonts/cabin-regular-webfont.eot');
-  src         : url('../fonts/cabin-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/cabin-regular-webfont.woff') format('woff'), url('../fonts/cabin-regular-webfont.ttf') format('truetype'), url('../fonts/cabin-regular-webfont.svg#cabinregular') format('svg');
-  font-weight : normal;
-  font-style  : normal;
-}
-
-/*---/ cabin regular */
-
-/* cabin bold */
-
-@font-face {
-  font-family : 'cabinsemibold';
-  src         : url('../fonts/cabin-semibold-webfont.eot');
-  src         : url('../fonts/cabin-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/cabin-semibold-webfont.woff') format('woff'), url('../fonts/cabin-semibold-webfont.ttf') format('truetype'), url('../fonts/cabin-semibold-webfont.svg#cabinsemibold') format('svg');
-  font-weight : normal;
-  font-style  : normal;
-}
-
-/*---/ cabin bold */
-
-/* levenim regular */
-
-@font-face {
-  font-family : 'levenim_mtregular';
-  src         : url('../fonts/lvnm-webfont.eot');
-  src         : url('../fonts/lvnm-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/lvnm-webfont.woff') format('woff'), url('../fonts/lvnm-webfont.ttf') format('truetype'), url('../fonts/lvnm-webfont.svg#levenim_mtregular') format('svg');
-  font-weight : normal;
-  font-style  : normal;
-}
-
-/*---/ levenim regular */
-
-/* levenim bold */
-
-@font-face {
-  font-family : 'levenim_mtbold';
-  src         : url('../fonts/lvnmbd-webfont.eot');
-  src         : url('../fonts/lvnmbd-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/lvnmbd-webfont.woff') format('woff'), url('../fonts/lvnmbd-webfont.ttf') format('truetype'), url('../fonts/lvnmbd-webfont.svg#levenim_mtbold') format('svg');
-  font-weight : normal;
-  font-style  : normal;
-}
-
-/*---/ levenim bold */
 
 /*---/ FONTS */
 
 /* COMMON ELEMENTS */
 
 body {
-  font-family : 'levenim_mtregular', Calibri, Arial, sans-serif;
-  font-size: 13px;
+  background: url(../images/pattern_bg.png);
+  font-family : 'AvenirLTStd-Medium', Calibri, Arial, sans-serif;
+  font-size: 15px;
 }
 
 media {
@@ -213,7 +126,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-weight : normal;
 }
 
@@ -225,30 +138,40 @@ h1 {
 
 input,
 textarea {
-  border  : 1px solid #6e7279;
-  padding : 6px;
+  border  : 1px solid #cbcbcb;
+  padding : 8px;
   margin  : 0;
-  background: #f7f7f8;
+  background: white;
+}
+
+input:focus,
+textarea:focus,
+input:active,
+textarea:active {
+  border: 1px solid #2b85ac;
+  box-shadow: 0 0 3px 1px #53a5c9;
 }
 
 input[type="submit"] {
   display     : inline-block;
-  background  : #e2b700;
-  padding     : 6px;
+  position: relative;
+  background  : #4dcf40;
+  padding     : 8px 12px;
   border      : none;
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
-  font-size   : 13px;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
+  font-size   : 16px;
   color       : white;
   cursor      : pointer;
-  border: 1px solid #6e7279;
+  border-bottom: 3px solid #1d8d11;
   transition         : 0.3s;
   -webkit-transition : 0.3s;
   -moz-transition    : 0.3s;
   -o-transition      : 0.3s;
+
 }
 
 input[type="submit"]:hover {
-  background : #faca00;
+  background : #72e566;
   transition         : 0.3s;
   -webkit-transition : 0.3s;
   -moz-transition    : 0.3s;
@@ -298,9 +221,9 @@ select {
 .form-actions label,
 .field__label,
 .views-exposed-form label {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-weight : normal;
-  font-size   : 12px;
+  color: #164559;
 }
 
 .resizable-textarea .grippie {
@@ -337,7 +260,7 @@ a#edit-cancel {
   padding     : 5px 40px;
   margin-left : 32px;
   border      : none;
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size   : 13px;
   color       : white;
   box-shadow  : 3px 3px 2px 0 rgba(0, 0, 0, 0.35);
@@ -363,7 +286,7 @@ h3.view-filters-expanded {
 }
 
 h3.view-filters-expanded:hover {
-  text-decoration : underline;
+  text-decoration : underline;.navbar .nav > li > a
 }
 
 .form-item .description, .form-actions .description {
@@ -375,11 +298,11 @@ h3.view-filters-expanded:hover {
 
 /* HEADER */
 
-/* logo */
-
 .l-header {
-  background: #0e5791;
+  background: #164559;
 }
+
+/* logo */
 
 .l-header h1.site-name {
   display : none;
@@ -394,8 +317,7 @@ h3.view-filters-expanded:hover {
 }
 
 .l-header .l-branding a img {
-  width       : 170px;
-  margin: 4px 0;
+  margin: 8px 0;
 }
 
 /*---/ logo */
@@ -403,11 +325,9 @@ h3.view-filters-expanded:hover {
 /* sign in */
 
 .l-header #block-menu-menu-header-menu-sign-in {
-  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
-  text-transform : uppercase;
-  font-size      : 12px;
-  line-height: 12px;
-  margin: 19px 0;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
+  font-size      : 16px;
+  margin: 23px 0;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li {
@@ -428,16 +348,17 @@ h3.view-filters-expanded:hover {
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first a {
-  color : #f1d033;
+  color : white;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.last {
-  padding : 0 25px 0 60px;
+  padding : 0 0 0 26px;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.last a {
-  color : #ff2c21;
-  font-style: italic;
+  color : #7fcf77;
+  text-transform: lowercase;
+
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first span {
@@ -465,7 +386,7 @@ h3.view-filters-expanded:hover {
   width       : 120px;
   background  : white;
   border      : 1px solid #6E7279;
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size   : 12px;
   text-align  : center;
   font-weight : normal;
@@ -557,7 +478,7 @@ h3.view-filters-expanded:hover {
 
 #block-menu-menu-customer-menu ul li,
 #block-menu-menu-customer-menu ul li a {
-  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size: 11px;
   color: white;
 }
@@ -596,7 +517,7 @@ h3.view-filters-expanded:hover {
 /* choose your ticket */
 
 .l-main .l-region--sidebar-first h2.block__title {
-  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size   : 19px;
 }
 
@@ -648,14 +569,14 @@ h3.view-filters-expanded:hover {
 }
 
 .front .l-main article .field__item h2 {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-weight : normal;
   font-size   : 29px;
   margin      : 0 0 9px 0;
 }
 
 .front .l-main article .field__item h3 {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size   : 18px;
   margin      : 9px 0 0 0;
 }
@@ -683,14 +604,14 @@ h3.view-filters-expanded:hover {
 #ticket-node-form,
 #ticket-node-form--2 {
   width: 535px;
-  padding: 0 40px;
+  padding: 0;
   margin: 80px 0;
 }
 #ticket-node-form h2,
 #ticket-node-form--2 h2 {
   margin    : 0 0 12px 0;
   font-size : 19px;
-  font-family    : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family    : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
 }
 
 #ticket-node-form h3,
@@ -726,7 +647,7 @@ h3.view-filters-expanded:hover {
   font-size      : 20px;
   text-transform : uppercase;
   color          : #005493;
-  font-family    : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family    : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   vertical-align : middle;
 }
 
@@ -740,7 +661,7 @@ h3.view-filters-expanded:hover {
 /* datepicker */
 
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button, #ui-datepicker-div {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
@@ -845,23 +766,13 @@ h3.view-filters-expanded:hover {
 #ticket-node-form .form-type-date-combo .date-no-float .form-type-textfield input,
 #ticket-node-form--2 .form-type-date-combo .date-no-float .form-type-textfield input {
   width       : 100%;
-  font-family : 'levenim_mtregular', Calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', Calibri, arial, sans-serif;
 }
 
 .container-inline-date .form-item,
 .container-inline-date .form-item input {
   width: 100%;
   margin: 0;
-}
-
-#ticket-node-form #edit-actions input[type="submit"]#edit-submit,
-#ticket-node-form--2 #edit-actions input[type="submit"]#edit-submit {
-  background : #578625;
-}
-
-#ticket-node-form #edit-actions input[type="submit"]#edit-submit:hover,
-#ticket-node-form--2 #edit-actions input[type="submit"]#edit-submit:hover {
-  background : #73b132;
 }
 
 #ticket-node-form .form-managed-file input[type="submit"],
@@ -919,20 +830,18 @@ span.customfile-upload {
 /* FOOTER */
 
 .l-footer {
-  background  : white;
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  background: #164559;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-weight : normal;
+  color: white;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us,
 .l-footer #block-menu-menu-footer-menu-support {
-  float : left;
-}
-
-.l-footer #block-menu-menu-footer-menu-about-us,
-.l-footer #block-menu-menu-footer-menu-support {
-  font-size   : 13px;
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  float: left;
+  font-size   : 15px;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
+  margin-top: 22px;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us a:hover,
@@ -951,7 +860,7 @@ span.customfile-upload {
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke {
   float: right;
-  margin-top : 23px;
+  margin-top : 22px;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu li {
@@ -960,6 +869,8 @@ span.customfile-upload {
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul.menu li.first {
   line-height : 20px;
+  float: none;
+  margin-bottom: 22px;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us ul li,
@@ -972,7 +883,8 @@ span.customfile-upload {
 .l-footer #block-menu-menu-footer-menu-about-us ul li.collapsed a,
 .l-footer #block-menu-menu-footer-menu-support ul li.collapsed a {
   display : block;
-  color   : #005493;
+  color   : #7fcf77;
+  font-family    : 'AvenirLTStd-Heavy', calibri, arial, sans-serif;
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us ul li.expanded a,
@@ -984,16 +896,17 @@ span.customfile-upload {
 
 .l-footer #block-menu-menu-footer-menu-about-us ul li.expanded ul li a,
 .l-footer #block-menu-menu-footer-menu-support ul li.expanded ul li a {
-  color : #000000;
+  color : white;
+  font-family    : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.first a {
-  font-family    : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family    : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   text-transform : none;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li:nth-child(2) {
-  width         : 75px;
+  width         : 90px;
   padding-right : 12px;
   text-align    : right;
 }
@@ -1009,11 +922,11 @@ span.customfile-upload {
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li span.nolink {
   display    : block;
-  background : #000000;
+  background : white;
   width      : 1px;
   height     : 15px;
   font-size  : 0;
-  margin-top : -2px;
+  margin-top : 1px;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.first span.nolink {
@@ -1021,18 +934,17 @@ span.customfile-upload {
   background : none;
   width      : auto;
   height     : auto;
-  font-size  : 13px;
+  font-size  : 15px;
   margin-top : 0;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li a {
-  color          : #000000;
-  font-family    : 'levenim_mtregular', calibri, arial, sans-serif;
-  text-transform : uppercase;
+  color          : white;
+  font-family    : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li.last a {
-  color : #6AA03A;
+  color : #7fcf77;
 }
 
 .l-footer #block-menu-menu-footer-menu-are-you-a-ticke ul li a:hover {
@@ -1082,7 +994,7 @@ span.customfile-upload {
 /*---/ login/register/edit */
 
 .user-profile-item__label {
-  font-family : 'levenim_mtregular', Calibri, Arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', Calibri, Arial, sans-serif;
   font-weight : normal;
 }
 
@@ -1111,7 +1023,7 @@ span.customfile-upload {
 }
 
 #user-profile-form fieldset#edit-picture legend span {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-weight : normal;
 }
 
@@ -1124,13 +1036,13 @@ span.customfile-upload {
 }
 
 #user-profile-form #edit-timezone a {
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-weight : normal;
   color       : black;
 }
 
 #user-profile-form #edit-timezone label {
-  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
 }
 
 #user-profile-form #edit-timezone a:hover {
@@ -1166,7 +1078,7 @@ table {
   background  : -ms-linear-gradient(top, #FEFEFE 0%, #DCDEDE 100%);
   background  : linear-gradient(to bottom, #FEFEFE 0%, #DCDEDE 100%);
   filter      : progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefefe', endColorstr='#dcdede', GradientType=0);
-  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-weight : normal;
   padding     : 6px 6px;
 }
@@ -1222,7 +1134,7 @@ table {
 }
 
 #block-tb-user-menu-customer-tabs h2 {
-  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size   : 11px;
   color       : #000000;
 }
@@ -1243,7 +1155,7 @@ table {
   padding     : 12px 15px 10px 15px;
   font-size   : 11px;
   color       : #1274C3;
-  font-family : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
 }
 
 #block-tb-user-menu-customer-tabs span.tabs span a:hover {
@@ -1329,7 +1241,7 @@ table {
 }
 
 .node--ticket--full .node__content .field--type-text-long .field__label {
-  font-family   : 'levenim_mtbold', calibri, arial, sans-serif;
+  font-family   : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size     : 15px;
   margin-bottom : 18px;
 }
