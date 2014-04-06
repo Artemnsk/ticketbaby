@@ -6,7 +6,7 @@
   
 function tb_user_dialog_block_info(){
   // Block dialog on ticket page.
-  $blocks['tb_user_dialog_form'] = array(
+  $blocks['tb_user_dialog_ticket'] = array(
     'info' => t('Dialog on ticket/quotes page'), 
     'cache' => DRUPAL_NO_CACHE,
   );
@@ -14,7 +14,7 @@ function tb_user_dialog_block_info(){
   return $blocks;
 }
 
-function tb_user_dialog_block_view($delta = '') {
+function tb_user_dialog_block_view($delta = ''){
   $block = array();
 
   switch ($delta) {
@@ -33,8 +33,8 @@ function tb_user_dialog_block_view($delta = '') {
           $no_dialogs = false;
           // If node[ticket] author is the same as current user it means that customer looking on ticket now.
           // We should show ALL dialogs to him.
-          $dialog_node = node_load($dialog->entity_id);
-          $block['content'] .= node_access("view", $dialog_node) ? drupal_render(comment_node_page_additions($dialog_node)) : "";
+          //$dialog_node = node_load($dialog->entity_id);
+          //$block['content'] .= node_access("view", $dialog_node) ? drupal_render(comment_node_page_additions($dialog_node)) : "";
         }
         // If there are no dialog associated with this content and belongs to this user created
         // AND it is not CUSTOMER watching on his ticket right now

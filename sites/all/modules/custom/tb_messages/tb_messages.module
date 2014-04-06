@@ -5,3 +5,33 @@ function tb_messages_preprocess_views_view_field(&$vars) {
     
   }
 }
+
+/*function tb_messages_form_alter(&$form, &$form_state, $form_id){
+
+    // Adds redirect to user/%/ticket/%/dialog/% page on comment submit.
+    if($form['#form_id'] == 'comment_node_dialog_form'){
+        if(tb_user_menu_define_ticket_id_customer($_GET['q'])){
+            //$form['#action'] = $_GET['q'];
+            $form['actions']['submit']['#ajax'] = array(
+                'callback' => 'tb_messages_comment_submit',
+            );
+            //dpm($form);
+        }
+
+    }
+}*/
+
+/*
+ * Posting comment without being redirected.
+ */
+function tb_messages_comment_submit($form, &$form_state){
+    comment_form_submit($form, $form_state);
+
+    $comment = comment_load($form_state['values']['cid']);
+    $node = node_load($form_state['values']['nid']);
+    $commands = array(
+        ajax_command_prepend('#comments-dialog', render(comment_view($comment, $node, "full", LANGUAGE_NONE))),
+    );
+    $replace = array('#type' => 'ajax', '#commands' => $commands);
+    return $replace;
+}

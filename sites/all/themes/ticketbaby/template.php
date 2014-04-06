@@ -6,6 +6,19 @@
  * ticketbaby theme.
  */
 
+
+/*
+ * For unformatted fields - row in Views template.
+ */
+function ticketbaby_views_fields_row($field){
+    $text = '';
+    if(isset($field->wrapper_prefix)) $text .= $field->wrapper_prefix;
+    if(isset($field->label_html)) $text .= $field->label_html;
+    if(isset($field->content)) $text .= $field->content;
+    if(isset($field->wrapper_suffix)) $text .= $field->wrapper_suffix;
+    return $text;
+}
+
 /**
  * Date field themization override.
  * Implements hook_theme_registry_alter().
@@ -76,7 +89,7 @@ function ticketbaby_menu_link__menu_customer_menu(array $variables){
     }
     // Defining if we are on tickets page.
     if($element['#href'] == "user/my-tickets"){
-        if(tb_user_menu_define_ticket_id($_GET['q']) !== null){
+        if(tb_user_menu_define_ticket_id_customer($_GET['q']) !== null){
             $element['#attributes']['class'][] = "active-trail";
         }
     }
@@ -91,40 +104,49 @@ function ticketbaby_menu_link__menu_customer_menu(array $variables){
 function ticketbaby_preprocess_user_profile(&$vars){
     $viewed_user = $vars['elements']['#account'];
     $roles = $viewed_user->roles;
-    if(in_array('defender', $roles)){
-        $vars['is_defender'] = true;
-        // If pictire is default let's add specific class to it to add CSS style.
-        if($vars['elements']['#account']->picture === NULL){
-            $vars['user_profile']['user_picture']['#prefix'] = "<span class='anonymous'>";
-            $vars['user_profile']['user_picture']['#suffix'] = "</span>";
-        }
-        // Add "Lawyer" to username.
-        $vars['user_profile']['field_fullname'][0]['#markup'] .= '<br />Lawyer';
-        // @TODO: normal counting.
-        $vars['user_profile']['tickets_defended'] = 0;
-        $vars['user_profile']['tickets_in_progress'] = 0;
-
-        // Last login.
-        $vars['user_profile']['last_online'] = date('M d, Y', $viewed_user->login);
-        // Find right profile. What if defender will have multiple arrays?
-        $profile_key = false;
-        foreach($vars['user_profile']['profile_defender_profile']['view']['profile2'] as $key => $val){
-            if($val['#bundle'] == 'defender_profile'){
-                $profile_key = $key;
+    $vars['view_mode'] = $vars['elements']['#view_mode'];
+    if($vars['view_mode'] == "full"){
+        if(in_array('defender', $roles)){
+            $vars['is_defender'] = true;
+            // If pictire is default let's add specific class to it to add CSS style.
+            if($vars['elements']['#account']->picture === NULL){
+                $vars['user_profile']['user_picture']['#prefix'] = "<span class='anonymous'>";
+                $vars['user_profile']['user_picture']['#suffix'] = "</span>";
             }
-        }
+            // Add "Lawyer" to username.
+            $vars['user_profile']['field_fullname'][0]['#markup'] .= '<br />Lawyer';
+            // @TODO: normal counting.
+            $vars['user_profile']['tickets_defended'] = 0;
+            $vars['user_profile']['tickets_in_progress'] = 0;
 
-        if($profile_key !== false){
-            $profile = $vars['user_profile']['profile_defender_profile']['view']['profile2'][$profile_key];
-            // Working state.
-            $vars['user_profile']['location'] = $profile['field_working_state'];
-            // Overview.
-            $vars['user_profile']['overview'] = $profile['field_overview'];
-            // Feedback.
-            $vars['user_profile']['feedback'] = $profile['field_defender_feedback'];
+            // Last login.
+            $vars['user_profile']['last_online'] = date('M d, Y', $viewed_user->login);
+            // Find right profile. What if defender will have multiple arrays?
+            $profile_key = false;
+            foreach($vars['user_profile']['profile_defender_profile']['view']['profile2'] as $key => $val){
+                if($val['#bundle'] == 'defender_profile'){
+                    $profile_key = $key;
+                }
+            }
+
+            if($profile_key !== false){
+                $profile = $vars['user_profile']['profile_defender_profile']['view']['profile2'][$profile_key];
+                // Working state.
+                $vars['user_profile']['location'] = $profile['field_working_state'];
+                // Overview.
+                $vars['user_profile']['overview'] = $profile['field_overview'];
+                // Feedback.
+                $vars['user_profile']['feedback'] = $profile['field_defender_feedback'];
+            }
+            //dpm($vars);
+        }else{
+            $vars['is_defender'] = false;
         }
-        //dpm($vars);
-    }else{
-        $vars['is_defender'] = false;
+    }elseif($vars['view_mode'] == "dialogs"){
+        global $user;
+        if($vars['elements']['#account']->uid == $user->uid){
+            unset($vars['user_profile']['user_picture']);
+            unset($vars['user_profile']['field_fullname']);
+        }
     }
 }

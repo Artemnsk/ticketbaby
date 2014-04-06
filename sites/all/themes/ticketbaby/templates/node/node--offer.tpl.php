@@ -93,18 +93,19 @@
         <table<?php print $content_attributes; ?>>
             <tr>
                 <td>
-                    <?php //print render($author_picture) ?>
+                    <div class="field__label">Lawyer:</div>
                     <?php print render($author_fullname) ?>
                 </td>
             </tr>
             <tr>
                 <td>
+                    <div class="field__label">Location:</div>
                     <?php print render($author_location) ?>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div class="field__label">Date Posted:</div>
+                    <div class="field__label">Quote Date:</div>
                     <div class="field__items"><?php print $content['posted'] ?></div>
                 </td>
             </tr>
@@ -119,7 +120,7 @@
             -->
             <tr>
                 <td>
-                    <div class="field__label">Quote #</div>
+                    <div class="field__label">Quote #:</div>
                     <div class="field__items"><?php print $nid ?></div>
                 </td>
             </tr>

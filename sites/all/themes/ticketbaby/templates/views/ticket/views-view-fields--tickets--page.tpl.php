@@ -31,15 +31,15 @@
 <table class="respond-item-table">
   <tr>   
     <td class="td_category">
-      <?php print tb_offer_views_fields_row($fields['field_ticket_category']);?>
+      <?php print ticketbaby_views_fields_row($fields['field_ticket_category']);?>
     </td>
     <td class="td_date">
-      <?php print tb_offer_views_fields_row($fields['created']);?>
+      <?php print ticketbaby_views_fields_row($fields['created']);?>
     </td>
   </tr>
   <tr>
     <td colspan="2" class="td_body">
-      <?php print tb_offer_views_fields_row($fields['field_were_there_any_special_cir']);?>
+      <?php print ticketbaby_views_fields_row($fields['field_were_there_any_special_cir']);?>
     </td>
   </tr>
 </table>

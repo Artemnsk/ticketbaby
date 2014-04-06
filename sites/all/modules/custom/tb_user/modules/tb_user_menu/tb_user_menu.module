@@ -18,22 +18,10 @@ function tb_user_menu_menu(){
       'page arguments' => array('tickets', 'my_tickets', 'user'),
       'access arguments' => array('access content'),
     ),
-    'user/tickets-in-progress' => array(
-      'title' => t('Tickets in progress'),
+    'user/messages' => array(
+      'title' => t('Messages'),
       'page callback' => 'tb_user_router',
-      'page arguments' => array('tickets', 'tickets_in_progress', 'user'),
-      'access arguments' => array('access content'),
-    ),
-    'user/tickets-defended' => array(
-      'title' => t('Tickets defended'),
-      'page callback' => 'tb_user_router',
-      'page arguments' => array('tickets', 'tickets_defended', 'user'),
-      'access arguments' => array('access content'),
-    ),
-    'user/tickets-responded-to' => array(
-      'title' => t('Tickets responded to'),
-      'page callback' => 'tb_user_router',
-      'page arguments' => array('tickets', 'tickets_responded_to', 'user'),
+      'page arguments' => array('messages', 'messages_all', 'user'),
       'access arguments' => array('access content'),
     ),
   );
@@ -69,31 +57,58 @@ function tb_user_menu_init(){
 * Implements hook_block_info().
 */
 function tb_user_menu_block_info(){
-  $blocks['customer_tabs'] = array(
-      'info' => t('Customer tabs'),
-      'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
+    $blocks['defender_tabs'] = array(
+        'info' => t('Defender tabs'),
+        'cache' => DRUPAL_CACHE_PER_PAGE,
+    );
+    $blocks['customer_tabs'] = array(
+        'info' => t('Customer tabs'),
+        'cache' => DRUPAL_CACHE_PER_PAGE,
+    );
+    $blocks['defender_tickets_submenu'] = array(
+        'info' => t('Defender "Tickets" submenu'),
+        'cache' => DRUPAL_CACHE_PER_PAGE,
+    );
 
   return $blocks;
 }
 
 function tb_user_menu_block_view($delta = ''){
   $block = array();
-  // Define ticket id to show right tabs.
-  $vars = tb_user_menu_define_ticket_id($_GET['q']);
-  // Does ticket has a defender?
-  if($vars != null){
-      $ticket = node_load($vars['ticket_id']);
-      if(!empty($ticket->field_defender)){
-          $vars['has_defender'] = true;
-      }else{
-          $vars['has_defender'] = false;
-      }
-  }
-  switch ($delta) {
+
+  switch ($delta){
+      case 'defender_tabs':
+          // Define ticket id to show right tabs.
+          $vars = tb_user_menu_define_ticket_id_defender($_GET['q']);
+          // Does ticket has a defender?
+          if($vars != null){
+              $ticket = node_load($vars['ticket_id']);
+              if(!empty($ticket->field_defender)){
+                  $vars['has_defender'] = true;
+              }else{
+                  $vars['has_defender'] = false;
+              }
+          }
+          $block['subject'] = t('Defender tabs');
+          $block['content'] = $vars != null ? theme('defender_tabs_block', $vars) : '';
+          break;
       case 'customer_tabs':
+          // Define ticket id to show right tabs.
+          $vars = tb_user_menu_define_ticket_id_customer($_GET['q']);
+          if($vars != null){
+              $ticket = node_load($vars['ticket_id']);
+              if(!empty($ticket->field_defender)){
+                  $vars['has_defender'] = true;
+              }else{
+                  $vars['has_defender'] = false;
+              }
+          }
           $block['subject'] = t('Customer tabs');
-          $block['content'] = $vars != null ? theme('tabs_block', $vars) : '';
+          $block['content'] = $vars != null ? theme('customer_tabs_block', $vars) : '';
+          break;
+      case 'defender_tickets_submenu':
+          $block['subject'] = t('Defender "Tickets" submenu');
+          $block['content'] = theme('defender_tickets_submenu');
           break;
   }
 
@@ -102,7 +117,7 @@ function tb_user_menu_block_view($delta = ''){
 
 function tb_user_menu_theme($existing, $type, $theme, $path) {
   return array(
-      'tabs_block' => array(
+      'customer_tabs_block' => array(
           'template' => 'templates/customer_tabs',
           'variables' => array(
               'ticket_id' => null,
@@ -113,6 +128,20 @@ function tb_user_menu_theme($existing, $type, $theme, $path) {
               'quotes_parent' => false,
           ),
       ),
+      'defender_tabs_block' => array(
+          'template' => 'templates/defender_tabs',
+          'variables' => array(
+              'ticket_id' => null,
+              'title' => null,
+              'nid' => null,
+              'reply' => false,
+              'has_reply' => false,
+          ),
+      ),
+      'defender_tickets_submenu' => array(
+          'template' => 'templates/defender_tickets_submenu',
+          'variables' => array(),
+      ),
   );
 }
 
@@ -120,32 +149,108 @@ function tb_user_menu_theme($existing, $type, $theme, $path) {
  * Custom defining of a ticket id depends on page.
  * Prepares variables for "tabs" theme function.
 */
-function tb_user_menu_define_ticket_id($q){
-    //$q = 'node/2135';
+function tb_user_menu_define_ticket_id_customer($q){
+    // Array of "current page" highlight for links.
+    $parent = array();
+    // Initialize node.
+    $node = '';
+
     // node/%nid pages.
     if(preg_match("/node\/(\d+)/", $q)){
         $node = node_load(preg_replace("/node\/(\d)/", "$1", $q));
         if($node){
             switch($node->type){
                 case "ticket":
-                    return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'quotes_parent' => array());
+                    // We already set $node.
+                    break;
                 case "offer":
-                    $ticket = node_load($node->field_ticket[LANGUAGE_NONE][0]['target_id']);
-                    return array("ticket_id" => $ticket->nid, "title" => $ticket->title, "nid" => $ticket->nid, 'quotes_parent' => array('attributes' => array('class' => 'active')));
+                    $node = node_load($node->field_ticket[LANGUAGE_NONE][0]['target_id']);
+                    $parent['quotes'] = array('attributes' => array('class' => 'active'));
+                    break;
+                // It means that we have wrong node, not for our page.
+                default:
+                    $node = '';
+                    break;
             }
         }
     }
     // ...And other pages.
     elseif(preg_match("/ticket\/(\d+)\/defender/", $q)){
         $node = node_load(preg_replace("/ticket\/(\d+)\/defender/", "$1", $q));
-        return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'quotes_parent' => array());
     }elseif(preg_match("/ticket\/(\d+)\/quotes/", $q)){
         $node = node_load(preg_replace("/ticket\/(\d+)\/quotes/", "$1", $q));
-        return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'quotes_parent' => array());
     }elseif(preg_match("/user\/\d+\/ticket\/(\d+)\/messages/", $q)){
         $node = node_load(preg_replace("/user\/\d+\/ticket\/(\d+)\/messages/", "$1", $q));
-        return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'quotes_parent' => array());
+    }elseif(preg_match("/user\/\d+\/ticket\/(\d+)\/dialog\/\d+/", $q)){
+        $parent['messages'] = array('attributes' => array('class' => 'active'));
+        $node = node_load(preg_replace("/user\/\d+\/ticket\/(\d+)\/dialog\/\d+/", "$1", $q));
+    }
+    if(isset($node->nid)){
+        return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'parent' => $parent);
     }
     // Return null if there are no matches.
     return null;
+}
+
+function tb_user_menu_define_ticket_id_defender($q){
+    $vars = null;
+    $ticket_id = '';
+    $node = '';
+    $reply = $has_reply = false;
+    global $user;
+    $lawyer_id = $user->uid;
+
+    // node/%nid pages.
+    if(preg_match("/node\/(\d+)/", $q)){
+        // We define $current_node and see if it is ticket node or quote node or something else.
+        // So we can define ticket $node.
+        $current_node = node_load(preg_replace("/node\/(\d)/", "$1", $q));
+        if($current_node){
+            switch($current_node->type){
+                case "ticket":
+                    $ticket_id = $current_node->nid;
+                    $node = $current_node;
+                    $reply = true;
+                    break;
+                case "offer":
+                    $ticket_id = $current_node->field_ticket[LANGUAGE_NONE][0]['target_id'];
+                    $node = node_load($ticket_id);
+                    break;
+            }
+        }
+    }
+    // ...And other pages.
+    elseif(preg_match("/node\/add\/offer\/(\d+)/", $q)){
+        $ticket_id = preg_replace("/node\/add\/offer\/(\d+)/", "$1", $q);
+        $node = node_load($ticket_id);
+        $reply = true;
+    // Page with existing reply to ticket.
+    }elseif(preg_match("/user\/(\d+)\/ticket\/(\d+)\/reply/", $q)){
+        $ticket_id = preg_replace("/user\/(\d+)\/ticket\/(\d+)\/reply/", "$2", $q);
+        $node = node_load($ticket_id);
+    }
+    // It means that we successsfully loaded ticket node and know all information to show tabs.
+    // Else $vars still will be null - it means we should not show them to user.
+    if(isset($node->nid)){
+        // Define does current lawyer has at least one reply on current ticket.
+        // Detect is there any dialog attached to this quote (with current lawyer attached to it)?
+        $dialogs = db_query("SELECT entity_id FROM field_data_field_users WHERE field_users_target_id = :lawyer_id AND
+              entity_id IN (SELECT entity_id FROM field_data_field_attached_to  WHERE field_attached_to_target_id = :ticket_id)", array(':lawyer_id' => $lawyer_id, ':ticket_id' => $ticket_id));
+        foreach($dialogs as $dialog){
+            $has_reply = true;
+            break;
+
+        }
+
+        $vars = array(
+            "ticket_id" => $ticket_id,
+            "title" => $node->title,
+            "nid" => $node->nid,
+            "reply" => $reply,
+            'has_reply' => $has_reply,
+        );
+    }
+
+    // Return null if there are no matches.
+    return $vars;
 }

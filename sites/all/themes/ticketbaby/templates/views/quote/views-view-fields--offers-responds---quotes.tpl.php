@@ -35,10 +35,10 @@
 <table class="respond-item-table <?php print $class_new;?>">
   <tr>   
     <td class="td_username">
-        <?php print tb_offer_views_fields_row($fields['field_fullname']);?>
+        <?php print ticketbaby_views_fields_row($fields['field_fullname']);?>
     </td>
     <td>
-       <?php print isset($fields['field_quote']->content) ? ' with quotes '. tb_offer_views_fields_row($fields['field_quote']) :
+       <?php print isset($fields['field_quote']->content) ? ' with quotes '. ticketbaby_views_fields_row($fields['field_quote']) :
     ' without quotes.';?>
     </td>
     <td class="td_comment_date">

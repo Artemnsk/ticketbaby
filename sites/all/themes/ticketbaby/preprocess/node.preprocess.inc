@@ -4,6 +4,18 @@
  * Implements hook_preprocess_page().
  */
 function ticketbaby_preprocess_node(&$variables) {
+    // Sort comments by Date DESC.
+    if(isset($variables['content']['comments'])){
+        $variables['content']['comments']['comments']['#sorted'] = false;
+        $weight = 50;
+        foreach($variables['content']['comments']['comments'] as $id => $comment){
+            if(isset($comment['#entity_type']) && $comment['#entity_type'] == 'comment'){
+                $variables['content']['comments']['comments'][$id]['#weight'] = $weight;
+                $weight--;
+            }
+        }
+    }
+    //dpm($variables);
   if($variables['type'] == 'ticket' && !$variables['teaser']){
     // DRUPAL TEASER DISPLAY IS FOR DEFENDER QUOTES PAGE.
     // DRUPAL FULL DISPLAY IS FOR CUSTOMER.
@@ -16,6 +28,7 @@ function ticketbaby_preprocess_node(&$variables) {
     //dpm($variables);
     $variables['content']['title'] = $variables['title'];
     $variables['content']['posted'] = date('F j, Y', $variables['created']);
+      //$variables['content']
     //$variables['content']['field_defender']['#title'] = t("Hired");
     //$variables['content']['field_defender']['#label_display'] = "inline";
     //$variables['content']['field_upload_scanned_ticket']['#title_display'] = 'invisible';

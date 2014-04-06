@@ -42,11 +42,11 @@
           <?php foreach ($row as $field => $content): ?>
             <?php if($field != 'nid'):?>
             <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print is_array($field_attributes[$field][$row_count]) ? drupal_attributes($field_attributes[$field][$row_count]) : ''; ?>>
-              <!--<a href="<?php print drupal_get_path_alias('/node/'. $row['nid']); ?>">-->
+              <a href="<?php print drupal_get_path_alias('/node/'. $row['nid']); ?>">
                 <span class='ticket-list-span'>
                   <?php print $content; ?>
                 </span>
-              <!--</a>-->
+              </a>
             </td>
             <?php endif;?>
           <?php endforeach; ?>

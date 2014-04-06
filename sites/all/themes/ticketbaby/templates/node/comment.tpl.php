@@ -62,17 +62,21 @@
 <article<?php print $attributes; ?>>
     <div class="comment_left_wrapper">
     <?php print render($title_prefix); ?>
-    <?php if ($new): ?>
-        <mark class="new"><?php print $new; ?></mark>
-    <?php endif; ?>
+
+        <!--
+            <?php if ($new): ?>
+                <mark class="new"><?php print $new; ?></mark>
+            <?php endif; ?>
+        -->
+
         <h3<?php print $title_attributes; ?>><?php print $title; ?></h3>
         <?php print render($title_suffix); ?>
 
         <footer class="comment__info">
-            <?php print $user_picture; ?>
+            <?php //print $user_picture; ?>
           <p class="submitted comment__submitted">
-            Submitted by <?php print $author ?><br />
-            Message date:<br /> <?php print $created ?>
+            <?php print $author ?><br />
+            <?php print $created ?>
           </p>
         </footer>
 
@@ -80,10 +84,10 @@
     <div class="comment_right_wrapper">
         <div<?php print $content_attributes; ?>>
             <?php
-            // We hide the links now so that we can render them later.
-            hide($content['links']);
-            unset($content['links']['comment']['#links']['comment-reply']);
-            print render($content);
+                // We hide the links now so that we can render them later.
+                hide($content['links']);
+                unset($content['links']['comment']['#links']['comment-reply']);
+                print render($content);
             ?>
             <?php if ($signature): ?>
                 <div class="user-signature comment__signature">
@@ -92,5 +96,5 @@
             <?php endif; ?>
         </div>
     </div>
-    <?php print render($content['links']) ?>
+    <?php //print render($content['links']) ?>
 </article>

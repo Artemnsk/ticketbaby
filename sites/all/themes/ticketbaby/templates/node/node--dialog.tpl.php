@@ -79,6 +79,10 @@
  */
 ?>
 
-asd
-<?php dpm($variables);?>
-<?php print render($content['comments']) ?>
+<?php if($view_mode == "full"): ?>
+
+    <?php print render($content['comments']) ?>
+
+<?php elseif($view_mode == "teaser"): ?>
+    <?php print render($content['field_users']) ?>
+<?php endif; ?>

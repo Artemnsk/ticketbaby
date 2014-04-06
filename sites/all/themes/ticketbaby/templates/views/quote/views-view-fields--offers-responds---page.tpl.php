@@ -39,26 +39,26 @@
   <tr>   
     <td class="td_username">
       <?php if($defender):?>
-        <?php print tb_offer_views_fields_row($fields['field_fullname_1']);?>
+        <?php print ticketbaby_views_fields_row($fields['field_fullname_1']);?>
       <?php else:?>
-        <?php print tb_offer_views_fields_row($fields['field_fullname']);?>
+        <?php print ticketbaby_views_fields_row($fields['field_fullname']);?>
       <?php endif;?>
       <span>
       <?php if(isset($fields['comment_count'])):?>
-        <?php print tb_offer_views_fields_row($fields['comment_count']);?>
+        <?php print ticketbaby_views_fields_row($fields['comment_count']);?>
       <?php endif;?>
       </span>
-      <?php //print tb_offer_views_fields_row($fields['nid']);?>
+      <?php //print ticketbaby_views_fields_row($fields['nid']);?>
     </td>
     <td class="td_new">
-      <?php print tb_offer_views_fields_row($fields['timestamp']);?>
+      <?php print ticketbaby_views_fields_row($fields['timestamp']);?>
     </td>
     <td class="td_comment_name">
       <?php if(isset($fields['comment_body'])):?>
-        <?php print tb_offer_views_fields_row($fields['subject']);?>
-        <?php print tb_offer_views_fields_row($fields['comment_body']);?>
+        <?php print ticketbaby_views_fields_row($fields['subject']);?>
+        <?php print ticketbaby_views_fields_row($fields['comment_body']);?>
       <?php else:?>
-        <?php print isset($fields['field_response']) ? tb_offer_views_fields_row($fields['field_response']) : '';?>
+        <?php print isset($fields['field_response']) ? ticketbaby_views_fields_row($fields['field_response']) : '';?>
       <?php endif;?>
       
     </td>
@@ -66,7 +66,7 @@
       <?php
         $posted = $fields['last_updated']->raw;
         if(time() - $posted <= 24*60*60){
-          print tb_offer_views_fields_row($fields['last_updated']);
+          print ticketbaby_views_fields_row($fields['last_updated']);
         }else{
           print date('d/m/Y', $posted);
         }

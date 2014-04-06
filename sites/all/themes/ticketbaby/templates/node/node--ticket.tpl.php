@@ -114,7 +114,7 @@
 
     <?php // Used on Ticket page for defender. ?>
     <?php else:?>
-    
+
         <article<?php print $attributes; ?>>
           <?php if (!empty($title_prefix) || !empty($title_suffix) || !$page): ?>
             <header>
@@ -141,9 +141,6 @@
               print render($content);
             ?>
           </div>
-          <?php if(isset($defender_respond)): ?>
-            <?php print $defender_respond; ?>
-          <?php endif; ?>
 
           <?php print render($content['links']); ?>
           <?php print render($content['comments']); ?>
@@ -177,7 +174,8 @@
               </tr>
               <tr>
                   <td>
-                      <?php print render($content['nid']) ?>
+                      <div class="field__label">Case number:</div>
+                      <div class="field__items"><?php print render($nid) ?></div>
                   </td>
               </tr>
               <tr>

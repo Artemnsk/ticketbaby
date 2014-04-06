@@ -44,20 +44,7 @@
             <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print is_array($field_attributes[$field][$row_count]) ? drupal_attributes($field_attributes[$field][$row_count]) : ''; ?>>
               <a href="<?php print drupal_get_path_alias('/node/'. $row['nid']); ?>">
                 <span class='ticket-list-span'>
-                  <?php if($field == 'created'):?>
-                    <?php
-                      $posted = strtotime($content);
-                      if(time() - $posted <= 24*60*60){
-                        print $content;
-                      }else{
-                        print date('d/m/Y', $posted);
-                      }
-                    ?>
-                  <?php else: ?>
-
-                      <?php print $content; ?>
-
-                  <?php endif; ?>
+                    <?php print $content; ?>
                 </span>
               </a>
             </td>
