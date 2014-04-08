@@ -84,38 +84,18 @@ function features_menus_menu_default_menu_links() {
       'identifier' => 'menu-customer-menu_billing:<nolink>',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-customer-menu_defenders:<nolink>
-  $menu_links['menu-customer-menu_defenders:<nolink>'] = array(
-    'menu_name' => 'menu-customer-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
-    'link_title' => 'Defenders',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-customer-menu_defenders:<nolink>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
+    'weight' => -46,
     'customized' => 1,
   );
   // Exported menu link: menu-customer-menu_messages:user/messages
   $menu_links['menu-customer-menu_messages:user/messages'] = array(
     'menu_name' => 'menu-customer-menu',
     'link_path' => 'user/messages',
-    'router_path' => 'user/messages',
+    'router_path' => 'user/%',
     'link_title' => 'Messages',
     'options' => array(
       'attributes' => array(
@@ -169,7 +149,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: menu-customer-menu_your-tickets:user/my-tickets
@@ -205,7 +185,7 @@ function features_menus_menu_default_menu_links() {
       'identifier' => 'menu-defender-menu_account-details:user',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
@@ -225,7 +205,7 @@ function features_menus_menu_default_menu_links() {
       'identifier' => 'menu-defender-menu_calendar:<nolink>',
     ),
     'module' => 'menu',
-    'hidden' => 0,
+    'hidden' => 1,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
@@ -236,7 +216,7 @@ function features_menus_menu_default_menu_links() {
   $menu_links['menu-defender-menu_messages:user/messages'] = array(
     'menu_name' => 'menu-defender-menu',
     'link_path' => 'user/messages',
-    'router_path' => 'user/messages',
+    'router_path' => 'user/%',
     'link_title' => 'Messages',
     'options' => array(
       'attributes' => array(
@@ -250,110 +230,6 @@ function features_menus_menu_default_menu_links() {
     'has_children' => 1,
     'expanded' => 0,
     'weight' => -48,
-    'customized' => 1,
-  );
-  // Exported menu link: menu-defender-menu_tickets-defended:user/tickets-defended
-  $menu_links['menu-defender-menu_tickets-defended:user/tickets-defended'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => 'user/tickets-defended',
-    'router_path' => 'user/tickets-defended',
-    'link_title' => 'Tickets defended',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_tickets-defended:user/tickets-defended',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-    'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
-  );
-  // Exported menu link: menu-defender-menu_tickets-in-progress:user/tickets-in-progress
-  $menu_links['menu-defender-menu_tickets-in-progress:user/tickets-in-progress'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => 'user/tickets-in-progress',
-    'router_path' => 'user/tickets-in-progress',
-    'link_title' => 'Tickets in progress',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_tickets-in-progress:user/tickets-in-progress',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-    'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
-  );
-  // Exported menu link: menu-defender-menu_tickets-posted:user/search-ticket
-  $menu_links['menu-defender-menu_tickets-posted:user/search-ticket'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => 'user/search-ticket',
-    'router_path' => 'user/search-ticket',
-    'link_title' => 'Tickets posted',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_tickets-posted:user/search-ticket',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-    'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
-  );
-  // Exported menu link: menu-defender-menu_tickets-responded-to:user/tickets-responded-to
-  $menu_links['menu-defender-menu_tickets-responded-to:user/tickets-responded-to'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => 'user/tickets-responded-to',
-    'router_path' => 'user/tickets-responded-to',
-    'link_title' => 'Tickets responded to',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_tickets-responded-to:user/tickets-responded-to',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -49,
-    'customized' => 1,
-    'parent_identifier' => 'menu-defender-menu_tickets:<nolink>',
-  );
-  // Exported menu link: menu-defender-menu_tickets:<nolink>
-  $menu_links['menu-defender-menu_tickets:<nolink>'] = array(
-    'menu_name' => 'menu-defender-menu',
-    'link_path' => '<nolink>',
-    'router_path' => '<nolink>',
-    'link_title' => 'Tickets',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-defender-menu_tickets:<nolink>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 1,
-    'expanded' => 0,
-    'weight' => -50,
     'customized' => 1,
   );
   // Exported menu link: menu-footer-menu-about-us_about-us:<front>
@@ -655,7 +531,6 @@ function features_menus_menu_default_menu_links() {
   t('Calendar');
   t('Company');
   t('Contact Us');
-  t('Defenders');
   t('Help');
   t('Log in');
   t('Messages');
@@ -666,11 +541,6 @@ function features_menus_menu_default_menu_links() {
   t('Sign in');
   t('Sign out');
   t('Support');
-  t('Tickets');
-  t('Tickets defended');
-  t('Tickets in progress');
-  t('Tickets posted');
-  t('Tickets responded to');
   t('Your Tickets');
   t('|');
 

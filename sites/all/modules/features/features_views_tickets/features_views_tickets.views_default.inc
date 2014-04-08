@@ -22,7 +22,6 @@ function features_views_tickets_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'My tickets';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -59,22 +58,18 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
-  /* Field: Content: Ticket category */
-  $handler->display->display_options['fields']['field_ticket_category']['id'] = 'field_ticket_category';
-  $handler->display->display_options['fields']['field_ticket_category']['table'] = 'field_data_field_ticket_category';
-  $handler->display->display_options['fields']['field_ticket_category']['field'] = 'field_ticket_category';
-  $handler->display->display_options['fields']['field_ticket_category']['label'] = 'Ticket';
-  $handler->display->display_options['fields']['field_ticket_category']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Full name */
-  $handler->display->display_options['fields']['field_full_name']['id'] = 'field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['table'] = 'field_data_field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['field'] = 'field_full_name';
-  $handler->display->display_options['fields']['field_full_name']['label'] = 'Name';
-  $handler->display->display_options['fields']['field_full_name']['alter']['max_length'] = '15';
-  $handler->display->display_options['fields']['field_full_name']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_full_name']['settings'] = array(
-    'trim_length' => '40',
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['id'] = 'field_were_there_any_special_cir';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['table'] = 'field_data_field_were_there_any_special_cir';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['field'] = 'field_were_there_any_special_cir';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['type'] = 'text_trimmed';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['settings'] = array(
+    'trim_length' => '150',
   );
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_status']['id'] = 'field_status';
+  $handler->display->display_options['fields']['field_status']['table'] = 'field_data_field_status';
+  $handler->display->display_options['fields']['field_status']['field'] = 'field_status';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -82,7 +77,7 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['created']['label'] = 'Date';
   $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['created']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'time ago';
+  $handler->display->display_options['fields']['created']['date_format'] = 'tickets';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -103,37 +98,42 @@ function features_views_tickets_views_default_views() {
     'ticket' => 'ticket',
   );
 
-  /* Display: Tickets in progress */
-  $handler = $view->new_display('page', 'Tickets in progress', 'tickets_in_progress');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Tickets in progress';
-  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
-  $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'You have no any tickets in progress yet.';
-  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_defender_target_id']['id'] = 'field_defender_target_id';
-  $handler->display->display_options['relationships']['field_defender_target_id']['table'] = 'field_data_field_defender';
-  $handler->display->display_options['relationships']['field_defender_target_id']['field'] = 'field_defender_target_id';
-  $handler->display->display_options['relationships']['field_defender_target_id']['label'] = 'Defender of this ticket';
-  $handler->display->display_options['relationships']['field_defender_target_id']['required'] = TRUE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Defender (field_defender) */
-  $handler->display->display_options['arguments']['field_defender_target_id']['id'] = 'field_defender_target_id';
-  $handler->display->display_options['arguments']['field_defender_target_id']['table'] = 'field_data_field_defender';
-  $handler->display->display_options['arguments']['field_defender_target_id']['field'] = 'field_defender_target_id';
-  $handler->display->display_options['arguments']['field_defender_target_id']['default_action'] = 'access denied';
-  $handler->display->display_options['arguments']['field_defender_target_id']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_defender_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_defender_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_defender_target_id']['summary_options']['items_per_page'] = '25';
+  /* Display: Def: posted */
+  $handler = $view->new_display('page', 'Def: posted', 'search_ticket');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
+  /* Field: Content: Ticket category */
+  $handler->display->display_options['fields']['field_ticket_category']['id'] = 'field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['table'] = 'field_data_field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['field'] = 'field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['label'] = 'Ticket Name';
+  /* Field: Content: Description */
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['id'] = 'field_were_there_any_special_cir';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['table'] = 'field_data_field_were_there_any_special_cir';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['field'] = 'field_were_there_any_special_cir';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['type'] = 'text_trimmed';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['settings'] = array(
+    'trim_length' => '150',
+  );
+  /* Field: Content: Status */
+  $handler->display->display_options['fields']['field_status']['id'] = 'field_status';
+  $handler->display->display_options['fields']['field_status']['table'] = 'field_data_field_status';
+  $handler->display->display_options['fields']['field_status']['field'] = 'field_status';
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Date';
+  $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['created']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'tickets';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -150,71 +150,54 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
-  $handler->display->display_options['path'] = 'user/%/tickets-in-progress';
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
+    0 => '0',
+  );
+  $handler->display->display_options['path'] = 'tickets/posted';
 
-  /* Display: Tickets posted */
-  $handler = $view->new_display('page', 'Tickets posted', 'search_ticket');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Tickets posted';
-  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
-  $handler->display->display_options['defaults']['access'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'field_ticket_category' => 'field_ticket_category',
-    'created' => 'created',
-    'nid' => 'nid',
-    'nothing' => 'nothing',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'field_ticket_category' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'created' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'nid' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'nothing' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-  );
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  /* Display: Def: replied */
+  $handler = $view->new_display('page', 'Def: replied', 'tickets_responded_to');
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'No tickets found.';
+  $handler->display->display_options['empty']['area']['content'] = 'You have not responded to any open ticket yet.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Dialog attached to this ticket */
+  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['id'] = 'reverse_field_attached_to_node';
+  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['field'] = 'reverse_field_attached_to_node';
+  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['ui_name'] = 'Dialog attached to this ticket';
+  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['label'] = 'Dialog';
+  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['required'] = TRUE;
+  /* Relationship: Author of Dialog */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['ui_name'] = 'Author of Dialog';
+  $handler->display->display_options['relationships']['uid']['label'] = 'Author of Dialog';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
+  /* Relationship: Quote of ticket */
+  $handler->display->display_options['relationships']['reverse_field_ticket_node']['id'] = 'reverse_field_ticket_node';
+  $handler->display->display_options['relationships']['reverse_field_ticket_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_ticket_node']['field'] = 'reverse_field_ticket_node';
+  $handler->display->display_options['relationships']['reverse_field_ticket_node']['ui_name'] = 'Quote of ticket';
+  $handler->display->display_options['relationships']['reverse_field_ticket_node']['label'] = 'Quote';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid_1']['id'] = 'uid_1';
+  $handler->display->display_options['relationships']['uid_1']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid_1']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid_1']['relationship'] = 'reverse_field_ticket_node';
+  $handler->display->display_options['relationships']['uid_1']['label'] = 'Author of quote';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'AND',
-    3 => 'AND',
-  );
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -230,43 +213,39 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Defender (field_defender) */
-  $handler->display->display_options['filters']['field_defender_target_id']['id'] = 'field_defender_target_id';
-  $handler->display->display_options['filters']['field_defender_target_id']['table'] = 'field_data_field_defender';
-  $handler->display->display_options['filters']['field_defender_target_id']['field'] = 'field_defender_target_id';
-  $handler->display->display_options['filters']['field_defender_target_id']['operator'] = 'empty';
-  $handler->display->display_options['filters']['field_defender_target_id']['group'] = 1;
-  /* Filter criterion: state */
-  $handler->display->display_options['filters']['field_state_value']['id'] = 'field_state_value';
-  $handler->display->display_options['filters']['field_state_value']['table'] = 'field_data_field_state';
-  $handler->display->display_options['filters']['field_state_value']['field'] = 'field_state_value';
-  $handler->display->display_options['filters']['field_state_value']['ui_name'] = 'state';
-  $handler->display->display_options['filters']['field_state_value']['operator'] = 'or';
-  $handler->display->display_options['filters']['field_state_value']['value'] = array();
-  $handler->display->display_options['filters']['field_state_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_state_value']['expose']['operator_id'] = 'field_state_value_op';
-  $handler->display->display_options['filters']['field_state_value']['expose']['label'] = 'State/Province';
-  $handler->display->display_options['filters']['field_state_value']['expose']['operator'] = 'field_state_value_op';
-  $handler->display->display_options['filters']['field_state_value']['expose']['identifier'] = 'state';
-  $handler->display->display_options['filters']['field_state_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
+    0 => '0',
   );
-  $handler->display->display_options['path'] = 'user/search-ticket';
-  $handler->display->display_options['menu']['title'] = 'Posted';
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid_current']['value'] = '1';
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current_1']['id'] = 'uid_current_1';
+  $handler->display->display_options['filters']['uid_current_1']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current_1']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current_1']['relationship'] = 'uid_1';
+  $handler->display->display_options['filters']['uid_current_1']['value'] = '0';
+  $handler->display->display_options['filters']['uid_current_1']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['uid_current_1']['expose']['label'] = 'Is the logged in user';
+  $handler->display->display_options['filters']['uid_current_1']['expose']['operator'] = 'uid_current_1_op';
+  $handler->display->display_options['filters']['uid_current_1']['expose']['identifier'] = 'uid_current_1';
+  $handler->display->display_options['filters']['uid_current_1']['expose']['required'] = TRUE;
+  $handler->display->display_options['path'] = 'tickets/replied';
+  $handler->display->display_options['menu']['title'] = 'Tickets responded to';
   $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-  $handler->display->display_options['tab_options']['type'] = 'tab';
-  $handler->display->display_options['tab_options']['title'] = 'Posted';
-  $handler->display->display_options['tab_options']['weight'] = '0';
 
-  /* Display: Tickets responded to */
-  $handler = $view->new_display('page', 'Tickets responded to', 'tickets_responded_to');
+  /* Display: Def: quoted */
+  $handler = $view->new_display('page', 'Def: quoted', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Tickets responded to';
   $handler->display->display_options['defaults']['empty'] = FALSE;
@@ -282,19 +261,16 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['relationships']['reverse_field_ticket_node']['id'] = 'reverse_field_ticket_node';
   $handler->display->display_options['relationships']['reverse_field_ticket_node']['table'] = 'node';
   $handler->display->display_options['relationships']['reverse_field_ticket_node']['field'] = 'reverse_field_ticket_node';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['label'] = 'Offer(s)';
+  $handler->display->display_options['relationships']['reverse_field_ticket_node']['label'] = 'Quote';
   $handler->display->display_options['relationships']['reverse_field_ticket_node']['required'] = TRUE;
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['relationship'] = 'reverse_field_ticket_node';
+  $handler->display->display_options['relationships']['uid']['label'] = 'author of quote';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Author uid */
-  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
-  $handler->display->display_options['arguments']['uid']['table'] = 'node';
-  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
-  $handler->display->display_options['arguments']['uid']['relationship'] = 'reverse_field_ticket_node';
-  $handler->display->display_options['arguments']['uid']['default_action'] = 'access denied';
-  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -316,41 +292,41 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_defender_target_id']['table'] = 'field_data_field_defender';
   $handler->display->display_options['filters']['field_defender_target_id']['field'] = 'field_defender_target_id';
   $handler->display->display_options['filters']['field_defender_target_id']['operator'] = 'empty';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_defended_value']['id'] = 'field_defended_value';
-  $handler->display->display_options['filters']['field_defended_value']['table'] = 'field_data_field_defended';
-  $handler->display->display_options['filters']['field_defended_value']['field'] = 'field_defended_value';
-  $handler->display->display_options['filters']['field_defended_value']['value'] = array(
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
     0 => '0',
   );
-  $handler->display->display_options['path'] = 'user/%/tickets-responded-to';
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid_current']['value'] = '1';
+  $handler->display->display_options['path'] = 'tickets/quoted';
   $handler->display->display_options['menu']['title'] = 'Tickets responded to';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'user-menu';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
-  /* Display: Tickets defended */
-  $handler = $view->new_display('page', 'Tickets defended', 'tickets_defended');
+  /* Display: Def: in progress */
+  $handler = $view->new_display('page', 'Def: in progress', 'tickets_in_progress');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Tickets defended';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'You have no any tickets in progress yet.';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referenced Entity */
-  $handler->display->display_options['relationships']['field_defender_target_id']['id'] = 'field_defender_target_id';
-  $handler->display->display_options['relationships']['field_defender_target_id']['table'] = 'field_data_field_defender';
-  $handler->display->display_options['relationships']['field_defender_target_id']['field'] = 'field_defender_target_id';
-  $handler->display->display_options['relationships']['field_defender_target_id']['label'] = 'Defender of this ticket';
-  $handler->display->display_options['relationships']['field_defender_target_id']['required'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Defender (field_defender) */
-  $handler->display->display_options['arguments']['field_defender_target_id']['id'] = 'field_defender_target_id';
-  $handler->display->display_options['arguments']['field_defender_target_id']['table'] = 'field_data_field_defender';
-  $handler->display->display_options['arguments']['field_defender_target_id']['field'] = 'field_defender_target_id';
-  $handler->display->display_options['arguments']['field_defender_target_id']['default_action'] = 'access denied';
-  $handler->display->display_options['arguments']['field_defender_target_id']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_defender_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_defender_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_defender_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -367,17 +343,48 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_defended_value']['id'] = 'field_defended_value';
-  $handler->display->display_options['filters']['field_defended_value']['table'] = 'field_data_field_defended';
-  $handler->display->display_options['filters']['field_defended_value']['field'] = 'field_defended_value';
-  $handler->display->display_options['filters']['field_defended_value']['value'] = array(
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
     1 => '1',
   );
-  $handler->display->display_options['path'] = 'user/%/tickets-defended';
+  $handler->display->display_options['path'] = 'tickets/in-progress';
 
-  /* Display: My tickets */
-  $handler = $view->new_display('page', 'My tickets', 'my_tickets');
+  /* Display: Def: defended */
+  $handler = $view->new_display('page', 'Def: defended', 'tickets_defended');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Tickets defended';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ticket' => 'ticket',
+  );
+  /* Filter criterion: Content: Status (field_status) */
+  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
+  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
+  $handler->display->display_options['filters']['field_status_value']['value'] = array(
+    2 => '2',
+  );
+  $handler->display->display_options['path'] = 'tickets/defended';
+
+  /* Display: Cus: your tickets */
+  $handler = $view->new_display('page', 'Cus: your tickets', 'my_tickets');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
@@ -430,6 +437,11 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'You have no any tickets yet.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['field_defender_target_id']['id'] = 'field_defender_target_id';
+  $handler->display->display_options['relationships']['field_defender_target_id']['table'] = 'field_data_field_defender';
+  $handler->display->display_options['relationships']['field_defender_target_id']['field'] = 'field_defender_target_id';
+  $handler->display->display_options['relationships']['field_defender_target_id']['label'] = 'Defender';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -440,19 +452,22 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Ticket Name';
+  /* Field: Content: Ticket category */
+  $handler->display->display_options['fields']['field_ticket_category']['id'] = 'field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['table'] = 'field_data_field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['field'] = 'field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['label'] = 'Ticket Name';
+  $handler->display->display_options['fields']['field_ticket_category']['alter']['max_length'] = '25';
+  $handler->display->display_options['fields']['field_ticket_category']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['field_ticket_category']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_ticket_category']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Description */
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['id'] = 'field_were_there_any_special_cir';
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['table'] = 'field_data_field_were_there_any_special_cir';
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['field'] = 'field_were_there_any_special_cir';
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['label'] = 'Content';
-  $handler->display->display_options['fields']['field_were_there_any_special_cir']['alter']['max_length'] = '150';
+  $handler->display->display_options['fields']['field_were_there_any_special_cir']['alter']['max_length'] = '100';
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_were_there_any_special_cir']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['settings'] = array(
     'trim_length' => '150',
   );
@@ -460,12 +475,17 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['field_status']['id'] = 'field_status';
   $handler->display->display_options['fields']['field_status']['table'] = 'field_data_field_status';
   $handler->display->display_options['fields']['field_status']['field'] = 'field_status';
-  /* Field: Content: Defender */
-  $handler->display->display_options['fields']['field_defender']['id'] = 'field_defender';
-  $handler->display->display_options['fields']['field_defender']['table'] = 'field_data_field_defender';
-  $handler->display->display_options['fields']['field_defender']['field'] = 'field_defender';
-  $handler->display->display_options['fields']['field_defender']['settings'] = array(
-    'link' => 0,
+  /* Field: User: Fullname */
+  $handler->display->display_options['fields']['field_fullname']['id'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['table'] = 'field_data_field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['field'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['relationship'] = 'field_defender_target_id';
+  $handler->display->display_options['fields']['field_fullname']['label'] = 'Defender';
+  $handler->display->display_options['fields']['field_fullname']['alter']['max_length'] = '15';
+  $handler->display->display_options['fields']['field_fullname']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['field_fullname']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['field_fullname']['settings'] = array(
+    'trim_length' => '15',
   );
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
@@ -475,6 +495,11 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['created']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'tickets';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['fields']['nid_1']['table'] = 'node';
+  $handler->display->display_options['fields']['nid_1']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid_1']['exclude'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';

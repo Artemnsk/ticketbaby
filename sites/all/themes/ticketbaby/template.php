@@ -93,6 +93,20 @@ function ticketbaby_menu_link__menu_customer_menu(array $variables){
             $element['#attributes']['class'][] = "active-trail";
         }
     }
+
+    // Defining if we are on defenders page
+    if($element['#href'] == "defenders"){
+        if(tb_user_menu_define_defender_id_customer($_GET['q']) !== null){
+            $element['#attributes']['class'][] = "active-trail";
+        }
+    }
+
+    // Defining if we are on messages page
+    if($element['#href'] == "user/messages"){
+        if(tb_user_menu_define_messages_customer($_GET['q']) !== null){
+            $element['#attributes']['class'][] = "active-trail";
+        }
+    }
     $output = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 
     return $output;

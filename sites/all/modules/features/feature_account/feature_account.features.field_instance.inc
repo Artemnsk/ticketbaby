@@ -24,6 +24,15 @@ function feature_account_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'dialogs' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(
+          'trim_length' => 50,
+        ),
+        'type' => 'text_trimmed',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'user',
     'field_name' => 'field_fullname',

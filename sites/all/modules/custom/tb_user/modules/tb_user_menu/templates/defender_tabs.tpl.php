@@ -22,6 +22,6 @@
         </span>
     <?php endif;?>
     <span>
-        <?php print l(t("Give Quote"), drupal_get_path_alias("node/add/offer/$ticket_id"));?>
+        <?php print l(t("Quote"), drupal_get_path_alias("node/add/offer/$ticket_id"));?>
     </span>
 </span>

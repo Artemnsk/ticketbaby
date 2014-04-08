@@ -27,18 +27,18 @@ global $user;
     <?php foreach ($rows as $row_count => $row): ?>
         <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
             <?php foreach ($row as $field => $content): ?>
-                <?php if($field != 'nid' && $field != 'last_comment_timestamp' && $field != 'comment_body'):?>
+                <?php if($field != 'uid' && $field != 'nid' && $field != 'last_comment_timestamp' && $field != 'comment_body' && $field != 'new_comments'):?>
 
                     <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print is_array($field_attributes[$field][$row_count]) ? drupal_attributes($field_attributes[$field][$row_count]) : ''; ?>>
-                        <a href="<?php print drupal_get_path_alias('/user/'. $user->uid. $row['nid']); ?>">
+                        <a href="<?php print drupal_get_path_alias('/node/'. $row['nid']); ?>">
                             <span class='dialog-span'>
-                                <?php if($field == "rendered_entity_1"):?>
-                                    <?php print $content; ?>
+                                <?php if($field == "field_fullname"):?>
+                                    <?php print $content; ?><?php print $row['new_comments']; ?>
                                     <?php print $row['last_comment_timestamp']; ?>
                                 <?php elseif($field == "field_ticket_category"):?>
                                     <?php print $content; ?>
                                     <?php print $row['comment_body']; ?>
-                                <?php else: ?>
+                                <?php elseif($field != "picture" || ($field == "picture" && $row['uid'] != $user->uid)):?>
                                     <?php print $content; ?>
                                 <?php endif;?>
                             </span>

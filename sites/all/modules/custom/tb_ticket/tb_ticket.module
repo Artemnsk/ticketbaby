@@ -8,13 +8,13 @@ function tb_ticket_views_pre_build(&$view){
   }
   
   // Apply working state of defender by default on tickets posted page.
-  if($view->current_display == 'search_ticket'){
+  /*if($view->current_display == 'search_ticket'){
     global $user;
     $profile = profile2_load_by_user($user, 'defender_profile');
     if(!empty($profile)){
       $view->display['search_ticket']->handler->handlers['filter']['field_state_value']->value = $profile->field_working_state[LANGUAGE_NONE][0]['value'];
     }
-  }
+  }*/
 }
 
 function tb_ticket_form_alter(&$form, &$form_state, $form_id){

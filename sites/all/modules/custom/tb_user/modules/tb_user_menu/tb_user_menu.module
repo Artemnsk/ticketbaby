@@ -80,15 +80,7 @@ function tb_user_menu_block_view($delta = ''){
       case 'defender_tabs':
           // Define ticket id to show right tabs.
           $vars = tb_user_menu_define_ticket_id_defender($_GET['q']);
-          // Does ticket has a defender?
-          if($vars != null){
-              $ticket = node_load($vars['ticket_id']);
-              if(!empty($ticket->field_defender)){
-                  $vars['has_defender'] = true;
-              }else{
-                  $vars['has_defender'] = false;
-              }
-          }
+
           $block['subject'] = t('Defender tabs');
           $block['content'] = $vars != null ? theme('defender_tabs_block', $vars) : '';
           break;
@@ -102,13 +94,31 @@ function tb_user_menu_block_view($delta = ''){
               }else{
                   $vars['has_defender'] = false;
               }
+              $block['subject'] = t('Customer tabs');
+              $block['content'] = theme('customer_tabs_block_ticket', $vars);
+              break;
           }
+          // Defenders page.
+          $vars = tb_user_menu_define_defender_id_customer($_GET['q']);
+          if($vars != null){
+              $block['subject'] = t('Customer tabs');
+              $block['content'] = theme('customer_tabs_block_defenders', $vars);
+              break;
+          }
+
+          // Else show nothing.
           $block['subject'] = t('Customer tabs');
-          $block['content'] = $vars != null ? theme('customer_tabs_block', $vars) : '';
+          $block['content'] = '';
           break;
       case 'defender_tickets_submenu':
+          $vars = tb_user_menu_ticket_type_defender($_GET['q']);
+          if($vars !== null){
+              $block['subject'] = t('Defender "Tickets" submenu');
+              $block['content'] = theme('defender_tickets_submenu', $vars);
+              break;
+          }
           $block['subject'] = t('Defender "Tickets" submenu');
-          $block['content'] = theme('defender_tickets_submenu');
+          $block['content'] = "";
           break;
   }
 
@@ -117,8 +127,8 @@ function tb_user_menu_block_view($delta = ''){
 
 function tb_user_menu_theme($existing, $type, $theme, $path) {
   return array(
-      'customer_tabs_block' => array(
-          'template' => 'templates/customer_tabs',
+      'customer_tabs_block_ticket' => array(
+          'template' => 'templates/customer_tabs_ticket',
           'variables' => array(
               'ticket_id' => null,
               'title' => null,
@@ -126,6 +136,13 @@ function tb_user_menu_theme($existing, $type, $theme, $path) {
               'has_defender' => false,
               // Quotes link tab is parent? For quote node.
               'quotes_parent' => false,
+          ),
+      ),
+      'customer_tabs_block_defenders' => array(
+          'template' => 'templates/customer_tabs_defenders',
+          'variables' => array(
+              'your_defender' => false,
+              'parent' => false,
           ),
       ),
       'defender_tabs_block' => array(
@@ -189,6 +206,153 @@ function tb_user_menu_define_ticket_id_customer($q){
         return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'parent' => $parent);
     }
     // Return null if there are no matches.
+    return null;
+}
+
+/*
+ * Custom defining customer's defender id.
+ * Also prepares variables for defenders theme block.
+ */
+function tb_user_menu_define_defender_id_customer($q){
+    // Array of "current page" highlight for links.
+    global $user;
+    $parent = array();
+    $your_defender = null;
+    // By default we will not display these tabs. If only one of the routes will be matched..
+    $display_tabs = false;
+
+    // Let's load all defenders that defend current customer's tickets.
+    $tickets = db_query("SELECT DISTINCT field_defender_target_id FROM field_data_field_defender def INNER JOIN node ON def.entity_id = node.nid
+            WHERE uid = :author",
+        array(':author' => $user->uid));
+    foreach($tickets as $ticket){
+        $your_defender = $ticket->field_defender_target_id;
+    }
+
+    // user/$uid pages.
+    if(preg_match("/user\/(\d+)/", $q)){
+        $display_tabs = true;
+        $defender = user_load(preg_replace("/user\/(\d)/", "$1", $q));
+        // Highlight defenders tab.
+        if($defender){
+            if(in_array("defender", $defender->roles)){
+                $parent['defenders'] = array('attributes' => array('class' => 'active'));
+            }
+
+            // ...but if this user is current customer's defender - let's highlight him as "your defender".
+            if($defender->uid == $your_defender){
+                if(isset($parent['defenders'])) unset($parent['defenders']);
+                $parent[] = array('your_defender' => array('attributes' => array('class' => 'active')));
+            }
+        }
+    }
+    // ...And other pages.
+    elseif(preg_match("/defenders/", $q)){
+        $display_tabs = true;
+    }
+
+    if($display_tabs){
+        $vars['your_defender'] = $your_defender;
+        $vars['parent'] = $parent;
+        return $vars;
+    }
+
+    return null;
+}
+
+/*
+ * If we are on messages page?
+ */
+function tb_user_menu_define_messages_customer($q){
+    $highlight = null;
+
+    // node/%nid pages.
+    if(preg_match("/node\/(\d+)/", $q)){
+        $node = node_load(preg_replace("/node\/(\d)/", "$1", $q));
+        if($node){
+            switch($node->type){
+                case "dialog":
+                    // We are on dialog node page.
+                    $highlight = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    // ...And other pages.
+    /*elseif(preg_match("/ticket\/(\d+)\/defender/", $q)){
+        $node = node_load(preg_replace("/ticket\/(\d+)\/defender/", "$1", $q));
+    }*/
+
+    return $highlight;
+}
+
+
+/*
+ * Get ticket id and (if exists) determine ticket type (Posted? Replied? Quoted?..)
+ */
+function tb_user_menu_ticket_type_defender($q){
+    // All ticket pages..
+    global $user;
+    $vars = tb_user_menu_define_ticket_id_defender($q);
+    if($vars != null){
+        $ticket = node_load($vars['ticket_id']);
+        // If defended.
+        if($ticket->field_status[LANGUAGE_NONE][0]['value'] == 2){
+            $vars['parent']['defended'] = array('attributes' => array('class' => 'active'));
+        }
+        // if In Progress.
+        elseif($ticket->field_defender && $ticket->field_status[LANGUAGE_NONE][0]['value'] == 1){
+            $vars['parent']['in_progress'] = array('attributes' => array('class' => 'active'));
+        }else{
+            // if Quoted.
+            $quotes = db_query("SELECT nid FROM node INNER JOIN field_data_field_ticket ticket
+                  ON node.nid = ticket.entity_id WHERE field_ticket_target_id = :ticket_id AND uid = :defender_id",
+                  array(':ticket_id' => $ticket->nid, ':defender_id' => $user->uid));
+            $at_least_one_quote = false;
+            foreach($quotes as $quote){
+                dpm($quote);
+                $at_least_one_quote = true;
+            }
+            if($at_least_one_quote){
+                $vars['parent']['quoted'] = array('attributes' => array('class' => 'active'));
+            }else{
+                // if Replied.
+                $dialogs = db_query("SELECT entity_id FROM field_data_field_users
+                      WHERE field_users_target_id = :defender_id AND
+                      entity_id IN (SELECT entity_id FROM field_data_field_attached_to  WHERE field_attached_to_target_id = :ticket_id)",
+                      array(':defender_id' => $user->uid, ':ticket_id' => $ticket->nid));
+                $at_least_one_dialog = false;
+                foreach($dialogs as $dialog){
+                    $at_least_one_dialog = true;
+                }
+                if($at_least_one_dialog){
+                    $vars['parent']['replied'] = array('attributes' => array('class' => 'active'));
+                }
+                // if Posted.
+                else{
+                    $vars['parent']['posted'] = array('attributes' => array('class' => 'active'));
+                }
+            }
+        }
+        //dpm($ticket);
+        return $vars;
+    }
+
+    // ... AND all ticket list pages.
+    $patterns = array(
+        "(tickets\/posted)",
+        "(tickets\/replied)",
+        "(tickets\/quoted)",
+        "(tickets\/in_progress)",
+        "(tickets\/defended)",
+    );
+    if(preg_match("/". implode("|", $patterns). "/", $q)){
+        $vars = array();
+        return $vars;
+    }
+
     return null;
 }
 
