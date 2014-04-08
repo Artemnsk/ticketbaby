@@ -48,17 +48,22 @@ input.customfile-filename {
 
 .customfile-upload {
   display     : inline-block;
-  background  : #e2b700;
   margin-left : 8px;
-  padding     : 6px;
-  border      : 1px solid #6e7279;
+  padding: 7px 12px;
+  background: #b4b4b4;
+  border-bottom: 3px solid #828282;
+  border-left: none;
+  border-right: none;
+  border-top: none;
   color       : white;
   cursor      : pointer;
-  font-size   : 13px;
+  font-size   : 15px;
 }
 
 .customfile-upload:hover {
-  background : #faca00;
+  background: #c6c6c6;
+  border-bottom: none;
+  padding: 9px 12px 8px 12px;
 }
 
 .customfile-upload::-moz-focus-inner {
