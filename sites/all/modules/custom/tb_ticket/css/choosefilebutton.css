@@ -4,7 +4,7 @@
   box-sizing         : border-box;
   -moz-box-sizing    : border-box;
   -webkit-box-sizing : border-box;
-  font-family : 'levenim_mtregular', calibri, arial, sans-serif;
+  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-weight        : normal;
   font-size          : 13px;
 }
@@ -37,8 +37,8 @@
 
 input.customfile-filename {
   width         : 230px;
-  padding       : 6px;
-  border        : 1px solid #6e7279;
+  padding       : 8px;
+  border        : 1px solid #cbcbcb;
   border-radius : 0;
 }
 
@@ -49,7 +49,7 @@ input.customfile-filename {
 .customfile-upload {
   display     : inline-block;
   margin-left : 8px;
-  padding: 7px 12px;
+  padding: 7px 12px 6px 12px;
   background: #b4b4b4;
   border-bottom: 3px solid #828282;
   border-left: none;
@@ -63,7 +63,7 @@ input.customfile-filename {
 .customfile-upload:hover {
   background: #c6c6c6;
   border-bottom: none;
-  padding: 9px 12px 8px 12px;
+  padding: 8px 12px 8px 12px;
 }
 
 .customfile-upload::-moz-focus-inner {
