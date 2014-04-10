@@ -156,7 +156,7 @@ input[type="submit"] {
   display     : inline-block;
   position: relative;
   background  : #4dcf40;
-  padding     : 7px 12px;
+  padding     : 7px 12px 6px 12px;
   border      : none;
   font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size   : 15px;
@@ -172,7 +172,7 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background : #67dd5b;
-  padding     : 9px 12px 8px 12px;
+  padding     : 8px 12px 8px 12px;
   border-bottom: none;
 /*  transition         : 0.3s;
   -webkit-transition : 0.3s;
@@ -524,7 +524,7 @@ h3.view-filters-expanded:hover {
 /* HOMEPAGE */
 
 .front .l-main {
-  background: url(../images/homepage_illustration_big.png) right 180px no-repeat;
+  background: url(../images/homepage_illustration_big.png) right 230px no-repeat;
 }
 
 /* choose your ticket */
@@ -631,7 +631,7 @@ h3.view-filters-expanded:hover {
 
 #ticket-node-form h3,
 #ticket-node-form--2 h3{
-  margin: 0 0 40px 0;
+  margin: 0 0 90px 0;
   font-size: 20px;
   color: #7f7f7f;
   width: 1100px;
@@ -803,7 +803,7 @@ h3.view-filters-expanded:hover {
 #ticket-node-form--2 .form-managed-file input[type="submit"]:hover {
   background: #c6c6c6;
   border-bottom: none;
-  padding: 9px 12px 8px 12px;
+  padding: 8px 12px 8px 12px;
 }
 
 #ticket-node-form .form-managed-file span,
@@ -819,7 +819,7 @@ float: left;
 
 #ticket-node-form .customfile-wrap input,
 #ticket-node-form--2 .customfile-wrap input {
-  width: 300px;
+  width: 380px;
 }
 #ticket-node-form .customfile-wrap button,
 #ticket-node-form--2 .customfile-wrap button {
@@ -876,8 +876,8 @@ span.customfile-upload {
 }
 
 .l-footer #block-menu-menu-footer-menu-about-us {
-  margin-right : 62px;
-  margin-left  : 20px;
+  margin-right : 55px;
+  margin-left  : 0;
 }
 
 .l-footer #block-menu-menu-footer-menu-support {
@@ -1078,6 +1078,17 @@ span.customfile-upload {
 
 /*---/ USER PROFILE */
 
+/* INNER CONTENT */
+
+.not-front .l-content article,
+.not-front .l-content .view {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #dbdbdb;
+  padding: 15px;
+}
+
+/*---/ INNER CONTENT */
+
 /* TABLE */
 
 table {
@@ -1154,51 +1165,64 @@ border-left: none;
 /* tabs */
 
 #block-tb-user-menu-customer-tabs {
-  margin-bottom : 16px;
+  margin-bottom : 0;
 }
 
-#block-tb-user-menu-customer-tabs h2 {
-  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
-  font-size   : 11px;
-  color       : #000000;
+#block-tb-user-menu-customer-tabs .block__content h2 {
+  font-family: 'AvenirLTStd-Medium', calibri, arial, sans-serif;
+  font-size: 18px;
+  color: #164559;
+  margin: 0;
+}
+
+#block-tb-user-menu-customer-tabs .block__content h2:nth-child(2) {
+  font-size: 17px;
+  color: #2b85ac;
 }
 
 #block-tb-user-menu-customer-tabs span.tabs {
   display    : block;
-  background : #DAD9DB;
-  border     : 1px solid #2A2A2A;
+  margin-top: 25px;
 }
 
 #block-tb-user-menu-customer-tabs span.tabs span {
   display : inline-block;
+
 }
 
 #block-tb-user-menu-customer-tabs span.tabs span a {
   display     : block;
-  background  : none;
-  padding     : 12px 15px 10px 15px;
-  font-size   : 11px;
-  color       : #1274C3;
+  padding     : 9px 18px;
+  font-size   : 14px;
+  color: white;
+  background: #2b85ac;
   font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
 }
 
-#block-tb-user-menu-customer-tabs span.tabs span a:hover {
-  color : #FF2C21;
+#block-tb-user-menu-customer-tabs span.tabs span:hover a {
+  background: #7fcf77;
 }
 
 #block-tb-user-menu-customer-tabs span.tabs span a.active {
-  color      : #FF2C21;
-  font-style : italic;
+  position: relative;
+  background: #7fcf77;
 }
+
+#block-tb-user-menu-customer-tabs span.tabs span a.active:after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 45%;
+  width: 13px;
+  height: 7px;
+  background: url(../images/triangle_down_green.png) center center no-repeat;
+}
+
 
 /*---/ tabs */
 
 /* ticket content */
-
-.node--ticket--full .node__content {
-  border  : 1px solid #84878D;
-  padding : 10px;
-}
 
 .node--ticket--full .node__content div:first-child,
 .node--ticket--full .node__content div:last-child {
@@ -1209,30 +1233,32 @@ border-left: none;
   float : none;
 }
 
-.node--ticket--full .node__content div:first-child {
-  border-right : 1px dashed #84878D;
-}
-
 .node--ticket--full .node__content div:first-child div,
 .node--ticket--full .node__content div:first-child div div {
   border-right : none;
 }
 
 .node--ticket--full .node__content table {
-  width  : 370px;
-  border : none;
-  margin : 30px 0;
-}
+   width  : 330px;
+   border : none;
+   margin : 30px 0;
+ }
 
 .node--ticket--full .node__content table tr td {
   display     : block;
   border-left : none;
   padding     : 0 10px 0 0;
-  font-size   : 12px;
+  font-size   : 15px;
+  line-height: 27px;
+  background: none;
+}
+
+.node--ticket--full .node__content table tr {
+  border-bottom: none;
 }
 
 .node--ticket--full .node__content table tr:hover td {
-  background : white;
+  background : none;
 }
 
 .node--ticket--full .node__content table .field__label,
@@ -1246,7 +1272,7 @@ border-left: none;
 
 .node--ticket--full .node__content table .field__items {
   float         : right;
-  padding-right : 40px;
+  color: #164559;
 }
 
 .node--ticket--full .node__content table .field__items,
@@ -1255,8 +1281,9 @@ border-left: none;
 }
 
 .node--ticket--full .node__content .field--type-text-long {
-  padding      : 20px 15px 30px 15px;
+ margin: 39px 0 39px 55px;
   border-right : none !important;
+  color: #164559;
 }
 
 .node--ticket--full .node__content .field--type-text-long .field__label,
@@ -1266,8 +1293,9 @@ border-left: none;
 
 .node--ticket--full .node__content .field--type-text-long .field__label {
   font-family   : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
-  font-size     : 15px;
-  margin-bottom : 18px;
+  font-size     : 16px;
+  margin-bottom : 8px;
+  color: #2b85ac;
 }
 
 .node--ticket--full .node__content .field--type-text-long .field__items {
