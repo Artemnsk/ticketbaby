@@ -10,6 +10,7 @@
     <?php if($is_defender):?>
         <?php // Liza insert needed html yourself :) ?>
         <article<?php print $attributes; ?>>
+          <div class="profile_card_wrapper">
             <?php print render($user_profile['user_picture']); ?>
             <?php print render($user_profile['field_fullname']); ?>
             Location:       <?php print render($user_profile['location']); ?>
@@ -20,6 +21,7 @@
                 <?php print render($user_profile['overview']); ?>
             <?php endif; ?>
             <?php print render($user_profile['feedback']); ?>
+            </div>
         </article>
 
     <?php else:?>
