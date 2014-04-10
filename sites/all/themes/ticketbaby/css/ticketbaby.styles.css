@@ -156,7 +156,7 @@ input[type="submit"] {
   display     : inline-block;
   position: relative;
   background  : #4dcf40;
-  padding     : 7px 12px 6px 12px;
+  padding     : 8px 12px 7px 12px;
   border      : none;
   font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size   : 15px;
@@ -172,7 +172,7 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
   background : #67dd5b;
-  padding     : 8px 12px 8px 12px;
+  padding     : 9px 12px 9px 12px;
   border-bottom: none;
 /*  transition         : 0.3s;
   -webkit-transition : 0.3s;
@@ -384,25 +384,17 @@ h3.view-filters-expanded:hover {
   float       : none;
   width       : 120px;
   background  : white;
-  border      : 1px solid #6E7279;
+  border      : 1px solid #dbdbdb;
   font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
-  font-size   : 12px;
+  color: #164559;
   text-align  : center;
   font-weight : normal;
   font-style  : normal;
-  transition         : 0.3s;
-  -webkit-transition : 0.3s;
-  -moz-transition    : 0.3s;
-  -o-transition      : 0.3s;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li:hover {
   background  : #EBEBEB;
   font-weight : normal;
-  transition         : 0.3s;
-  -webkit-transition : 0.3s;
-  -moz-transition    : 0.3s;
-  -o-transition      : 0.3s;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.first {
@@ -418,8 +410,8 @@ h3.view-filters-expanded:hover {
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li a {
   display : block;
   width   : 120px;
-  padding : 8px 0;
-  color   : #333333;
+  padding : 5px 0;
+  color: #164559;
 }
 
 .l-header #block-menu-menu-header-menu-sign-in ul.menu li.first ul.menu li.last a {
@@ -803,7 +795,7 @@ h3.view-filters-expanded:hover {
 #ticket-node-form--2 .form-managed-file input[type="submit"]:hover {
   background: #c6c6c6;
   border-bottom: none;
-  padding: 8px 12px 8px 12px;
+  padding: 9px 12px 9px 12px;
 }
 
 #ticket-node-form .form-managed-file span,
@@ -1084,7 +1076,13 @@ span.customfile-upload {
 .not-front .l-content .view {
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid #dbdbdb;
-  padding: 15px;
+  padding: 40px 15px 25px 15px;
+}
+
+.not-front .l-content .view.view-tickets {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 /*---/ INNER CONTENT */
@@ -1193,7 +1191,7 @@ border-left: none;
 #block-tb-user-menu-customer-tabs span.tabs span a {
   display     : block;
   padding     : 9px 18px;
-  font-size   : 14px;
+  font-size   : 15px;
   color: white;
   background: #2b85ac;
   font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
@@ -1241,7 +1239,7 @@ border-left: none;
 .node--ticket--full .node__content table {
    width  : 330px;
    border : none;
-   margin : 30px 0;
+   margin : 0;
  }
 
 .node--ticket--full .node__content table tr td {
@@ -1281,7 +1279,7 @@ border-left: none;
 }
 
 .node--ticket--full .node__content .field--type-text-long {
- margin: 39px 0 39px 55px;
+ margin: 10px 0 39px 55px;
   border-right : none !important;
   color: #164559;
 }
@@ -1305,6 +1303,26 @@ border-left: none;
 /* ticket content */
 
 /*---/ TICKET */
+
+/* DEFENDERS */
+
+.views-exposed-form-users-defenders .views-exposed-form .views-exposed-widget .form-submit {
+margin-top: 0;
+  background: #b4b4b4;
+  border-bottom: 3px solid #828282;
+}
+
+.views-exposed-form-users-defenders .views-exposed-form .views-exposed-widget .form-submit:hover {
+  background: #c6c6c6;
+  border-bottom: none;
+}
+
+.page-defenders .l-content table {
+  margin-top: 40px;
+}
+
+/*---/ DEFENDERS */
+
 
 
 
