@@ -1,128 +1,91 @@
   <?php
 
-/*
- * hook_block_info() implementation.
- */
-  
-function tb_user_dialog_block_info(){
-  // Block dialog on ticket page.
-  $blocks['tb_user_dialog_ticket'] = array(
-    'info' => t('Dialog on ticket/quotes page'), 
-    'cache' => DRUPAL_NO_CACHE,
-  );
-
-  return $blocks;
-}
-
-function tb_user_dialog_block_view($delta = ''){
-  $block = array();
-
-  switch ($delta) {
-    case 'tb_user_dialog_ticket':
-      $block['content'] = '';
-      
-      if(arg(0) == 'node' && is_numeric(arg(1))){
-        $node = node_load(arg(1));
-        global $user;
-        $dialogs = db_query("SELECT DISTINCT entity_id FROM field_data_field_users WHERE field_users_target_id = :author AND
-          entity_id IN(SELECT entity_id FROM field_data_field_users WHERE field_users_target_id = :defender) AND
-          entity_id IN(SELECT entity_id FROM field_data_field_attached_to WHERE field_attached_to_target_id = :node_id)", 
-          array(':author' => $node->uid, ':defender' => $user->uid, ':node_id' => $node->nid));
-        $no_dialogs = true;
-        foreach($dialogs as $dialog){
-          $no_dialogs = false;
-          // If node[ticket] author is the same as current user it means that customer looking on ticket now.
-          // We should show ALL dialogs to him.
-          //$dialog_node = node_load($dialog->entity_id);
-          //$block['content'] .= node_access("view", $dialog_node) ? drupal_render(comment_node_page_additions($dialog_node)) : "";
-        }
-        // If there are no dialog associated with this content and belongs to this user created
-        // AND it is not CUSTOMER watching on his ticket right now
-        // we should show message form.
-        if($no_dialogs && !in_array('customer', $user->roles)){
-          $block['content'] = drupal_get_form("tb_user_dialog_form");
-        }
-      }
-      
-      break;
-  }
-  return $block;
+function tb_user_dialog_preprocess_comment(&$variables){
+    $author = user_load($variables['user']->uid);
+    $author = $author->field_fullname[LANGUAGE_NONE][0]['value'];
+    $variables['author'] = $author;
 }
 
 /*
- * Dialog on ticket page form.
- */
-
-function tb_user_dialog_form($form, &$form_state){
-  if(arg(0) == 'node' && is_numeric(arg(1))){
-    $node = node_load(arg(1));
-    if($node){
-      $form_state['node'] = $node->nid;
-      $form_state['node_author'] = $node->uid;
-    }else{
-      return '';
-    }
-  }else{
-    return '';
-  }
-  $form = array(
-    'message_text' => array(
-      '#type' => 'textarea',
-      '#default_value' => '',
-      '#title' => 'Message',
-    ),
-    'submit' => array(
-      '#type' => 'submit',
-      '#value' => t('Send'),
-      '#submit' => array('tb_user_dialog_form_submit'),
-    ),
-  );
-  
+* After build - remove text format description from fields.
+*/
+function tb_user_dialog_remove_format_description($form){
+  $form['comment_body'][LANGUAGE_NONE][0]['format']['#access'] = false;
   return $form;
 }
 
-function tb_user_dialog_form_validate($form, &$form_state){
-  if(!isset($form_state['node']) || !isset($form_state['node_author'])){
-    form_set_error('message_text', t('Something goes wrong. Please try again or contact administrator.'));
-  }
-}
-
 /*
- * Dialog form submission.
+ * Creating new dialog form.
  */
+function tb_user_dialog_form_alter(&$form, &$form_state, $form_id){
+    if($form_id == "comment_node_dialog_form"){
+        unset($form['author']['_author']);
+        $form['comment_body'][LANGUAGE_NONE][0]['#title_display'] = 'invisible';
+        $form['#after_build'][] = 'tb_user_dialog_remove_format_description';
+    }
+    if($form_id == "dialog_node_form" && !user_access("administer content types")){
+        global $user;
+        // Get variables from url.
+        $type = arg(3);
+        $id = arg(4);
+        if($type === null || $id === null || !intval($id)){
+            drupal_not_found();
+        }
 
-function tb_user_dialog_form_submit($form, &$form_state){
-  global $user;
-  $node = new stdClass();
-  //$node->title = "YOUR TITLE";
-  //$node->body = $form_state['values']['message_text'];
-  $node->type = "dialog";
-  node_object_prepare($node);
-  $node->language = LANGUAGE_NONE;
-  $node->body[$node->language][0]['value'] = $form_state['values']['message_text'];
-  $node->body[$node->language][0]['format'] = 'plain_text';
-  $node->uid = $user->uid;
+        // We will check if any $type detected and return page not found if not.
+        $processed = false;
+        if($type == "ticket"){
+            $ticket = node_load($id);
+            if(!$ticket){
+                drupal_not_found();
+            }elseif($ticket->type != $type){
+                drupal_not_found();
+            }else{
+                // Set attached_to field and users field.
+                $form['field_attached_to'][LANGUAGE_NONE][0]['target_id']['#value'] = $ticket->title. ' ('. $ticket->nid. ')';
+                $author = user_load($ticket->uid);
+                $form['field_users'][LANGUAGE_NONE][0]['target_id']['#value'] = $user->name. ' ('. $user->uid. ')';
+                // Copy all info from already prepared field...
+                $form['field_users'][LANGUAGE_NONE][1] = $form['field_users'][LANGUAGE_NONE][0];
+                // Then just change uid and name.
+                $form['field_users'][LANGUAGE_NONE][1]['target_id']['#value'] = $author->name. ' ('. $author->uid. ')';
+                $processed = true;
+            }
+        }
+        if($type == "user"){
+            $user_to = user_load($id);
+            if(!$user_to){
+                drupal_not_found();
+            }else{
+                // Set users field.
+                $form['field_users'][LANGUAGE_NONE][0]['target_id']['#value'] = $user_to->name. ' ('. $user_to->uid. ')';
+                // Copy all info from already prepared field...
+                $form['field_users'][LANGUAGE_NONE][1] = $form['field_users'][LANGUAGE_NONE][0];
+                // Then just change uid and name.
+                $form['field_users'][LANGUAGE_NONE][1]['target_id']['#value'] = $user->name. ' ('. $user->uid. ')';
+                $processed = true;
+            }
+        }
 
-  // Entity reference fields.
-  $node->field_attached_to[$node->language][] = array(
-    'target_id' => $form_state['node'],
-    'target_type' => 'node',
-  );
-  $node->field_users[$node->language][] = array(
-    'target_id' => $user->uid,
-    'target_type' => 'user',
-  );
-  $node->field_users[$node->language][] = array(
-    'target_id' => $form_state['node_author'],
-    'target_type' => 'user',
-  );
-  $node = node_save($node);
+        if(!$processed){
+            drupal_not_found();
+        }
+        // Prepare form.
+
+        $form['body'][LANGUAGE_NONE][0]['value']['#title_display'] = 'invisible';
+        $description = $form['body'][LANGUAGE_NONE][0]['value']['#description'];
+        $form['body'][LANGUAGE_NONE][0]['value']['#description'] = '';
+        $form['body'][LANGUAGE_NONE][0]['value']['#attributes']['placeholder'] = array($description);
+        $form['field_attached_to']['#access'] = false;
+        $form['field_users']['#access'] = false;
+        $form['actions']['submit']['#value'] = "Send";
+
+    }
 }
 
 /*
  * Implements hook_node_access().
  */
-
 function tb_user_dialog_node_access($node, $op, $account){
   $type = is_string($node) ? $node : $node->type;
   if($type == 'dialog'){

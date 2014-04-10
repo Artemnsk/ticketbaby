@@ -69,7 +69,6 @@
             <?php endif; ?>
         -->
 
-        <h3<?php print $title_attributes; ?>><?php print $title; ?></h3>
         <?php print render($title_suffix); ?>
 
         <footer class="comment__info">

@@ -1,11 +1,17 @@
 <?php
 
-function tb_ticket_views_pre_build(&$view){
+function tb_ticket_views_post_execute(&$view){
+    // For every tickets view display.
 
-  // For every tickets view display.
-  if($view->name == "tickets"){
-    
-  }
+    if($view->name == "tickets"){
+        $tickets_to_show = tb_ticket_get_tickets_by_categories($view->current_display);
+        foreach($view->result as $key => $val){
+            if(!in_array($val->nid, $tickets_to_show)){
+                unset($view->result[$key]);
+            }
+        }
+    }
+
   
   // Apply working state of defender by default on tickets posted page.
   /*if($view->current_display == 'search_ticket'){
@@ -218,4 +224,126 @@ function tb_ticket_entity_presave($entity, $type){
 
 function tb_ticket_create_ticket_redirect($form, &$form_state){
   drupal_goto("ticket-created");
+}
+
+/*
+ * Returns array of posted, replied, quoted, in progress and defended tickets for current user.
+ */
+
+function tb_ticket_get_tickets_by_categories($category){
+    global $user;
+    switch($category){
+        case "posted":
+            $tickets = $tickets_q = $tickets_r = array();
+            // If status = 0 (open) AND...
+            // ...Get all tickets NOT quoted by this defender.
+            $tickets_quoted = db_query("
+                SELECT DISTINCT nid FROM node JOIN
+                    field_data_field_status ON nid = entity_id WHERE field_status_value = 0 AND type='ticket' AND nid NOT IN
+                        (SELECT field_ticket_target_id FROM node JOIN
+                            field_data_field_ticket ticket ON node.nid = ticket.entity_id WHERE uid = :defender)
+            ", array(':defender' => $user->uid));
+            // ...Get all tickets NOT replied by this defender.
+            $tickets_replied =  db_query("
+                SELECT DISTINCT nid FROM node JOIN
+                    field_data_field_status ON nid = entity_id WHERE field_status_value = 0 AND type='ticket' AND nid NOT IN
+                        (SELECT field_attached_to_target_id ticket_id FROM node JOIN
+                            field_data_field_attached_to ticket ON node.nid = ticket.entity_id WHERE entity_id IN
+                                (SELECT entity_id FROM field_data_field_users WHERE field_users_target_id=:defender))
+            ", array(':defender' => $user->uid));
+            foreach($tickets_quoted as $ticket){
+                $tickets_q[] = $ticket->nid;
+            }
+            foreach($tickets_replied as $ticket){
+                $tickets_r[] = $ticket->nid;
+            }
+            // Intersect NOT replied and NOT quoted tickets with status = 0.
+            $tickets = array_intersect($tickets_r, $tickets_q);
+            return $tickets;
+            break;
+
+        case "replied":
+            $tickets = $tickets_q = $tickets_r = array();
+            // If status = 0 (open) AND...
+            // ...Get all tickets NOT quoted by this defender.
+            $tickets_quoted = db_query("
+                SELECT DISTINCT nid FROM node JOIN
+                    field_data_field_status ON nid = entity_id WHERE field_status_value = 0 AND type='ticket' AND nid NOT IN
+                        (SELECT field_ticket_target_id FROM node JOIN
+                            field_data_field_ticket ticket ON node.nid = ticket.entity_id WHERE uid = :defender)
+            ", array(':defender' => $user->uid));
+            // ...Get all tickets replied by this defender.
+            $tickets_replied =  db_query("
+                SELECT DISTINCT nid FROM node JOIN
+                    field_data_field_status ON nid = entity_id WHERE field_status_value = 0 AND type='ticket' AND nid IN
+                        (SELECT field_attached_to_target_id ticket_id FROM node JOIN
+                            field_data_field_attached_to ticket ON node.nid = ticket.entity_id WHERE entity_id IN
+                                (SELECT entity_id FROM field_data_field_users WHERE field_users_target_id=:defender))
+                /*SELECT DISTINCT nid FROM node JOIN
+                    (SELECT field_attached_to_target_id ticket_id FROM node JOIN
+                        field_data_field_attached_to ticket ON node.nid = ticket.entity_id WHERE entity_id IN
+                            (SELECT entity_id FROM field_data_field_users WHERE field_users_target_id=:defender)) dialog
+                    ON node.nid = dialog.ticket_id JOIN
+                        field_data_field_status ON nid = entity_id WHERE field_status_value = 0*/
+            ", array(':defender' => $user->uid));
+            foreach($tickets_quoted as $ticket){
+                $tickets_q[] = $ticket->nid;
+            }
+            foreach($tickets_replied as $ticket){
+                $tickets_r[] = $ticket->nid;
+            }
+            // Intersect NOT quoted tickets and replied tickets with status = 0.
+            $tickets = array_intersect($tickets_r, $tickets_q);
+            return $tickets;
+            break;
+
+        case "quoted":
+            $tickets = array();
+            // If status = 0 (open) AND...
+            // ...Get all tickets quoted by this defender.
+            $tickets_quoted = db_query("
+                SELECT DISTINCT nid FROM node JOIN
+                    field_data_field_status ON nid = entity_id WHERE field_status_value = 0 AND type='ticket' AND nid IN
+                        (SELECT field_ticket_target_id FROM node JOIN
+                            field_data_field_ticket ticket ON node.nid = ticket.entity_id WHERE uid = :defender)
+            ", array(':defender' => $user->uid));
+
+            foreach($tickets_quoted as $ticket){
+                $tickets[] = $ticket->nid;
+            }
+            return $tickets;
+            break;
+
+        case "in_progress":
+            $tickets = array();
+            // If status = 0 (open) AND...
+            // ...Get all tickets with status = 1.
+            $tickets_query = db_query("
+                SELECT DISTINCT nid FROM node JOIN
+                    field_data_field_status ON nid = entity_id WHERE field_status_value = 1 AND type='ticket'
+            ", array(':defender' => $user->uid));
+
+            foreach($tickets_query as $ticket){
+                $tickets[] = $ticket->nid;
+            }
+            return $tickets;
+            break;
+
+        case "defended":
+            $tickets = array();
+            // If status = 0 (open) AND...
+            // ...Get all tickets with status = 2.
+            $tickets_query = db_query("
+                SELECT DISTINCT nid FROM node JOIN
+                    field_data_field_status ON nid = entity_id WHERE field_status_value = 2 AND type='ticket'
+            ", array(':defender' => $user->uid));
+
+            foreach($tickets_query as $ticket){
+                $tickets[] = $ticket->nid;
+            }
+            return $tickets;
+            break;
+    }
+
+    return array();
 }

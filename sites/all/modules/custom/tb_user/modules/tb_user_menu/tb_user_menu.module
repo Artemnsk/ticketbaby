@@ -80,9 +80,14 @@ function tb_user_menu_block_view($delta = ''){
       case 'defender_tabs':
           // Define ticket id to show right tabs.
           $vars = tb_user_menu_define_ticket_id_defender($_GET['q']);
+          if($vars !== null){
+              $block['subject'] = t('Defender tabs');
+              $block['content'] = theme('defender_tabs_block_ticket', $vars);
+              break;
+          }
 
           $block['subject'] = t('Defender tabs');
-          $block['content'] = $vars != null ? theme('defender_tabs_block', $vars) : '';
+          $block['content'] = '';
           break;
       case 'customer_tabs':
           // Define ticket id to show right tabs.
@@ -145,14 +150,16 @@ function tb_user_menu_theme($existing, $type, $theme, $path) {
               'parent' => false,
           ),
       ),
-      'defender_tabs_block' => array(
-          'template' => 'templates/defender_tabs',
+      'defender_tabs_block_ticket' => array(
+          'template' => 'templates/defender_tabs_ticket',
           'variables' => array(
               'ticket_id' => null,
               'title' => null,
               'nid' => null,
-              'reply' => false,
-              'has_reply' => false,
+              'has_dialog' => false,
+              "has_quote" => false,
+              "dialog_id" => null,
+              "quote_id" => null,
           ),
       ),
       'defender_tickets_submenu' => array(
@@ -288,11 +295,83 @@ function tb_user_menu_define_messages_customer($q){
     return $highlight;
 }
 
+function tb_user_menu_define_ticket_id_defender($q){
+    $vars = $quote_id = $dialog_id = null;
+    $ticket_id = '';
+    $node = '';
+    $has_reply = false;
+    global $user;
+    $lawyer_id = $user->uid;
+
+    // node/%nid pages.
+    if(preg_match("/node\/(\d+)/", $q)){
+        // We define $current_node and see if it is ticket node or quote node or something else.
+        // So we can define ticket $node.
+        $current_node = node_load(preg_replace("/node\/(\d)/", "$1", $q));
+        if($current_node){
+            switch($current_node->type){
+                case "ticket":
+                    $ticket_id = $current_node->nid;
+                    $node = $current_node;
+                    $reply = true;
+                    break;
+                case "offer":
+                    $ticket_id = $current_node->field_ticket[LANGUAGE_NONE][0]['target_id'];
+                    $node = node_load($ticket_id);
+                    break;
+            }
+        }
+    }
+    // ...And other pages.
+    elseif(preg_match("/node\/add\/offer\/(\d+)/", $q)){
+        $ticket_id = preg_replace("/node\/add\/offer\/(\d+)/", "$1", $q);
+        $node = node_load($ticket_id);
+        $reply = true;
+    }
+    // It means that we successsfully loaded ticket node and know all information to show tabs.
+    // Else $vars still will be null - it means we should not show them to user.
+    if(isset($node->nid)){
+        // Define does current lawyer has at least one quote on current ticket.
+        $quotes = db_query("SELECT DISTINCT nid FROM node INNER JOIN field_data_field_ticket ticket
+                  ON node.nid = ticket.entity_id WHERE field_ticket_target_id = :ticket_id AND uid = :defender_id",
+            array(':ticket_id' => $ticket_id, ':defender_id' => $lawyer_id));
+        $has_quote = false;
+        foreach($quotes as $quote){
+            $quote_id = $quote->nid;
+            $has_quote = true;
+        }
+
+        // Define does current lawyer has at least one reply on current ticket.
+        $dialogs = db_query("SELECT DISTINCT entity_id FROM field_data_field_users
+                      WHERE field_users_target_id = :defender_id AND
+                      entity_id IN (SELECT entity_id FROM field_data_field_attached_to  WHERE field_attached_to_target_id = :ticket_id)",
+            array(':defender_id' => $lawyer_id, ':ticket_id' => $ticket_id));
+        $has_dialog = false;
+        foreach($dialogs as $dialog){
+            $dialog_id = $dialog->entity_id;
+            $has_dialog = true;
+        }
+
+        $vars = array(
+            "ticket_id" => $ticket_id,
+            "title" => $node->title,
+            "nid" => $node->nid,
+            "has_dialog" => $has_dialog,
+            "has_quote" => $has_quote,
+            "dialog_id" => $dialog_id,
+            "quote_id" => $quote_id,
+        );
+    }
+
+    // Return null if there are no matches.
+    return $vars;
+}
 
 /*
  * Get ticket id and (if exists) determine ticket type (Posted? Replied? Quoted?..)
  */
 function tb_user_menu_ticket_type_defender($q){
+    tb_ticket_get_tickets_by_categories("posted");
     // All ticket pages..
     global $user;
     $vars = tb_user_menu_define_ticket_id_defender($q);
@@ -312,7 +391,7 @@ function tb_user_menu_ticket_type_defender($q){
                   array(':ticket_id' => $ticket->nid, ':defender_id' => $user->uid));
             $at_least_one_quote = false;
             foreach($quotes as $quote){
-                dpm($quote);
+                //dpm($quote);
                 $at_least_one_quote = true;
             }
             if($at_least_one_quote){
@@ -345,7 +424,7 @@ function tb_user_menu_ticket_type_defender($q){
         "(tickets\/posted)",
         "(tickets\/replied)",
         "(tickets\/quoted)",
-        "(tickets\/in_progress)",
+        "(tickets\/in-progress)",
         "(tickets\/defended)",
     );
     if(preg_match("/". implode("|", $patterns). "/", $q)){
@@ -354,67 +433,4 @@ function tb_user_menu_ticket_type_defender($q){
     }
 
     return null;
-}
-
-function tb_user_menu_define_ticket_id_defender($q){
-    $vars = null;
-    $ticket_id = '';
-    $node = '';
-    $reply = $has_reply = false;
-    global $user;
-    $lawyer_id = $user->uid;
-
-    // node/%nid pages.
-    if(preg_match("/node\/(\d+)/", $q)){
-        // We define $current_node and see if it is ticket node or quote node or something else.
-        // So we can define ticket $node.
-        $current_node = node_load(preg_replace("/node\/(\d)/", "$1", $q));
-        if($current_node){
-            switch($current_node->type){
-                case "ticket":
-                    $ticket_id = $current_node->nid;
-                    $node = $current_node;
-                    $reply = true;
-                    break;
-                case "offer":
-                    $ticket_id = $current_node->field_ticket[LANGUAGE_NONE][0]['target_id'];
-                    $node = node_load($ticket_id);
-                    break;
-            }
-        }
-    }
-    // ...And other pages.
-    elseif(preg_match("/node\/add\/offer\/(\d+)/", $q)){
-        $ticket_id = preg_replace("/node\/add\/offer\/(\d+)/", "$1", $q);
-        $node = node_load($ticket_id);
-        $reply = true;
-    // Page with existing reply to ticket.
-    }elseif(preg_match("/user\/(\d+)\/ticket\/(\d+)\/reply/", $q)){
-        $ticket_id = preg_replace("/user\/(\d+)\/ticket\/(\d+)\/reply/", "$2", $q);
-        $node = node_load($ticket_id);
-    }
-    // It means that we successsfully loaded ticket node and know all information to show tabs.
-    // Else $vars still will be null - it means we should not show them to user.
-    if(isset($node->nid)){
-        // Define does current lawyer has at least one reply on current ticket.
-        // Detect is there any dialog attached to this quote (with current lawyer attached to it)?
-        $dialogs = db_query("SELECT entity_id FROM field_data_field_users WHERE field_users_target_id = :lawyer_id AND
-              entity_id IN (SELECT entity_id FROM field_data_field_attached_to  WHERE field_attached_to_target_id = :ticket_id)", array(':lawyer_id' => $lawyer_id, ':ticket_id' => $ticket_id));
-        foreach($dialogs as $dialog){
-            $has_reply = true;
-            break;
-
-        }
-
-        $vars = array(
-            "ticket_id" => $ticket_id,
-            "title" => $node->title,
-            "nid" => $node->nid,
-            "reply" => $reply,
-            'has_reply' => $has_reply,
-        );
-    }
-
-    // Return null if there are no matches.
-    return $vars;
 }

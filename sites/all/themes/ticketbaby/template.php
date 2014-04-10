@@ -113,7 +113,33 @@ function ticketbaby_menu_link__menu_customer_menu(array $variables){
 }
 
 /*
- * Override user profile template,
+ * Menu in header customization.
+ */
+function ticketbaby_menu_link__menu_defender_menu(array $variables){
+    $element = $variables['element'];
+    $sub_menu = '';
+    if ($element['#below']) {
+        $sub_menu = drupal_render($element['#below']);
+    }
+    if($element['#original_link']['link_path'] == "user" && user_is_logged_in()){
+        $output = "<span>". $element['#title']. "</span>";
+    }else{
+        $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+    }
+
+    // Defining if we are on messages page
+    if($element['#href'] == "user/messages"){
+        if(tb_user_menu_define_messages_customer($_GET['q']) !== null){
+            $element['#attributes']['class'][] = "active-trail";
+        }
+    }
+    $output = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+
+    return $output;
+}
+
+/*
+ * Override user profile template.
  */
 function ticketbaby_preprocess_user_profile(&$vars){
     $viewed_user = $vars['elements']['#account'];
@@ -163,4 +189,17 @@ function ticketbaby_preprocess_user_profile(&$vars){
             unset($vars['user_profile']['field_fullname']);
         }
     }
+}
+
+/*
+ * override form templates.
+ */
+function ticketbaby_theme(){
+    return array(
+        'offer_node_form' => array(
+            'arguments' => array('form' => NULL),
+            'template' => 'templates/forms/offer-node-form',
+            'render element' => 'form'
+        ),
+    );
 }
