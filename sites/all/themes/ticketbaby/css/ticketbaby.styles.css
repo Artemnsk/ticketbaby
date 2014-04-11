@@ -17,7 +17,8 @@ article,
 .l-region,
 .node__content,
 div,
-td {
+td,
+.profile_card_wrapper_inner {
   *zoom : 1;
 }
 
@@ -56,7 +57,9 @@ article:after,
 div:before,
 div:after,
 td:before,
-td:after {
+td:after,
+.profile_card_wrapper_inner:before,
+.profile_card_wrapper_inner:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -79,7 +82,8 @@ article:after,
 .l-region:after,
 .node__content:after,
 div:after,
-td:after {
+td:after,
+.profile_card_wrapper_inner:after {
   clear : both;
 }
 
@@ -1330,8 +1334,55 @@ table {
   width      : 335px;
   padding    : 15px;
   background : white;
+  color        : #164559;
   border     : 1px solid #DBDBDB;
 }
+
+.profile_card_wrapper .user-picture img {
+  width: 100px;
+}
+
+.profile_card_wrapper_inner span.anonymous {
+  float: left;
+}
+
+.profile_card_wrapper_inner .field--name-field-fullname {
+  padding-left: 112px;
+}
+
+.profile_card_wrapper .field--name-field-defender-feedback {
+  margin-bottom: 15px;
+}
+
+.profile_card_wrapper .field__label {
+  color:  #2B85AC;
+}
+
+.profile_card_wrapper .profile_card_item {
+  margin-bottom: 24px;
+}
+
+.profile_card_wrapper .user_location,
+.profile_card_wrapper .user_tickets_defended,
+.profile_card_wrapper .user_tickets_in_progress {
+  margin-bottom: 5px;
+}
+
+
+.profile_card_wrapper .user_tickets_title {
+  display: block;
+float: left;
+}
+.profile_card_wrapper .user_tickets_number {
+  display: block;
+  float: right;
+}
+
+.profile_card_wrapper .user_last_online {
+  text-align: right;
+  color: #828282;
+font-size: 13px;
+font-style: italic;
 
 /*---/ DEFENDERS */
 
