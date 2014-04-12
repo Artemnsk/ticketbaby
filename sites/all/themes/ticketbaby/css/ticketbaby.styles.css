@@ -17,7 +17,9 @@ article,
 .l-region,
 .node__content,
 div,
-td {
+td,
+.profile_card_wrapper_inner,
+.field__item {
   *zoom : 1;
 }
 
@@ -56,7 +58,11 @@ article:after,
 div:before,
 div:after,
 td:before,
-td:after {
+td:after,
+.profile_card_wrapper_inner:before,
+.profile_card_wrapper_inner:after,
+.field__item:before,
+.field__item:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -79,7 +85,9 @@ article:after,
 .l-region:after,
 .node__content:after,
 div:after,
-td:after {
+td:after,
+.profile_card_wrapper_inner:after,
+.field__item:after {
   clear : both;
 }
 
@@ -106,7 +114,17 @@ td:after {
   url('../fonts/AvenirLTStd-Heavy.svg#AvenirLTStd-Heavy') format('svg');
 }
 
+@font-face {
+  font-family: 'bree_serifregular';
+  src: url('../fonts/breeserif-regular-webfont.eot');
+  src: url('../fonts/breeserif-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/breeserif-regular-webfont.woff') format('woff'),
+  url('../fonts/breeserif-regular-webfont.ttf') format('truetype'),
+  url('../fonts/breeserif-regular-webfont.svg#bree_serifregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
 
+}
 /*---/ FONTS */
 
 /* COMMON ELEMENTS */
@@ -150,6 +168,7 @@ input:active,
 textarea:active {
   border     : 1px solid #2B85AC;
   box-shadow : 0 0 3px 1px #53A5C9;
+  outline: none !important;
 }
 
 input[type="submit"] {
@@ -204,7 +223,7 @@ select {
 }
 
 .form-item .form-radios {
-  margin : 10px 0;
+  margin : 0;
 }
 
 .form-item .form-radios .form-item {
@@ -286,10 +305,7 @@ h3.view-filters-expanded {
 
 h3.view-filters-expanded:hover {
   text-decoration : underline;
-
-.navbar .nav > li > a
-
-  }
+}
 
 .form-item .description, .form-actions .description {
   font-size  : 10px;
@@ -465,6 +481,13 @@ h3.view-filters-expanded:hover {
   -o-transition      : 0.3s;
 }
 
+#block-menu-menu-customer-menu ul li:hover {
+  transition         : 0.3s;
+  -webkit-transition : 0.3s;
+  -moz-transition    : 0.3s;
+  -o-transition      : 0.3s;
+}
+
 #block-menu-menu-customer-menu ul li a,
 #block-menu-menu-customer-menu ul li span {
   display : block;
@@ -481,14 +504,8 @@ h3.view-filters-expanded:hover {
 #block-menu-menu-customer-menu ul li:hover,
 #block-menu-menu-customer-menu ul li.active-trail {
   position   : relative;
-  background : #89E081; /* Old browsers */
-  background : -moz-linear-gradient(top, #89E081 0%, #7FCF77 100%); /* FF3.6+ */
-  background : -webkit-gradient(linear, left top, left bottom, color-stop(0%, #89E081), color-stop(100%, #7FCF77)); /* Chrome,Safari4+ */
-  background : -webkit-linear-gradient(top, #89E081 0%, #7FCF77 100%); /* Chrome10+,Safari5.1+ */
-  background : -o-linear-gradient(top, #89E081 0%, #7FCF77 100%); /* Opera 11.10+ */
-  background : -ms-linear-gradient(top, #89E081 0%, #7FCF77 100%); /* IE10+ */
-  background : linear-gradient(to bottom, #89E081 0%, #7FCF77 100%); /* W3C */
-  filter     : progid:DXImageTransform.Microsoft.gradient(startColorstr='#89e081', endColorstr='#7fcf77', GradientType=0); /* IE6-9 */
+  background: #7FCF77;
+
 }
 
 #block-menu-menu-customer-menu ul li.active-trail:after {
@@ -618,18 +635,20 @@ h3.view-filters-expanded:hover {
 
 #ticket-node-form h2,
 #ticket-node-form--2 h2 {
-  margin      : 0 0 12px 0;
-  font-size   : 30px;
-  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
+  margin      : 0 0 6px 0;
+  font-size   : 42px;
+  font-family: 'bree_serifregular', calibri, arial, sans-serif;
   width       : 1100px;
   text-align  : center;
+  color: #164559;
 }
 
 #ticket-node-form h3,
 #ticket-node-form--2 h3 {
   margin     : 0 0 90px 0;
   font-size  : 20px;
-  color      : #7F7F7F;
+  font-family: 'bree_serifregular', calibri, arial, sans-serif;
+  color:#2B85AC;
   width      : 1100px;
   text-align : center;
 }
@@ -850,6 +869,25 @@ span.customfile-upload {
 
 /*---/ TICKET FORM */
 
+/* WHERE IS YOUR TICKET */
+
+.view-display-id-available_defenders {
+  color: #164559;
+}
+
+h3.time_to_respond {
+  font-size: 18px;
+  font-family: 'bree_serifregular';
+  color: #219452;
+  margin: 70px 0 10px 0;
+  padding-left: 75px;
+  line-height: 60px;
+  background    : url(../images/clock_defender_1.png) left center no-repeat;
+  background-size: 60px 60px;
+}
+
+/*---/ WHERE IS YOUR TICKET */
+
 /* FOOTER */
 
 .l-footer {
@@ -998,92 +1036,60 @@ span.customfile-upload {
 
 /* USER PROFILE */
 
-/* login/register/edit */
-
-.page-user form {
-  width : 50%;
+#user-profile-form {
+  width : 100%;
 }
 
-.page-user form#user-profile-form {
-  width : 60%;
-}
-
-.page-user input[type='submit'] {
-  margin-top : 20px;
-}
-
-/*---/ login/register/edit */
-
-.user-profile-item__label {
-  font-family : 'AvenirLTStd-Medium', Calibri, Arial, sans-serif;
-  font-weight : normal;
-}
-
-/* edit profile */
-
-.not-front.logged-in.page-user #user-profile-form,
-.not-front.logged-in.page-user #user-pass {
-  padding : 0;
-}
-
-.not-front.logged-in.page-user #user-pass {
-  border : 1px solid #C8C8C8;
-}
-
-#user-profile-form .form-item {
-  margin-bottom : 24px;
-}
-
-#user-profile-form .form-item .form-item {
-  margin-bottom : 12px;
-}
-
-#user-profile-form fieldset {
-  border  : none;
-  padding : 0;
-}
-
-#user-profile-form fieldset#edit-picture legend span {
-  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
-  font-weight : normal;
-}
-
-#user-profile-form fieldset#edit-picture .fieldset-wrapper label {
+#user-profile-form .description,
+#user-login .description {
   display : none;
 }
 
-#user-profile-form #edit-timezone .form-item {
-  margin-bottom : 0;
+#user-profile-form .form-item label {
+  float : left;
+  width : 160px;
 }
 
-#user-profile-form #edit-timezone a {
-  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
-  font-weight : normal;
-  color       : black;
+#user-profile-form .form-item input[type="text"],
+#user-profile-form .form-item input[type="password"] {
+  width : 330px;
 }
 
-#user-profile-form #edit-timezone label {
-  font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
+#user-profile-form .form-item .form-radios label {
+  float : none;
 }
 
-#user-profile-form #edit-timezone a:hover {
-  text-decoration : underline;
+#user-profile-form .form-item .form-radios {
+  padding-left : 160px;
 }
 
-/*---/ edit profile */
+#user-profile-form #edit-picture {
+  margin : 20px 0;
+}
+
+#user-profile-form input[type="submit"] {
+  width      : 310px;
+  margin-top : 40px;
+}
+
+#user-login input[type="submit"] {
+  margin-top : 40px;
+}
 
 /*---/ USER PROFILE */
 
 /* INNER CONTENT */
 
 .not-front .l-content article,
-.not-front .l-content .view {
+.not-front .l-content .view,
+#user-profile-form {
   background : rgba(255, 255, 255, 0.6);
   border     : 1px solid #DBDBDB;
   padding    : 40px 15px 25px 15px;
 }
 
-.not-front .l-content .view.view-tickets {
+.not-front .l-content .view.view-tickets,
+.not-front .l-content .view.view-display-id-messages_all {
   background : none;
   border     : none;
   padding    : 0;
@@ -1161,6 +1167,56 @@ table {
 }
 
 /*---/ TABLE */
+
+/* MESSAGES */
+
+/* message list */
+
+.l-content .view-id-messages table tr td {
+  border-left : none;
+  padding     : 15px;
+  vertical-align: top;
+}
+
+.l-content .view-id-messages table tr td.views-field-rendered-entity-1 {
+  width   : 240px;
+  padding : 15px 25px 15px 15px;
+}
+
+.dialogs-user-image {
+  float : left;
+}
+
+.dialogs-user-image .user-picture {
+  width  : 70px;
+  height : 70px;
+}
+
+.dialogs-user-image .user-picture img {
+  width  : 100%;
+  height : 100%;
+}
+
+.dialogs-user-fullname {
+  padding-left : 85px;
+  color        : #164559;
+  font-size    : 14px;
+}
+
+.dialog-span {
+  color       : #2B85AC;
+  font-size   : 14px;
+  line-height : 18px;
+}
+
+.dialog-span p {
+  color  : #164559;
+  margin : 0;
+}
+
+/*---/ message list */
+
+/*---/ MESSAGES */
 
 /* TICKET */
 
@@ -1330,7 +1386,66 @@ table {
   width      : 335px;
   padding    : 15px;
   background : white;
+  color      : #164559;
   border     : 1px solid #DBDBDB;
+}
+
+.profile_card_wrapper .user-picture img {
+  width : 100px;
+}
+
+.profile_card_wrapper_inner span.anonymous {
+  float : left;
+}
+
+.profile_card_wrapper_inner .field--name-field-fullname {
+  padding-left : 112px;
+}
+
+.profile_card_wrapper .field--name-field-defender-feedback {
+  margin-bottom : 15px;
+}
+
+.profile_card_wrapper .field__label {
+  color : #2B85AC;
+}
+
+.profile_card_wrapper .user_location .field__label {
+  color : #164559;
+  float: left;
+}
+
+.profile_card_wrapper .user_location .field__items {
+  float: right;
+  width: 210px;
+  text-align: right;
+}
+
+.profile_card_wrapper .profile_card_item {
+  margin-bottom : 24px;
+}
+
+.profile_card_wrapper .user_location,
+.profile_card_wrapper .user_tickets_defended,
+.profile_card_wrapper .user_tickets_in_progress {
+  margin-bottom : 5px;
+}
+
+.profile_card_wrapper .user_tickets_title {
+  display : block;
+  float   : left;
+}
+
+.profile_card_wrapper .user_tickets_number {
+  display : block;
+  float   : right;
+}
+
+.profile_card_wrapper .user_last_online {
+  text-align : right;
+  color      : #828282;
+  font-size  : 13px;
+  font-style : italic;
 }
 
 /*---/ DEFENDERS */
