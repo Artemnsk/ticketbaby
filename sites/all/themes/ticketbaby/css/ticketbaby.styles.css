@@ -469,6 +469,13 @@ h3.view-filters-expanded:hover {
   -o-transition      : 0.3s;
 }
 
+#block-menu-menu-customer-menu ul li:hover {
+  transition         : 0.3s;
+  -webkit-transition : 0.3s;
+  -moz-transition    : 0.3s;
+  -o-transition      : 0.3s;
+}
+
 #block-menu-menu-customer-menu ul li a,
 #block-menu-menu-customer-menu ul li span {
   display : block;
@@ -485,14 +492,8 @@ h3.view-filters-expanded:hover {
 #block-menu-menu-customer-menu ul li:hover,
 #block-menu-menu-customer-menu ul li.active-trail {
   position   : relative;
-  background : #89E081; /* Old browsers */
-  background : -moz-linear-gradient(top, #89E081 0%, #7FCF77 100%); /* FF3.6+ */
-  background : -webkit-gradient(linear, left top, left bottom, color-stop(0%, #89E081), color-stop(100%, #7FCF77)); /* Chrome,Safari4+ */
-  background : -webkit-linear-gradient(top, #89E081 0%, #7FCF77 100%); /* Chrome10+,Safari5.1+ */
-  background : -o-linear-gradient(top, #89E081 0%, #7FCF77 100%); /* Opera 11.10+ */
-  background : -ms-linear-gradient(top, #89E081 0%, #7FCF77 100%); /* IE10+ */
-  background : linear-gradient(to bottom, #89E081 0%, #7FCF77 100%); /* W3C */
-  filter     : progid:DXImageTransform.Microsoft.gradient(startColorstr='#89e081', endColorstr='#7fcf77', GradientType=0); /* IE6-9 */
+  background: #7FCF77;
+
 }
 
 #block-menu-menu-customer-menu ul li.active-trail:after {
@@ -1334,55 +1335,67 @@ table {
   width      : 335px;
   padding    : 15px;
   background : white;
-  color        : #164559;
+  color      : #164559;
   border     : 1px solid #DBDBDB;
 }
 
 .profile_card_wrapper .user-picture img {
-  width: 100px;
+  width : 100px;
 }
 
 .profile_card_wrapper_inner span.anonymous {
-  float: left;
+  float : left;
 }
 
 .profile_card_wrapper_inner .field--name-field-fullname {
-  padding-left: 112px;
+  padding-left : 112px;
 }
 
 .profile_card_wrapper .field--name-field-defender-feedback {
-  margin-bottom: 15px;
+  margin-bottom : 15px;
 }
 
 .profile_card_wrapper .field__label {
-  color:  #2B85AC;
+  color : #2B85AC;
+}
+
+.profile_card_wrapper .user_location .field__label {
+  color : #164559;
+  float: left;
+}
+
+.profile_card_wrapper .user_location .field__items {
+  float: right;
+  width: 210px;
+  text-align: right;
 }
 
 .profile_card_wrapper .profile_card_item {
-  margin-bottom: 24px;
+  margin-bottom : 24px;
 }
 
 .profile_card_wrapper .user_location,
 .profile_card_wrapper .user_tickets_defended,
 .profile_card_wrapper .user_tickets_in_progress {
-  margin-bottom: 5px;
+  margin-bottom : 5px;
 }
-
 
 .profile_card_wrapper .user_tickets_title {
-  display: block;
-float: left;
+  display : block;
+  float   : left;
 }
+
 .profile_card_wrapper .user_tickets_number {
-  display: block;
-  float: right;
+  display : block;
+  float   : right;
 }
 
 .profile_card_wrapper .user_last_online {
-  text-align: right;
-  color: #828282;
-font-size: 13px;
-font-style: italic;
+  text-align : right;
+  color      : #828282;
+  font-size  : 13px;
+  font-style : italic;
+}
 
 /*---/ DEFENDERS */
 
