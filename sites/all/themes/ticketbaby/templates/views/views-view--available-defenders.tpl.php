@@ -64,7 +64,7 @@
   <?php if ($pager): ?>
     <?php print $pager; ?>
   <?php endif; ?>
-  <h3>Defenders have 24hours to respond.</h3>
+  <h3 class="time_to_respond">Defenders have 24hours to respond</h3>
   <?php if ($attachment_after): ?>
     <div class="attachment attachment-after">
       <?php print $attachment_after; ?>
