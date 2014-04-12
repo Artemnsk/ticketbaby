@@ -1040,7 +1040,8 @@ h3.time_to_respond {
   width : 100%;
 }
 
-#user-profile-form .description {
+#user-profile-form .description,
+#user-login .description {
   display : none;
 }
 
@@ -1068,6 +1069,10 @@ h3.time_to_respond {
 
 #user-profile-form input[type="submit"] {
   width      : 310px;
+  margin-top : 40px;
+}
+
+#user-login input[type="submit"] {
   margin-top : 40px;
 }
 
