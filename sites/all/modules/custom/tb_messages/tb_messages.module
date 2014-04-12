@@ -6,20 +6,27 @@ function tb_messages_preprocess_views_view_field(&$vars) {
   }
 }
 
-/*function tb_messages_form_alter(&$form, &$form_state, $form_id){
-
-    // Adds redirect to user/%/ticket/%/dialog/% page on comment submit.
-    if($form['#form_id'] == 'comment_node_dialog_form'){
-        if(tb_user_menu_define_ticket_id_customer($_GET['q'])){
-            //$form['#action'] = $_GET['q'];
-            $form['actions']['submit']['#ajax'] = array(
-                'callback' => 'tb_messages_comment_submit',
-            );
-            //dpm($form);
+/*
+ * Returns quantity of new messages in all dialogs in which current user takes a part.
+ */
+function tb_messages_get_new_messages_quantity(){
+    global $user;
+    $comments = db_query("
+        SELECT COUNT(DISTINCT B.cid) FROM field_data_field_users A JOIN comment B ON A.entity_id = B.nid
+           JOIN history C ON B.nid = C.nid WHERE C.timestamp < B.changed AND field_users_target_id = :user AND C.uid = :user
+    ", array(":user" => $user->uid));
+    foreach($comments as $comment){
+        foreach($comment as $key => $val){
+            if($val != 0){
+                return "($val)";
+            }else{
+                return "";
+            }
         }
-
     }
-}*/
+
+    return "";
+}
 
 /*
  * Posting comment without being redirected.

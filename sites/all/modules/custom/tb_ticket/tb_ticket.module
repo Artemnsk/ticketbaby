@@ -5,9 +5,11 @@ function tb_ticket_views_post_execute(&$view){
 
     if($view->name == "tickets"){
         $tickets_to_show = tb_ticket_get_tickets_by_categories($view->current_display);
-        foreach($view->result as $key => $val){
-            if(!in_array($val->nid, $tickets_to_show)){
-                unset($view->result[$key]);
+        if($tickets_to_show !== null){
+            foreach($view->result as $key => $val){
+                if(!in_array($val->nid, $tickets_to_show)){
+                    unset($view->result[$key]);
+                }
             }
         }
     }
@@ -345,5 +347,6 @@ function tb_ticket_get_tickets_by_categories($category){
             break;
     }
 
-    return array();
+    // It means that we have other view, maybe customer's.
+    return null;
 }

@@ -79,14 +79,7 @@ function ticketbaby_menu_link__menu_header_menu_sign_in(array $variables){
 function ticketbaby_menu_link__menu_customer_menu(array $variables){
     $element = $variables['element'];
     $sub_menu = '';
-    if ($element['#below']) {
-        $sub_menu = drupal_render($element['#below']);
-    }
-    if($element['#original_link']['link_path'] == "user" && user_is_logged_in()){
-        $output = "<span>". $element['#title']. "</span>";
-    }else{
-        $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-    }
+
     // Defining if we are on tickets page.
     if($element['#href'] == "user/my-tickets"){
         if(tb_user_menu_define_ticket_id_customer($_GET['q']) !== null){
@@ -103,10 +96,21 @@ function ticketbaby_menu_link__menu_customer_menu(array $variables){
 
     // Defining if we are on messages page
     if($element['#href'] == "user/messages"){
+        $element['#title'] .= tb_messages_get_new_messages_quantity();
         if(tb_user_menu_define_messages_customer($_GET['q']) !== null){
             $element['#attributes']['class'][] = "active-trail";
         }
     }
+
+    if ($element['#below']) {
+        $sub_menu = drupal_render($element['#below']);
+    }
+    if($element['#original_link']['link_path'] == "user" && user_is_logged_in()){
+        $output = "<span>". $element['#title']. "</span>";
+    }else{
+        $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+    }
+
     $output = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 
     return $output;
@@ -118,6 +122,15 @@ function ticketbaby_menu_link__menu_customer_menu(array $variables){
 function ticketbaby_menu_link__menu_defender_menu(array $variables){
     $element = $variables['element'];
     $sub_menu = '';
+
+    // Defining if we are on messages page
+    if($element['#href'] == "user/messages"){
+        $element['#title'] .= tb_messages_get_new_messages_quantity();
+        if(tb_user_menu_define_messages_customer($_GET['q']) !== null){
+            $element['#attributes']['class'][] = "active-trail";
+        }
+    }
+
     if ($element['#below']) {
         $sub_menu = drupal_render($element['#below']);
     }
@@ -125,13 +138,6 @@ function ticketbaby_menu_link__menu_defender_menu(array $variables){
         $output = "<span>". $element['#title']. "</span>";
     }else{
         $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-    }
-
-    // Defining if we are on messages page
-    if($element['#href'] == "user/messages"){
-        if(tb_user_menu_define_messages_customer($_GET['q']) !== null){
-            $element['#attributes']['class'][] = "active-trail";
-        }
     }
     $output = '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 
