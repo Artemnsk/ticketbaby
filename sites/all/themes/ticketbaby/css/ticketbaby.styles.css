@@ -264,7 +264,7 @@ html.js fieldset.collapsed .fieldset-legend {
 
 .description a,
 article a {
-  color : #005493;
+  color : #2B85AC;
 }
 
 .description a:hover,
@@ -1317,6 +1317,114 @@ table {
 }
 
 /*---/ messages in ticket details */
+
+/* dialog */
+
+.node-type-dialog h1 {
+  display : none;
+}
+
+#edit-comment-body {
+  margin-bottom : 15px;
+}
+
+.node-type-dialog input[type="submit"] {
+  padding : 8px 42px 7px 42px;
+}
+
+.node-type-dialog input[type="submit"]:hover {
+  padding : 9px 42px 9px 42px;
+}
+
+#edit-field-attach-a-file .fieldset-legend,
+#edit-field-attach-a-file label,
+#edit-field-attach-a-file .fieldset-legend {
+  display : none;
+}
+
+#edit-field-attach-a-file fieldset {
+  border  : none;
+  margin  : 0;
+  padding : 0;
+}
+
+#edit-field-attach-a-file {
+  float : left;
+}
+
+.node-type-dialog #edit-actions {
+  float : right;
+}
+
+#edit-field-attach-a-file .form-file {
+  position   : relative;
+  width      : 100px;
+  height     : 16px;
+  border     : none;
+  padding    : 0;
+  margin     : 0;
+  background : white;
+  cursor     : pointer;
+}
+
+#edit-field-attach-a-file .form-file:hover {
+  border     : none;
+  box-shadow : none;
+  cursor     : pointer;
+}
+
+#edit-field-attach-a-file .form-file:after {
+  display    : block;
+  position   : absolute;
+  content    : "+ Attach a file";
+  top        : 0;
+  left       : 0;
+  width      : 100px;
+  height     : 20px;
+  border     : none;
+  padding    : 0;
+  margin     : 0;
+  background : url(../images/pattern_bg.png);
+  cursor     : pointer;
+  z-index: 100;
+}
+
+#edit-field-attach-a-file .description {
+  color : #888888;
+}
+
+#comments-dialog {
+  margin-top : 30px;
+}
+
+#comments-dialog .comment .comment_left_wrapper {
+  float: left;
+  width: 160px;
+ }
+
+#comments-dialog .comment .comment_right_wrapper {
+  float: right;
+  width: 900px;
+}
+
+#comments-dialog .comment p {
+margin: 0 0 6px 0;
+}
+
+#comments-dialog .comment .field--type-file{
+   font-size: 13px;
+ }
+
+#comments-dialog .comment .field--type-file .field__label {
+  display: none;
+}
+
+.file img {
+  position: relative;
+  top: 2px;
+}
+
+/*---/ dialog */
 
 /*---/ MESSAGES */
 
