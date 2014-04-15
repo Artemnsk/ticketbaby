@@ -123,6 +123,12 @@
               });
             }
             $('input[type=file]').customFile();
-        /*}, 1000)*/;
+        setInterval(function(){
+            //alert('asd');
+            if(!$(".customfile-wrap").length){
+                $('input[type=file]').customFile();
+            }
+        }, 1000);
+        /*}, 500)*/;
   });
 })(jQuery);

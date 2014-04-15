@@ -95,31 +95,6 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     // ...and we want to be redirected.
     array_push($form['actions']['submit']['#submit'], "tb_ticket_create_ticket_redirect");
 
-    // Geolocation.
-      /*
-    include 'tb_ticket_geolocation.inc';
-    $location = tb_ticket_geolocation_parse_info();
-    $country = $location['country'];
-    $state = $location['state'];
-    switch($country){
-      case "CA":
-        $options = array_merge(tb_ticket_geolocation_canada_provinces(), tb_ticket_geolocation_usa_states());
-        break;
-      case "US":
-        $options = array_merge(tb_ticket_geolocation_usa_states(), tb_ticket_geolocation_canada_provinces());
-        break;
-      default:
-        $options = array();
-        break;
-    }
-    if($options){
-      $form['field_state'][LANGUAGE_NONE]['#options'] = $options;
-      // Make detected state first in list.
-      unset($form['field_state'][LANGUAGE_NONE]['#options'][$state]);
-      $form['field_state'][LANGUAGE_NONE]['#options'] = array($state => $options[$state]) + $form['field_state'][LANGUAGE_NONE]['#options'];
-      $form['field_state'][LANGUAGE_NONE]['#default_value'] = array($state);
-    }
-    */
     // Add registration.
     array_unshift($form['#validate'], 'tb_ticket_validate_user');
     array_unshift($form['actions']['submit']['#submit'], 'tb_ticket_submit_user');
