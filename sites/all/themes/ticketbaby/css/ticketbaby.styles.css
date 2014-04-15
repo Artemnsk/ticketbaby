@@ -1294,6 +1294,30 @@ table {
 
 /*---/ message list */
 
+/* messages in ticket details */
+
+.l-content .view-id-messages table tr td.views-field-picture {
+  width : 70px;
+}
+
+.l-content .view-id-messages table tr td.views-field-picture span {
+  display    : block;
+  width      : 70px;
+  height     : 70px;
+  background : #888888;
+}
+
+.l-content .view-id-messages table tr td.views-field-field-fullname {
+  width        : 140px;
+  padding-left : 0;
+}
+
+.l-content .view-id-messages table tr td.views-field-field-fullname span {
+  color : #164559;
+}
+
+/*---/ messages in ticket details */
+
 /*---/ MESSAGES */
 
 /* TICKET */
