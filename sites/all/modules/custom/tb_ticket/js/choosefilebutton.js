@@ -13,9 +13,9 @@
                   $wrap = $('<div class="customfile-wrap">'),
                   $input = $('<input type="text" class="customfile-filename" />'),
                 // Button that will be used in non-IE browsers
-                  $button = $('<button type="button" class="customfile-upload">Open</button>'),
+                  $button = $('<button type="button" class="customfile-upload">Upload Scanned Ticket (recommended)</button>'),
                 // Hack for IE
-                  $label = $('<label class="customfile-upload" for="'+ $file[0].id +'">Open</label>');
+                  $label = $('<label class="customfile-upload" for="'+ $file[0].id +'">Upload Scanned Ticket (recommended)</label>');
 
                 // Hide by shifting to the left so we
                 // can still trigger events

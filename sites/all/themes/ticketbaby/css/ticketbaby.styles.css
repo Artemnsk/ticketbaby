@@ -801,7 +801,7 @@ h3.view-filters-expanded:hover {
   font-family : 'AvenirLTStd-Medium', Calibri, arial, sans-serif;
 }
 
-.container-inline-date .form-item,
+.container-inline-date .form-item,#ticket-node-form .form-managed-file input[type="submit"]
 .container-inline-date .form-item input {
   width  : 100%;
   margin : 0;
