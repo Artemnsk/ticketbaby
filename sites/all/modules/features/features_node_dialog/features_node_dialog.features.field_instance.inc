@@ -15,7 +15,7 @@ function features_node_dialog_field_default_field_instances() {
     'bundle' => 'dialog',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Your message',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -33,13 +33,14 @@ function features_node_dialog_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
-      'text_processing' => 1,
+      'display_summary' => 0,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'rows' => 20,
@@ -146,6 +147,7 @@ function features_node_dialog_field_default_field_instances() {
   t('Attached to');
   t('Body');
   t('Users');
+  t('Your message');
   t('who is chating?');
 
   return $field_instances;

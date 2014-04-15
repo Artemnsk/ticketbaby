@@ -99,7 +99,7 @@ function features_views_tickets_views_default_views() {
   );
 
   /* Display: Def: posted */
-  $handler = $view->new_display('page', 'Def: posted', 'search_ticket');
+  $handler = $view->new_display('page', 'Def: posted', 'posted');
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -160,7 +160,7 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['path'] = 'tickets/posted';
 
   /* Display: Def: replied */
-  $handler = $view->new_display('page', 'Def: replied', 'tickets_responded_to');
+  $handler = $view->new_display('page', 'Def: replied', 'replied');
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -170,32 +170,6 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'You have not responded to any open ticket yet.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Dialog attached to this ticket */
-  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['id'] = 'reverse_field_attached_to_node';
-  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['field'] = 'reverse_field_attached_to_node';
-  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['ui_name'] = 'Dialog attached to this ticket';
-  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['label'] = 'Dialog';
-  $handler->display->display_options['relationships']['reverse_field_attached_to_node']['required'] = TRUE;
-  /* Relationship: Author of Dialog */
-  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['table'] = 'node';
-  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['ui_name'] = 'Author of Dialog';
-  $handler->display->display_options['relationships']['uid']['label'] = 'Author of Dialog';
-  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Relationship: Quote of ticket */
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['id'] = 'reverse_field_ticket_node';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['field'] = 'reverse_field_ticket_node';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['ui_name'] = 'Quote of ticket';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['label'] = 'Quote';
-  /* Relationship: Content: Author */
-  $handler->display->display_options['relationships']['uid_1']['id'] = 'uid_1';
-  $handler->display->display_options['relationships']['uid_1']['table'] = 'node';
-  $handler->display->display_options['relationships']['uid_1']['field'] = 'uid';
-  $handler->display->display_options['relationships']['uid_1']['relationship'] = 'reverse_field_ticket_node';
-  $handler->display->display_options['relationships']['uid_1']['label'] = 'Author of quote';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -220,23 +194,6 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_status_value']['value'] = array(
     0 => '0',
   );
-  /* Filter criterion: User: Current */
-  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
-  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current']['relationship'] = 'uid';
-  $handler->display->display_options['filters']['uid_current']['value'] = '1';
-  /* Filter criterion: User: Current */
-  $handler->display->display_options['filters']['uid_current_1']['id'] = 'uid_current_1';
-  $handler->display->display_options['filters']['uid_current_1']['table'] = 'users';
-  $handler->display->display_options['filters']['uid_current_1']['field'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current_1']['relationship'] = 'uid_1';
-  $handler->display->display_options['filters']['uid_current_1']['value'] = '0';
-  $handler->display->display_options['filters']['uid_current_1']['expose']['operator_id'] = '';
-  $handler->display->display_options['filters']['uid_current_1']['expose']['label'] = 'Is the logged in user';
-  $handler->display->display_options['filters']['uid_current_1']['expose']['operator'] = 'uid_current_1_op';
-  $handler->display->display_options['filters']['uid_current_1']['expose']['identifier'] = 'uid_current_1';
-  $handler->display->display_options['filters']['uid_current_1']['expose']['required'] = TRUE;
   $handler->display->display_options['path'] = 'tickets/replied';
   $handler->display->display_options['menu']['title'] = 'Tickets responded to';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -245,7 +202,7 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: Def: quoted */
-  $handler = $view->new_display('page', 'Def: quoted', 'page_1');
+  $handler = $view->new_display('page', 'Def: quoted', 'quoted');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Tickets responded to';
   $handler->display->display_options['defaults']['empty'] = FALSE;
@@ -257,19 +214,6 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'You have not responded to any open ticket yet.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
-  /* Relationship: Entity Reference: Referencing entity */
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['id'] = 'reverse_field_ticket_node';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['table'] = 'node';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['field'] = 'reverse_field_ticket_node';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['label'] = 'Quote';
-  $handler->display->display_options['relationships']['reverse_field_ticket_node']['required'] = TRUE;
-  /* Relationship: Content: Author */
-  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['table'] = 'node';
-  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
-  $handler->display->display_options['relationships']['uid']['relationship'] = 'reverse_field_ticket_node';
-  $handler->display->display_options['relationships']['uid']['label'] = 'author of quote';
-  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -287,11 +231,6 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
-  /* Filter criterion: Content: Defender (field_defender) */
-  $handler->display->display_options['filters']['field_defender_target_id']['id'] = 'field_defender_target_id';
-  $handler->display->display_options['filters']['field_defender_target_id']['table'] = 'field_data_field_defender';
-  $handler->display->display_options['filters']['field_defender_target_id']['field'] = 'field_defender_target_id';
-  $handler->display->display_options['filters']['field_defender_target_id']['operator'] = 'empty';
   /* Filter criterion: Content: Status (field_status) */
   $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
   $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
@@ -299,12 +238,6 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_status_value']['value'] = array(
     0 => '0',
   );
-  /* Filter criterion: User: Current */
-  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
-  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
-  $handler->display->display_options['filters']['uid_current']['relationship'] = 'uid';
-  $handler->display->display_options['filters']['uid_current']['value'] = '1';
   $handler->display->display_options['path'] = 'tickets/quoted';
   $handler->display->display_options['menu']['title'] = 'Tickets responded to';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -313,7 +246,7 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: Def: in progress */
-  $handler = $view->new_display('page', 'Def: in progress', 'tickets_in_progress');
+  $handler = $view->new_display('page', 'Def: in progress', 'in_progress');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['use_ajax'] = TRUE;
@@ -353,9 +286,8 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['path'] = 'tickets/in-progress';
 
   /* Display: Def: defended */
-  $handler = $view->new_display('page', 'Def: defended', 'tickets_defended');
+  $handler = $view->new_display('page', 'Def: defended', 'defended');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Tickets defended';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
