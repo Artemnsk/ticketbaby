@@ -173,7 +173,7 @@
     <article<?php print $attributes; ?>>
       <div<?php print $content_attributes; ?>>
         <?php // Left side. ?>
-        <div>
+        <div class="ticket_details_left">
           <table>
               <tr>
                   <td>
@@ -212,7 +212,7 @@
         </div>
 
         <?php // Right side. ?>
-        <div>
+        <div class="ticket_details_right">
             <?php print render($content['field_were_there_any_special_cir']) ?>
             <?php //print render($content['field_defender']) ?>
             <?php //print render($content['field_upload_scanned_ticket']) ?>

@@ -82,34 +82,34 @@
 <article<?php print $attributes; ?>>
 
     <?php if ($display_submitted): ?>
-    <footer class="node__submitted">
-      <?php print $user_picture; ?>
-      <p class="submitted"><?php print $submitted; ?></p>
-    </footer>
+        <footer class="node__submitted">
+            <?php print $user_picture; ?>
+            <p class="submitted"><?php print $submitted; ?></p>
+        </footer>
     <?php endif; ?>
-
-    <!-- LEFT SIDE -->
-    <div>
-        <table<?php print $content_attributes; ?>>
-            <tr>
-                <td>
-                    <div class="field__label">Lawyer:</div>
-                    <?php print render($author_fullname) ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="field__label">Location:</div>
-                    <?php print render($author_location) ?>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="field__label">Quote Date:</div>
-                    <div class="field__items"><?php print $content['posted'] ?></div>
-                </td>
-            </tr>
-            <!--
+    <div class="quote_view_top">
+        <!-- LEFT SIDE -->
+        <div class="quote_ticket_info">
+            <table<?php print $content_attributes; ?>>
+                <tr>
+                    <td>
+                        <div class="field__label">Lawyer:</div>
+                        <?php print render($author_fullname) ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field__label">Location:</div>
+                        <?php print render($author_location) ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field__label">Quote Date:</div>
+                        <div class="field__items"><?php print $content['posted'] ?></div>
+                    </td>
+                </tr>
+                <!--
             <tr>
                 <td rowspan="2">
                     <?php print render($ticket_category) ?>
@@ -118,36 +118,39 @@
                 </td>
             </tr>
             -->
-            <tr>
-                <td>
-                    <div class="field__label">Quote #:</div>
-                    <div class="field__items"><?php print $nid ?></div>
-                </td>
-            </tr>
-        </table>
+                <tr>
+                    <td>
+                        <div class="field__label">Quote #:</div>
+                        <div class="field__items"><?php print $nid ?></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!--RIGHT SIDE-->
+        <div class="quote_overview_and_terms">
+            <?php print render($content['field_response']) ?>
+            <?php print render($content['field_special_conditions']) ?>
+        </div>
+
+    </div>
+    <div class="quote_separator"></div>
+    <div class="quote_view_bottom">
+        <!-- LEFT SIDE-->
+        <div class="quote_payment">
+            <?php print render($content['field_initial_payment']) ?>
+            <?php print render($content['field_final_payment_']) ?>
+            <div class="field quote_total"><div class="field__label">Total Cost:</div><div class="field__items">---</div></div>
+        </div>
+
+        <!--RIGHT SIDE-->
+        <div class="quote_static_text">
+            <!-- Just custom static text.-->
+        </div>
     </div>
 
-    <!--RIGHT SIDE-->
-    <div>
-        <?php print render($content['field_response']) ?>
-        <?php print render($content['field_special_conditions']) ?>
-    </div>
 
-    <!-- LEFT SIDE-->
-    <div>
-        <?php print render($content['field_initial_payment']) ?>
-        <?php print render($content['field_final_payment_']) ?>
-        Total Cost: ---
-    </div>
-
-    <!--RIGHT SIDE-->
-    <div>
-        <!-- Just custom static text.-->
-    </div>
-
-
-
-<!--
+    <!--
     <div class="comments">
     <div>
       Messages Linked to this Ticket

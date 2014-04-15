@@ -19,7 +19,9 @@ article,
 div,
 td,
 .profile_card_wrapper_inner,
-.field__item {
+.field__item,
+.quote_view_top,
+.quote_view_bottom {
   *zoom : 1;
 }
 
@@ -62,7 +64,11 @@ td:after,
 .profile_card_wrapper_inner:before,
 .profile_card_wrapper_inner:after,
 .field__item:before,
-.field__item:after {
+.field__item:after,
+.quote_view_top:before,
+.quote_view_top:after,
+.quote_view_bottom:before,
+.quote_view_bottom:after {
   display     : table;
   line-height : 0;
   content     : "";
@@ -87,7 +93,9 @@ article:after,
 div:after,
 td:after,
 .profile_card_wrapper_inner:after,
-.field__item:after {
+.field__item:after,
+.quote_view_top:after,
+.quote_view_bottom:after {
   clear : both;
 }
 
@@ -133,6 +141,7 @@ body {
   background  : url(../images/pattern_bg.png);
   font-family : 'AvenirLTStd-Medium', Calibri, Arial, sans-serif;
   font-size   : 15px;
+  color       : #164559;
 }
 
 media {
@@ -149,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  color       : #005493;
+  color       : #164559;
   margin-left : 20px;
   font-size   : 26px;
 }
@@ -232,7 +241,7 @@ select {
 
 .l-main h2 {
   font-size : 16px;
-  color     : #005493;
+  color       : #164559;
 }
 
 .form-item label,
@@ -878,21 +887,81 @@ span.customfile-upload {
 
 /*---/ TICKET FORM */
 
+/* QUOTE */
+
+/* customer sees */
+
+.node--offer--full .quote_overview_and_terms .field__label,
+.node--offer--full .quote_static_text .field__label {
+  font-size     : 16px;
+  margin-bottom : 8px;
+  color         : #2B85AC;
+}
+
+.quote_ticket_info,
+.quote_payment {
+  float : left;
+}
+
+.quote_overview_and_terms,
+.quote_static_text {
+  margin       : 10px 0 39px 55px;
+  padding-left : 330px;
+}
+
+.quote_overview_and_terms .field--name-field-response {
+  margin-bottom : 55px;
+}
+
+.quote_payment {
+  width : 330px;
+}
+
+.quote_payment .field {
+  width       : 70%;
+  padding     : 4px;
+  line-height : 27px;
+}
+
+.quote_payment .field__label {
+  float : left;
+}
+
+.quote_payment .field__items {
+  float      : right;
+  text-align : right;
+}
+
+.quote_payment .field.quote_total div {
+  color : #2B85AC;
+}
+
+.quote_separator {
+  width         : 100%;
+  border-top    : 1px solid #E2E2E2;
+  border-bottom : 1px solid #FFFFFF;
+  margin        : 15px 0 25px 0;
+}
+
+/*---/ customer sees */
+
+/*---/ QUOTE */
+
 /* WHERE IS YOUR TICKET */
 
 .view-display-id-available_defenders {
-  color: #164559;
+  color : #164559;
 }
 
 h3.time_to_respond {
-  font-size: 18px;
-  font-family: 'bree_serifregular';
-  color: #219452;
-  margin: 70px 0 10px 0;
-  padding-left: 75px;
-  line-height: 60px;
-  background    : url(../images/clock_defender_1.png) left center no-repeat;
-  background-size: 60px 60px;
+  font-size       : 18px;
+  font-family     : 'bree_serifregular';
+  color           : #219452;
+  margin          : 70px 0 10px 0;
+  padding-left    : 75px;
+  line-height     : 60px;
+  background      : url(../images/clock_defender_1.png) left center no-repeat;
+  background-size : 60px 60px;
 }
 
 /*---/ WHERE IS YOUR TICKET */
@@ -1290,27 +1359,34 @@ table {
 
 /* ticket content */
 
-.node--ticket--full .node__content div:first-child,
-.node--ticket--full .node__content div:last-child {
+.node--ticket--full .node__content .ticket_details_left {
   float : left;
+}
+
+.node--ticket--full .node__content .ticket_details_right {
+  padding-left: 330px;
 }
 
 .node--ticket--full .node__content div.field {
   float : none;
 }
 
-.node--ticket--full .node__content div:first-child div,
-.node--ticket--full .node__content div:first-child div div {
+.node--ticket--full .node__content .ticket_details_left div,
+.node--ticket--full .node__content.ticket_details_left div div {
   border-right : none;
 }
 
-.node--ticket--full .node__content table {
+/* table in ticket_view and quote_view */
+
+.node--ticket--full .node__content table,
+.node--offer--full table.node__content {
   width  : 330px;
   border : none;
   margin : 0;
 }
 
-.node--ticket--full .node__content table tr td {
+.node--ticket--full .node__content table tr td,
+.node--offer--full table.node__content tr td {
   display     : block;
   border-left : none;
   padding     : 0 10px 0 0;
@@ -1319,32 +1395,42 @@ table {
   background  : none;
 }
 
-.node--ticket--full .node__content table tr {
+.node--ticket--full .node__content table tr,
+.node--offer--full table.node__content tr {
   border-bottom : none;
 }
 
-.node--ticket--full .node__content table tr:hover td {
+.node--ticket--full .node__content table tr:hover td,
+.node--offer--full table.node__content tr:hover td {
   background : none;
 }
 
 .node--ticket--full .node__content table .field__label,
-.node--ticket--full .node__content table .field__items {
+.node--ticket--full .node__content table .field__items,
+.node--offer--full table.node__content .field__label,
+.node--offer--full table.node__content .field__items{
   padding : 4px;
 }
 
-.node--ticket--full .node__content table .field__label {
+.node--ticket--full .node__content table .field__label,
+.node--offer--full table.node__content .field__label {
   float : left;
 }
 
-.node--ticket--full .node__content table .field__items {
+.node--ticket--full .node__content table .field__items,
+.node--offer--full table.node__content .field__items {
   float : right;
   color : #164559;
 }
 
 .node--ticket--full .node__content table .field__items,
-.node--ticket--full .node__content table .field__items div {
+.node--ticket--full .node__content table .field__items div,
+.node--offer--full table.node__content .field__items,
+.node--offer--full table.node__content .field__items div {
   text-align : right;
 }
+
+/*---/ table in ticket_view and quote_view */
 
 .node--ticket--full .node__content .field--type-text-long {
   margin       : 10px 0 39px 55px;
