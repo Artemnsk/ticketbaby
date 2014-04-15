@@ -27,6 +27,7 @@
   float    : left;
   padding  : 0;
   margin   : 0 0 10px 0;
+  width: 100%;
 }
 
 .customfile-filename,
@@ -48,7 +49,6 @@ input.customfile-filename {
 
 .customfile-upload {
   display     : inline-block;
-  margin-left : 8px;
   padding: 8px 12px 7px 12px;
   background: #b4b4b4;
   border-bottom: 3px solid #828282;

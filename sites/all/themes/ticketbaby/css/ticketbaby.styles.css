@@ -809,22 +809,31 @@ h3.view-filters-expanded:hover {
 
 #ticket-node-form .form-managed-file input[type="submit"],
 #ticket-node-form--2 .form-managed-file input[type="submit"] {
-  margin        : 0;
-  background    : #B4B4B4;
-  border-bottom : 3px solid #828282;
+  background    : url(../images/close_cross.png) center center no-repeat;
+  top           : -5px;
+  width         : 16px;
+  height        : 16px;
+  padding       : 0;
+  font-size     : 0;
+  margin        : 0 0 0 10px;
+  border-bottom : none;
 }
 
 #ticket-node-form .form-managed-file input[type="submit"]:hover,
 #ticket-node-form--2 .form-managed-file input[type="submit"]:hover {
-  background    : #C6C6C6;
+  background    : url(../images/close_cross.png) center center no-repeat;
   border-bottom : none;
-  padding       : 9px 12px 9px 12px;
+  padding       : 0;
 }
 
 #ticket-node-form .form-managed-file span,
 #ticket-node-form--2 .form-managed-file span {
   display : inline-block;
   margin  : 0 0 10px 0;
+}
+
+.form-item.form-type-managed-file {
+  margin-bottom: 0;
 }
 
 .customfile-wrap input,
@@ -834,12 +843,12 @@ h3.view-filters-expanded:hover {
 
 #ticket-node-form .customfile-wrap input,
 #ticket-node-form--2 .customfile-wrap input {
-  width : 380px;
+  display: none;
 }
 
 #ticket-node-form .customfile-wrap button,
 #ticket-node-form--2 .customfile-wrap button {
-  width : 147px;
+  width : 100%;
 }
 
 #ticket-node-form .form-managed-file span.file a,
