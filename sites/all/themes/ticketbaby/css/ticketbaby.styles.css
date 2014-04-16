@@ -1825,7 +1825,7 @@ p.comment_author_date {
 
 .give_quote_left {
   float : left;
-  width : 330px;
+  width : 315px;
 }
 
 .give_quote_right {
@@ -1845,14 +1845,14 @@ p.comment_author_date {
 }
 
 .give_quote_left select {
-  width   : 240px;
+  width   : 315px;
   padding : 6px 8px;
 }
 
 .give_quote_left #field-initial-payment-add-more-wrapper,
 .give_quote_left #field-final-payment-add-more-wrapper,
 .give_quote_left #field-quote-add-more-wrapper {
-  margin-bottom : 20px;
+  margin-bottom : 10px;
 }
 
 .give_quote_left #field-initial-payment-add-more-wrapper label,
