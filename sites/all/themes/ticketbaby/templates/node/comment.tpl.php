@@ -74,8 +74,8 @@
         <footer class="comment__info">
             <?php //print $user_picture; ?>
           <p class="submitted comment__submitted">
-            <?php print $author ?><br />
-            <?php print $created ?>
+              <p class="comment_author_name"><?php print $author ?></p>
+              <p class="comment_author_date"><?php print $created ?></p>
           </p>
         </footer>
 

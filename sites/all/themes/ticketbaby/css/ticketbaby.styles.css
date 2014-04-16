@@ -472,7 +472,8 @@ h3.view-filters-expanded:hover {
   display : none;
 }
 
-#block-menu-menu-customer-menu {
+#block-menu-menu-customer-menu,
+#block-menu-menu-defender-menu {
   float     : left;
   font-size : 0;
 }
@@ -481,7 +482,8 @@ h3.view-filters-expanded:hover {
   float : right;
 }
 
-#block-menu-menu-customer-menu ul li {
+#block-menu-menu-customer-menu ul li,
+#block-menu-menu-defender-menu ul li {
   display            : inline-block;
   margin-right       : 0;
   transition         : 0.3s;
@@ -490,7 +492,8 @@ h3.view-filters-expanded:hover {
   -o-transition      : 0.3s;
 }
 
-#block-menu-menu-customer-menu ul li:hover {
+#block-menu-menu-customer-menu ul li:hover,
+#block-menu-menu-defender-menu ul li:hover {
   transition         : 0.3s;
   -webkit-transition : 0.3s;
   -moz-transition    : 0.3s;
@@ -498,26 +501,33 @@ h3.view-filters-expanded:hover {
 }
 
 #block-menu-menu-customer-menu ul li a,
-#block-menu-menu-customer-menu ul li span {
+#block-menu-menu-customer-menu ul li span,
+#block-menu-menu-defender-menu ul li a,
+#block-menu-menu-defender-menu ul li span {
   display : block;
   padding : 22px;
 }
 
 #block-menu-menu-customer-menu ul li,
-#block-menu-menu-customer-menu ul li a {
+#block-menu-menu-customer-menu ul li a,
+#block-menu-menu-defender-menu ul li,
+#block-menu-menu-defender-menu ul li a {
   font-family : 'AvenirLTStd-Medium', calibri, arial, sans-serif;
   font-size   : 15px;
   color       : white;
 }
 
 #block-menu-menu-customer-menu ul li:hover,
-#block-menu-menu-customer-menu ul li.active-trail {
+#block-menu-menu-customer-menu ul li.active-trail,
+#block-menu-menu-defender-menu ul li:hover,
+#block-menu-menu-defender-menu ul li.active-trail {
   position   : relative;
   background: #7FCF77;
 
 }
 
-#block-menu-menu-customer-menu ul li.active-trail:after {
+#block-menu-menu-customer-menu ul li.active-trail:after,
+#block-menu-menu-defender-menu ul li.active-trail:after {
   display    : block;
   content    : "";
   position   : absolute;
@@ -905,8 +915,9 @@ span.customfile-upload {
 
 .quote_overview_and_terms,
 .quote_static_text {
-  margin       : 10px 0 39px 55px;
-  padding-left : 330px;
+  float: right;
+  margin       : 10px 0 39px 0;
+  width : 683px;
 }
 
 .quote_overview_and_terms .field--name-field-response {
@@ -951,6 +962,10 @@ span.customfile-upload {
 
 .view-display-id-available_defenders {
   color : #164559;
+}
+
+.view-display-id-available_defenders .views-row {
+  margin-bottom: 20px;
 }
 
 h3.time_to_respond {
@@ -1129,7 +1144,8 @@ h3.time_to_respond {
 }
 
 #user-profile-form .form-item input[type="text"],
-#user-profile-form .form-item input[type="password"] {
+#user-profile-form .form-item input[type="password"],
+#user-profile-form .form-item textarea {
   width : 330px;
 }
 
@@ -1411,6 +1427,10 @@ table {
 margin: 0 0 6px 0;
 }
 
+#comments-dialog .comment .comment_left_wrapper p {
+  margin: 0;
+}
+
 #comments-dialog .comment .field--type-file{
    font-size: 13px;
  }
@@ -1422,6 +1442,27 @@ margin: 0 0 6px 0;
 .file img {
   position: relative;
   top: 2px;
+}
+
+.not-front .l-content article.comment {
+  background: white;
+  padding: 25px 15px;
+  border-bottom-width: 0;
+}
+
+.not-front .l-content article.comment:last-child {
+  border-bottom-width: 1px;
+}
+
+p.comment_author_name {
+  font-size: 14px;
+  color: #219452;
+}
+
+p.comment_author_date {
+  font-size: 13px !important;
+font-style: italic;
+  margin-top: 4px !important;
 }
 
 /*---/ dialog */
@@ -1496,7 +1537,8 @@ margin: 0 0 6px 0;
 }
 
 .node--ticket--full .node__content .ticket_details_right {
-  padding-left: 330px;
+  width: 738px;
+  float: right;
 }
 
 .node--ticket--full .node__content div.field {
