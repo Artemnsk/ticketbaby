@@ -1,7 +1,7 @@
 <div class="wrapper_header_main"<?php print $attributes; ?>>
   <header class="l-header" role="banner">
       <div class="l-header_wrapper">
-    <div class="l-branding">
+      <div class="l-branding">
       <?php if ($logo): ?>
         <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="site-logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
       <?php endif; ?>
@@ -22,8 +22,9 @@
     </div>
 
     <?php print render($page['header']); ?>
+      </div>
     <?php print render($page['navigation']); ?>
-          </div>
+
   </header>
 
   <div class="l-main">
