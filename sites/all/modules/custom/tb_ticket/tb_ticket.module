@@ -55,7 +55,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
     //$form['field_were_there_any_special_cir'][LANGUAGE_NONE][0]['value']['#description'] = '';
     // Show only fields specified in default settings.
     $fields_to_show = array_map('trim', explode("\n", variable_get("default_ticket_fields", '')));
-    
+
     // Now we should remove fields that are not in list of what we should show.
     foreach($form as $key => $val){
       if(substr($key, 0, 6) == 'field_'){
@@ -75,6 +75,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
           }
           if(isset($form[$key][LANGUAGE_NONE]['#title'])){
             $form[$key][LANGUAGE_NONE]['#title_display'] = 'invisible';
+            $form[$key][LANGUAGE_NONE]['#attributes']['placeholder'] = $form[$key][LANGUAGE_NONE]['#description'];
             if($key != 'field_date_of_ticket') unset($form[$key][LANGUAGE_NONE]['#description']);
           }
           if(isset($form[$key][LANGUAGE_NONE][0]['#title'])){
@@ -113,7 +114,7 @@ function tb_ticket_form_alter(&$form, &$form_state, $form_id){
         '#required' => TRUE,
         '#attributes' => array('placeholder' => t('Confirm Password')),
       );
-      $form['field_email'][LANGUAGE_NONE][0]['email']['#attributes']['placeholder'] = 'Confirm Password';
+      $form['field_email'][LANGUAGE_NONE][0]['email']['#attributes']['placeholder'] = 'Email';
       $form['field_email'][LANGUAGE_NONE][0]['email']['#title_display'] = 'invisible';
       $form['field_full_name']['#weight'] = 31;
       $form['field_email']['#weight'] = 32;

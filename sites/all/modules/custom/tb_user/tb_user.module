@@ -14,3 +14,15 @@ function tb_user_entity_info_alter(&$entity_info){
         ),
     );
 }
+
+/*
+ * Implements hook_form_alter();
+ */
+function tb_user_form_alter(&$form, &$form_state, $form_id){
+    global $user;
+    if($form_id == "user_profile_form" && in_array("customer", $user->roles)){
+        // Customer shouldn't have a picture.
+        if(isset($form['picture'])) unset($form['picture']);
+    }
+
+}

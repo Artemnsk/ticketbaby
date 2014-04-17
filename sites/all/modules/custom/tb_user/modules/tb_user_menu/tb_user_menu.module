@@ -237,7 +237,7 @@ function tb_user_menu_define_defender_id_customer($q){
     }
 
     // user/$uid pages.
-    if(preg_match("/user\/(\d+)/", $q)){
+    if(preg_match("/user\/(\d+)($|\/$)/", $q)){
         $display_tabs = true;
         $defender = user_load(preg_replace("/user\/(\d)/", "$1", $q));
         // Highlight defenders tab.
