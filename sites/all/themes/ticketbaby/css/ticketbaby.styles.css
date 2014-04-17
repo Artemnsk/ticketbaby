@@ -1034,13 +1034,17 @@ span.customfile-upload {
   color : #164559;
 }
 
+.view-display-id-available_defenders h2 {
+  margin: 0 0 30px 0;
+}
+
 .view-display-id-available_defenders .views-row {
   margin-bottom  : 20px;
   display        : inline-block;
-  max-width      : 120px;
+  max-width      : 140px;
   text-align     : center;
   vertical-align : top;
-  padding        : 0 15px;
+  padding        : 0 20px;
 }
 
 h3.time_to_respond {
@@ -1215,6 +1219,8 @@ h3.time_to_respond {
 
 #user-profile-form .form-item label {
   float : left;
+  position: relative;
+  top: 5px;
   width : 160px;
 }
 
@@ -1237,7 +1243,6 @@ h3.time_to_respond {
 }
 
 #user-profile-form input[type="submit"] {
-  width      : 310px;
   margin-top : 40px;
 }
 
@@ -1251,6 +1256,25 @@ h3.time_to_respond {
 #user-register-form .description,
 #user-pass .description {
   max-width: 506px;
+}
+
+#edit-account .form-item.form-item-pass {
+  margin: 0;
+}
+
+.password-strength,
+div.password-confirm {
+  margin-top: 0;
+  margin-right: 250px;
+}
+
+.password-suggestions.description {
+  display: none !important;
+}
+
+.password-strength-text {
+  font-weight: 300;
+  text-transform: lowercase;
 }
 
 /*---/ USER PROFILE */
