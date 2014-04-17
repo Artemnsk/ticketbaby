@@ -1035,7 +1035,12 @@ span.customfile-upload {
 }
 
 .view-display-id-available_defenders .views-row {
-  margin-bottom : 20px;
+  margin-bottom  : 20px;
+  display        : inline-block;
+  max-width      : 120px;
+  text-align     : center;
+  vertical-align : top;
+  padding        : 0 15px;
 }
 
 h3.time_to_respond {
@@ -1236,8 +1241,16 @@ h3.time_to_respond {
   margin-top : 40px;
 }
 
-#user-login input[type="submit"] {
+#user-login input[type="submit"],
+#user-register-form input[type="submit"],
+#user-pass input[type="submit"] {
   margin-top : 40px;
+}
+
+#user-login .description,
+#user-register-form .description,
+#user-pass .description {
+  max-width: 506px;
 }
 
 /*---/ USER PROFILE */
