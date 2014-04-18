@@ -130,6 +130,12 @@ function ticketbaby_menu_link__menu_defender_menu(array $variables){
             $element['#attributes']['class'][] = "active-trail";
         }
     }
+    // Defining if we are on tickets page.
+    if($element['#href'] == "tickets/posted"){
+        if(tb_user_menu_ticket_type_defender($_GET['q']) !== null){
+            $element['#attributes']['class'][] = "active-trail";
+        }
+    }
 
     if ($element['#below']) {
         $sub_menu = drupal_render($element['#below']);
@@ -153,14 +159,17 @@ function ticketbaby_preprocess_user_profile(&$vars){
     $vars['view_mode'] = $vars['elements']['#view_mode'];
     if($vars['view_mode'] == "full"){
         if(in_array('defender', $roles)){
+            $vars['contact_link'] = l('Contact', drupal_get_path_alias("node/add/dialog/user/$viewed_user->uid"));
             $vars['is_defender'] = true;
-            // If pictire is default let's add specific class to it to add CSS style.
+            // If picture is default let's add specific class to it to add CSS style.
             if($vars['elements']['#account']->picture === NULL){
                 $vars['user_profile']['user_picture']['#prefix'] = "<span class='anonymous'>";
                 $vars['user_profile']['user_picture']['#suffix'] = "</span>";
             }
             // Add "Lawyer" to username.
-            $vars['user_profile']['field_fullname'][0]['#markup'] .= '<br />Lawyer';
+            if(isset($vars['user_profile']['field_fullname'])){
+                $vars['user_profile']['field_fullname'][0]['#markup'] .= '<br />Lawyer';
+            }
             // @TODO: normal counting.
             $vars['user_profile']['tickets_defended'] = 0;
             $vars['user_profile']['tickets_in_progress'] = 0;
@@ -178,9 +187,13 @@ function ticketbaby_preprocess_user_profile(&$vars){
             if($profile_key !== false){
                 $profile = $vars['user_profile']['profile_defender_profile']['view']['profile2'][$profile_key];
                 // Working state.
-                $vars['user_profile']['location'] = $profile['field_working_state'];
+                if(isset($profile['field_working_state'])){
+                    $vars['user_profile']['location'] = $profile['field_working_state'];
+                }
                 // Overview.
-                $vars['user_profile']['overview'] = $profile['field_overview'];
+                if(isset($profile['field_overview'])){
+                    $vars['user_profile']['overview'] = $profile['field_overview'];
+                }
                 // Feedback.
                 $vars['user_profile']['feedback'] = $profile['field_defender_feedback'];
             }

@@ -13,12 +13,16 @@
             <div class="profile_card_wrapper">
                 <div class="profile_card_wrapper_inner">
                     <?php print render($user_profile['user_picture']); ?>
-                    <?php print render($user_profile['field_fullname']); ?>
+                    <?php if(isset($user_profile['field_fullname'])):?>
+                        <?php print render($user_profile['field_fullname']); ?>
+                    <?php endif;?>
                 </div>
                 <?php print render($user_profile['feedback']); ?>
                 <div class="profile_card_item">
                     <div class="user_location">
-                        <?php print render($user_profile['location']); ?>
+                        <?php if(isset($user_profile['location'])):?>
+                            <?php print render($user_profile['location']); ?>
+                        <?php endif;?>
                     </div>
                     <div class="user_tickets_defended">
                         <span class="user_tickets_title">Tickets Defended:</span>
@@ -45,6 +49,7 @@
                         </span>
                 </div>
             </div>
+            <?php print $contact_link; ?>
         </article>
 
     <?php else:?>
@@ -60,6 +65,8 @@
         <?php print render($user_profile['user_picture']); ?>
     </div>
     <div class="dialogs-user-fullname">
-        <?php print render($user_profile['field_fullname']); ?>
+        <?php if(isset($user_profile['field_fullname'])):?>
+            <?php print render($user_profile['field_fullname']); ?>
+        <?php endif;?>
     </div>
 <?php endif; ?>

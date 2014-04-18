@@ -30,19 +30,18 @@ global $user;
                 <?php if($field != 'uid' && $field != 'nid' && $field != 'last_comment_timestamp' && $field != 'comment_body' && $field != 'new_comments'):?>
 
                     <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print is_array($field_attributes[$field][$row_count]) ? drupal_attributes($field_attributes[$field][$row_count]) : ''; ?>>
-                        <a href="<?php print drupal_get_path_alias('/node/'. $row['nid']); ?>">
-                            <span class='dialog-span'>
-                                <?php if($field == "field_fullname"):?>
-                                    <?php print $content; ?><?php print $row['new_comments']; ?>
-                                    <?php print $row['last_comment_timestamp']; ?>
-                                <?php elseif($field == "field_ticket_category"):?>
-                                    <?php print $content; ?>
-                                    <?php print $row['comment_body']; ?>
-                                <?php elseif($field != "picture" || ($field == "picture" && $row['uid'] != $user->uid)):?>
-                                    <?php print $content; ?>
-                                <?php endif;?>
-                            </span>
-                        </a>
+                        <?php
+                            $text = "<span class='dialog-span'>";
+                                if($field == "field_fullname"){
+                                    $text .= $content. $row['new_comments']. $row['last_comment_timestamp'];
+                                }elseif($field == "field_ticket_category"){
+                                    $text .= $content. $row['comment_body'];
+                                }elseif($field != "picture" || ($field == "picture" && $row['uid'] != $user->uid)){
+                                    $text .= $content;
+                                }
+                            $text .= "</span>";
+                            print l($text, 'node/'. $row['nid'], array("html" => true));
+                        ?>
                     </td>
 
                 <?php endif;?>

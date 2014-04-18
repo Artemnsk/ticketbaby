@@ -107,6 +107,11 @@ function features_view_users_views_default_views() {
   $handler->display->display_options['filters']['rid']['value'] = array(
     4 => '4',
   );
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
+  $handler->display->display_options['filters']['status_1']['table'] = 'users';
+  $handler->display->display_options['filters']['status_1']['field'] = 'status';
+  $handler->display->display_options['filters']['status_1']['value'] = '1';
   $handler->display->display_options['path'] = 'ticket-created';
 
   /* Display: Defender of ticket */
@@ -186,7 +191,7 @@ function features_view_users_views_default_views() {
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Thank you for choosing Ticketbaby.com!';
+  $handler->display->display_options['empty']['area']['content'] = 'No defenders found.';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: User: Profile */

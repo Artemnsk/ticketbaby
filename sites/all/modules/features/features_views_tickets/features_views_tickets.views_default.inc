@@ -58,6 +58,12 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['nid']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['element_default_classes'] = FALSE;
+  /* Field: Content: Ticket category */
+  $handler->display->display_options['fields']['field_ticket_category']['id'] = 'field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['table'] = 'field_data_field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['field'] = 'field_ticket_category';
+  $handler->display->display_options['fields']['field_ticket_category']['label'] = 'Ticket Name';
+  $handler->display->display_options['fields']['field_ticket_category']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Description */
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['id'] = 'field_were_there_any_special_cir';
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['table'] = 'field_data_field_were_there_any_special_cir';
@@ -114,6 +120,7 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['fields']['field_ticket_category']['table'] = 'field_data_field_ticket_category';
   $handler->display->display_options['fields']['field_ticket_category']['field'] = 'field_ticket_category';
   $handler->display->display_options['fields']['field_ticket_category']['label'] = 'Ticket Name';
+  $handler->display->display_options['fields']['field_ticket_category']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Description */
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['id'] = 'field_were_there_any_special_cir';
   $handler->display->display_options['fields']['field_were_there_any_special_cir']['table'] = 'field_data_field_were_there_any_special_cir';
@@ -204,7 +211,6 @@ function features_views_tickets_views_default_views() {
   /* Display: Def: quoted */
   $handler = $view->new_display('page', 'Def: quoted', 'quoted');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Tickets responded to';
   $handler->display->display_options['defaults']['empty'] = FALSE;
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
