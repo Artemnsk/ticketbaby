@@ -56,6 +56,32 @@ function features_rules_default_rules_configuration() {
       ]
     }
   }');
+  $items['rules_create_message_for_new_dialog'] = entity_import('rules_config', '{ "rules_create_message_for_new_dialog" : {
+      "LABEL" : "Create message for new dialog",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules" ],
+      "ON" : { "node_insert--dialog" : { "bundle" : "dialog" } },
+      "DO" : [
+        { "variable_add" : {
+            "USING" : { "type" : "node", "value" : [ "node" ] },
+            "PROVIDE" : { "variable_added" : { "variable_added" : "Added variable" } }
+          }
+        },
+        { "entity_create" : {
+            "USING" : {
+              "type" : "comment",
+              "param_subject" : "Ticket discussion",
+              "param_node" : [ "variable-added" ],
+              "param_author" : [ "site:current-user" ],
+              "param_comment_body" : [ "variable-added:body" ]
+            },
+            "PROVIDE" : { "entity_created" : { "entity_created" : "Created entity" } }
+          }
+        }
+      ]
+    }
+  }');
   $items['rules_create_user_on_ticket_creation_and_attach_node_to_email'] = entity_import('rules_config', '{ "rules_create_user_on_ticket_creation_and_attach_node_to_email" : {
       "LABEL" : "Create user on ticket creation and attach node to email",
       "PLUGIN" : "reaction rule",
@@ -87,6 +113,30 @@ function features_rules_default_rules_configuration() {
         },
         { "drupal_message" : { "message" : "User [user-created:name] has been successfully created. Please check your email [user-created:mail] to continue registration." } }
       ]
+    }
+  }');
+  $items['rules_redirect_defender_after_log_in'] = entity_import('rules_config', '{ "rules_redirect_defender_after_log_in" : {
+      "LABEL" : "REDIRECT DEFENDER AFTER LOG IN",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules" ],
+      "ON" : { "user_login" : [] },
+      "IF" : [
+        { "user_has_role" : { "account" : [ "account" ], "roles" : { "value" : { "4" : "4" } } } }
+      ],
+      "DO" : [ { "redirect" : { "url" : "tickets\\/posted" } } ]
+    }
+  }');
+  $items['rules_redirect_users_after_log_in'] = entity_import('rules_config', '{ "rules_redirect_users_after_log_in" : {
+      "LABEL" : "REDIRECT CUSTOMER AFTER LOG IN",
+      "PLUGIN" : "reaction rule",
+      "OWNER" : "rules",
+      "REQUIRES" : [ "rules" ],
+      "ON" : { "user_login" : [] },
+      "IF" : [
+        { "user_has_role" : { "account" : [ "account" ], "roles" : { "value" : { "5" : "5" } } } }
+      ],
+      "DO" : [ { "redirect" : { "url" : "user\\/my-tickets" } } ]
     }
   }');
   $items['rules_send_email_on_respond_creation'] = entity_import('rules_config', '{ "rules_send_email_on_respond_creation" : {

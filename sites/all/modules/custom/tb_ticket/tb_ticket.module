@@ -13,7 +13,6 @@ function tb_ticket_views_post_execute(&$view){
             }
         }
     }
-
   
   // Apply working state of defender by default on tickets posted page.
   /*if($view->current_display == 'search_ticket'){
