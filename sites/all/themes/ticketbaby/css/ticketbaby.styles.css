@@ -625,7 +625,7 @@ h3.view-filters-expanded:hover {
 /* HOMEPAGE */
 
 .front .l-main {
-  background : url(../images/homepage_illustration_big.png) right 230px no-repeat;
+  /*background : url(../images/homepage_illustration_big.png) right 230px no-repeat;*/
 }
 
 /* choose your ticket */
@@ -704,7 +704,7 @@ h3.view-filters-expanded:hover {
 /* warning message */
 
 .front .l-main .l-content .messages {
-  width : 722px;
+  width : 100%;
 }
 
 /*---/ warning message*/
@@ -717,9 +717,10 @@ h3.view-filters-expanded:hover {
 
 #ticket-node-form,
 #ticket-node-form--2 {
-  width   : 535px;
-  padding : 0;
+  width   : 1100px;
+  padding : 0 565px 0 0;
   margin  : 80px 0;
+  background: url(../images/homepage_illustration_big.png) right 230px no-repeat;
 }
 
 #ticket-node-form h2,
@@ -1939,7 +1940,40 @@ p.comment_author_date {
 
 /*---/ GIVE QUOTE */
 
+/* PAGER */
 
+.pager {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.pager a,
+.pager li {
+  color: #888888;
+}
+
+.pager__item {
+  display: inline-block;
+  padding: 1px 6px;
+}
+
+.pager li.pager__item--current {
+  background: #7fcf77;
+  color: white;
+  font-weight: 300;
+}
+
+.pager__item:hover,
+.pager__item:hover a {
+  color: #555555;
+}
+
+.pager li.pager__item--current:hover {
+  color: white;
+}
+
+/*---/ PAGER */
 
 
 
