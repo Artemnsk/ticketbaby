@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Features view messages feature.
+ */
+
+include_once 'features_view_messages.features.inc';
