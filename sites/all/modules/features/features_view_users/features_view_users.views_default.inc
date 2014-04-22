@@ -91,6 +91,23 @@ function features_view_users_views_default_views() {
   $handler->display->display_options['empty']['area']['content'] = 'Thank you for choosing Ticketbaby.com!';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: User: Picture */
+  $handler->display->display_options['fields']['picture']['id'] = 'picture';
+  $handler->display->display_options['fields']['picture']['table'] = 'users';
+  $handler->display->display_options['fields']['picture']['field'] = 'picture';
+  $handler->display->display_options['fields']['picture']['label'] = '';
+  $handler->display->display_options['fields']['picture']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['picture']['empty'] = '<img src="/sites/default/files/anonymous.jpg" style="width:100px; height:100px;" />';
+  $handler->display->display_options['fields']['picture']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['picture']['link_photo_to_profile'] = FALSE;
+  $handler->display->display_options['fields']['picture']['image_style'] = 'user_profile_page';
+  /* Field: User: Fullname */
+  $handler->display->display_options['fields']['field_fullname']['id'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['table'] = 'field_data_field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['field'] = 'field_fullname';
+  $handler->display->display_options['fields']['field_fullname']['label'] = '';
+  $handler->display->display_options['fields']['field_fullname']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: User: Active */

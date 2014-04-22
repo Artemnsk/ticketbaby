@@ -314,7 +314,6 @@ function features_view_responds_views_default_views() {
   $handler->display->display_options['fields']['field_response']['field'] = 'field_response';
   $handler->display->display_options['fields']['field_response']['label'] = 'Content';
   $handler->display->display_options['fields']['field_response']['alter']['max_length'] = '100';
-  $handler->display->display_options['fields']['field_response']['alter']['more_link'] = TRUE;
   $handler->display->display_options['fields']['field_response']['alter']['more_link_text'] = 'more';
   $handler->display->display_options['fields']['field_response']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_response']['type'] = 'text_trimmed';
