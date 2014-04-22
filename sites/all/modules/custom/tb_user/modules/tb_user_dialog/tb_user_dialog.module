@@ -1,4 +1,8 @@
-  <?php
+<?php
+
+/*function tb_user_dialog_views_pre_build(&$vars) {
+
+}*/
 
 function tb_user_dialog_preprocess_comment(&$variables){
     $author = user_load($variables['user']->uid);
@@ -35,6 +39,10 @@ function tb_user_dialog_form_alter(&$form, &$form_state, $form_id){
         // We will check if any $type detected and return page not found if not.
         $processed = false;
         if($type == "ticket"){
+            $form['custom_title'] = array(
+                '#type' => 'markup',
+                '#markup' => "<h2>Start dialog about ticket #". arg(4). "</h2>",
+            );
             $ticket = node_load($id);
             if(!$ticket){
                 drupal_not_found();
@@ -54,6 +62,10 @@ function tb_user_dialog_form_alter(&$form, &$form_state, $form_id){
         }
         if($type == "user"){
             $user_to = user_load($id);
+            $form['custom_title'] = array(
+                '#type' => 'markup',
+                '#markup' => "<h2>Start dialog with ". $user_to->field_fullname[LANGUAGE_NONE][0]['value']. "</h2>",
+            );
             if(!$user_to){
                 drupal_not_found();
             }else{

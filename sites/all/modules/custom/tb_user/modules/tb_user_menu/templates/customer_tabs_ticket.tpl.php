@@ -19,6 +19,6 @@
         </span>
     <?php endif; ?>
     <span>
-        <?php print l(t("Messages"), drupal_get_path_alias("user/$uid/ticket/$ticket_id/messages"), isset($parent['messages']) ? $parent['messages'] : array());?>
+        <?php print l(t("Messages"), drupal_get_path_alias("ticket/$ticket_id/messages"), isset($parent['messages']) ? $parent['messages'] : array());?>
     </span>
 </span>

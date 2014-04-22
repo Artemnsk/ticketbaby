@@ -18,12 +18,12 @@ function tb_user_menu_menu(){
       'page arguments' => array('tickets', 'my_tickets', 'user'),
       'access arguments' => array('access content'),
     ),
-    'user/messages' => array(
+    /*'user/messages' => array(
       'title' => t('Messages'),
       'page callback' => 'tb_user_router',
       'page arguments' => array('messages', 'messages_all', 'user'),
       'access arguments' => array('access content'),
-    ),
+    ),*/
   );
   
   return $items;
@@ -203,12 +203,12 @@ function tb_user_menu_define_ticket_id_customer($q){
         $node = node_load(preg_replace("/ticket\/(\d+)\/defender/", "$1", $q));
     }elseif(preg_match("/ticket\/(\d+)\/quotes/", $q)){
         $node = node_load(preg_replace("/ticket\/(\d+)\/quotes/", "$1", $q));
-    }elseif(preg_match("/user\/\d+\/ticket\/(\d+)\/messages/", $q)){
-        $node = node_load(preg_replace("/user\/\d+\/ticket\/(\d+)\/messages/", "$1", $q));
-    }elseif(preg_match("/user\/\d+\/ticket\/(\d+)\/dialog\/\d+/", $q)){
+    }elseif(preg_match("/ticket\/(\d+)\/messages/", $q)){
+        $node = node_load(preg_replace("/ticket\/(\d+)\/messages/", "$1", $q));
+    }/*elseif(preg_match("/user\/\d+\/ticket\/(\d+)\/dialog\/\d+/", $q)){
         $parent['messages'] = array('attributes' => array('class' => 'active'));
         $node = node_load(preg_replace("/user\/\d+\/ticket\/(\d+)\/dialog\/\d+/", "$1", $q));
-    }
+    }*/
     if(isset($node->nid)){
         return array("ticket_id" => $node->nid, "title" => $node->title, "nid" => $node->nid, 'parent' => $parent);
     }

@@ -25,28 +25,32 @@ global $user;
 <table <?php if ($classes) { print 'class="'. $classes . '" '; } ?><?php print $attributes; ?>>
     <tbody>
     <?php foreach ($rows as $row_count => $row): ?>
-        <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
-            <?php foreach ($row as $field => $content): ?>
-                <?php if($field != 'uid' && $field != 'nid' && $field != 'last_comment_timestamp' && $field != 'comment_body' && $field != 'new_comments'):?>
+        <?php if($row['uid'] != $user->uid):?>
 
-                    <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print is_array($field_attributes[$field][$row_count]) ? drupal_attributes($field_attributes[$field][$row_count]) : ''; ?>>
-                        <?php
-                            $text = "<span class='dialog-span'>";
-                                if($field == "field_fullname"){
-                                    $text .= $content. $row['new_comments']. $row['last_comment_timestamp'];
-                                }elseif($field == "field_ticket_category"){
-                                    $text .= $content. $row['comment_body'];
-                                }elseif($field != "picture" || ($field == "picture" && $row['uid'] != $user->uid)){
-                                    $text .= $content;
-                                }
-                            $text .= "</span>";
-                            print l($text, 'node/'. $row['nid'], array("html" => true));
-                        ?>
-                    </td>
+            <tr <?php if ($row_classes[$row_count]) { print 'class="' . implode(' ', $row_classes[$row_count]) .'"';  } ?>>
+                <?php foreach ($row as $field => $content): ?>
+                    <?php if($field != 'uid' && $field != 'nid' && $field != 'last_comment_timestamp' && $field != 'comment_body' && $field != 'new_comments'):?>
 
-                <?php endif;?>
-            <?php endforeach; ?>
-        </tr>
+                        <td <?php if ($field_classes[$field][$row_count]) { print 'class="'. $field_classes[$field][$row_count] . '" '; } ?><?php print is_array($field_attributes[$field][$row_count]) ? drupal_attributes($field_attributes[$field][$row_count]) : ''; ?>>
+                            <?php
+                                $text = "<span class='dialog-span'>";
+                                    if($field == "field_fullname"){
+                                        $text .= $content. $row['new_comments']. $row['last_comment_timestamp'];
+                                    }elseif($field == "field_ticket_category"){
+                                        $text .= $content. $row['comment_body'];
+                                    }else{
+                                        $text .= $content;
+                                    }
+                                $text .= "</span>";
+                                print l($text, 'node/'. $row['nid'], array("html" => true));
+                            ?>
+                        </td>
+
+                    <?php endif;?>
+                <?php endforeach; ?>
+            </tr>
+
+        <?php endif;?>
     <?php endforeach; ?>
     </tbody>
 </table>

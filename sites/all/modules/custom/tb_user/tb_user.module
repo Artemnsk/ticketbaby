@@ -6,14 +6,14 @@
  * 'custom settings' => TRUE displays the view mode as a default at the top of the display modes settings screen
  */
 
-function tb_user_entity_info_alter(&$entity_info){
+/*function tb_user_entity_info_alter(&$entity_info){
     $entity_info['user']['view modes'] += array(
         'dialogs' => array(
             'label' => t('Image on dialogs list'),
             'custom settings' => TRUE,
         ),
     );
-}
+}/
 
 /*
  * Implements hook_form_alter();
@@ -24,5 +24,33 @@ function tb_user_form_alter(&$form, &$form_state, $form_id){
         // Customer shouldn't have a picture.
         if(isset($form['picture'])) unset($form['picture']);
     }
+}
 
+function tb_user_count_tickets($uid = null){
+    if($uid === null){
+        global $user;
+        $uid = $user->uid;
+    }
+    // Data function returns.
+    $data = array(
+        'defended' => 0,
+        'in_progress' => 0,
+    );
+    // in progress.
+    $tickets = db_query("
+                SELECT COUNT(DISTINCT nid) quantity, field_status_value FROM node JOIN
+                    field_data_field_status status ON nid = status.entity_id JOIN
+                    field_data_field_defender def ON nid = def.entity_id
+                    WHERE (field_status_value = 1 OR field_status_value = 2) AND type='ticket' AND field_defender_target_id=:defender
+                    GROUP BY field_status_value
+            ", array(':defender' => $uid));
+    foreach($tickets as $ticket_group){
+        if($ticket_group->field_status_value == 1){
+            $data['in_progress'] = $ticket_group->quantity;
+        }elseif($ticket_group->field_status_value == 2){
+            $data['defended'] = $ticket_group->quantity;
+        }
+    }
+
+    return $data;
 }

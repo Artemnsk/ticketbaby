@@ -170,9 +170,10 @@ function ticketbaby_preprocess_user_profile(&$vars){
             if(isset($vars['user_profile']['field_fullname'])){
                 $vars['user_profile']['field_fullname'][0]['#markup'] .= '<br />Lawyer';
             }
-            // @TODO: normal counting.
-            $vars['user_profile']['tickets_defended'] = 0;
-            $vars['user_profile']['tickets_in_progress'] = 0;
+            // Counting defended/in progress tickets.
+            $data = tb_user_count_tickets($vars['elements']['#account']->uid);
+            $vars['user_profile']['tickets_defended'] = $data['defended'];
+            $vars['user_profile']['tickets_in_progress'] = $data['in_progress'];
 
             // Last login.
             $vars['user_profile']['last_online'] = date('M d, Y', $viewed_user->login);
