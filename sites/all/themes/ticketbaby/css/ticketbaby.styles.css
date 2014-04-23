@@ -613,7 +613,7 @@ h3.view-filters-expanded:hover {
   left       : 45%;
   width      : 13px;
   height     : 7px;
-  background : url(../images/triangle_down_green.png) center center no-repeat;
+  background : url(../images/triangle_down_green_dark.png) center center no-repeat;
 }
 
 /*---/ defender's submenu */
@@ -720,7 +720,7 @@ h3.view-filters-expanded:hover {
   width   : 1100px;
   padding : 0 565px 0 0;
   margin  : 80px 0;
-  background: url(../images/homepage_illustration_big.png) right 230px no-repeat;
+  background: url(../images/homepage_illustration_big.png) right 180px no-repeat;
 }
 
 #ticket-node-form h2,
@@ -1719,7 +1719,7 @@ p.comment_author_date {
 .node--ticket--full .node__content table .field__items,
 .node--offer--full table.node__content .field__label,
 .node--offer--full table.node__content .field__items {
-  padding : 4px;
+  padding : 4px 0;
 }
 
 .node--ticket--full .node__content table .field__label,
@@ -1738,6 +1738,8 @@ p.comment_author_date {
 .node--offer--full table.node__content .field__items,
 .node--offer--full table.node__content .field__items div {
   text-align : right;
+  width: 190px;
+  white-space: normal;
 }
 
 /*---/ table in ticket_view and quote_view */
