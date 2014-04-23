@@ -33,8 +33,10 @@ function tb_user_dialog_form_alter(&$form, &$form_state, $form_id){
         global $user;
         // Get variables from url.
         $type = arg(0) == 'user' ? 'user' : '';
-        $type = arg(0) == 'node' ? 'ticket' : $type;
+        // ticket node/nid or ticket/nid/defender page.
+        $type = arg(0) == 'node' || (arg(0) == 'ticket' && intval(arg(1)) && arg(2) == 'defender') ? 'ticket' : $type;
         $id = arg(1);
+
         if($type === null || $id === null || !intval($id)){
             //drupal_not_found();
         }

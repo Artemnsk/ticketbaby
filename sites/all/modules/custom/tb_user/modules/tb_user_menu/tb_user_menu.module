@@ -326,6 +326,17 @@ function tb_user_menu_define_ticket_id_defender($q){
                     $ticket_id = $current_node->field_ticket[LANGUAGE_NONE][0]['target_id'];
                     $node = node_load($ticket_id);
                     break;
+                case "dialog":
+                    if(isset($current_node->field_attached_to[LANGUAGE_NONE][0]['target_id'])){
+                        $ticket_id = $current_node->field_attached_to[LANGUAGE_NONE][0]['target_id'];
+                        $node = node_load($ticket_id);
+                    }else{
+                        $node = '';
+                    }
+                    break;
+                default:
+                    $node = '';
+                    break;
             }
         }
     }
