@@ -91,6 +91,26 @@ function features_menus_menu_default_menu_links() {
     'weight' => -46,
     'customized' => 1,
   );
+  // Exported menu link: menu-customer-menu_defenders:defenders
+  $menu_links['menu-customer-menu_defenders:defenders'] = array(
+    'menu_name' => 'menu-customer-menu',
+    'link_path' => 'defenders',
+    'router_path' => 'defenders',
+    'link_title' => 'Defenders',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-customer-menu_defenders:defenders',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+  );
   // Exported menu link: menu-customer-menu_messages:user/messages
   $menu_links['menu-customer-menu_messages:user/messages'] = array(
     'menu_name' => 'menu-customer-menu',
@@ -132,26 +152,6 @@ function features_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-customer-menu_your-tickets:user/my-tickets',
   );
-  // Exported menu link: menu-customer-menu_quotes:user/quotes
-  $menu_links['menu-customer-menu_quotes:user/quotes'] = array(
-    'menu_name' => 'menu-customer-menu',
-    'link_path' => 'user/quotes',
-    'router_path' => 'user/quotes',
-    'link_title' => 'Quotes',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'menu-customer-menu_quotes:user/quotes',
-    ),
-    'module' => 'menu',
-    'hidden' => 1,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -45,
-    'customized' => 1,
-  );
   // Exported menu link: menu-customer-menu_your-tickets:user/my-tickets
   $menu_links['menu-customer-menu_your-tickets:user/my-tickets'] = array(
     'menu_name' => 'menu-customer-menu',
@@ -189,7 +189,7 @@ function features_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: menu-defender-menu_calendar:<nolink>
@@ -230,6 +230,46 @@ function features_menus_menu_default_menu_links() {
     'has_children' => 1,
     'expanded' => 0,
     'weight' => -48,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-defender-menu_quotes:user/quotes
+  $menu_links['menu-defender-menu_quotes:user/quotes'] = array(
+    'menu_name' => 'menu-defender-menu',
+    'link_path' => 'user/quotes',
+    'router_path' => 'user/quotes',
+    'link_title' => 'Quotes',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-defender-menu_quotes:user/quotes',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-defender-menu_tickets:tickets/posted
+  $menu_links['menu-defender-menu_tickets:tickets/posted'] = array(
+    'menu_name' => 'menu-defender-menu',
+    'link_path' => 'tickets/posted',
+    'router_path' => 'tickets/posted',
+    'link_title' => 'Tickets',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'menu-defender-menu_tickets:tickets/posted',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 1,
+    'expanded' => 0,
+    'weight' => -50,
     'customized' => 1,
   );
   // Exported menu link: menu-footer-menu-about-us_about-us:<front>
@@ -531,6 +571,7 @@ function features_menus_menu_default_menu_links() {
   t('Calendar');
   t('Company');
   t('Contact Us');
+  t('Defenders');
   t('Help');
   t('Log in');
   t('Messages');
@@ -541,6 +582,7 @@ function features_menus_menu_default_menu_links() {
   t('Sign in');
   t('Sign out');
   t('Support');
+  t('Tickets');
   t('Your Tickets');
   t('|');
 

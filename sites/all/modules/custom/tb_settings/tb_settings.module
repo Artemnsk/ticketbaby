@@ -36,3 +36,21 @@ function tb_settings_admin_form($form, &$form_state){
   );
   return system_settings_form($form);
 }
+
+/*
+ * Implements hook_init().
+ */
+function tb_settings_init(){
+    global $user;
+    // Check if we are on user/tickets page.
+    // Check if this user is customer.
+    // If we have only one ticket available go to ticket page.
+    if(arg(0). '/'. arg(1) == 'user/my-tickets'){
+        if(in_array('customer', $user->roles)){
+            $ticket = tb_user_menu_have_one_ticket();
+            if($ticket['only_one']){
+                drupal_goto("node/". $ticket['nid']);
+            }
+        }
+    }
+}

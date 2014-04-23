@@ -140,7 +140,7 @@
         <div class="quote_payment">
             <?php print render($content['field_initial_payment']) ?>
             <?php print render($content['field_final_payment_']) ?>
-            <div class="field quote_total"><div class="field__label">Total Cost:</div><div class="field__items">---</div></div>
+            <?php print render($content['field_quote']) ?>
         </div>
 
         <!--RIGHT SIDE-->
@@ -155,7 +155,7 @@
     <div>
       Messages Linked to this Ticket
     </div>
-    <?php print render($content['comments']) ?>
+    <?php //print render($content['comments']) ?>
     </div>
 
     <?php //print render($content['links']); ?>

@@ -53,6 +53,47 @@ function features_node_offer_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-offer-field_billing_type'
+  $field_instances['node-offer-field_billing_type'] = array(
+    'bundle' => 'offer',
+    'default_value' => array(
+      0 => array(
+        'value' => 'flat_rate',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_billing_type',
+    'label' => 'How will case be billed',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-offer-field_final_payment_'
   $field_instances['node-offer-field_final_payment_'] = array(
     'bundle' => 'offer',
@@ -156,7 +197,7 @@ function features_node_offer_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_quote',
-    'label' => 'Quote',
+    'label' => 'Total Cost',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -301,12 +342,13 @@ function features_node_offer_field_default_field_instances() {
   t('Enter initial payment if you require an initial payment to get started on the case.');
   t('Enter quote amount if only one payment is required with no further payment.');
   t('Final Payment ');
+  t('How will case be billed');
   t('If there are any special conditions for final payment, for example if its conditional on whether the case is one.');
   t('Overview');
-  t('Quote');
   t('Retainer');
   t('Ticket');
   t('Ticket which will be referenced by this offer.');
+  t('Total Cost');
 
   return $field_instances;
 }

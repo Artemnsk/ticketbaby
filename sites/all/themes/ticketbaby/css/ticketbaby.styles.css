@@ -1975,6 +1975,13 @@ p.comment_author_date {
 
 /*---/ PAGER */
 
+/*ADDED BY ARTEM FOR DEFAULT USER IMAGES ON MESSAGES PAGE*/
+
+.view-messages .dialog-span img{
+    width: 70px;
+    height: 70px;
+}
+
 
 
 

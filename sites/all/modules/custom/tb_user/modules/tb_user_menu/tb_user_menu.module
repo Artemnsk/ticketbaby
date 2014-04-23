@@ -18,12 +18,6 @@ function tb_user_menu_menu(){
       'page arguments' => array('tickets', 'my_tickets', 'user'),
       'access arguments' => array('access content'),
     ),
-    /*'user/messages' => array(
-      'title' => t('Messages'),
-      'page callback' => 'tb_user_router',
-      'page arguments' => array('messages', 'messages_all', 'user'),
-      'access arguments' => array('access content'),
-    ),*/
   );
   
   return $items;
@@ -416,7 +410,6 @@ function tb_user_menu_ticket_type_defender($q){
                 }
             }
         }
-        //dpm($ticket);
         return $vars;
     }
 
@@ -434,4 +427,24 @@ function tb_user_menu_ticket_type_defender($q){
     }
 
     return null;
+}
+
+/*
+ * If only one ticket available we should return true and this ticket id
+ * to show it in customer menu.
+ */
+function tb_user_menu_have_one_ticket(){
+    global $user;
+    $response = array('only_one' => false, 'nid' => '');
+    $tickets = db_query("SELECT COUNT(nid) quantity, nid FROM node WHERE uid = :uid AND type = 'ticket'",
+        array(':uid' => $user->uid));
+
+    foreach($tickets as $ticket){
+        if($ticket->quantity == 1){
+            $response['only_one'] = true;
+            $response['nid'] = $ticket->nid;
+        }
+    }
+
+    return $response;
 }

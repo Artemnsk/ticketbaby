@@ -93,6 +93,7 @@ function features_permissions_user_default_permissions() {
       'administrator' => 'administrator',
       'anonymous user' => 'anonymous user',
       'customer' => 'customer',
+      'defender' => 'defender',
     ),
     'module' => 'node',
   );
