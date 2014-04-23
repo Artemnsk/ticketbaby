@@ -10,6 +10,7 @@
     <?php if ($is_defender): ?>
         <?php // Liza insert needed html yourself :) ?>
         <article<?php print $attributes; ?>>
+            <div class="defender_info_wrapper">
             <div class="profile_card_wrapper">
                 <div class="profile_card_wrapper_inner">
                     <?php print render($user_profile['user_picture']); ?>
@@ -49,6 +50,9 @@
                         </span>
                 </div>
             </div>
+                <div class="defender_feedback">
+                </div>
+                </div>
             <?php print $contact_link; ?>
         </article>
 

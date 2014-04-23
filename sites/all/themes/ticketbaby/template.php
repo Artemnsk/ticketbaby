@@ -175,7 +175,7 @@ function ticketbaby_preprocess_user_profile(&$vars){
             node_object_prepare($node);
             $form_state['build_info']['args'] = array($node);
             $form = drupal_get_form('dialog_node_form', $node);
-            $vars['contact_link'] = "<div id='contact-dialog'>Contact</div>". render($form);
+            $vars['contact_link'] = "<div id='contact-dialog'>Send Message</div>". render($form);
 
             // Check if user defender.
             $vars['is_defender'] = true;

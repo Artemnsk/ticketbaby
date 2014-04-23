@@ -35,7 +35,7 @@ global $user;
                             <?php
                                 $text = "<span class='dialog-span'>";
                                     if($field == "field_fullname"){
-                                        $text .= $content. $row['new_comments']. $row['last_comment_timestamp'];
+                                        $text .= $content. $row['new_comments']. "<p class='comment_author_date'>". $row['last_comment_timestamp']. "</p>";
                                     }elseif($field == "field_ticket_category"){
                                         $text .= $content. $row['comment_body'];
                                     }else{

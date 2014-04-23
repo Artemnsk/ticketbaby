@@ -138,7 +138,7 @@ td:after,
 /* COMMON ELEMENTS */
 
 body {
-  background  : url(../images/pattern_bg.png);
+  background  : url(../images/pattern_27.png);
   font-family : 'AvenirLTStd-Medium', Calibri, Arial, sans-serif;
   font-size   : 15px;
   color       : #164559;
@@ -1419,7 +1419,9 @@ table {
   line-height : 18px;
 }
 
-.dialog-span p {
+.dialog-span p,
+.views-field-field-ticket-category p,
+.not-front .l-content table tr:hover td.views-field-field-ticket-category:hover a {
   color  : #164559;
   margin : 0;
 }
@@ -1543,6 +1545,11 @@ table {
   width : 900px;
 }
 
+.node-type-dialog #comments-dialog .comment .comment_right_wrapper {
+    float : right;
+    width : 876px;
+}
+
 #comments-dialog .comment p {
   margin : 0 0 6px 0;
 }
@@ -1586,6 +1593,23 @@ p.comment_author_date {
 }
 
 /*---/ dialog */
+
+/* write to defender */
+
+#contact-dialog {
+    margin: 40px 0 10px 0;
+}
+
+#contact-dialog:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#dialog-node-form {
+    display: none;
+}
+
+/*---/ write to defender */
 
 /*---/ MESSAGES */
 
