@@ -5,9 +5,11 @@
 }*/
 
 function tb_user_dialog_preprocess_comment(&$variables){
-    $author = user_load($variables['user']->uid);
-    $author = $author->field_fullname[LANGUAGE_NONE][0]['value'];
-    $variables['author'] = $author;
+    $author = user_load($variables['comment']->uid);
+    if(isset($author->field_fullname[LANGUAGE_NONE][0]['value'])){
+        $author = $author->field_fullname[LANGUAGE_NONE][0]['value'];
+        $variables['author'] = $author;
+    }
 }
 
 /*

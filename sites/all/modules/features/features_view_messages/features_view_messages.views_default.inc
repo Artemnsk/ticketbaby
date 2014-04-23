@@ -28,8 +28,8 @@ function features_view_messages_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
@@ -282,6 +282,19 @@ function features_view_messages_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'dialog' => 'dialog',
   );
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['relationship'] = 'field_users_target_id';
+  $handler->display->display_options['filters']['uid_current']['value'] = '0';
+  /* Filter criterion: User has access to dialog. */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to dialog.';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
   $handler->display->display_options['path'] = 'ticket/%/messages';
 
   /* Display: Def: reply to ticket */
@@ -562,6 +575,19 @@ function features_view_messages_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'dialog' => 'dialog',
   );
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['relationship'] = 'field_users_target_id';
+  $handler->display->display_options['filters']['uid_current']['value'] = '0';
+  /* Filter criterion: User has access to dialog */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to dialog';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
   $handler->display->display_options['path'] = 'user/messages';
   $export['messages'] = $view;
 

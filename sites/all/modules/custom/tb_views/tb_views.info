@@ -1,0 +1,5 @@
+name = TicketBaby custom views module
+description = Custom views filters for website. Uid != current user id and nid IN array of posted/quoted/replied tickets.
+package = TicketBaby
+version = VERSION
+core = 7.x

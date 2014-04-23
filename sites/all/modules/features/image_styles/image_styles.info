@@ -1,0 +1,8 @@
+name = Image styles
+core = 7.x
+package = Features
+dependencies[] = image
+features[features_api][] = api:2
+features[image][] = ticket_category_list
+features[image][] = user_image_on_dialogs_list
+features[image][] = user_profile_page

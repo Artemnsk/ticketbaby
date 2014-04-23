@@ -103,6 +103,20 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
+  /* Filter criterion: User has access to ticket. */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to ticket.';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
+  /* Filter criterion: User has access to ticket. */
+  $handler->display->display_options['filters']['php_1']['id'] = 'php_1';
+  $handler->display->display_options['filters']['php_1']['table'] = 'views';
+  $handler->display->display_options['filters']['php_1']['field'] = 'php';
+  $handler->display->display_options['filters']['php_1']['ui_name'] = 'User has access to ticket.';
+  $handler->display->display_options['filters']['php_1']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php_1']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
 
   /* Display: Def: posted */
   $handler = $view->new_display('page', 'Def: posted', 'posted');
@@ -157,13 +171,13 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
-  /* Filter criterion: Content: Status (field_status) */
-  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
-  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
-  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
-  $handler->display->display_options['filters']['field_status_value']['value'] = array(
-    0 => '0',
-  );
+  /* Filter criterion: User has access to ticket. */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to ticket.';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
   $handler->display->display_options['path'] = 'tickets/posted';
 
   /* Display: Def: replied */
@@ -194,13 +208,13 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
-  /* Filter criterion: Content: Status (field_status) */
-  $handler->display->display_options['filters']['field_status_value']['id'] = 'field_status_value';
-  $handler->display->display_options['filters']['field_status_value']['table'] = 'field_data_field_status';
-  $handler->display->display_options['filters']['field_status_value']['field'] = 'field_status_value';
-  $handler->display->display_options['filters']['field_status_value']['value'] = array(
-    0 => '0',
-  );
+  /* Filter criterion: User has access to ticket. */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to ticket.';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
   $handler->display->display_options['path'] = 'tickets/replied';
   $handler->display->display_options['menu']['title'] = 'Tickets responded to';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -244,6 +258,13 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_status_value']['value'] = array(
     0 => '0',
   );
+  /* Filter criterion: User has access to ticket. */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to ticket.';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
   $handler->display->display_options['path'] = 'tickets/quoted';
   $handler->display->display_options['menu']['title'] = 'Tickets responded to';
   $handler->display->display_options['menu']['weight'] = '0';
@@ -289,6 +310,13 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_status_value']['value'] = array(
     1 => '1',
   );
+  /* Filter criterion: User has access to ticket. */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to ticket.';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
   $handler->display->display_options['path'] = 'tickets/in-progress';
 
   /* Display: Def: defended */
@@ -319,6 +347,13 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['field_status_value']['value'] = array(
     2 => '2',
   );
+  /* Filter criterion: User has access to ticket. */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to ticket.';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
   $handler->display->display_options['path'] = 'tickets/defended';
 
   /* Display: Cus: your tickets */
@@ -464,6 +499,13 @@ function features_views_tickets_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ticket' => 'ticket',
   );
+  /* Filter criterion: User has access to ticket. */
+  $handler->display->display_options['filters']['php']['id'] = 'php';
+  $handler->display->display_options['filters']['php']['table'] = 'views';
+  $handler->display->display_options['filters']['php']['field'] = 'php';
+  $handler->display->display_options['filters']['php']['ui_name'] = 'User has access to ticket.';
+  $handler->display->display_options['filters']['php']['use_php_setup'] = 0;
+  $handler->display->display_options['filters']['php']['php_filter'] = 'return !node_access(\'view\', node_load($row->nid));';
   $handler->display->display_options['path'] = 'user/%/my-tickets';
   $handler->display->display_options['menu']['title'] = 'Posted';
   $handler->display->display_options['menu']['weight'] = '0';

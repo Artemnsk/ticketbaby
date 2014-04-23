@@ -85,6 +85,10 @@ function ticketbaby_menu_link__menu_customer_menu(array $variables){
         if(tb_user_menu_define_ticket_id_customer($_GET['q']) !== null){
             $element['#attributes']['class'][] = "active-trail";
         }
+        $ticket = tb_user_menu_have_one_ticket();
+        if($ticket['only_one']){
+            $element['#href'] = "node/". $ticket['nid'];
+        }
     }
 
     // Defining if we are on defenders page
@@ -159,7 +163,11 @@ function ticketbaby_preprocess_user_profile(&$vars){
     $vars['view_mode'] = $vars['elements']['#view_mode'];
     if($vars['view_mode'] == "full"){
         if(in_array('defender', $roles)){
+            // Contact link + form.
             $vars['contact_link'] = l('Contact', drupal_get_path_alias("node/add/dialog/user/$viewed_user->uid"));
+            //$vars['contact_link'] = drupal_get_form("");
+
+
             $vars['is_defender'] = true;
             // If picture is default let's add specific class to it to add CSS style.
             if($vars['elements']['#account']->picture === NULL){
@@ -198,7 +206,6 @@ function ticketbaby_preprocess_user_profile(&$vars){
                 // Feedback.
                 $vars['user_profile']['feedback'] = $profile['field_defender_feedback'];
             }
-            //dpm($vars);
         }else{
             $vars['is_defender'] = false;
         }

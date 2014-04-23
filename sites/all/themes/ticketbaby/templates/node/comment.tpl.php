@@ -73,10 +73,12 @@
 
         <footer class="comment__info">
             <?php //print $user_picture; ?>
-          <p class="submitted comment__submitted">
-              <p class="comment_author_name"><?php print $author ?></p>
-              <p class="comment_author_date"><?php print $created ?></p>
-          </p>
+            <p class="submitted comment__submitted">
+                <?php if(isset($author)):?>
+                    <p class="comment_author_name"><?php print $author ?></p>
+                <?php endif;?>
+                <p class="comment_author_date"><?php print $created ?></p>
+            </p>
         </footer>
 
     </div>
