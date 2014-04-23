@@ -162,6 +162,8 @@
                     <?php //print render($content['field_defender']) ?>
                     <?php //print render($content['field_upload_scanned_ticket']) ?>
                 </div>
+
+                <?php print $reply_link ?>
             </div>
         </article>
 

@@ -32,25 +32,24 @@ function tb_user_dialog_form_alter(&$form, &$form_state, $form_id){
     if($form_id == "dialog_node_form" && !user_access("administer content types")){
         global $user;
         // Get variables from url.
-        $type = arg(3);
-        $id = arg(4);
+        $type = arg(0) == 'user' ? 'user' : '';
+        $type = arg(0) == 'node' ? 'ticket' : $type;
+        $id = arg(1);
         if($type === null || $id === null || !intval($id)){
-            drupal_not_found();
+            //drupal_not_found();
         }
 
         // We will check if any $type detected and return page not found if not.
         $processed = false;
         if($type == "ticket"){
-            $form['custom_title'] = array(
-                '#type' => 'markup',
-                '#markup' => "<h2>Start dialog about ticket #". arg(4). "</h2>",
-            );
             $ticket = node_load($id);
             if(!$ticket){
                 drupal_not_found();
             }elseif($ticket->type != $type){
                 drupal_not_found();
             }else{
+                // Add js to slideDown textfield.
+                $form['#attached']['js'][] = drupal_get_path('module', 'tb_user_dialog'). '/js/contact.js';
                 // Set attached_to field and users field.
                 $form['field_attached_to'][LANGUAGE_NONE][0]['target_id']['#value'] = $ticket->title. ' ('. $ticket->nid. ')';
                 $author = user_load($ticket->uid);
@@ -64,13 +63,11 @@ function tb_user_dialog_form_alter(&$form, &$form_state, $form_id){
         }
         if($type == "user"){
             $user_to = user_load($id);
-            $form['custom_title'] = array(
-                '#type' => 'markup',
-                '#markup' => "<h2>Start dialog with ". $user_to->field_fullname[LANGUAGE_NONE][0]['value']. "</h2>",
-            );
             if(!$user_to){
                 drupal_not_found();
             }else{
+                // Add js to slideDown textfield.
+                $form['#attached']['js'][] = drupal_get_path('module', 'tb_user_dialog'). '/js/contact.js';
                 // Set users field.
                 $form['field_users'][LANGUAGE_NONE][0]['target_id']['#value'] = $user_to->name. ' ('. $user_to->uid. ')';
                 // Copy all info from already prepared field...
@@ -82,7 +79,7 @@ function tb_user_dialog_form_alter(&$form, &$form_state, $form_id){
         }
 
         if(!$processed){
-            drupal_not_found();
+            //drupal_not_found();
         }
         // Prepare form.
 

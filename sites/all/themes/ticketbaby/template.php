@@ -158,16 +158,26 @@ function ticketbaby_menu_link__menu_defender_menu(array $variables){
  * Override user profile template.
  */
 function ticketbaby_preprocess_user_profile(&$vars){
+    global $user;
     $viewed_user = $vars['elements']['#account'];
     $roles = $viewed_user->roles;
     $vars['view_mode'] = $vars['elements']['#view_mode'];
     if($vars['view_mode'] == "full"){
         if(in_array('defender', $roles)){
             // Contact link + form.
-            $vars['contact_link'] = l('Contact', drupal_get_path_alias("node/add/dialog/user/$viewed_user->uid"));
-            //$vars['contact_link'] = drupal_get_form("");
+            form_load_include($form_state, 'inc', 'node', 'node.pages');
+            $node = (object) array(
+                'uid' => $user->uid,
+                'name' => (isset($user->name) ? $user->name : ''),
+                'type' => 'dialog',
+                'language' => LANGUAGE_NONE,
+            );
+            node_object_prepare($node);
+            $form_state['build_info']['args'] = array($node);
+            $form = drupal_get_form('dialog_node_form', $node);
+            $vars['contact_link'] = "<div id='contact-dialog'>Contact</div>". render($form);
 
-
+            // Check if user defender.
             $vars['is_defender'] = true;
             // If picture is default let's add specific class to it to add CSS style.
             if($vars['elements']['#account']->picture === NULL){
@@ -210,7 +220,6 @@ function ticketbaby_preprocess_user_profile(&$vars){
             $vars['is_defender'] = false;
         }
     }elseif($vars['view_mode'] == "dialogs"){
-        global $user;
         if($vars['elements']['#account']->uid == $user->uid){
             unset($vars['user_profile']['user_picture']);
             unset($vars['user_profile']['field_fullname']);

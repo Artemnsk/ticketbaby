@@ -80,8 +80,9 @@
 ?>
 
 <?php if($view_mode == "full"): ?>
-
-    <?php print render($content['comments']) ?>
+    <article>
+        <?php print render($content['comments']) ?>
+    </article>
 
 <?php elseif($view_mode == "teaser"): ?>
     <?php print render($content['field_users']) ?>

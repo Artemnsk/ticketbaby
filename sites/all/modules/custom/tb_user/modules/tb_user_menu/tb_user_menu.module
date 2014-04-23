@@ -185,6 +185,15 @@ function tb_user_menu_define_ticket_id_customer($q){
                     $node = node_load($node->field_ticket[LANGUAGE_NONE][0]['target_id']);
                     $parent['quotes'] = array('attributes' => array('class' => 'active'));
                     break;
+                case "dialog":
+                    if(isset($node->field_attached_to[LANGUAGE_NONE][0]['target_id'])){
+                        $node = node_load($node->field_attached_to[LANGUAGE_NONE][0]['target_id']);
+                        $parent['messages'] = array('attributes' => array('class' => 'active'));
+                    }else{
+                        $node = '';
+                        break;
+                    }
+                    break;
                 // It means that we have wrong node, not for our page.
                 default:
                     $node = '';
@@ -274,7 +283,10 @@ function tb_user_menu_define_messages_customer($q){
             switch($node->type){
                 case "dialog":
                     // We are on dialog node page.
-                    $highlight = true;
+                    // But this dialog could be attached to ticket.
+                    if(!isset($node->field_attached_to[LANGUAGE_NONE][0]['target_id'])){
+                        $highlight = true;
+                    }
                     break;
                 default:
                     break;

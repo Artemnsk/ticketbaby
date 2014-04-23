@@ -19,9 +19,11 @@
             <?php print l(t("Messages"), "node/$dialog_id");?>
         </span>
     <?php else: ?>
+        <?php /* NOTHING FOR NOW
         <span>
             <?php print l(t("Reply"), "node/add/dialog/ticket/$ticket_id");?>
         </span>
+        */ ?>
     <?php endif;?>
 
     <?php // Link to quote page is quote is exist OR link to quote form otherwise. ?>

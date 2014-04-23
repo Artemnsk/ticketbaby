@@ -24,6 +24,19 @@ function ticketbaby_preprocess_node(&$variables) {
       $variables['user_role'] = 'customer';
     }else{
       $variables['user_role'] = 'defender';
+
+        // Load reply form.
+        form_load_include($form_state, 'inc', 'node', 'node.pages');
+        $node = (object) array(
+            'uid' => $user->uid,
+            'name' => (isset($user->name) ? $user->name : ''),
+            'type' => 'dialog',
+            'language' => LANGUAGE_NONE,
+        );
+        node_object_prepare($node);
+        $form_state['build_info']['args'] = array($node);
+        $form = drupal_get_form('dialog_node_form', $node);
+        $variables['reply_link'] = "<div id='contact-dialog'>Reply</div>". render($form);
     }
     $variables['content']['title'] = $variables['title'];
     $variables['content']['posted'] = date('F j, Y', $variables['created']);
